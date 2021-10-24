@@ -1,6 +1,6 @@
 <template>
   <div class="darker" @click="close()">
-    <div class="modal" @click.stop>
+    <div class="modal" v-bind:style="{ backgroundImage: 'url(' + background + ')' }" @click.stop>
       <slot></slot>
     </div>
   </div>
@@ -14,6 +14,11 @@ export default {
       return this.$emit('closing');
     },
   },
+  /**
+  *  If a uri is given, it will be displayed as the modal background,
+  * which is white otherwise.
+  */
+  props: ['background'],
 };
 </script>
 
@@ -36,7 +41,7 @@ export default {
   display: block;
   position: absolute;
   margin: auto;
-  margin: 3rem;
+  padding: 3rem;
   border-radius: 1rem;
   background-color: white;
 }

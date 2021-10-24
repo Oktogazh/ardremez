@@ -2,10 +2,8 @@
   <div class="button" @click="toggle()">
     click here
   </div>
-  <Modal v-if="opened" @closing="toggle()">
-    <div class="whiteBlock">
-
-    </div>
+  <Modal v-if="opened" @closing="toggle()" v-bind:background="bgImage">
+    <p>hello</p>
   </Modal>
 </template>
 
@@ -18,6 +16,7 @@ export default {
   },
   data() {
     return {
+      bgImage: '/pictures/Beg_ar_Vann.jpg',
       opened: false,
     };
   },
