@@ -2,7 +2,10 @@
   <div class="button" @click="toggle()">
     click here
   </div>
-  <Modal v-if="opened">
+  <Modal v-if="opened" @closing="toggle()">
+    <div class="whiteBlock">
+
+    </div>
   </Modal>
 </template>
 
@@ -30,6 +33,12 @@ export default {
 .button {
   display: block;
   position: absolute;
+}
+
+.whiteBlock {
+  background-color: white;
+  width: 3rem;
+  height: 3rem;
 
 }
 </style>
