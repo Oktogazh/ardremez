@@ -44,5 +44,8 @@ export default {
   padding: 3rem;
   border-radius: 1rem;
   background-color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 </style>
