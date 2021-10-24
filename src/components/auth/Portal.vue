@@ -3,15 +3,17 @@
     click here
   </div>
   <Modal v-if="opened" @closing="toggle()" v-bind:background="bgImage">
-    <p>hello</p>
+    <Form />
   </Modal>
 </template>
 
 <script>
 import Modal from '@/components/utils/Modal.vue';
+import Form from '@/components/auth/Form.vue';
 
 export default {
   components: {
+    Form,
     Modal,
   },
   data() {
@@ -32,12 +34,5 @@ export default {
 .button {
   display: block;
   position: absolute;
-}
-
-.whiteBlock {
-  background-color: white;
-  width: 3rem;
-  height: 3rem;
-
 }
 </style>

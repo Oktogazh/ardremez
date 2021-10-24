@@ -1,17 +1,17 @@
 <template>
-  <Connexion />
+  <Portal />
   <Card />
 </template>
 
 <script>
 // @ is an alias to /src
-import Connexion from '@/components/main/Connexion.vue';
+import Portal from '@/components/auth/Portal.vue';
 import Card from '@/components/main/Card.vue';
 
 export default {
   name: 'Home',
   components: {
-    Connexion,
+    Portal,
     Card,
   },
 };

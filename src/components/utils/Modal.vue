@@ -38,14 +38,18 @@ export default {
 }
 
 .modal {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   margin: auto;
-  padding: 3rem;
-  border-radius: 1rem;
+  padding: 5%;
+  border-radius: 2rem;
   background-color: white;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  box-shadow: 0 10px 15px rgba(65, 85, 144, 0.65);
 }
 </style>
