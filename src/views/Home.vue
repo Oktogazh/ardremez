@@ -1,17 +1,15 @@
 <template>
-  <Modal>
-    <p>Eienn</p>
-  </Modal>
+  <Connexion />
 </template>
 
 <script>
 // @ is an alias to /src
-import Modal from '@/components/utils/Modal.vue';
+import Connexion from '@/components/main/Connexion.vue';
 
 export default {
   name: 'Home',
   components: {
-    Modal,
+    Connexion,
   },
 };
 </script>
