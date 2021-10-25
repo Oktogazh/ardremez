@@ -5,6 +5,7 @@ import userState from './modules/userState';
 
 export default createStore({
   state: {
+    api: 'https://eienn.bzh',
   },
   mutations: {
   },

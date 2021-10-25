@@ -8,8 +8,8 @@
     <h3>Mot de passe</h3>
     <input v-model="password" @focus="known" type="password">
 
-    <h3 v-show="!true">Confirmez votre mot de passe</h3>
-    <input v-model="confirmPsw" v-show="!true" type="password"><br>
+    <h3 v-show="!member">Confirmez votre mot de passe</h3>
+    <input v-model="confirmPsw" v-show="!member" type="password"><br>
     <button type="submit">Connexion
     </button>
     <p class="newPsw" v-show="true" @click="reinitializePsw">
@@ -18,11 +18,14 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'Form',
   data() {
     return {
       email: '',
+      member: true,
       password: '',
       confirmPsw: '',
     };
@@ -31,7 +34,11 @@ export default {
     identify() {
       return null;
     },
-    known() {
+    async known() {
+      // TODO: /ezel → member (in the api)
+      this.member = await axios.post(`${this.$store.state.api}/api/ezel`, { email: this.email })
+        .then((res) => res.data.ezel)
+        .catch((err) => console.error(err));
       return null;
     },
     reinitializePsw() {

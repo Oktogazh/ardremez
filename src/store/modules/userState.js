@@ -1,4 +1,5 @@
 const userState = ({
+  namespaced: true,
   state: {
     email: null,
     jwt: null,
