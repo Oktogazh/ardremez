@@ -10,6 +10,9 @@ const userState = ({
   },
   modules: {
   },
+  getters: {
+    connected: (state) => !!state.jwt,
+  },
 });
 
 export default userState;
