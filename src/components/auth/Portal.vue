@@ -19,6 +19,8 @@ export default {
   data() {
     return {
       bgImage: '/pictures/Beg_ar_Vann.jpg',
+      // TODO create a btn and an 'Access' component
+      // Then place (this) Portal and the btn in Access
       opened: false,
     };
   },
