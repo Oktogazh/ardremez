@@ -36,7 +36,8 @@ export default {
         this.$store.dispatch('user/login', {
           email: this.email,
           password: this.password,
-        });
+        })
+          .then(console.log(this.$store.state.user.jwt));
       } else {
         this.$store.dispatch('user/signin', {
           email: this.email,
