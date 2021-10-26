@@ -14,10 +14,8 @@ export default {
       return this.$emit('closing');
     },
   },
-  /**
-  *  If a uri is given, it will be displayed as the modal background,
-  * which is white otherwise.
-  */
+  // If a uri is given, it will be displayed as the modal background,
+  // which is white otherwise.
   props: ['background'],
 };
 </script>
