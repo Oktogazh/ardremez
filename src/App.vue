@@ -6,6 +6,14 @@
   <router-view/>
 </template>
 
+<script>
+export default {
+  created() {
+    this.$store.dispatch('user/retrieveData');
+  },
+};
+</script>
+
 <style>
 body {
   padding: 50px 0 20px;

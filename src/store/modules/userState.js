@@ -14,7 +14,7 @@ const userState = ({
     SET_USER_DATA(state, data) {
       const keysToUpdate = Object.keys(data);
       keysToUpdate.forEach((key) => {
-          state[key] = data[key];
+        state[key] = data[key];
       });
       localStorage.setItem('userData', JSON.stringify(state));
       axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
@@ -33,6 +33,11 @@ const userState = ({
           jwt: res.data.token,
           verified: res.data.verified,
         }));
+    },
+    retrieveData({ commit }) {
+      const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+      console.log('userData:', userData);
+      commit('SET_USER_DATA', userData);
     },
     signin(context, { email, psw, confirmPsw }) {
       console.log(email, psw, confirmPsw);
