@@ -35,7 +35,7 @@ export default {
       if (this.member) {
         this.$store.dispatch('user/login', {
           email: this.email,
-          psw: this.password,
+          password: this.password,
         });
       } else {
         this.$store.dispatch('user/signin', {

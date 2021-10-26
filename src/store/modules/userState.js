@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const userState = ({
   namespaced: true,
   state: {
@@ -7,8 +9,10 @@ const userState = ({
   mutations: {
   },
   actions: {
-    login(context, { email, psw }) {
-      console.log(email, psw);
+    login(context, { email, password }) {
+      console.log(email, password);
+      axios.post(`${context.rootState.api}/api/kevreañ`, { email, password })
+        .then((res) => console.log(res.data));
     },
     signin(context, { email, psw, confirmPsw }) {
       console.log(email, psw, confirmPsw);
