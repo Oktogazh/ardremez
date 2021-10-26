@@ -7,6 +7,12 @@ const userState = ({
   mutations: {
   },
   actions: {
+    login(context, { email, psw }) {
+      console.log(email, psw);
+    },
+    signin(context, { email, psw, confirmPsw }) {
+      console.log(email, psw, confirmPsw);
+    },
   },
   modules: {
   },

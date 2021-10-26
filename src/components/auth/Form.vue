@@ -32,6 +32,18 @@ export default {
   },
   methods: {
     identify() {
+      if (this.member) {
+        this.$store.dispatch('user/login', {
+          email: this.email,
+          psw: this.password,
+        });
+      } else {
+        this.$store.dispatch('user/signin', {
+          email: this.email,
+          psw: this.password,
+          confirmPsw: this.confirmPsw,
+        });
+      }
       return null;
     },
     async known() {
