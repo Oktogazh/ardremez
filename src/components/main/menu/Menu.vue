@@ -1,35 +1,40 @@
 <template>
   <div id="dropDownMenu">
     <ul>
-      <li><Access /></li>
+      <li @click="$emit('goTo', 'accessPortal')"><h3>Access</h3></li>
     </ul>
   </div>
 </template>
 
 <script>
-import Access from '@/components/auth/Access.vue';
 
 export default {
   name: 'Menu',
   components: {
-    Access,
   },
   methods: {
-    close() {
-      this.$parent.open = false;
-      console.log(this.$parent.open);
+    close(e) {
+      if (!this.$parent.$el.contains(e.target)) {
+        this.$parent.open = false;
+      }
     },
   },
   mounted() {
-    document.addEventListener('click', () => alert('sup!'));
+    const delay = (ms) => new Promise((resolve) => {
+      setTimeout(() => resolve(), ms);
+    });
+
+    // if not delayed, the click mounting the component triggers the listener
+    delay(250)
+      .then(() => document.addEventListener('click', this.close));
   },
   beforeUnmount() {
+    document.removeEventListener('click', this.close);
   },
 };
 </script>
 
 <style scoped>
-
 #dropDownMenu {
   position: absolute;
   width: 10%;
@@ -40,5 +45,9 @@ export default {
 
 ul {
   list-style: none;
+}
+
+li {
+  cursor: pointer;
 }
 </style>

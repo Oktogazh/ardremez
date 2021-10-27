@@ -1,8 +1,5 @@
 <template>
-  <div class="button" @click="toggle()">
-    <h3>Access</h3>
-  </div>
-  <Modal v-if="opened" @closing="toggle()" v-bind:background="bgImage">
+  <Modal @closing="$emit('closing')" v-bind:background="bgImage">
     <Form />
   </Modal>
 </template>
@@ -20,15 +17,9 @@ export default {
   data() {
     return {
       bgImage: '/pictures/Beg_ar_Vann.jpg',
-      // TODO create a btn and an 'Access' component
-      // Then place (this) Portal and the btn in Access
-      opened: false,
     };
   },
   methods: {
-    toggle() {
-      this.opened = !this.opened;
-    },
   },
 };
 </script>
