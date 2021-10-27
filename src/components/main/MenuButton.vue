@@ -3,36 +3,38 @@
     <button id="menuButton">
       <h1>Ξ</h1>
     </button>
-    <Menu v-if="open" @goTo="goTo"/>
+    <MenuOptions v-if="menuOptions" @openOption="opening"/>
   </div>
-  <Access v-if="accessPortal" @closing="closing('accessPortal')" />
+  <Access v-if="options.accessPortal" @closing="closing('accessPortal')" />
 </template>
 
 <script>
-import Menu from '@/components/main/menu/Menu.vue';
+import MenuOptions from '@/components/main/menu/MenuOptions.vue';
 import Access from '@/components/auth/Access.vue';
 
 export default {
   name: 'MenuButton',
   data() {
     return {
-      open: false,
-      accessPortal: false,
+      menuOptions: false,
+      options: {
+        accessPortal: false,
+      },
     };
   },
   components: {
-    Menu,
+    MenuOptions,
     Access,
   },
   methods: {
     dropDown() {
-      this.open = !this.open;
+      this.menuOptions = !this.menuOptions;
     },
-    goTo(option) {
-      this[option] = true;
+    opening(option) {
+      this.options[option] = true;
     },
     closing(option) {
-      this[option] = false;
+      this.options[option] = false;
     },
   },
 };

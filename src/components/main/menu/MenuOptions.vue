@@ -1,7 +1,7 @@
 <template>
   <div id="dropDownMenu">
     <ul>
-      <li @click="$emit('goTo', 'accessPortal')"><h3>Access</h3></li>
+      <li @click="$emit('openOption', 'accessPortal')"><h3>Access</h3></li>
     </ul>
   </div>
 </template>
@@ -9,13 +9,13 @@
 <script>
 
 export default {
-  name: 'Menu',
+  name: 'MenuOptions',
   components: {
   },
   methods: {
     close(e) {
       if (!this.$parent.$el.contains(e.target)) {
-        this.$parent.open = false;
+        this.$parent.menuOptions = false;
       }
     },
   },
