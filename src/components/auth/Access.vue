@@ -1,6 +1,6 @@
 <template>
   <div class="button" @click="toggle()">
-    click here
+    <h3>Access</h3>
   </div>
   <Modal v-if="opened" @closing="toggle()" v-bind:background="bgImage">
     <Form />
@@ -12,6 +12,7 @@ import Modal from '@/components/utils/Modal.vue';
 import Form from '@/components/auth/Form.vue';
 
 export default {
+  name: 'Access',
   components: {
     Form,
     Modal,
@@ -34,7 +35,6 @@ export default {
 
 <style scoped>
 .button {
-  display: block;
-  position: absolute;
+  cursor: pointer;
 }
 </style>

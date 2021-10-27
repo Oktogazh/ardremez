@@ -36,7 +36,6 @@ const userState = ({
     },
     retrieveData({ commit }) {
       const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-      console.log('userData:', userData);
       commit('SET_USER_DATA', userData);
     },
     signin(context, { email, psw, confirmPsw }) {
