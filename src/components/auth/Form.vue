@@ -1,7 +1,5 @@
 <template>
   <form name="signin-up" @submit.prevent="identify">
-    <h2>{{ member? $store.state.lang.Log_In : $store.state.lang.Sign_In }}</h2><br>
-
     <h3>Email</h3>
     <input v-model="email" type="email">
 
@@ -10,7 +8,7 @@
 
     <h3 v-show="!member">{{ $store.state.lang.Confirm }}</h3>
     <input v-model="confirmPsw" v-show="!member" type="password"><br>
-    <button type="submit">Connexion
+    <button type="submit">{{ member? $store.state.lang.Log_In : $store.state.lang.Sign_In }}
     </button>
     <p class="newPsw" v-show="true" @click="reinitializePsw">
       {{ $store.state.lang.Reinitialize_Password }}</p>
