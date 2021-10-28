@@ -1,5 +1,6 @@
 import { createStore } from 'vuex';
 import appState from './modules/appState';
+import langState from './modules/langState';
 import lessonState from './modules/lessonState';
 import userState from './modules/userState';
 
@@ -13,6 +14,7 @@ export default createStore({
   },
   modules: {
     app: appState,
+    lang: langState,
     lesson: lessonState,
     user: userState,
   },

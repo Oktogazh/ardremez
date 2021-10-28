@@ -33,7 +33,8 @@ const userState = ({
           jwt: res.data.token,
           verified: res.data.verified,
         }))
-        .then(() => true);
+        .then(() => true)
+        .catch(() => false);
 
       return loggedIn;
     },

@@ -10,6 +10,7 @@
 export default {
   created() {
     this.$store.dispatch('user/retrieveData');
+    this.$store.dispatch('lang/loadLanguage');
   },
 };
 </script>

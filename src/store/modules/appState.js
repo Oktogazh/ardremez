@@ -1,5 +1,6 @@
 const appState = ({
   state: {
+    language: 'br',
   },
   mutations: {
   },

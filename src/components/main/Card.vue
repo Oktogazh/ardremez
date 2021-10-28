@@ -1,6 +1,6 @@
 <template>
   <div class="mainCard">
-    <h1>Connected: {{ $store.getters['user/connected'] }}</h1>
+    <h1>{{ $store.state.lang.Connected }}: {{ $store.getters['user/connected'] }}</h1>
   </div>
 </template>
 
