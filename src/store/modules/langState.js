@@ -1,17 +1,23 @@
 const lang = ({
+  namespaced: true,
   state: {
+    Access: 'Access',
+    Connected: 'Connected',
+    Log_Out: 'Log Out',
   },
   mutations: {
     SET_LANGUAGE(state, obj) {
-      state = obj;
-    }
+      const phrases = Object.keys(obj);
+      phrases.forEach((entry) => {
+        state[entry] = obj[entry];
+      });
+    },
   },
   actions: {
-    loadLanguage({ commit, rootGetters }) {
-      console.log('loading lang');
-      let choosenLanguage = 'br';
+    loadLanguage({ commit }) {
+      const choosenLanguage = 'br';
       import(`@/assets/languages/${choosenLanguage}.js`)
-        .then((obj) => {
+        .then(({ default: obj }) => {
           commit('SET_LANGUAGE', obj);
         });
     },
