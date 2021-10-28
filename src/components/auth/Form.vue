@@ -1,19 +1,19 @@
 <template>
   <form name="signin-up" @submit.prevent="identify">
-    <h2>{{ member? 'Connexion':'Créez un compte'}}</h2><br>
+    <h2>{{ member? $store.state.lang.Log_In : $store.state.lang.Sign_In }}</h2><br>
 
     <h3>Email</h3>
     <input v-model="email" type="email">
 
-    <h3>Mot de passe</h3>
+    <h3>{{ $store.state.lang.Password }}</h3>
     <input v-model="password" @focus="known" type="password">
 
-    <h3 v-show="!member">Confirmez votre mot de passe</h3>
+    <h3 v-show="!member">{{ $store.state.lang.Confirm }}</h3>
     <input v-model="confirmPsw" v-show="!member" type="password"><br>
     <button type="submit">Connexion
     </button>
     <p class="newPsw" v-show="true" @click="reinitializePsw">
-      Réinitialiser mon mot de passe</p>
+      {{ $store.state.lang.Reinitialize_Password }}</p>
   </form>
 </template>
 

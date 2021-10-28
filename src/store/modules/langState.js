@@ -3,7 +3,13 @@ const lang = ({
   state: {
     Access: 'Access',
     Connected: 'Connected',
+    Confirm: 'Confirm',
+    Email: 'Email',
+    Log_In: 'Log In',
     Log_Out: 'Log Out',
+    Password: 'Password',
+    Reinitialize_Password: 'Reinitialize Password',
+    Sign_In: 'Sign In',
   },
   mutations: {
     SET_LANGUAGE(state, obj) {
@@ -14,9 +20,9 @@ const lang = ({
     },
   },
   actions: {
-    loadLanguage({ commit }) {
-      const choosenLanguage = 'br';
-      import(`@/assets/languages/${choosenLanguage}.js`)
+    loadLanguage({ commit, rootState }) {
+      const { language } = rootState.app;
+      import(`@/assets/languages/${language}.js`)
         .then(({ default: obj }) => {
           commit('SET_LANGUAGE', obj);
         });

@@ -3,11 +3,11 @@
     <ul>
       <li v-if="!$store.getters['user/connected']"
         @click="$emit('openOption', 'accessPortal')">
-        <h3>Access</h3>
+        <h3>{{ $store.state.lang.Access }}</h3>
       </li>
       <li v-if="$store.getters['user/connected']"
         @click="$store.dispatch('user/logOut')">
-        <h3>Log Out</h3>
+        <h3>{{ $store.state.lang.Log_Out }}</h3>
       </li>
     </ul>
   </div>
