@@ -1,6 +1,6 @@
 <template>
   <form name="signin-up" @submit.prevent="identify">
-    <h2>{{ true? 'Connexion':'Créez un compte'}}</h2><br>
+    <h2>{{ member? 'Connexion':'Créez un compte'}}</h2><br>
 
     <h3>Email</h3>
     <input v-model="email" type="email">
@@ -37,7 +37,13 @@ export default {
           email: this.email,
           password: this.password,
         })
-          .then(console.log(this.$store.state.user.jwt));
+          .then((loggedIn) => {
+            if (loggedIn) {
+              this.$emit('closing');
+            } else {
+              this.retry();
+            }
+          });
       } else {
         this.$store.dispatch('user/signin', {
           email: this.email,
@@ -52,6 +58,10 @@ export default {
       this.member = await axios.post(`${this.$store.state.api}/api/ezel`, { email: this.email })
         .then((res) => res.data.ezel)
         .catch((err) => console.error(err));
+      return null;
+    },
+    retry() {
+      console.log('wrong password!');
       return null;
     },
     reinitializePsw() {

@@ -3,7 +3,7 @@
     <button id="menuButton">
       <h1>Ξ</h1>
     </button>
-    <MenuOptions v-if="menuOptions" @openOption="opening"/>
+    <MenuOptions v-if="menuOptions" @openOption="opening" />
   </div>
   <Access v-if="options.accessPortal" @closing="closing('accessPortal')" />
 </template>

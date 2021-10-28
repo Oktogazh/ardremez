@@ -21,10 +21,10 @@ const userState = ({
     },
   },
   actions: {
-    login(context, { email, password }) {
+    async login(context, { email, password }) {
       // TODO: 'api/login' instead, sending the jwt via the cookie protocol
       // because the audio api doesn't send the Auth header otherwise
-      axios.post(`${context.rootState.api}/api/kevreañ`, { email, password })
+      const loggedIn = await axios.post(`${context.rootState.api}/api/kevreañ`, { email, password })
         .then((res) => context.commit('SET_USER_DATA', {
           email: res.data.email,
           customerId: res.data.customerId,
@@ -32,7 +32,10 @@ const userState = ({
           subscribed: res.data.sub,
           jwt: res.data.token,
           verified: res.data.verified,
-        }));
+        }))
+        .then(() => true);
+
+      return loggedIn;
     },
     retrieveData({ commit }) {
       const userData = JSON.parse(localStorage.getItem('userData') || '{}');
