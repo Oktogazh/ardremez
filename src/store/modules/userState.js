@@ -21,7 +21,7 @@ const userState = ({
     },
   },
   actions: {
-    async login(context, { email, password }) {
+    async logIn(context, { email, password }) {
       // TODO: 'api/login' instead, sending the jwt via the cookie protocol
       // because the audio api doesn't send the Auth header otherwise
       const loggedIn = await axios.post(`${context.rootState.api}/api/kevreañ`, { email, password })
@@ -36,6 +36,9 @@ const userState = ({
         .then(() => true);
 
       return loggedIn;
+    },
+    logOut() {
+      return null;
     },
     retrieveData({ commit }) {
       const userData = JSON.parse(localStorage.getItem('userData') || '{}');

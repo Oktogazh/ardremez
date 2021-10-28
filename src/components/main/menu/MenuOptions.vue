@@ -1,13 +1,19 @@
 <template>
   <div id="dropDownMenu">
     <ul>
-      <li @click="$emit('openOption', 'accessPortal')"><h3>Access</h3></li>
+      <li v-if="!$store.getters['user/connected']"
+        @click="$emit('openOption', 'accessPortal')">
+        <h3>Access</h3>
+      </li>
+      <li v-if="$store.getters['user/connected']"
+        @click="$store.dispatch('user/logOut')">
+        <h3>Log Out</h3>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'MenuOptions',
   components: {

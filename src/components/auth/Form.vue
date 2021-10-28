@@ -33,7 +33,7 @@ export default {
   methods: {
     identify() {
       if (this.member) {
-        this.$store.dispatch('user/login', {
+        this.$store.dispatch('user/logIn', {
           email: this.email,
           password: this.password,
         })
