@@ -37,8 +37,17 @@ const userState = ({
 
       return loggedIn;
     },
-    logOut() {
-      return null;
+    logOut({ commit }) {
+      const emptyState = {
+        email: null,
+        customerId: null,
+        level: null,
+        subscribed: null,
+        jwt: null,
+        verified: null,
+      };
+
+      commit('SET_USER_DATA', emptyState);
     },
     retrieveData({ commit }) {
       const userData = JSON.parse(localStorage.getItem('userData') || '{}');
