@@ -16,7 +16,7 @@ const lang = ({
     Sign_In: '',
   },
   mutations: {
-    SET_LANGUAGE(state, obj) {
+    SET_LANGUAGE(state, { obj }) {
       const phrases = Object.keys(obj);
       phrases.forEach((entry) => {
         state[entry] = obj[entry];
@@ -24,12 +24,12 @@ const lang = ({
     },
   },
   actions: {
-    loadLanguage({ commit, rootState }) {
-      const { language } = rootState.app;
+    loadLanguage({ commit }, language) {
       import(`@/assets/languages/${language}.js`)
         .then(({ default: obj }) => {
-          commit('SET_LANGUAGE', obj);
-        });
+          commit('SET_LANGUAGE', { obj });
+        })
+        .then(commit('app/SET_CHOSEN_LANGUAGE', language, { root: true }));
     },
   },
   modules: {

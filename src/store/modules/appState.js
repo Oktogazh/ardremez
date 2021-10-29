@@ -1,16 +1,14 @@
 const appState = ({
+  namespaced: true,
   state: {
-    language: 'br',
+    language: '',
   },
   mutations: {
-    SET_CHOSEN_LANGUAGE(state, code) {
-      state.language = code;
+    SET_CHOSEN_LANGUAGE(state, language) {
+      state.language = language;
     },
   },
   actions: {
-    changeLanguage({ commit }, code) {
-      commit('SET_CHOSEN_LANGUAGE', code);
-    },
   },
   modules: {
   },

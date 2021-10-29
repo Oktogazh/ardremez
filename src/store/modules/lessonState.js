@@ -1,4 +1,5 @@
 const lessonState = ({
+  namespaced: true,
   state: {
     id: null,
   },
