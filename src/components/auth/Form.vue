@@ -1,6 +1,6 @@
 <template>
   <form name="signin-up" @submit.prevent="identify">
-    <h3>Email</h3>
+    <h3>{{ $store.state.lang.Email }}</h3>
     <input v-model="email" type="email">
 
     <h3>{{ $store.state.lang.Password }}</h3>
