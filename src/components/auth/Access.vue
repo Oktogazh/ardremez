@@ -1,6 +1,6 @@
 <template>
-  <Modal @closing="$emit('closing')" v-bind:background="bgImage">
-    <Form @closing="$emit('closing')" />
+  <Modal @closing="$emit('closing', 'accessPortal')" v-bind:background="bgImage">
+    <Form @closing="$emit('closing', 'accessPortal')" />
   </Modal>
 </template>
 
@@ -19,7 +19,7 @@ export default {
       bgImage: '/pictures/Beg_ar_Vann.jpg',
     };
   },
-  methods: {
+  methods: { // TODO: create a closing method
   },
 };
 </script>

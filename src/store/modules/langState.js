@@ -1,15 +1,19 @@
 const lang = ({
   namespaced: true,
   state: {
-    Access: 'Access',
-    Connected: 'Connected',
-    Confirm: 'Confirm',
-    Email: 'Email',
-    Log_In: 'Log In',
-    Log_Out: 'Log Out',
-    Password: 'Password',
-    Reinitialize_Password: 'Reinitialize Password',
-    Sign_In: 'Sign In',
+    Access: '',
+    Breton: '',
+    Connected: '',
+    Confirm: '',
+    Email: '',
+    English: '',
+    French: '',
+    Log_In: '',
+    Log_Out: '',
+    Other_Languages: '',
+    Password: '',
+    Reinitialize_Password: '',
+    Sign_In: '',
   },
   mutations: {
     SET_LANGUAGE(state, obj) {

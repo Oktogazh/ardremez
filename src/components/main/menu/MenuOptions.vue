@@ -1,6 +1,9 @@
 <template>
-  <div id="dropDownMenu">
+  <div>
     <ul>
+      <li @click="$emit('openOption', 'languagesMenu')">
+        <h3>{{ $store.state.lang.Other_Languages }}</h3>
+      </li>
       <li v-if="!$store.getters['user/connected']"
         @click="$emit('openOption', 'accessPortal')">
         <h3>{{ $store.state.lang.Access }}</h3>
@@ -21,7 +24,7 @@ export default {
   methods: {
     close(e) {
       if (!this.$parent.$el.contains(e.target)) {
-        this.$parent.menuOptions = false;
+        this.$emit('close');
       }
     },
   },
@@ -42,14 +45,6 @@ export default {
 </script>
 
 <style scoped>
-#dropDownMenu {
-  position: absolute;
-  width: 10%;
-  right: 3rem;
-  padding: 0px;
-  background-color: rgba(97, 97, 97, 0.5);
-}
-
 ul {
   list-style: none;
 }

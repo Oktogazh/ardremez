@@ -1,16 +1,22 @@
 <template>
-  <div @click="dropDown">
-    <button id="menuButton">
+  <div>
+    <button id="menuButton" @click="dropDown">
       <h1>Ξ</h1>
     </button>
-    <MenuOptions v-if="menuOptions" @openOption="opening" />
+    <div id="dropDownMenu">
+      <MenuOptions v-if="menuOptions"
+        @close="menuOptions = false"
+        @openOption="opening" />
+      <OtherLanguages v-if="options.languagesMenu" @closing="closing" />
+    </div>
   </div>
-  <Access v-if="options.accessPortal" @closing="closing('accessPortal')" />
+  <Access v-if="options.accessPortal" @closing="closing" />
 </template>
 
 <script>
 import MenuOptions from '@/components/main/menu/MenuOptions.vue';
 import Access from '@/components/auth/Access.vue';
+import OtherLanguages from '@/components/main/menu/OtherLanguages.vue';
 
 export default {
   name: 'MenuButton',
@@ -19,18 +25,21 @@ export default {
       menuOptions: false,
       options: {
         accessPortal: false,
+        languagesMenu: false,
       },
     };
   },
   components: {
     MenuOptions,
     Access,
+    OtherLanguages,
   },
   methods: {
     dropDown() {
       this.menuOptions = !this.menuOptions;
     },
     opening(option) {
+      // this.menuOptions = false;
       this.options[option] = true;
     },
     closing(option) {
@@ -47,5 +56,13 @@ export default {
   right: 3rem;
   top: 4rem;
   cursor: pointer;
+}
+
+#dropDownMenu {
+  position: absolute;
+  width: 10%;
+  right: 3rem;
+  padding: 0px;
+  background-color: rgba(97, 97, 97, 0.5);
 }
 </style>
