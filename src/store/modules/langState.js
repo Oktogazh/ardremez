@@ -29,6 +29,7 @@ const lang = ({
         .then(({ default: obj }) => {
           commit('SET_LANGUAGE', { obj });
         })
+        // TODO: localStorage('languagePreference') read && write (here)
         .then(commit('app/SET_CHOSEN_LANGUAGE', language, { root: true }));
     },
   },

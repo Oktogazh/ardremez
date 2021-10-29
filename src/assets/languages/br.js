@@ -1,5 +1,5 @@
 const obj = {
-  Access: 'Moned',
+  Access: 'Kevreañ',
   Breton: 'Brezhoneg',
   Connected: 'Kevreet',
   Confirm: 'Kadarnaat',
