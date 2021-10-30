@@ -1,17 +1,17 @@
 <template>
   <MenuButton />
-  <Card />
+  <SeriesCard />
 </template>
 
 <script>
 // @ is an alias to /src
-import Card from '@/components/main/Card.vue';
+import SeriesCard from '@/components/main/SeriesCard.vue';
 import MenuButton from '@/components/main/MenuButton.vue';
 
 export default {
   name: 'Home',
   components: {
-    Card,
+    SeriesCard,
     MenuButton,
   },
 };
