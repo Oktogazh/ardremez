@@ -1,10 +1,10 @@
 <template>
   <div class="card-container">
     <CardTitle>
-      <!-- <slot name="title"></slot> -->
+      <slot name="title"></slot>
     </CardTitle>
     <CardBody>
-      <!-- <slot name="body"></slot> -->
+      <slot name="body"></slot>
     </CardBody>
   </div>
 </template>
@@ -23,4 +23,6 @@ export default {
 </script>
 
 <style scoped>
+.card-container {
+}
 </style>

@@ -1,8 +1,10 @@
 <template>
   <EmptyCard>
     <template v-slot:title>
+      {{ title }}
     </template>
     <template v-slot:body>
+      {{ body }}
     </template>
   </EmptyCard>
 </template>
@@ -17,9 +19,11 @@ export default {
   },
   data() {
     return {
-      // title: 'Setu an titl',
-      // body: 'Lorem ipsum',
+      title: 'Setu an titl',
+      body: 'Lorem ipsum',
     };
+  },
+  methods: {
   },
 };
 </script>

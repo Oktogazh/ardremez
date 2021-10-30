@@ -1,15 +1,12 @@
 <template>
   <div class="body-container">
-    <p><slot name="body">Default body</slot></p>
+    <p><slot></slot></p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'CardBody',
-  props: [
-    // body,
-  ],
 };
 </script>
 
