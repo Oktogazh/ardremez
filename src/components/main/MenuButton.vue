@@ -39,7 +39,6 @@ export default {
       this.menuOptions = !this.menuOptions;
     },
     opening(option) {
-      // this.menuOptions = false;
       this.options[option] = true;
     },
     closing(option) {

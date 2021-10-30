@@ -1,4 +1,4 @@
-import { createStore } from 'vuex';
+import { createStore, createLogger } from 'vuex';
 import appState from './modules/appState';
 import langState from './modules/langState';
 import lessonState from './modules/lessonState';
@@ -18,4 +18,7 @@ export default createStore({
     lesson: lessonState,
     user: userState,
   },
+  plugins: [
+    createLogger(),
+  ],
 });
