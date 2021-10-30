@@ -1,6 +1,6 @@
 <template>
   <div class="body-container">
-    <p><slot></slot></p>
+    <p class="card-body"><slot></slot></p>
   </div>
 </template>
 
@@ -11,6 +11,9 @@ export default {
 </script>
 
 <style scoped>
+.card-body {
+  margin: 0px;
+}
 .body-container {
   background-color: rgb(224, 224, 224);
 }

@@ -1,6 +1,8 @@
 <template>
   <MenuButton />
   <SeriesCard />
+  <SeriesCard />
+  <SeriesCard />
 </template>
 
 <script>

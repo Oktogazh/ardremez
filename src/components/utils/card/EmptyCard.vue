@@ -1,9 +1,9 @@
 <template>
   <div class="card-container">
-    <CardTitle>
+    <CardTitle @toogle="toogleBody">
       <slot name="title"></slot>
     </CardTitle>
-    <CardBody>
+    <CardBody v-show="collapsedBody">
       <slot name="body"></slot>
     </CardBody>
   </div>
@@ -19,10 +19,22 @@ export default {
     CardTitle,
     CardBody,
   },
+  data() {
+    return {
+      collapsedBody: false,
+    };
+  },
+  methods: {
+    toogleBody() {
+      this.collapsedBody = !this.collapsedBody;
+    },
+  },
 };
 </script>
 
 <style scoped>
 .card-container {
+  width: 900px;
+  max-width: 100%;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="title-container">
-    <h1><slot></slot></h1>
+  <div class="title-container" @click="$emit('toogle')">
+    <h2 class="card-title"><slot></slot></h2>
   </div>
 </template>
 
@@ -11,7 +11,12 @@ export default {
 </script>
 
 <style scoped>
+.card-title {
+  margin: 0px;
+}
+
 .title-container {
   background-color: rgb(181, 181, 181);
+  cursor: pointer;
 }
 </style>
