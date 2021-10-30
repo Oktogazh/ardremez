@@ -25,6 +25,9 @@ export default {
   },
   methods: {
   },
+  props: {
+
+  },
 };
 </script>
 

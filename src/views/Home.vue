@@ -1,20 +1,18 @@
 <template>
-  <MenuButton />
-  <SeriesCard />
-  <SeriesCard />
+  <Header />
   <SeriesCard />
 </template>
 
 <script>
 // @ is an alias to /src
+import Header from '@/components/main/Header.vue';
 import SeriesCard from '@/components/main/SeriesCard.vue';
-import MenuButton from '@/components/main/MenuButton.vue';
 
 export default {
   name: 'Home',
   components: {
+    Header,
     SeriesCard,
-    MenuButton,
   },
 };
 </script>

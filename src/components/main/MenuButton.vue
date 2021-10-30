@@ -52,8 +52,8 @@ export default {
 #menuButton {
   all: unset;
   position: absolute;
-  right: 3rem;
-  top: 4rem;
+  right: 2.5rem;
+  top: 2rem;
   cursor: pointer;
 }
 
