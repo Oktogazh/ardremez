@@ -2,6 +2,8 @@ const appState = ({
   namespaced: true,
   state: {
     language: '',
+    title: 'Home',
+    subtitle: '',
   },
   mutations: {
     SET_CHOSEN_LANGUAGE(state, language) {

@@ -14,10 +14,7 @@ export default {
 
 <style>
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin: 0px;
 }
 
 #app {
@@ -26,5 +23,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* main axis (vertical) */
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 </style>

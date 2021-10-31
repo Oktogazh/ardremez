@@ -6,7 +6,7 @@ const userState = ({
     email: null,
     customerId: null,
     level: null,
-    subscribed: null,
+    subscriptionActive: false,
     jwt: null,
     verified: null,
   },
@@ -29,7 +29,7 @@ const userState = ({
           email: res.data.email,
           customerId: res.data.customerId,
           level: res.data.live,
-          subscribed: res.data.sub,
+          subscriptionActive: res.data.sub,
           jwt: res.data.token,
           verified: res.data.verified,
         }))
@@ -43,7 +43,7 @@ const userState = ({
         email: null,
         customerId: null,
         level: null,
-        subscribed: null,
+        subscriptionActive: false,
         jwt: null,
         verified: null,
       };
