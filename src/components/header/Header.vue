@@ -7,7 +7,7 @@
 
 <script>
 import Titles from '@/components/header/Titles.vue';
-import MenuButton from '@/components/main/MenuButton.vue';
+import MenuButton from '@/components/header/menu/MenuButton.vue';
 
 export default {
   name: 'Header',

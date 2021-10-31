@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import MenuOptions from '@/components/main/menu/MenuOptions.vue';
+import MenuOptions from '@/components/header/menu/MenuOptions.vue';
 import Access from '@/components/auth/Access.vue';
-import OtherLanguages from '@/components/main/menu/OtherLanguages.vue';
+import OtherLanguages from '@/components/header/menu/OtherLanguages.vue';
 
 export default {
   name: 'MenuButton',
