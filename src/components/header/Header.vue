@@ -1,22 +1,19 @@
 <template>
   <div class="header-container">
-    <div class="titles-container">
-      <div class="title">
-        <h1>Home</h1>
-      </div>
-    </div>
-
+    <Titles />
     <MenuButton />
   </div>
 </template>
 
 <script>
+import Titles from '@/components/header/Titles.vue';
 import MenuButton from '@/components/main/MenuButton.vue';
 
 export default {
   name: 'Header',
   components: {
     MenuButton,
+    Titles,
   },
 };
 </script>
@@ -26,10 +23,10 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: rgb(127, 105, 154);
 }
 
-.titles-container {
-  left: 0px;
+>>> h1 {
+  margin: 0;
+  padding: 1rem;
 }
 </style>

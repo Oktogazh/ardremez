@@ -6,6 +6,7 @@ const obj = {
   Email: 'Adresse',
   English: 'Anglais',
   French: 'Français',
+  Home: 'Accueil',
   Log_In: 'Connexion',
   Log_Out: 'Déconnexion',
   Other_Languages: 'Autres langues',

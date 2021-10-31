@@ -8,6 +8,7 @@ const lang = ({
     Email: '',
     English: '',
     French: '',
+    Home: '',
     Log_In: '',
     Log_Out: '',
     Other_Languages: '',

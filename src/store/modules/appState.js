@@ -3,7 +3,7 @@ const appState = ({
   state: {
     language: '',
     title: 'Home',
-    subtitle: '',
+    subtitle: null,
   },
   mutations: {
     SET_CHOSEN_LANGUAGE(state, language) {

@@ -51,8 +51,6 @@ export default {
 <style scoped>
 #menuButton {
   all: unset;
-  right: 2.5rem;
-  top: 2rem;
   cursor: pointer;
 }
 
@@ -60,7 +58,6 @@ export default {
   position: absolute;
   width: 10%;
   right: 3rem;
-  padding: 0px;
   background-color: rgba(97, 97, 97, 0.5);
 }
 </style>

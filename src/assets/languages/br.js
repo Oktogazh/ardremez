@@ -6,6 +6,7 @@ const obj = {
   Email: 'Postel',
   English: 'Saozneg',
   French: 'Galleg',
+  Home: 'Degemerva',
   Log_In: 'Kevreañ',
   Log_Out: 'Digevreañ',
   Other_Languages: 'Yezhoù All',
