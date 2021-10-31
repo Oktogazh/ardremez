@@ -1,6 +1,9 @@
 <template>
   <Header />
   <SeriesCard />
+  <div class="player">
+
+  </div>
 </template>
 
 <script>
