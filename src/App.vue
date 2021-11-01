@@ -1,7 +1,7 @@
 <template>
   <Header />
   <Body>
-    <router-view/>
+    <router-view />
   </Body>
 </template>
 
@@ -39,5 +39,6 @@ body {
   align-items: stretch;
   width: 100vw;
   height: 100vh;
+  gap: 3vh;
 }
 </style>

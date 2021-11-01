@@ -6,7 +6,7 @@
 
 <script>
 import Modal from '@/components/utils/Modal.vue';
-import Form from '@/components/auth/Form.vue';
+import Form from './Form.vue';
 
 export default {
   name: 'Access',

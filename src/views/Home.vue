@@ -4,7 +4,7 @@
 
 <script>
 // @ is an alias to /src
-import SeriesCard from '@/components/main/SeriesCard.vue';
+import SeriesCard from '@/components/home/SeriesCard.vue';
 
 export default {
   name: 'Home',

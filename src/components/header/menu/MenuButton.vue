@@ -15,7 +15,7 @@
 
 <script>
 import MenuOptions from '@/components/header/menu/MenuOptions.vue';
-import Access from '@/components/auth/Access.vue';
+import Access from '@/components/header/auth/Access.vue';
 import OtherLanguages from '@/components/header/menu/OtherLanguages.vue';
 
 export default {
