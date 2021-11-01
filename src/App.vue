@@ -18,6 +18,7 @@ export default {
     this.$store.dispatch('user/retrieveData');
     // TODO: localStorage('languagePreference') read (here) && write
     this.$store.dispatch('lang/loadLanguage', 'en');
+    console.log(this.$store.state.user);
   },
 };
 </script>

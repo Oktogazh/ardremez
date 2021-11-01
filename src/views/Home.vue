@@ -11,6 +11,9 @@ export default {
   components: {
     SeriesCard,
   },
+  created() {
+    this.$store.commit('app/SET_TITLES', { title: 'Home' });
+  },
 };
 </script>
 

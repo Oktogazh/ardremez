@@ -36,7 +36,7 @@ export default {
       const self = this;
 
       this.$store.dispatch('user/logOut')
-        .then(() => self.$router.go());
+        .then(self.$router.go());
     },
   },
   mounted() {

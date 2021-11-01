@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      collapsedBody: false,
+      collapsedBody: true, // TODO: Make this a prop instead
     };
   },
   methods: {

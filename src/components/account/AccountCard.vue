@@ -5,7 +5,7 @@
     </template>
     <template v-slot:body>
       <ul>
-        <li id="delete-account">
+        <li id="delete-account"  @click="deleteAccount">
           {{ $store.state.lang.Delete_My_Account }}
         </li>
       </ul>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import swal from 'sweetalert2';
 import EmptyCard from '@/components/utils/card/EmptyCard.vue';
 
 export default {
@@ -24,6 +25,21 @@ export default {
   data() {
     return {
     };
+  },
+  methods: {
+    deleteAccount() {
+      const self = this;
+
+      if (this.$store.state.user.subscriptionActive) {
+        swal.fire({ // TODO: Translate!!
+          text: 'Vous devez résilier votre abonnement avant de supprimer votre compte !',
+        });
+      } else {
+        this.$store.dispatch('user/deleteAccount')
+          .then(self.$router.push({ path: '/' }))
+          .catch((e) => console.error(e));
+      }
+    },
   },
 };
 </script>

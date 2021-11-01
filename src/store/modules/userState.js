@@ -17,10 +17,15 @@ const userState = ({
         state[key] = data[key];
       });
       localStorage.setItem('userData', JSON.stringify(state));
-      axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
+      axios.defaults.headers.common.Authorization = `Bearer ${data.jwt}`;
     },
   },
   actions: {
+    deleteAccount({ dispatch, rootState }) {
+      axios.delete(`${rootState.api}/api/kont`)
+        .then(dispatch('logOut'))
+        .catch((e) => console.error(e));
+    },
     async logIn(context, { email, password }) {
       // TODO: 'api/login' instead, sending the jwt via the cookie protocol
       // because the audio api doesn't send the Auth header otherwise
