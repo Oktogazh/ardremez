@@ -9,6 +9,10 @@ const appState = ({
     SET_CHOSEN_LANGUAGE(state, language) {
       state.language = language;
     },
+    SET_TITLES(state, { title, subtitle }) {
+      state.title = title;
+      if (subtitle) state.subtitle = subtitle;
+    },
   },
   actions: {
   },

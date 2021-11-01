@@ -8,7 +8,7 @@
 export default {
   name: 'Account',
   created() {
-    console.log(this.$router.currentRoute.value.name);
+    this.$store.commit('app/SET_TITLES', { title: 'My_Account' });
   },
 };
 </script>
