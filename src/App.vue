@@ -1,13 +1,17 @@
 <template>
   <Header />
-  <router-view/>
+  <Body>
+    <router-view/>
+  </Body>
 </template>
 
 <script>
 import Header from '@/components/header/Header.vue';
+import Body from '@/components/body/Body.vue';
 
 export default {
   components: {
+    Body,
     Header,
   },
   created() {
@@ -32,7 +36,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* main axis (vertical) */
-  align-items: center;
+  align-items: stretch;
   width: 100vw;
   height: 100vh;
 }

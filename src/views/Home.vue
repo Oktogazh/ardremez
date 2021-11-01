@@ -1,8 +1,5 @@
 <template>
   <SeriesCard />
-  <div class="player">
-
-  </div>
 </template>
 
 <script>
