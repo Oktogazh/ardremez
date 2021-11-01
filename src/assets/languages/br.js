@@ -9,6 +9,7 @@ const obj = {
   Home: 'Degemerva',
   Log_In: 'Kevreañ',
   Log_Out: 'Digevreañ',
+  My_Account: 'Ma C\'hont',
   Other_Languages: 'Yezhoù All',
   Password: 'Ger-Kuzh',
   Reinitialize_Password: 'Ger-Kuzh Nevez',

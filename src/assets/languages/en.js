@@ -9,6 +9,7 @@ const obj = {
   Home: 'Home',
   Log_In: 'Log In',
   Log_Out: 'Log Out',
+  My_Account: 'My Account',
   Other_Languages: 'Other Languages',
   Password: 'Password',
   Reinitialize_Password: 'Reinitialize Password',

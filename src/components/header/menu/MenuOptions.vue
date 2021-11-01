@@ -8,6 +8,11 @@
         @click="$emit('openOption', 'accessPortal')">
         <h3>{{ $store.state.lang.Access }}</h3>
       </li>
+      <li v-if="$store.getters['user/connected'] &&
+        $router.currentRoute.value.name !== 'Account'"
+        @click="$router.push('account')">
+        <h3>{{ $store.state.lang.My_Account }}</h3>
+      </li>
       <li v-if="$store.getters['user/connected']"
         @click="logOut">
         <h3>{{ $store.state.lang.Log_Out }}</h3>

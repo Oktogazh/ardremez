@@ -11,6 +11,7 @@ const lang = ({
     Home: '',
     Log_In: '',
     Log_Out: '',
+    My_Account: '',
     Other_Languages: '',
     Password: '',
     Reinitialize_Password: '',
