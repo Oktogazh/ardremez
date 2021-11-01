@@ -9,7 +9,7 @@
         <h3>{{ $store.state.lang.Access }}</h3>
       </li>
       <li v-if="$store.getters['user/connected']"
-        @click="$store.dispatch('user/logOut')">
+        @click="logOut">
         <h3>{{ $store.state.lang.Log_Out }}</h3>
       </li>
     </ul>
@@ -26,6 +26,12 @@ export default {
       if (!this.$parent.$el.contains(e.target)) {
         this.$emit('close');
       }
+    },
+    logOut() {
+      const self = this;
+
+      this.$store.dispatch('user/logOut')
+        .then(() => self.$router.go());
     },
   },
   mounted() {

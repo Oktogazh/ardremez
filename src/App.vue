@@ -1,9 +1,15 @@
 <template>
+  <Header />
   <router-view/>
 </template>
 
 <script>
+import Header from '@/components/header/Header.vue';
+
 export default {
+  components: {
+    Header,
+  },
   created() {
     this.$store.dispatch('user/retrieveData');
     // TODO: localStorage('languagePreference') read (here) && write
