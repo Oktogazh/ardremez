@@ -31,8 +31,9 @@ export default {
       const self = this;
 
       if (this.$store.state.user.subscriptionActive) {
-        swal.fire({ // TODO: Translate!!
-          text: 'Vous devez résilier votre abonnement avant de supprimer votre compte !',
+        swal.fire({
+          text: this.$store.state.lang.must_unsubscibe_before_delete_account,
+          confirmButtonText: this.$store.state.lang.OK,
         });
       } else {
         this.$store.dispatch('user/deleteAccount')
