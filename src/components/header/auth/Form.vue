@@ -58,9 +58,10 @@ export default {
       } else {
         this.$store.dispatch('user/signin', {
           email: this.email,
-          psw: this.password,
-          confirmPsw: this.confirmPsw,
-        });
+          password: this.password,
+        })
+          .then(() => this.$router.push('/verify'))
+          .then(() => this.$emit('closing'));
       }
       return null;
     },

@@ -26,11 +26,11 @@ const userState = ({
         .then(dispatch('logOut'))
         .catch((e) => console.error(e));
     },
-    async logIn(context, { email, password }) {
+    async logIn({ commit, rootState }, { email, password }) {
       // TODO: 'api/login' instead, sending the jwt via the cookie protocol
       // because the audio api doesn't send the Auth header otherwise
-      const loggedIn = await axios.post(`${context.rootState.api}/api/kevreañ`, { email, password })
-        .then((res) => context.commit('SET_USER_DATA', {
+      const loggedIn = await axios.post(`${rootState.api}/api/kevreañ`, { email, password })
+        .then((res) => commit('SET_USER_DATA', {
           email: res.data.email,
           customerId: res.data.customerId,
           level: res.data.live,
@@ -59,8 +59,17 @@ const userState = ({
       const userData = JSON.parse(localStorage.getItem('userData') || '{}');
       commit('SET_USER_DATA', userData);
     },
-    signin(context, { email, psw, confirmPsw }) {
-      console.log(email, psw, confirmPsw);
+    signin({ commit, rootState }, { email, password }) {
+      axios.post(`${rootState.api}/api/enrollañ`, { email, password })
+        .then((res) => commit('SET_USER_DATA', {
+          email: res.data.email,
+          customerId: res.data.customerId,
+          level: res.data.live,
+          subscriptionActive: res.data.sub,
+          jwt: res.data.token,
+          verified: res.data.verified,
+        }))
+        .then(() => axios.post(`${rootState.api}/api/kas_kod_postel`));
     },
   },
   modules: {
