@@ -1,9 +1,10 @@
 <template>
   <div class="card-container">
-    <CardTitle @toogle="toogleBody">
+    <!-- block the method if togglable is false -->
+    <CardTitle @toggle="togglable && toggleBody()">
       <slot name="title"></slot>
     </CardTitle>
-    <CardBody v-show="collapsedBody">
+    <CardBody v-show="isOpen">
       <slot name="body"></slot>
     </CardBody>
   </div>
@@ -21,12 +22,22 @@ export default {
   },
   data() {
     return {
-      collapsedBody: true, // TODO: Make this a prop instead
+      isOpen: this.startOpen,
     };
   },
   methods: {
-    toogleBody() {
-      this.collapsedBody = !this.collapsedBody;
+    toggleBody() {
+      this.isOpen = !this.isOpen;
+    },
+  },
+  props: {
+    startOpen: {
+      type: Boolean,
+      default: true,
+    },
+    togglable: {
+      type: Boolean,
+      default: true,
     },
   },
 };

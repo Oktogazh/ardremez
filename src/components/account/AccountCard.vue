@@ -1,5 +1,5 @@
 <template>
-  <EmptyCard>
+  <EmptyCard :togglable="false">
     <template v-slot:title>
       {{ $store.state.lang.Manage_My_Account }}
     </template>
