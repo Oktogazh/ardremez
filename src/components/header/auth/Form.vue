@@ -17,6 +17,7 @@
 
 <script>
 import axios from 'axios';
+import swal from 'sweetalert2';
 
 export default {
   name: 'Form',
@@ -42,6 +43,18 @@ export default {
               this.retry();
             }
           });
+      } else if (this.password !== this.confirmPsw) {
+        swal.fire({
+          icon: 'error',
+          html: this.$store.state.lang.Not_the_same_psws,
+        });
+
+        this.password = '';
+        this.confirmPsw = '';
+      } else if (this.password.length < 8) {
+        // TODO: show this as newcomers type there password in the first place
+        // TODO: show password strength
+        swal.fire(this.$store.state.lang.minimum_length_required);
       } else {
         this.$store.dispatch('user/signin', {
           email: this.email,
@@ -52,7 +65,7 @@ export default {
       return null;
     },
     async known() {
-      // TODO: /ezel → member (in the api)
+      // TODO: '/ezel' → '/member' (in the api)
       this.member = await axios.post(`${this.$store.state.api}/api/ezel`, { email: this.email })
         .then((res) => res.data.ezel)
         .catch((err) => console.error(err));
