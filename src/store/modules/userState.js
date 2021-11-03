@@ -71,6 +71,10 @@ const userState = ({
         }))
         .then(() => axios.post(`${rootState.api}/api/kas_kod_postel`));
     },
+    verifyEmail({ commit }, code) {
+      console.log(code);
+      commit('SET_USER_DATA', { verified: true });
+    },
   },
   modules: {
   },

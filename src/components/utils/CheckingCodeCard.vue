@@ -4,7 +4,7 @@
       {{ $store.state.lang.Enter_Your_Code_Here }}
     </template>
     <template  v-slot:body>
-      <form  class="code-form" @submit.prevent="$emit('submit', code)">
+      <form  class="code-form" @submit.prevent="$emit('sendCode', code)">
         <input type="text" v-model="code" maxlength="6">
         <button type="submit">
           <h4>{{ $store.state.lang.Submit }}</h4>
@@ -27,6 +27,11 @@ export default {
       code: '',
     };
   },
+  watch: {
+    code() {
+      this.code = this.code.toUpperCase();
+    },
+  },
 };
 </script>
 
@@ -43,8 +48,8 @@ export default {
 
 input {
   display: block;
-  width: 6em;
-  font-size: 200%;
+  width: 8em;
+  font-size: 180%;
   text-align: center;
   letter-spacing: .35em;
 }
