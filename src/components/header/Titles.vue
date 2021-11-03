@@ -1,5 +1,8 @@
 <template>
   <div class="titles-container">
+    <router-link :to="{ name: 'Home'}">
+      <img id="home-logo" src="/img/logo.svg">
+    </router-link>
     <div class="title">
       <h1>{{ $store.state.lang[$store.state.app.title] }}</h1>
     </div>
@@ -18,6 +21,7 @@ export default {
 .titles-container {
   display: flex;
   flex-direction: row;
+  align-items: center;
   background-color: rgb(46, 208, 160);
 }
 
@@ -25,5 +29,11 @@ export default {
 }
 
 .subtitle {
+}
+
+#home-logo {
+  height: 4em;
+  width: 4em;
+  cursor: pointer;
 }
 </style>

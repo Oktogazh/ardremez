@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      bgImage: '/pictures/Beg_ar_Vann.jpg',
+      bgImage: '/img/Beg_ar_Vann.jpg',
     };
   },
   methods: { // TODO: create a closing method
