@@ -38,7 +38,7 @@ export default {
         })
           .then((loggedIn) => {
             if (loggedIn) {
-              this.$emit('closing');
+              this.$emit('logged');
             } else {
               this.retry();
             }

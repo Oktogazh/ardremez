@@ -10,7 +10,7 @@
       <OtherLanguages v-if="options.languagesMenu" @closing="closing" />
     </div>
   </div>
-  <Access v-if="options.accessPortal" @closing="closing" />
+  <Access v-if="options.accessPortal" @closing="closing" @logged="closing" />
 </template>
 
 <script>
