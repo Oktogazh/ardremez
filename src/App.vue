@@ -40,6 +40,6 @@ body {
   align-items: stretch;
   width: 100vw;
   height: 100vh;
-  gap: 3vh;
+  gap: 3em;
 }
 </style>

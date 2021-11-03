@@ -21,6 +21,9 @@ const routes = [
     path: '/verify',
     name: 'Verify',
     component: () => import(/* webpackChunkName: "about" */ '../views/Verify.vue'),
+    meta: {
+      unverifiedOnly: true,
+    },
   },
 ];
 

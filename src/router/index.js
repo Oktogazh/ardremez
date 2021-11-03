@@ -11,8 +11,10 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const loggedIn = store.getters['user/connected'];
+  const verified = !!JSON.parse(localStorage.getItem('userData') || '{}').verified;
 
-  if (to.matched.some((record) => record.meta.requireAuth) && !loggedIn) {
+  if ((to.matched.some((record) => record.meta.requireAuth) && !loggedIn)
+  || (to.matched.some((record) => record.meta.unverifiedOnly) && verified)) {
     next('/');
   } else {
     next();

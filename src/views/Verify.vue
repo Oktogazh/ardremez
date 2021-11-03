@@ -24,9 +24,12 @@ export default {
   },
   methods: {
     check(code) {
-      this.$store.dispatch('user/verifyEmail', code);
-
-      return code;
+      const { email } = this.$store.state.user;
+      this.$store.dispatch('user/verifyEmail', { email, code })
+        .then((verified) => {
+          if (verified) this.$router.push({ name: 'Home' });
+          // TODO: send a new verification email && sweetalert2, bad code or past delay
+        });
     },
   },
 };

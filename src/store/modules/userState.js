@@ -8,7 +8,7 @@ const userState = ({
     level: null,
     subscriptionActive: false,
     jwt: null,
-    verified: null,
+    verified: false,
   },
   mutations: {
     SET_USER_DATA(state, data) {
@@ -50,7 +50,7 @@ const userState = ({
         level: null,
         subscriptionActive: false,
         jwt: null,
-        verified: null,
+        verified: false,
       };
 
       commit('SET_USER_DATA', emptyState);
@@ -71,9 +71,12 @@ const userState = ({
         }))
         .then(() => axios.post(`${rootState.api}/api/kas_kod_postel`));
     },
-    verifyEmail({ commit }, code) {
-      console.log(code);
-      commit('SET_USER_DATA', { verified: true });
+    async verifyEmail({ commit, rootState }, { email, code }) {
+      const verified = await axios.post(`${rootState.api}/api/gwiriekaat_ar_ger-kuzh`, { email, kod: code })
+        .then((res) => res.data.verified)
+        .catch(() => false);
+      commit('SET_USER_DATA', { verified });
+      return verified;
     },
   },
   modules: {
