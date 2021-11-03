@@ -68,12 +68,11 @@ export default {
     async known() {
       // TODO: '/ezel' → '/member' (in the api)
       this.member = await axios.post(`${this.$store.state.api}/api/ezel`, { email: this.email })
-        .then((res) => res.data.ezel)
-        .catch((err) => console.error(err));
+        .then((res) => res.data.ezel);
       return null;
     },
     retry() {
-      console.log('wrong password!');
+      // TODO: ask for retry
       return null;
     },
     reinitializePsw() {

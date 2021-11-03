@@ -17,6 +17,11 @@ const routes = [
       requireAuth: true,
     },
   },
+  {
+    path: '/verify',
+    name: 'Verify',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Verify.vue'),
+  },
 ];
 
 export default routes;

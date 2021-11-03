@@ -5,6 +5,7 @@ const obj = {
   Confirm: 'Confirm',
   Delete_My_Account: 'Delete My Account',
   Email: 'Email',
+  Email_Verification: 'Verify My Email Address',
   English: 'English',
   French: 'French',
   Home: 'Home',

@@ -5,6 +5,7 @@ const obj = {
   Confirm: 'Kadarnaat',
   Delete_My_Account: 'Dilemel Ma C\'hont',
   Email: 'Postel',
+  Email_Verification: 'Gwiriekaat Ma Chomlec\'h Postel',
   English: 'Saozneg',
   French: 'Galleg',
   Home: 'Degemerva',
