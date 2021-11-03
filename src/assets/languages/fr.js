@@ -7,6 +7,7 @@ const obj = {
   Email: 'Adresse',
   Email_Verification: 'Verifier mon adresse mail',
   English: 'Anglais',
+  Enter_Your_Code_Here: 'Entrez votre code ici',
   French: 'Français',
   Home: 'Accueil',
   Log_In: 'Connexion',
@@ -21,6 +22,7 @@ const obj = {
   Password: 'Mot de Passe',
   Reinitialize_Password: 'Réinitialiser mon mot de passe',
   Sign_In: 'Créer mon compte',
+  Submit: 'Valider',
 };
 
 export default obj;

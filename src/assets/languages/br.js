@@ -7,6 +7,7 @@ const obj = {
   Email: 'Postel',
   Email_Verification: 'Gwiriekaat Ma Chomlec\'h Postel',
   English: 'Saozneg',
+  Enter_Your_Code_Here: 'Eilit Ho Kod Amañ',
   French: 'Galleg',
   Home: 'Degemerva',
   Log_In: 'Kevreañ',
@@ -21,6 +22,7 @@ const obj = {
   Password: 'Ger-Kuzh',
   Reinitialize_Password: 'Ger-Kuzh Nevez',
   Sign_In: 'En Em Skrivañ',
+  Submit: 'Kas',
 };
 
 export default obj;

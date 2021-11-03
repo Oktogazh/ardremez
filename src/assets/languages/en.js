@@ -7,6 +7,7 @@ const obj = {
   Email: 'Email',
   Email_Verification: 'Verify My Email Address',
   English: 'English',
+  Enter_Your_Code_Here: 'Enter Your Code Here',
   French: 'French',
   Home: 'Home',
   Log_In: 'Log In',
@@ -21,6 +22,7 @@ const obj = {
   Password: 'Password',
   Reinitialize_Password: 'Reinitialize Password',
   Sign_In: 'Sign In',
+  Submit: 'Submit',
 };
 
 export default obj;
