@@ -6,7 +6,6 @@
 
 <script>
 import swal from 'sweetalert2';
-import axios from 'axios';
 import CheckingCodeCard from '@/components/utils/CheckingCodeCard.vue';
 import Access from '@/components/header/auth/Access.vue';
 
@@ -37,7 +36,6 @@ export default {
               confirmButtonText: this.$store.state.lang.OK,
             });
           } else {
-            axios.post(`${this.$store.state.api}/api/kas_kod_postel`);
             swal.fire({
               icon: 'error',
               html: this.$store.state.lang.Wrong_code_New_code_sent,

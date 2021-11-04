@@ -1,6 +1,6 @@
 <template>
   <Modal @closing="$emit('closing', 'accessPortal')" v-bind:background="bgImage">
-    <Form @closing="$emit('closing', 'accessPortal')" />
+    <Form @closing="$emit('closing', 'accessPortal')" @logged="$emit('logged', 'accessPortal')"/>
   </Modal>
 </template>
 
