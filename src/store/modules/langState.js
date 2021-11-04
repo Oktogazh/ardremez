@@ -7,6 +7,7 @@ const lang = ({
     Confirm: '',
     Delete_My_Account: '',
     Email: '',
+    Email_successfully_verified: '',
     Email_Verification: '',
     English: '',
     Enter_Your_Code_Here: '',
@@ -25,6 +26,7 @@ const lang = ({
     Reinitialize_Password: '',
     Sign_In: '',
     Submit: '',
+    Wrong_code_New_code_sent: '',
   },
   mutations: {
     SET_LANGUAGE(state, { obj }) {

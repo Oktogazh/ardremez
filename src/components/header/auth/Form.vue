@@ -52,7 +52,7 @@ export default {
         this.password = '';
         this.confirmPsw = '';
       } else if (this.password.length < 8) {
-        // TODO: show this as newcomers type there password in the first place
+        // TODO: show this as newcomers type their password in the first place
         // TODO: show password strength
         swal.fire(this.$store.state.lang.minimum_length_required);
       } else {

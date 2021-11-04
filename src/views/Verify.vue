@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import swal from 'sweetalert2';
+import axios from 'axios';
 import CheckingCodeCard from '@/components/utils/CheckingCodeCard.vue';
 import Access from '@/components/header/auth/Access.vue';
 
@@ -27,8 +29,21 @@ export default {
       const { email } = this.$store.state.user;
       this.$store.dispatch('user/verifyEmail', { email, code })
         .then((verified) => {
-          if (verified) this.$router.push({ name: 'Home' });
-          // TODO: send a new verification email && sweetalert2, bad code or past delay
+          if (verified) {
+            this.$router.push({ name: 'Home' });
+            swal.fire({
+              icon: 'success',
+              html: this.$store.state.lang.Email_successfully_verified,
+              confirmButtonText: this.$store.state.lang.OK,
+            });
+          } else {
+            axios.post(`${this.$store.state.api}/api/kas_kod_postel`);
+            swal.fire({
+              icon: 'error',
+              html: this.$store.state.lang.Wrong_code_New_code_sent,
+              confirmButtonText: this.$store.state.lang.OK,
+            });
+          }
         });
     },
   },

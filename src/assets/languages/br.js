@@ -5,6 +5,7 @@ const obj = {
   Confirm: 'Kadarnaat',
   Delete_My_Account: 'Dilemel Ma C\'hont',
   Email: 'Postel',
+  Email_successfully_verified: 'Ho chomlec\'h postel postel zo bremañ gwiriekaet!<br>Hiviziken e c\'halloc\'h koumanantiñ  d\'ar pezh a garit.',
   Email_Verification: 'Gwiriekaat Ma Chomlec\'h Postel',
   English: 'Saozneg',
   Enter_Your_Code_Here: 'Eilit Ho Kod Amañ',
@@ -23,6 +24,7 @@ const obj = {
   Reinitialize_Password: 'Ger-Kuzh Nevez',
   Sign_In: 'En Em Skrivañ',
   Submit: 'Kas',
+  Wrong_code_New_code_sent: 'Ar c\'hod-mañ zo diwiriek, pe c\'hoazh, diamzeriet.<br>Emeur o paouez kas ur c\'hod nevez, deoc\'h klask en-dro.',
 };
 
 export default obj;

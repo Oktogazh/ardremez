@@ -5,6 +5,7 @@ const obj = {
   Confirm: 'Confirmation',
   Delete_My_Account: 'Supprimer mon compte',
   Email: 'Adresse',
+  Email_successfully_verified: 'Votre adresse est maintenant vérifiée !<br>Vous pouvez désormais vous abonner.',
   Email_Verification: 'Verifier mon adresse mail',
   English: 'Anglais',
   Enter_Your_Code_Here: 'Entrez votre code ici',
@@ -23,6 +24,7 @@ const obj = {
   Reinitialize_Password: 'Réinitialiser mon mot de passe',
   Sign_In: 'Créer mon compte',
   Submit: 'Valider',
+  Wrong_code_New_code_sent: 'Ce code est invalide ou a déja expiré.<br>Un nouveau code de confirmation vient de vous être envoyé.',
 };
 
 export default obj;
