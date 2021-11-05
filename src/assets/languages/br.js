@@ -18,6 +18,7 @@ const obj = {
   must_unsubscibe_before_delete_account: 'Ret eo deoc\'h digoumenantiñ kent dilemel ar gont-mañ!',
   My_Account: 'Ma C\'hont',
   My_email_address: 'Ma chomlec\'h postel:',
+  new_verificationCode_sent_info: 'Emeur o paouez kas deoc\'h ur c\'hod gwiriekaat nevez,<br>diamzeriet e vo a-benn tregont vunutenn.',
   Not_the_same_psws: 'Ne glot ket an eil ger-kuzh gant egile.<br>Klaskit en-dro mar plij ganeoc\'h.',
   OK: 'MAT',
   Other_Languages: 'Yezhoù All',

@@ -18,6 +18,7 @@ const obj = {
   must_unsubscibe_before_delete_account: 'Vous devez résilier votre abonnement avant de supprimer votre compte !',
   My_Account: 'Mon compte',
   My_email_address: 'Mon adresse e-mail :',
+  new_verificationCode_sent_info: 'Un code de vérification vient de vous être envoyé,<br>sa validité expirera dans une demi-heure.',
   Not_the_same_psws: 'Les mots de passe ne sont pas identiques. Veuillez réessayer',
   Other_Languages: 'Autres langues',
   OK: 'OK',
