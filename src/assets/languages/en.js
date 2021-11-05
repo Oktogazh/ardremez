@@ -17,6 +17,7 @@ const obj = {
   minimum_length_required: 'Your password should be at least 8 characters long.',
   must_unsubscibe_before_delete_account: 'You must unscubscribe before deleting this account!',
   My_Account: 'My Account',
+  My_email_address: 'My email address:',
   Not_the_same_psws: 'The two passwords do not match, please try again.',
   OK: 'OK',
   Other_Languages: 'Other Languages',

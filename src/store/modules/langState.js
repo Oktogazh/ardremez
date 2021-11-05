@@ -19,6 +19,7 @@ const lang = ({
     minimum_length_required: '',
     must_unsubscibe_before_delete_account: '',
     My_Account: '',
+    My_email_address: '',
     Not_the_same_psws: '',
     OK: '',
     Other_Languages: '',

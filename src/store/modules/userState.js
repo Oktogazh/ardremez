@@ -71,6 +71,9 @@ const userState = ({
         }))
         .then(() => axios.post(`${rootState.api}/api/kas_kod_postel`));
     },
+    newVerificationEmail({ rootState }) {
+      axios.post(`${rootState.api}/api/kas_kod_postel`);
+    },
     async verifyEmail({ commit, rootState }, { email, code }) {
       const verified = await axios.post(`${rootState.api}/api/gwiriekaat_ar_ger-kuzh`, { email, kod: code })
         .then((res) => res.data)

@@ -17,6 +17,7 @@ const obj = {
   minimum_length_required: 'Votre mot de passe doit faire 8 charactères au minimum.',
   must_unsubscibe_before_delete_account: 'Vous devez résilier votre abonnement avant de supprimer votre compte !',
   My_Account: 'Mon compte',
+  My_email_address: 'Mon adresse e-mail :',
   Not_the_same_psws: 'Les mots de passe ne sont pas identiques. Veuillez réessayer',
   Other_Languages: 'Autres langues',
   OK: 'OK',

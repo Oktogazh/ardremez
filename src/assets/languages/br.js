@@ -17,6 +17,7 @@ const obj = {
   minimum_length_required: '8 arouez da neutañ a zle mont d\'ober ho ker-kuzh.',
   must_unsubscibe_before_delete_account: 'Ret eo deoc\'h digoumenantiñ kent dilemel ar gont-mañ!',
   My_Account: 'Ma C\'hont',
+  My_email_address: 'Ma chomlec\'h postel:',
   Not_the_same_psws: 'Ne glot ket an eil ger-kuzh gant egile.<br>Klaskit en-dro mar plij ganeoc\'h.',
   OK: 'MAT',
   Other_Languages: 'Yezhoù All',
