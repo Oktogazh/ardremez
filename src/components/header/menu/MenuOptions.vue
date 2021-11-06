@@ -46,7 +46,7 @@ export default {
 
     // if not delayed, the click mounting the component triggers the listener
     // and close the menu instantly
-    delay(250)
+    delay(10)
       .then(() => document.addEventListener('click', this.close));
   },
   beforeUnmount() {
