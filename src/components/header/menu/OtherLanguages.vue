@@ -1,11 +1,11 @@
 <template>
   <ul>
     <li v-if="$store.state.app.language !== 'br'"
-      @click="setLanguage('br')"><h4>{{ $store.state.lang.Breton }}</h4></li>
+      @click="setLanguage('br')"><h4>{{ $store.state.lang.Breton_bre }}</h4></li>
     <li v-if="$store.state.app.language !== 'en'"
-      @click="setLanguage('en')"><h4>{{ $store.state.lang.English }}</h4></li>
+      @click="setLanguage('en')"><h4>{{ $store.state.lang.English_eng }}</h4></li>
     <li v-if="$store.state.app.language !== 'fr'"
-      @click="setLanguage('fr')"><h4>{{ $store.state.lang.French }}</h4></li>
+      @click="setLanguage('fr')"><h4>{{ $store.state.lang.French_fra }}</h4></li>
   </ul>
 </template>
 

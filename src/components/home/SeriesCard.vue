@@ -4,12 +4,13 @@
       {{ title }}
     </template>
     <template v-slot:body>
-      {{ body }}
+      {{ comment }}
     </template>
   </EmptyCard>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import EmptyCard from '@/components/utils/card/EmptyCard.vue';
 
 export default {
@@ -17,10 +18,14 @@ export default {
   components: {
     EmptyCard,
   },
+  computed: {
+    ...mapState({
+      title: (state) => state.series.title,
+      comment: (state) => state.series.comment,
+    }),
+  },
   data() {
     return {
-      title: 'Setu an titl',
-      body: 'Lorem ipsum',
     };
   },
   methods: {
