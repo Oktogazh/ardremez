@@ -4,7 +4,9 @@
       {{ title }}
     </template>
     <template v-slot:body>
-      {{ comment }}
+      <p v-for="(paragraph, index) in comments" :key="index">
+        {{ paragraph }}
+      </p>
     </template>
   </EmptyCard>
 </template>
@@ -21,7 +23,7 @@ export default {
   computed: {
     ...mapState({
       title: (state) => state.series.title,
-      comment: (state) => state.series.comment,
+      comments: (state) => state.series.comments,
     }),
   },
   data() {
