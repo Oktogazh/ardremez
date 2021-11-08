@@ -1,6 +1,8 @@
 <template>
     <div class="darker" @click="close()">
-      <slot></slot>
+      <div @click.stop>
+        <slot></slot>
+      </div>
     </div>
 </template>
 

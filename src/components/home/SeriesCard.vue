@@ -9,16 +9,14 @@
           v-for="(img, index) in images" :key="index">
           <img :src="img.path" class="series-images" @click="fullSizeModal(img)">
         </div>
-        <Modal v-if="imgModal" @closing="fullSizeModal({ path: null, legend: null })">
+        <Modal v-if="path" @closing="fullSizeModal({ path: null, legend: null })">
           <figure>
-            <img :src="imgModal" id="fullSize">
+            <img :src="path" id="fullSize">
             <figcaption v-if="legend" v-html="legend"></figcaption>
           </figure>
         </Modal>
       </div>
-      <p>{{ imgModal }}</p>
-      <p v-for="(paragraph, index) in comments" :key="index">
-        {{ paragraph }}
+      <p v-for="(paragraph, index) in comments" :key="index" v-html="paragraph">
       </p>
     </template>
   </EmptyCard>
@@ -42,20 +40,26 @@ export default {
       images: (state) => state.series.images,
     }),
   },
+  created() {
+    const dataPath = this.seriesDataPath;
+    console.log(dataPath); // TODO: make a fake api request
+  },
   data() {
     return {
-      imgModal: null,
+      path: null,
       legend: null,
     };
   },
   methods: {
     fullSizeModal({ path, legend }) {
-      this.imgModal = path;
+      this.path = path;
       this.legend = legend;
     },
   },
   props: {
-
+    seriesDataPath: {
+      required: true,
+    },
   },
 };
 </script>

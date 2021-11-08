@@ -1,5 +1,5 @@
 <template>
-  <SeriesCard />
+  <SeriesCard :seriesDataPath="uri" />
 </template>
 
 <script>
@@ -13,6 +13,11 @@ export default {
   },
   created() {
     this.$store.commit('app/SET_TITLES', { title: 'Home' });
+  },
+  data() {
+    return {
+      uri: 'fakeURI',
+    };
   },
 };
 </script>
