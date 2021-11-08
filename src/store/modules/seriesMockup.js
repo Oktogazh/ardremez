@@ -11,8 +11,8 @@ const seriesMockup = ({
     ],
     images: [
       {
-        path: 'img/Beg_ar_Vann.jpg',
-        legend: '',
+        path: 'img/kartenn.png',
+        legend: 'Trugarez da Seongwoo Kang evit ar gartenn.',
       },
       {
         path: 'img/kartenn.png',

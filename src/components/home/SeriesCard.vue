@@ -7,10 +7,13 @@
       <div v-if="images" id="img-outer-container">
         <div class="img-outer-container"
           v-for="(img, index) in images" :key="index">
-          <img :src="img.path" class="series-images" @click="fullSizeModal(img.path)">
+          <img :src="img.path" class="series-images" @click="fullSizeModal(img)">
         </div>
-        <Modal v-if="imgModal != null" @closing="fullSizeModal(null)">
-          <img :src="imgModal" id="fullSize">
+        <Modal v-if="imgModal" @closing="fullSizeModal({ path: null, legend: null })">
+          <figure>
+            <img :src="imgModal" id="fullSize">
+            <figcaption v-if="legend" v-html="legend"></figcaption>
+          </figure>
         </Modal>
       </div>
       <p>{{ imgModal }}</p>
@@ -42,11 +45,13 @@ export default {
   data() {
     return {
       imgModal: null,
+      legend: null,
     };
   },
   methods: {
-    fullSizeModal(path) {
+    fullSizeModal({ path, legend }) {
       this.imgModal = path;
+      this.legend = legend;
     },
   },
   props: {
@@ -80,8 +85,15 @@ export default {
   border-radius: 1em;
   cursor: pointer;
 }
+
 #fullSize {
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 70vw;
+  max-height: 70vh;
+  vertical-align: middle;
+}
+
+figcaption {
+  background-color: rgb(255, 255, 255);
+  padding: .5em;
 }
 </style>
