@@ -15,19 +15,7 @@ const seriesMockup = ({
         legend: '',
       },
       {
-        path: 'img/Beg_ar_Vann.jpg',
-        legend: '',
-      },
-      {
-        path: 'img/Beg_ar_Vann.jpg',
-        legend: '',
-      },
-      {
-        path: 'img/Beg_ar_Vann.jpg',
-        legend: '',
-      },
-      {
-        path: 'img/Beg_ar_Vann.jpg',
+        path: 'img/kartenn.png',
         legend: '',
       },
     ],

@@ -1,6 +1,8 @@
 <template>
   <Modal @closing="$emit('closing', 'accessPortal')" v-bind:background="bgImage">
-    <Form @closing="$emit('closing', 'accessPortal')" @logged="$emit('logged', 'accessPortal')"/>
+    <div class="access-container" @click.stop>
+      <Form @closing="$emit('closing', 'accessPortal')" @logged="$emit('logged', 'accessPortal')"/>
+    </div>
   </Modal>
 </template>
 
@@ -16,7 +18,6 @@ export default {
   },
   data() {
     return {
-      bgImage: '/img/Beg_ar_Vann.jpg',
     };
   },
   methods: { // TODO: create a closing method
@@ -27,5 +28,22 @@ export default {
 <style scoped>
 .button {
   cursor: pointer;
+}
+
+.access-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin: auto;
+  padding: 5%;
+  border-radius: 2rem;
+  background-color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 10px 15px rgba(54, 54, 54, 0.65);
+  background-image: url(/img/Beg_ar_Vann.jpg);
 }
 </style>
