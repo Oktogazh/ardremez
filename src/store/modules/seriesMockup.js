@@ -14,6 +14,22 @@ const seriesMockup = ({
         path: 'img/Beg_ar_Vann.jpg',
         legend: '',
       },
+      {
+        path: 'img/Beg_ar_Vann.jpg',
+        legend: '',
+      },
+      {
+        path: 'img/Beg_ar_Vann.jpg',
+        legend: '',
+      },
+      {
+        path: 'img/Beg_ar_Vann.jpg',
+        legend: '',
+      },
+      {
+        path: 'img/Beg_ar_Vann.jpg',
+        legend: '',
+      },
     ],
     metadata: {
       averageDuration: '10`',

@@ -4,8 +4,9 @@
       {{ title }}
     </template>
     <template v-slot:body>
-      <div v-if="images" id="img-container">
-        <div v-for="(img, index) in images" :key="index">
+      <div v-if="images" id="img-outer-container">
+        <div class="img-outer-container"
+          v-for="(img, index) in images" :key="index">
           <img :src="img.path" class="series-images">
         </div>
       </div>
@@ -45,16 +46,25 @@ export default {
 </script>
 
 <style scoped>
-#img-container {
-  height: 10em;
-  width: 100%;
+#img-outer-container {
+  max-width: stretch;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 1em;
+  justify-content: flex-start;
+  background-color: rgb(89, 89, 89);
+  overflow-x: auto;
+  padding: 1.5em;
+  gap: 1.5em;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  margin: 1em 3em;
+}
+#img-outer-container:-webkit-scrollbar {
+    display: none; /* Other browser */
 }
 
 .series-images {
-  width: 25%; /* TODO: fix the CSS */
+  vertical-align: middle;
+  height: 8em;
 }
 </style>

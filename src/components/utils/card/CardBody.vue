@@ -13,8 +13,10 @@ export default {
 <style scoped>
 
 .body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
   background-color: rgb(224, 224, 224);
-  padding: 2em;
-  margin: 0;
 }
 </style>
