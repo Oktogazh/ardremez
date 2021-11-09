@@ -1,5 +1,5 @@
 <template>
-  <div class="body-container">
+  <div class="body">
     <slot></slot>
   </div>
 </template>
@@ -12,10 +12,7 @@ export default {
 
 <style scoped>
 
-.body-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.body {
   padding: 1em;
 }
 </style>

@@ -11,12 +11,14 @@ export default {
 </script>
 
 <style scoped>
-.card-title {
-  margin: 0px;
-}
-
 .title-container {
   cursor: pointer;
   padding: .3em;
+  border-bottom: solid 1px var(--lighter-black);
+}
+
+.card-title {
+  margin: 0px;
+  padding: 0 1.5em;
 }
 </style>

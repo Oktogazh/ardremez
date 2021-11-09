@@ -49,5 +49,12 @@ export default {
   max-width: 100%;
   box-shadow: var(--slim-shadow-box);
   border-radius: 8px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.card-container:-webkit-scrollbar {
+    display: none; /* Other browsers */
 }
 </style>

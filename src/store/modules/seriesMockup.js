@@ -14,6 +14,10 @@ const seriesMockup = ({
         path: 'img/kartenn.png',
         legend: 'Trugarez da Seongwoo Kang evit ar gartenn.',
       },
+      {
+        path: 'img/Beg_ar_Vann.jpg',
+        legend: 'Trugarez da Seongwoo Kang evit ar gartenn.',
+      },
     ],
     metadata: {
       averageDuration: '10`',

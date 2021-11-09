@@ -4,20 +4,22 @@
       {{ title }}
     </template>
     <template v-slot:body>
-      <div v-if="images" id="img-outer-container">
-        <div class="img-outer-container"
-          v-for="(img, index) in images" :key="index">
-          <img :src="img.path" class="series-images" @click="fullSizeModal(img)">
+      <div id="body-container">
+        <div v-if="images" id="img-outer-container">
+          <div class="img-outer-container"
+            v-for="(img, index) in images" :key="index">
+            <img :src="img.path" class="series-images" @click="fullSizeModal(img)">
+          </div>
+          <Modal v-if="path" @closing="fullSizeModal({ path: null, legend: null })">
+            <figure>
+              <img :src="path" id="fullSize">
+              <figcaption v-if="legend" v-html="legend"></figcaption>
+            </figure>
+          </Modal>
         </div>
-        <Modal v-if="path" @closing="fullSizeModal({ path: null, legend: null })">
-          <figure>
-            <img :src="path" id="fullSize">
-            <figcaption v-if="legend" v-html="legend"></figcaption>
-          </figure>
-        </Modal>
+        <p v-for="(paragraph, index) in comments" :key="index" v-html="paragraph">
+        </p>
       </div>
-      <p v-for="(paragraph, index) in comments" :key="index" v-html="paragraph">
-      </p>
     </template>
   </EmptyCard>
 </template>
@@ -65,12 +67,18 @@ export default {
 </script>
 
 <style scoped>
+#body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #img-outer-container {
   max-width: stretch;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: rgb(89, 89, 89);
+  box-shadow: var(--wide-shadow-box);
   overflow-x: auto;
   padding: 1.5em 2em;
   gap: 1.5em;
@@ -79,13 +87,13 @@ export default {
   margin: 1em 3em;
   border-radius: 5px;
 }
-#img-outer-container:-webkit-scrollbar {
-    display: none; /* Other browser */
+#img-outer-container::-webkit-scrollbar {
+    display: none; /* Other browsers */
 }
 
 .series-images {
   vertical-align: middle;
-  height: 8em;
+  max-width: 100%;
   border-radius: 1em;
   cursor: pointer;
 }
