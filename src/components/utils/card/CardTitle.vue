@@ -16,7 +16,7 @@ export default {
 }
 
 .title-container {
-  background-color: rgb(181, 181, 181);
   cursor: pointer;
+  padding: .3em;
 }
 </style>

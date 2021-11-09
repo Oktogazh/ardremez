@@ -17,6 +17,5 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 1em;
-  background-color: rgb(224, 224, 224);
 }
 </style>

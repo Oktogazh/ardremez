@@ -1,6 +1,6 @@
 <template>
-    <div class="darker" @click="close()">
-      <div @click.stop>
+    <div class="darker flexbox-center" @click="close()">
+      <div @click.stop class="flexbox-center">
         <slot></slot>
       </div>
     </div>
@@ -30,6 +30,9 @@ export default {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
+}
+
+.flexbox-center {
   display: flex;
   align-items: center;
   justify-content: center;

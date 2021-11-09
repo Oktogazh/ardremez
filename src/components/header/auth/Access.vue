@@ -39,7 +39,6 @@ export default {
   margin: auto;
   padding: 5%;
   border-radius: 2rem;
-  background-color: white;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

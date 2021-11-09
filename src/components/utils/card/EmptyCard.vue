@@ -47,5 +47,7 @@ export default {
 .card-container {
   width: 900px;
   max-width: 100%;
+  box-shadow: var(--slim-shadow-box);
+  border-radius: 8px;
 }
 </style>
