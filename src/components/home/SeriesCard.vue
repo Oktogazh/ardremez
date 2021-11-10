@@ -17,9 +17,9 @@
       <div v-if="images" id="img-outer-container">
         <div id="img-inner-container"
           v-for="(img, index) in images" :key="index">
-          <img :src="img.path" class="series-images" @click="fullSizeModal(img)">
+          <img :src="img.path" class="series-images" @click="clickedImg(img)">
         </div>
-        <Modal v-if="path" @closing="fullSizeModal({ path: null, legend: null })">
+        <Modal v-if="path" @closing="clickedImg({ path: null, legend: null })">
           <figure>
             <img :src="path" id="fullSize">
             <figcaption v-if="legend" v-html="legend"></figcaption>
@@ -59,9 +59,12 @@ export default {
     };
   },
   methods: {
-    fullSizeModal({ path, legend }) {
-      this.path = path;
-      this.legend = legend;
+    clickedImg({ path, legend, link }) {
+      if (link) window.open(link, '_blank');
+      else {
+        this.path = path;
+        this.legend = legend;
+      }
     },
   },
   props: {
