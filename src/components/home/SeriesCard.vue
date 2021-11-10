@@ -1,7 +1,26 @@
 <template>
   <EmptyCard>
     <template v-slot:title>
-      {{ title }}
+      <div id="title-flex">
+        <!-- Image Viewer -->
+        <div v-if="images" id="img-outer-container" @click.stop>
+          <div id="img-inner-container"
+          v-for="(img, index) in images" :key="index">
+          <img :src="img.path" class="series-images" @click="clickedImg(img)">
+        </div>
+        <Modal v-if="path" @closing="clickedImg({ path: null, legend: null })">
+          <figure>
+            <img :src="path" id="fullSize">
+            <figcaption v-if="legend" v-html="legend"></figcaption>
+          </figure>
+        </Modal>
+      </div>
+      <!-- Title & Metadata -->
+      <div class="">
+        <h2 v-html="title"></h2>
+
+      </div>
+    </div>
     </template>
     <template v-slot:before>
     </template>
@@ -14,18 +33,6 @@
       </div>
     </template>
     <template v-slot:after>
-      <div v-if="images" id="img-outer-container">
-        <div id="img-inner-container"
-          v-for="(img, index) in images" :key="index">
-          <img :src="img.path" class="series-images" @click="clickedImg(img)">
-        </div>
-        <Modal v-if="path" @closing="clickedImg({ path: null, legend: null })">
-          <figure>
-            <img :src="path" id="fullSize">
-            <figcaption v-if="legend" v-html="legend"></figcaption>
-          </figure>
-        </Modal>
-      </div>
     </template>
   </EmptyCard>
 </template>
@@ -76,6 +83,11 @@ export default {
 </script>
 
 <style scoped>
+#title-flex {
+  display: flex;
+  gap: 1em;
+}
+
 #body-container {
   display: flex;
   align-items: flex-start;
@@ -83,21 +95,15 @@ export default {
 }
 
 #img-outer-container {
-  position: absolute;
-  max-width: stretch;
+  max-width: 25%;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  background-color: var(--card-background);
-  box-shadow: var(--slim-shadow-box);
   overflow-x: auto;
-  padding: 1.5em 2em;
   gap: 1.5em;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  margin: 2em 5em;
-  border-radius: 5px;
 }
 #img-outer-container::-webkit-scrollbar {
     display: none; /* Other browsers */
@@ -108,7 +114,7 @@ export default {
 
 .series-images {
   vertical-align: middle;
-  max-width: 12vw;
+  max-width: 100%;
   border-radius: 1em;
   cursor: pointer;
 }

@@ -36,11 +36,11 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: var(--titles-background);
+  /*background-color: var(--titles-background);*/
 }
 
 .title {
-  background-color: var(--title-background);
+  /*background-color: var(--title-background);*/
 }
 
 .subtitle {

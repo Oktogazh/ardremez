@@ -77,6 +77,6 @@ export default {
 }
 
 #after {
-  flex-grow: 2;
+  flex-grow: 1;
 }
 </style>
