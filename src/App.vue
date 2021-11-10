@@ -46,9 +46,10 @@ body {
 /* CSS variables */
 :root {
   --direction: ltr;
-  --main-background: rgb(255, 255, 255);
+  --card-background: rgb(255, 255, 255);
   --titles-background: rgb(58, 42, 173);
   --title-background: rgb(64, 217, 75); /* TODO: improve the header CSS */
+  --todo-background: rgb(195, 48, 106);
   --subtitle-background: rgb(64, 217, 75);
   --lighter-black: rgba(0, 0, 0, 0.15);
   --light-black: rgba(0, 0, 0, 0.3);

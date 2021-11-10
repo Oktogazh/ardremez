@@ -1,12 +1,20 @@
 <template>
-  <div class="card-container">
-    <!-- block the method if togglable is false -->
-    <CardTitle @toggle="togglable && toggleBody()">
-      <slot name="title"></slot>
-    </CardTitle>
-    <CardBody v-show="isOpen">
-      <slot name="body"></slot>
-    </CardBody>
+  <div class="card-section">
+    <div id="before">
+      <slot name="before"></slot>
+    </div>
+    <div class="card-container">
+      <!-- block the method if togglable is false -->
+      <CardTitle @toggle="togglable && toggleBody()">
+        <slot name="title"></slot>
+      </CardTitle>
+      <CardBody v-show="isOpen">
+        <slot name="body"></slot>
+      </CardBody>
+    </div>
+    <div id="after">
+      <slot name="after"></slot>
+    </div>
   </div>
 </template>
 
@@ -44,9 +52,15 @@ export default {
 </script>
 
 <style scoped>
+.card-section {
+  display: flex;
+  justify-content: center;
+}
+
 .card-container {
   width: 900px;
   max-width: 100%;
+  background-color: var(--card-background);
   box-shadow: var(--slim-shadow-box);
   border-radius: 8px;
   overflow-x: hidden;
@@ -56,5 +70,13 @@ export default {
 }
 .card-container:-webkit-scrollbar {
     display: none; /* Other browsers */
+}
+
+#before {
+  flex-grow: 1;
+}
+
+#after {
+  flex-grow: 2;
 }
 </style>
