@@ -1,6 +1,7 @@
 <template>
   <EmptyCard>
-    <template v-slot:title>
+    <!-- @click="toggle" -->
+    <template #header="{ toggle }">
       <div id="title-flex">
         <!-- Image Viewer -->
         <div v-if="images" id="img-outer-container" @click.stop>
@@ -16,10 +17,16 @@
         </Modal>
       </div>
       <!-- Title & Metadata -->
-      <div class="title-and-metadata">
+      <div id="title-and-metadata">
         <h2 id="series-title" v-html="title"></h2>
-        <p class="metadata">{{ `${metadata.podcasts} ` + translate.podcasts }}</p>
-        <p class="metadata">{{ `${translate.average_duration} ` + metadata.averageDuration }}</p>
+        <div id="metadata-container">
+          <p class="metadata">{{ `${metadata.podcasts} ` + translate.podcasts }}</p>
+          <p class="metadata">{{ `${translate.average_duration} ` + metadata.averageDuration }}</p>
+          <p class="metadata">{{ `${translate.average_duration} ` + metadata.averageDuration }}</p>
+          <p class="metadata">{{ `${translate.average_duration} ` + metadata.averageDuration }}</p>
+          <p class="metadata" @click="toggle">
+            {{ `${translate.average_duration} ` + metadata.averageDuration }}</p>
+        </div>
       </div>
     </div>
     </template>
@@ -55,7 +62,6 @@ export default {
     }),
   },
   created() {
-    console.log(this.series);
   },
   data() {
     return {
@@ -96,13 +102,28 @@ export default {
 }
 
 #title-and-metadata {
+  flex-grow: 1;
   display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  max-height: 10em;
 }
 
 #series-title {
-  width: 100%;
+  width: stretch;
 }
+
+#metadata-container {
+  min-height: 3em;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
 .metadata {
+  width: max-content;
+  padding: 0 2em;
   font-size: 11px;
   color: var(--dark-black);
   text-transform: uppercase;

@@ -4,10 +4,9 @@
       <slot name="before"></slot>
     </div>
     <div class="card-container">
-      <!-- block the method if togglable is false -->
-      <CardTitle @toggle="togglable && toggleBody()">
-        <slot name="title"></slot>
-      </CardTitle>
+      <div class="header-container">
+        <slot name="header" :toggle="toggleBody"></slot>
+      </div>
       <CardBody v-show="isOpen">
         <slot name="body"></slot>
       </CardBody>
@@ -19,13 +18,11 @@
 </template>
 
 <script>
-import CardTitle from './CardTitle.vue';
 import CardBody from './CardBody.vue';
 
 export default {
   name: 'EmptyCard',
   components: {
-    CardTitle,
     CardBody,
   },
   data() {
@@ -35,7 +32,8 @@ export default {
   },
   methods: {
     toggleBody() {
-      this.isOpen = !this.isOpen;
+      console.log('called');
+      if (this.togglable) this.isOpen = !this.isOpen;
     },
   },
   props: {
@@ -70,6 +68,10 @@ export default {
 }
 .card-container:-webkit-scrollbar {
     display: none; /* Other browsers */
+}
+
+.header-container {
+  border-bottom: solid 1px var(--lighter-black);
 }
 
 #before {

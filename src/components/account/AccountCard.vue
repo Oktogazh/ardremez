@@ -1,7 +1,7 @@
 <template>
   <EmptyCard :togglable="false">
-    <template v-slot:title>
-      {{ translate.Manage_My_Account }}
+    <template v-slot:header>
+      <h2 v-html="translate.Manage_My_Account"></h2>
     </template>
     <template v-slot:body>
       <div id="account-options">
