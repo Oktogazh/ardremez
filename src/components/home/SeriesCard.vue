@@ -15,6 +15,7 @@
             <figcaption v-if="legend" v-html="legend"></figcaption>
           </figure>
         </Modal>
+      <!-- Image Viewer End -->
       </div>
       <!-- Title & Metadata -->
       <div id="title-and-metadata">
@@ -22,10 +23,10 @@
         <div id="metadata-container">
           <p class="metadata">{{ `${metadata.podcasts} ` + translate.podcasts }}</p>
           <p class="metadata">{{ `${translate.average_duration} ` + metadata.averageDuration }}</p>
-          <p class="metadata">{{ `${translate.average_duration} ` + metadata.averageDuration }}</p>
-          <p class="metadata">{{ `${translate.average_duration} ` + metadata.averageDuration }}</p>
-          <p class="metadata" @click="toggle">
-            {{ `${translate.average_duration} ` + metadata.averageDuration }}</p>
+          <p class="metadata">{{
+              `${translate[metadata.languages.source]} → ${translate[metadata.languages.target]}`
+          }}</p>
+          <div @click="toggle"></div>
         </div>
       </div>
     </div>
@@ -117,7 +118,6 @@ export default {
   min-height: 3em;
   flex-grow: 1;
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
 }
 
