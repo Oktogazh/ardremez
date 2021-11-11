@@ -97,7 +97,8 @@ export default {
 }
 
 #img-outer-container {
-  max-width: 25%;
+  max-width: 10em;
+  height: 10em;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -116,8 +117,9 @@ export default {
 
 .series-images {
   vertical-align: middle;
-  max-width: 100%;
-  border-radius: 1em;
+  height: 10em;
+  width: 10em;
+  object-fit: cover;
   cursor: pointer;
 }
 
