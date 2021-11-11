@@ -1,5 +1,6 @@
 const obj = {
   Access: 'Access',
+  average_duration: 'average duration: ',
   Breton_bre: 'Brezhoneg',
   bre: 'Breton',
   Connected: 'Connected',
@@ -26,6 +27,7 @@ const obj = {
   OK: 'OK',
   Other_Languages: 'Other Languages',
   Password: 'Password',
+  podcasts: 'lessons',
   Reinitialize_Password: 'Reinitialize Password',
   Sign_In: 'Sign In',
   Submit: 'Submit',

@@ -1,5 +1,6 @@
 const obj = {
   Access: 'Kevreañ',
+  average_duration: 'padelezh krenn: ',
   Breton_bre: 'Brezhoneg',
   bre: 'Brezhoneg',
   Connected: 'Kevreet',
@@ -26,6 +27,7 @@ const obj = {
   OK: 'MAT',
   Other_Languages: 'Yezhoù All',
   Password: 'Ger-Kuzh',
+  podcasts: 'a gentelioù',
   Reinitialize_Password: 'Ger-Kuzh Nevez',
   Sign_In: 'En Em Skrivañ',
   Submit: 'Kas',

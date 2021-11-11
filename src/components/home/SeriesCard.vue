@@ -16,9 +16,10 @@
         </Modal>
       </div>
       <!-- Title & Metadata -->
-      <div class="">
-        <h2 v-html="title"></h2>
-
+      <div class="title-and-metadata">
+        <h2 id="series-title" v-html="title"></h2>
+        <p class="metadata">{{ `${metadata.podcasts} ` + translate.podcasts }}</p>
+        <p class="metadata">{{ `${translate.average_duration} ` + metadata.averageDuration }}</p>
       </div>
     </div>
     </template>
@@ -38,6 +39,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import EmptyCard from '@/components/utils/card/EmptyCard.vue';
 import Modal from '@/components/utils/Modal.vue';
 
@@ -48,6 +50,9 @@ export default {
     Modal,
   },
   computed: {
+    ...mapState({
+      translate: (state) => state.lang,
+    }),
   },
   created() {
     console.log(this.series);
@@ -88,6 +93,21 @@ export default {
 #title-flex {
   display: flex;
   gap: 1em;
+}
+
+#title-and-metadata {
+  display: flex;
+}
+
+#series-title {
+  width: 100%;
+}
+.metadata {
+  font-size: 11px;
+  color: var(--dark-black);
+  text-transform: uppercase;
+  font-weight: 800;
+  font-variant-caps: all-petite-caps;
 }
 
 #body-container {
