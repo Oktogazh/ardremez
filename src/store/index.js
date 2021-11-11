@@ -2,8 +2,8 @@ import { createStore, createLogger } from 'vuex';
 import appState from './modules/appState';
 import langState from './modules/langState';
 import lessonState from './modules/lessonState';
+import seriesState from './modules/seriesState';
 import userState from './modules/userState';
-import seriesMockup from './modules/seriesMockup';
 
 export default createStore({
   state: {
@@ -18,7 +18,7 @@ export default createStore({
     lang: langState,
     lesson: lessonState,
     user: userState,
-    series: seriesMockup,
+    series: seriesState,
   },
   plugins: [
     createLogger(),

@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import EmptyCard from '@/components/utils/card/EmptyCard.vue';
 import Modal from '@/components/utils/Modal.vue';
 
@@ -49,15 +48,9 @@ export default {
     Modal,
   },
   computed: {
-    ...mapState({
-      title: (state) => state.series.title,
-      comments: (state) => state.series.comments,
-      images: (state) => state.series.images,
-    }),
   },
   created() {
-    const dataPath = this.seriesDataPath;
-    console.log(dataPath); // TODO: make a fake api request
+    console.log(this.series);
   },
   data() {
     return {
@@ -75,7 +68,16 @@ export default {
     },
   },
   props: {
-    seriesDataPath: {
+    title: {
+      required: true,
+    },
+    comments: {
+      required: true,
+    },
+    images: {
+      required: true,
+    },
+    metadata: {
       required: true,
     },
   },
