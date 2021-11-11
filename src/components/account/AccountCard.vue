@@ -1,5 +1,5 @@
 <template>
-  <EmptyCard :togglable="false">
+  <EmptyCard>
     <template v-slot:header>
       <h2 v-html="translate.Manage_My_Account"></h2>
     </template>
@@ -53,7 +53,7 @@ export default {
       } else {
         this.$store.dispatch('user/deleteAccount')
           .then(self.$router.push({ path: '/' }))
-          .catch((e) => console.error(e));
+          .catch();
       }
     },
     sendVerificationEmail() {

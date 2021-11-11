@@ -18,7 +18,6 @@ export default {
     this.$store.dispatch('user/retrieveData');
     // TODO: localStorage('languagePreference') read (here) && write
     this.$store.dispatch('lang/loadLanguage', 'en');
-    console.log(this.$store.state.user);
   },
 };
 </script>
@@ -56,8 +55,14 @@ body {
   --middle-black: rgba(0, 0, 0, 0.5);
   --dark-black: rgba(0, 0, 0, 0.7);
   --darker-black: rgba(0, 0, 0, 0.85);
-  --slim-shadow-box: 0 1px 3px var(--light-black);
-  --wide-shadow-box: 0 2px 5px 5px var(--lighter-black);
+  --lighter-white: rgba(255, 255, 255, 0.85);
+  --light-white: rgba(255, 255, 255, 0.7);
+  --middle-white: rgba(255, 255, 255, 0.5);
+  --dark-white: rgba(255, 255, 255, 0.3);
+  --darker-white: rgba(255, 255, 255, 0.15);
+  --blue: rgb(0, 79, 200);
+  --slim-box-shadow: 0 1px 2px;
+  --wide-box-shadow: 0 2px 4px 2px;
 }
 
 </style>

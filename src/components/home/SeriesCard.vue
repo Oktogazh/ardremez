@@ -1,7 +1,7 @@
 <template>
   <EmptyCard>
     <!-- @click="toggle" -->
-    <template #header="{ toggle }">
+    <template #header="{ toggle, bodyOpen }">
       <div id="title-flex">
         <!-- Image Viewer -->
         <div v-if="images" id="img-outer-container" @click.stop>
@@ -26,7 +26,16 @@
           <p class="metadata">{{
               `${translate[metadata.languages.source]} → ${translate[metadata.languages.target]}`
           }}</p>
-          <div @click="toggle"></div>
+        </div>
+        <div id="series-options-container">
+          <div class="option" id="toggle-btn" @click="toggle">
+            {{ translate[bodyOpen? 'Hide_description' : 'Show_description'] }}</div>
+          <div class="option" id="try-btn" @click="$router.push({ path: `/listen?k=1${code}` })">
+            {{ translate.Free_Trial }}
+          </div>
+          <div class="option" id="sub-btn">
+            {{ translate.Subscribe}}
+          </div>
         </div>
       </div>
     </div>
@@ -115,10 +124,7 @@ export default {
 }
 
 #metadata-container {
-  min-height: 3em;
-  flex-grow: 1;
   display: flex;
-  flex-wrap: wrap;
 }
 
 .metadata {
@@ -129,6 +135,45 @@ export default {
   text-transform: uppercase;
   font-weight: 800;
   font-variant-caps: all-petite-caps;
+}
+
+#series-options-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.option {
+  width: max-content;
+  padding: 0 2em;
+  font-size: 11px;
+  color: var(--lighter-white);
+  text-transform: uppercase;
+  font-weight: 800;
+  font-variant-caps: all-petite-caps;
+  border-radius: 1em;
+  padding: 3px 6px;
+  cursor: pointer;
+  opacity: .7;
+  margin: 0 3em;
+}
+.option:hover {
+  opacity: .9;
+}
+
+#toggle-btn {
+  background-color: var(--dark-black);
+}
+#toggle-btn:hover {
+  box-shadow: var(--slim-box-shadow)  var(--dark-black);
+}
+
+#try-btn {
+  background-color: var(--blue);
+}
+#try-btn:hover {
+  box-shadow: var(--slim-box-shadow) var(--blue);
 }
 
 #body-container {

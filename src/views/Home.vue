@@ -1,6 +1,6 @@
 <template>
   <SeriesCard v-for="({ title, comments, images, metadata }, key) in storedSeries"
-    :title="title" :comments="comments"
+    :title="title" :code="code" :comments="comments"
     :images="images" :metadata="metadata" :key="key" />
 </template>
 

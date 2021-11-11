@@ -14,6 +14,8 @@ const obj = {
   Enter_Your_Code_Here: 'Eilit Ho Kod Amañ',
   French_fra: 'Français',
   fra: 'Galleg',
+  Free_Trial: 'Amprouiñ Digoust',
+  Hide_description: 'Kuzhat an diskrivadur',
   Home: 'Degemerva',
   Log_In: 'Kevreañ',
   Log_Out: 'Digevreañ',
@@ -30,6 +32,7 @@ const obj = {
   podcasts: 'a gentelioù',
   Reinitialize_Password: 'Ger-Kuzh Nevez',
   Sign_In: 'En Em Skrivañ',
+  Show_description: 'Diskouez an diskrivadur',
   Submit: 'Kas',
   Wrong_code_New_code_sent: 'Ar c\'hod-mañ zo diwiriek, pe c\'hoazh, diamzeriet.<br>Emeur o paouez kas ur c\'hod nevez, deoc\'h klask en-dro.',
 };

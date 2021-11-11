@@ -5,9 +5,9 @@
     </div>
     <div class="card-container">
       <div class="header-container">
-        <slot name="header" :toggle="toggleBody"></slot>
+        <slot name="header" :toggle="toggleBody" :bodyOpen="bodyOpen"></slot>
       </div>
-      <CardBody v-show="isOpen">
+      <CardBody v-show="bodyOpen">
         <slot name="body"></slot>
       </CardBody>
     </div>
@@ -27,23 +27,12 @@ export default {
   },
   data() {
     return {
-      isOpen: this.startOpen,
+      bodyOpen: true,
     };
   },
   methods: {
     toggleBody() {
-      console.log('called');
-      if (this.togglable) this.isOpen = !this.isOpen;
-    },
-  },
-  props: {
-    startOpen: {
-      type: Boolean,
-      default: true,
-    },
-    togglable: {
-      type: Boolean,
-      default: true,
+      this.bodyOpen = !this.bodyOpen;
     },
   },
 };
@@ -59,7 +48,7 @@ export default {
   width: 900px;
   max-width: 100%;
   background-color: var(--card-background);
-  box-shadow: var(--slim-shadow-box);
+  box-shadow: var(--slim-box-shadow) var(--middle-black);
   border-radius: 8px;
   overflow-x: hidden;
   overflow-y: scroll;
