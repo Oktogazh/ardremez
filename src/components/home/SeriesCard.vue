@@ -32,7 +32,7 @@
             <div class="option" id="toggle-btn" @click="toggle">
               {{ translate[bodyOpen? 'Hide_description' : 'Show_description'] }}</div>
             <!-- TODO: use a getter to compute the query after the user's level -->
-            <router-link :to="{ path: '/listen', query: { k: `1${code}` }}">
+            <router-link :to="{ path: '/read', query: { p: `1${code}` }}">
               <div class="option" id="try-btn">
                 {{ translate.Free_Trial }}
               </div>
