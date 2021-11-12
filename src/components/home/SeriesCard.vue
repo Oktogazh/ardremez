@@ -6,39 +6,44 @@
         <!-- Image Viewer -->
         <div v-if="images" id="img-outer-container" @click.stop>
           <div id="img-inner-container"
-          v-for="(img, index) in images" :key="index">
-          <img :src="img.path" class="series-images" @click="clickedImg(img)">
+            v-for="(img, index) in images" :key="index">
+            <img :src="img.path" class="series-images" @click="clickedImg(img)">
+          </div>
+          <Modal v-if="path" @closing="clickedImg({ path: null, legend: null })">
+            <figure>
+              <img :src="path" id="fullSize">
+              <figcaption v-if="legend" v-html="legend"></figcaption>
+            </figure>
+          </Modal>
+        <!-- Image Viewer End -->
         </div>
-        <Modal v-if="path" @closing="clickedImg({ path: null, legend: null })">
-          <figure>
-            <img :src="path" id="fullSize">
-            <figcaption v-if="legend" v-html="legend"></figcaption>
-          </figure>
-        </Modal>
-      <!-- Image Viewer End -->
-      </div>
-      <!-- Title & Metadata -->
-      <div id="title-and-metadata">
-        <h2 id="series-title" v-html="title"></h2>
-        <div id="metadata-container">
-          <p class="metadata">{{ `${metadata.podcasts} ` + translate.podcasts }}</p>
-          <p class="metadata">{{ `${translate.average_duration} ` + metadata.averageDuration }}</p>
-          <p class="metadata">{{
+        <!-- Title & Metadata -->
+        <div id="title-and-metadata">
+          <h2 id="series-title" v-html="title"></h2>
+          <div id="metadata-container">
+            <p class="metadata">{{ `${metadata.podcasts} ` + translate.podcasts }}</p>
+            <p class="metadata">{{
+              `${translate.average_duration} ` + metadata.averageDuration }}</p>
+            <p class="metadata">{{
               `${translate[metadata.languages.source]} → ${translate[metadata.languages.target]}`
-          }}</p>
-        </div>
-        <div id="series-options-container">
-          <div class="option" id="toggle-btn" @click="toggle">
-            {{ translate[bodyOpen? 'Hide_description' : 'Show_description'] }}</div>
-          <div class="option" id="try-btn" @click="$router.push({ path: `/listen?k=1${code}` })">
-            {{ translate.Free_Trial }}
+            }}</p>
           </div>
-          <div class="option" id="sub-btn">
-            {{ translate.Subscribe}}
+          <div id="series-options-container">
+            <div class="option" id="toggle-btn" @click="toggle">
+              {{ translate[bodyOpen? 'Hide_description' : 'Show_description'] }}</div>
+            <!-- TODO: use a getter to compute the query after the user's level -->
+            <router-link :to="{ path: '/listen', query: { k: `1${code}` }}">
+              <div class="option" id="try-btn">
+                {{ translate.Free_Trial }}
+              </div>
+            </router-link>
+            <div class="option" id="sub-btn">
+              {{ translate.Subscribe}}
+            </div>
           </div>
+        <!-- Title & Metadata End -->
         </div>
       </div>
-    </div>
     </template>
     <template v-slot:before>
     </template>
@@ -93,6 +98,9 @@ export default {
       required: true,
     },
     comments: {
+      required: true,
+    },
+    code: {
       required: true,
     },
     images: {
