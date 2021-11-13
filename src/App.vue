@@ -65,4 +65,8 @@ body {
   --wide-box-shadow: 0 2px 4px 2px;
 }
 
+a, button {
+  all: unset;
+}
+
 </style>
