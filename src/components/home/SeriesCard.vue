@@ -1,5 +1,7 @@
 <template>
   <EmptyCard>
+    <template v-slot:before>
+    </template>
     <!-- @click="toggle" -->
     <template #header="{ toggle, bodyOpen }">
       <div id="title-flex">
@@ -44,8 +46,6 @@
         <!-- Title & Metadata End -->
         </div>
       </div>
-    </template>
-    <template v-slot:before>
     </template>
     <template v-slot:body>
       <div id="body-container">

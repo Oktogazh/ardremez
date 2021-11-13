@@ -1,6 +1,5 @@
 <template>
-  <Reader>
-  </Reader>
+  <Reader :data="chapterData" />
 </template>
 <script>
 import axios from 'axios';
@@ -19,7 +18,15 @@ export default {
       loading: false,
       id: null,
       chapterData: {
-        cards: [],
+        cards: [
+          {
+            type: null,
+            data: {
+              header: null,
+              body: null,
+            },
+          },
+        ],
         comeBack: null,
         images: [],
         links: [],
