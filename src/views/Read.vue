@@ -39,17 +39,11 @@ export default {
     async downloadChapter() {
       this.loading = true;
       this.id = this.$route.query.p;
-      const { jwt } = this.$store.state.user;
-      const dataURI = `${this.$store.state.api}/api/lenn/${this.id}`;
+      const dataURI = `${this.$store.state.api}/api/read/${this.id}`;
 
       const chapterData = await Promise.resolve()
-        .then(() => {
-          if (jwt) {
-            axios.defaults.headers.common.Authorization = `Bearer ${jwt}`;
-          }
-        })
         .then(() => axios.get(dataURI))
-        .then((res) => res.data.kentel);
+        .then((res) => res.data.chapter);
       this.chapterData = chapterData;
     },
   },
