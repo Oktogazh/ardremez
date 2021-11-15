@@ -1,6 +1,7 @@
 <template>
-  <Reader :data="chapterData" />
+  <Reader v-if="!loading" :chapter="chapterData" />
 </template>
+
 <script>
 import axios from 'axios';
 import Reader from '@/components/read/Reader.vue';
@@ -17,13 +18,17 @@ export default {
     return {
       loading: false,
       id: null,
-      chapterData: {
-        cards: [
+      chapterData: { // :chapter
+        cards: [ // :card
           {
             type: null,
             data: {
               header: null,
-              body: null,
+              body: [
+                null,
+                /* if (type === 'captions') ['html', startTimestamp, endTimestamp] */
+                /* else 'html' */
+              ],
             },
           },
         ],
@@ -45,6 +50,7 @@ export default {
         .then(() => axios.get(dataURI))
         .then((res) => res.data.chapter);
       this.chapterData = chapterData;
+      this.loading = false;
     },
   },
 };
