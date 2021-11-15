@@ -27,12 +27,19 @@ export default {
   },
   data() {
     return {
-      bodyOpen: true,
+      bodyOpen: this.open,
     };
   },
   methods: {
     toggleBody() {
       this.bodyOpen = !this.bodyOpen;
+    },
+  },
+  props: {
+    open: {
+      type: Boolean,
+      required: false,
+      default: true,
     },
   },
 };

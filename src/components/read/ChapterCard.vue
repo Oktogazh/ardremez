@@ -1,6 +1,6 @@
 <template>
   <EmptyCard>
-    <template #header="{ toggle }">
+    <template #header="{ toggle }"> <!-- <div class="header-container" @click=...> instead -->
       <div id="card-title" v-html="card.data.header"  @click="toggle"></div>
     </template>
     <template #body>
@@ -44,7 +44,7 @@ export default {
 <style scoped>
 #card-title {
   margin: .5em 1em;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 600;
   cursor: pointer;
 }
