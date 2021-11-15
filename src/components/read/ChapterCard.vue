@@ -5,11 +5,11 @@
     </template>
     <template #body>
       <ul v-if="card.type === 'captions'">
-        <li v-for="(caption, index) in card.data.body"
+        <li v-for="(caption, index) in body"
           :key="index" v-html="caption[0]" @click="play(caption[1])">
         </li>
       </ul>
-      <p v-else v-html="card.data.body"></p>
+      <p v-else v-html="body"></p>
     </template>
   </EmptyCard>
 </template>
@@ -21,6 +21,12 @@ export default {
   name: 'ChapterCard',
   components: {
     EmptyCard,
+  },
+  computed: {
+    body() {
+      return (this.card.type === 'html')
+        ? (this.card.data.body.join('\n')) : this.card.data.body;
+    },
   },
   methods: {
     play(startTimestamp) {
@@ -43,4 +49,8 @@ export default {
   cursor: pointer;
 }
 
+li {
+  list-style: none;
+  cursor: pointer;
+}
 </style>
