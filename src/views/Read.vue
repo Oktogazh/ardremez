@@ -53,6 +53,11 @@ export default {
       this.loading = false;
     },
   },
+  watch: {
+    $route() {
+      this.downloadChapter();
+    },
+  },
 };
 </script>
 
