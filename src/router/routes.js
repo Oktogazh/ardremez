@@ -21,9 +21,6 @@ const routes = [
     path: '/read',
     name: 'Read',
     component: () => import(/* webpackChunkName: "about" */ '../views/Read.vue'),
-    meta: {
-      requireAuth: true,
-    },
   },
   {
     path: '/verify',

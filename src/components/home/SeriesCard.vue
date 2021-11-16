@@ -178,10 +178,10 @@ export default {
 }
 
 #try-btn {
-  background-color: var(--blue);
+  background: var(--blueish);
 }
 #try-btn:hover {
-  box-shadow: var(--slim-box-shadow) var(--blue);
+  box-shadow: var(--slim-box-shadow) var(--dark-black);
 }
 
 #body-container {
