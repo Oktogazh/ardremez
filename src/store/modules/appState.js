@@ -11,7 +11,7 @@ const appState = ({
     },
     SET_TITLES(state, { title, subtitle }) {
       state.title = title;
-      if (subtitle) state.subtitle = subtitle;
+      state.subtitle = subtitle;
     },
   },
   actions: {

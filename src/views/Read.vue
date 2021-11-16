@@ -50,6 +50,7 @@ export default {
   methods: {
     async downloadChapter() {
       this.loading = true;
+      this.$store.commit('app/SET_TITLES', { subtitle: 'Loading...' });
       this.id = this.$route.query.p;
       const dataURI = `${this.$store.state.api}/api/read/${this.id}`;
 
@@ -57,6 +58,7 @@ export default {
         .then(() => axios.get(dataURI))
         .then((res) => res.data.chapter);
       this.chapterData = chapterData;
+      this.$store.commit('app/SET_TITLES', { subtitle: chapterData.title });
       this.loading = false;
     },
   },

@@ -7,7 +7,7 @@
       <h1>{{ translate[header.title] }}</h1>
     </div>
     <div class="subtitle">
-      <h2>{{ header.subtitle? translate[header.subtitle]: null }}</h2>
+      <h2 v-html="header.subtitle"></h2>
     </div>
   </div>
 </template>
@@ -44,7 +44,6 @@ export default {
 }
 
 .subtitle {
-  background-color: var(--subtitle-background);
 }
 
 #home-logo {
