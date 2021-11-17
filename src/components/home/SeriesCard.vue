@@ -1,7 +1,5 @@
 <template>
   <EmptyCard>
-    <template v-slot:before>
-    </template>
     <!-- @click="toggle" -->
     <template #header="{ toggle, bodyOpen }">
       <div id="title-flex">
@@ -31,13 +29,11 @@
             }}</p>
           </div>
           <div id="series-options-container">
-            <div class="option" id="toggle-btn" @click="toggle">
-              {{ translate[bodyOpen? 'Hide_description' : 'Show_description'] }}</div>
+            <SmallButton @clicked="toggle" :bg="'greyish'"
+              :text="translate[bodyOpen? 'Hide_description' : 'Show_description']"/>
             <!-- TODO: use a getter to compute the query after the user's level -->
             <router-link :to="{ path: '/read', query: { p: `1${code}` }}">
-              <div class="option" id="try-btn">
-                {{ translate.Free_Trial }}
-              </div>
+              <SmallButton :bg="'blueish'" :text="translate.Free_Trial"/>
             </router-link>
             <div class="option" id="sub-btn">
               {{ translate.Subscribe}}
@@ -55,8 +51,6 @@
         </div>
       </div>
     </template>
-    <template v-slot:after>
-    </template>
   </EmptyCard>
 </template>
 
@@ -64,12 +58,14 @@
 import { mapState } from 'vuex';
 import EmptyCard from '@/components/utils/card/EmptyCard.vue';
 import Modal from '@/components/utils/Modal.vue';
+import SmallButton from '@/atoms/SmallButton.vue';
 
 export default {
   name: 'SeriesCard',
   components: {
     EmptyCard,
     Modal,
+    SmallButton,
   },
   computed: {
     ...mapState({
@@ -171,17 +167,10 @@ export default {
 }
 
 #toggle-btn {
-  background-color: var(--dark-black);
+  background: var(--dark-black);
 }
 #toggle-btn:hover {
   box-shadow: var(--slim-box-shadow)  var(--dark-black);
-}
-
-#try-btn {
-  background: var(--blueish);
-}
-#try-btn:hover {
-  box-shadow: var(--slim-box-shadow) var(--dark-black);
 }
 
 #body-container {
