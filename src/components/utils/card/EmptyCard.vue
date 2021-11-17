@@ -1,30 +1,19 @@
 <template>
   <div class="card-section">
-    <div id="before">
-      <slot name="before"></slot>
-    </div>
     <div class="card-container">
       <div class="header-container">
         <slot name="header" :toggle="toggleBody" :bodyOpen="bodyOpen"></slot>
       </div>
-      <CardBody v-show="bodyOpen">
+      <div class="body" v-show="bodyOpen">
         <slot name="body"></slot>
-      </CardBody>
-    </div>
-    <div id="after">
-      <slot name="after"></slot>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import CardBody from './CardBody.vue';
-
 export default {
   name: 'EmptyCard',
-  components: {
-    CardBody,
-  },
   data() {
     return {
       bodyOpen: this.open,
@@ -46,6 +35,10 @@ export default {
 </script>
 
 <style scoped>
+.body {
+  padding: 1em;
+}
+
 .card-section {
   display: flex;
   justify-content: center;
@@ -68,13 +61,5 @@ export default {
 
 .header-container {
   border-bottom: solid 1px var(--lighter-black);
-}
-
-#before {
-  flex-grow: 1;
-}
-
-#after {
-  flex-grow: 1;
 }
 </style>
