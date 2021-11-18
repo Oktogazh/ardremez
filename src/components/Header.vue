@@ -26,7 +26,7 @@ export default {
   background-color: var(--lighter-black);
 }
 
->>> h1 {
+:deep(h1) {
   margin: 0;
   padding: 1rem;
 }
