@@ -7,7 +7,7 @@
 <script>
 import swal from 'sweetalert2';
 import CheckingCodeCard from '@/components/utils/CheckingCodeCard.vue';
-import Access from '@/components/header/auth/Access.vue';
+import Access from '@/molecules/auth/Access.vue';
 
 export default {
   name: 'Verify',

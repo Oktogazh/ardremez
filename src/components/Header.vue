@@ -1,18 +1,18 @@
 <template>
   <div class="header-container">
     <Titles />
-    <MenuButton />
+    <Menu />
   </div>
 </template>
 
 <script>
-import Titles from '@/components/header/Titles.vue';
-import MenuButton from '@/components/header/menu/MenuButton.vue';
+import Titles from '@/molecules/Titles.vue';
+import Menu from '@/molecules/Menu.vue';
 
 export default {
   name: 'Header',
   components: {
-    MenuButton,
+    Menu,
     Titles,
   },
 };
