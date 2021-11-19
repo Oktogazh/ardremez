@@ -23,7 +23,7 @@
 <script>
 import { mapState } from 'vuex';
 import swal from 'sweetalert2';
-import EmptyCard from '@/components/utils/card/EmptyCard.vue';
+import EmptyCard from '@/atoms/Card.vue';
 
 export default {
   name: 'Account',

@@ -56,9 +56,9 @@
 
 <script>
 import { mapState } from 'vuex';
-import EmptyCard from '@/components/utils/card/EmptyCard.vue';
+import EmptyCard from '@/atoms/Card.vue';
 import Modal from '@/components/utils/Modal.vue';
-import SmallButton from '@/atoms/SmallButton.vue';
+import SmallButton from '@/atoms/buttons/SmallButton.vue';
 
 export default {
   name: 'SeriesCard',

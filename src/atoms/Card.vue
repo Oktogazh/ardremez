@@ -49,7 +49,7 @@ export default {
   max-width: 100%;
   background-color: var(--card-background);
   box-shadow: var(--slim-box-shadow) var(--middle-black);
-  border-radius: 8px;
+  border-radius: 5px 5px 0 0;
   overflow-x: hidden;
   overflow-y: scroll;
   -ms-overflow-style: none;  /* IE and Edge */

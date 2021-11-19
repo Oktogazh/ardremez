@@ -10,7 +10,7 @@
 <script>
 import axios from 'axios';
 import Reader from '@/components/read/Reader.vue';
-import EmptyCard from '@/components/utils/card/EmptyCard.vue';
+import EmptyCard from '@/atoms/Card.vue';
 
 export default {
   name: 'Read',
