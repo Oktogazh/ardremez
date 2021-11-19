@@ -14,6 +14,8 @@
 <script>
 export default {
   name: 'EmptyCard',
+  components: {
+  },
   data() {
     return {
       bodyOpen: this.open,
@@ -60,6 +62,7 @@ export default {
 }
 
 .header-container {
+  position: relative;
   border-bottom: solid 1px var(--lighter-black);
 }
 </style>

@@ -2,6 +2,8 @@
   <EmptyCard>
     <!-- @click="toggle" -->
     <template #header="{ toggle, bodyOpen }">
+      <DownButton v-if="!bodyOpen" @click="toggle"/>
+      <UpButton v-if="bodyOpen" @click="toggle"/>
       <div id="title-flex">
         <!-- Image Viewer -->
         <div v-if="images" id="img-outer-container" @click.stop>
@@ -29,8 +31,6 @@
             }}</p>
           </div>
           <div id="series-options-container">
-            <SmallButton @clicked="toggle" :bg="'greyish'"
-              :text="translate[bodyOpen? 'Hide_description' : 'Show_description']"/>
             <!-- TODO: use a getter to compute the query after the user's level -->
             <router-link :to="{ path: '/read', query: { p: `1${code}` }}">
               <SmallButton :bg="'blueish'" :text="translate.Free_Trial"/>
@@ -59,6 +59,8 @@ import { mapState } from 'vuex';
 import EmptyCard from '@/atoms/Card.vue';
 import Modal from '@/components/utils/Modal.vue';
 import SmallButton from '@/atoms/buttons/SmallButton.vue';
+import DownButton from '@/atoms/buttons/DownButton.vue';
+import UpButton from '@/atoms/buttons/UpButton.vue';
 
 export default {
   name: 'SeriesCard',
@@ -66,6 +68,8 @@ export default {
     EmptyCard,
     Modal,
     SmallButton,
+    DownButton,
+    UpButton,
   },
   computed: {
     ...mapState({
