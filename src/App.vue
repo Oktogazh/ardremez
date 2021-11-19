@@ -47,6 +47,7 @@ body {
 :root {
   --direction: ltr;
   --card-background: rgb(255, 255, 255);
+  --cut-background: linear-gradient(135deg, transparent 2em, #fff 0) top left;
   --titles-background: rgb(113, 99, 217);
   --title-background: rgb(64, 217, 75); /* TODO: improve the header CSS */
   --todo-background: rgb(195, 48, 106);

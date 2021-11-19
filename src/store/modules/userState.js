@@ -17,7 +17,7 @@ const userState = ({
         state[key] = data[key];
       });
       localStorage.setItem('userData', JSON.stringify(state));
-      axios.defaults.headers.common.Authorization = `Bearer ${data.jwt}`;
+      if (state.jwt) axios.defaults.headers.common.Authorization = `Bearer ${data.jwt}`;
     },
   },
   actions: {

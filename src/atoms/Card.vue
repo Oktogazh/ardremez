@@ -49,7 +49,7 @@ export default {
 .card-container {
   width: 900px;
   max-width: 100%;
-  background-color: var(--card-background);
+  background: var(--card-background);
   box-shadow: var(--slim-box-shadow) var(--middle-black);
   border-radius: 5px 5px 0 0;
   overflow-x: hidden;
