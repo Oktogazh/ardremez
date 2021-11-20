@@ -12,9 +12,9 @@
 
 <script>
 import axios from 'axios';
-import Reader from '@/components/Reader.vue';
+import Reader from '@/organisms/Reader.vue';
 import Card from '@/atoms/Card.vue';
-import Player from '@/components/Player.vue';
+import Player from '@/organisms/Player.vue';
 
 export default {
   name: 'Read',

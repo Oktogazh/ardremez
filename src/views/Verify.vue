@@ -6,7 +6,7 @@
 
 <script>
 import swal from 'sweetalert2';
-import CheckingCodeCard from '@/components/utils/CheckingCodeCard.vue';
+import CheckingCodeCard from '@/organisms/utils/CheckingCodeCard.vue';
 import Access from '@/molecules/auth/Access.vue';
 
 export default {

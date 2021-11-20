@@ -7,7 +7,7 @@
 
 <script>
 import MainContainer from '@/atoms/MainContainer.vue';
-import Header from '@/components/Header.vue';
+import Header from '@/organisms/Header.vue';
 
 export default {
   components: {
@@ -46,7 +46,7 @@ body {
 :root {
   --direction: ltr;
   --card-background: rgb(255, 255, 255);
-  --cut-background: linear-gradient(135deg, transparent 2em, #fff 0) top left;
+  --cut-background: linear-gradient(135deg, transparent 2em, #8c8c8c 0) top left;
   --titles-background: rgb(113, 99, 217);
   --title-background: rgb(64, 217, 75); /* TODO: improve the header CSS */
   --todo-background: rgb(195, 48, 106);
