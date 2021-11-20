@@ -1,7 +1,7 @@
 <template>
   <Card>
     <template v-slot:header>
-      <ResponsiveHeader :chapter="chapter" :selected="selected" />
+      <ResponsiveHeader :chapter="chapter" :selected="selected" @selecting="select" />
     </template>
     <template v-slot:body>
       {{ chapter.cards[selected].data.body }}
@@ -23,6 +23,11 @@ export default {
     return {
       selected: 0,
     };
+  },
+  methods: {
+    select(index) {
+      this.selected = index;
+    },
   },
   props: {
     chapter: {

@@ -1,6 +1,6 @@
 <template>
   <div id="flex-responsive">
-    <div  v-for="(card, index) in chapter.cards" :key="index"
+    <div  v-for="(card, index) in chapter.cards" :key="index" @click="$emit('selecting', index)"
       :class="[(index == selected)? 'active': '', 'card-header']">
       {{ card.data.header }}
     </div>
@@ -25,15 +25,17 @@ export default {
 #flex-responsive {
   display: flex;
   justify-content: space-around;
+  gap: 3em;
 }
 
 .card-header {
   flex: 1 0 auto;
-  background: var(--todo-background);
   text-align: center;
+  cursor: pointer;
 }
 
 .active {
-  color: white;
+  font-weight: 600;
+  border-bottom: solid 3px black;
 }
 </style>
