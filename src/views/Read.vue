@@ -1,16 +1,18 @@
 <template>
   <Reader v-if="!loading" :chapter="chapterData" />
-  <EmptyCard v-if="loading" :open="false">
+  <Card v-if="loading" :open="false">
     <template #header>
       <h1>Loading...</h1>
     </template>
-  </EmptyCard>
+  </Card>
+  <Player />
 </template>
 
 <script>
 import axios from 'axios';
-import Reader from '@/components/read/Reader.vue';
-import EmptyCard from '@/atoms/Card.vue';
+import Reader from '@/components/Reader.vue';
+import Card from '@/atoms/Card.vue';
+import Player from '@/components/Player.vue';
 
 export default {
   name: 'Read',
@@ -18,8 +20,9 @@ export default {
     this.downloadChapter();
   },
   components: {
-    EmptyCard,
+    Card,
     Reader,
+    Player,
   },
   data() {
     return {

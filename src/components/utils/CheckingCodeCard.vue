@@ -1,5 +1,5 @@
 <template>
-  <EmptyCard :togglable="false">
+  <Card :togglable="false">
     <template v-slot:title>
       {{ $store.state.lang.Enter_Your_Code_Here }}
     </template>
@@ -11,16 +11,16 @@
         </button>
       </form>
     </template>
-  </EmptyCard>
+  </Card>
 </template>
 
 <script>
-import EmptyCard from '@/atoms/Card.vue';
+import Card from '@/atoms/Card.vue';
 
 export default {
   name: 'CheckingCodeCard',
   components: {
-    EmptyCard,
+    Card,
   },
   data() {
     return {

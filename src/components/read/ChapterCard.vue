@@ -1,5 +1,5 @@
 <template>
-  <EmptyCard>
+  <Card>
     <template #header="{ toggle }"> <!-- <div class="header-container" @click=...> instead -->
       <div id="card-title" v-html="card.data.header"  @click="toggle"></div>
     </template>
@@ -11,16 +11,16 @@
       </ul>
       <p v-else v-html="body"></p>
     </template>
-  </EmptyCard>
+  </Card>
 </template>
 
 <script>
-import EmptyCard from '@/atoms/Card.vue';
+import Card from '@/atoms/Card.vue';
 
 export default {
   name: 'ChapterCard',
   components: {
-    EmptyCard,
+    Card,
   },
   computed: {
     body() {

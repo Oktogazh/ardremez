@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'EmptyCard',
+  name: 'Card',
   components: {
   },
   data() {
