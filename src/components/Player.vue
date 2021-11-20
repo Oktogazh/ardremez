@@ -17,5 +17,6 @@ export default {
   height: 5em;
   background: var(--cut-background);
   bottom: 0;
+  stretch: 1;
 }
 </style>

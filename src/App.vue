@@ -1,17 +1,17 @@
 <template>
   <Header />
-  <Body>
+  <MainContainer>
     <router-view />
-  </Body>
+  </MainContainer>
 </template>
 
 <script>
-import Body from '@/components/body/Body.vue';
+import MainContainer from '@/atoms/MainContainer.vue';
 import Header from '@/components/Header.vue';
 
 export default {
   components: {
-    Body,
+    MainContainer,
     Header,
   },
   created() {
@@ -40,7 +40,6 @@ body {
   align-items: stretch;
   width: 100%;
   height: 100vh;
-  gap: 3em;
 }
 
 /* CSS variables */

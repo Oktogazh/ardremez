@@ -5,7 +5,9 @@
       <h1>Loading...</h1>
     </template>
   </Card>
-  <Player />
+  <teleport to="#app">
+    <Player />
+  </teleport>
 </template>
 
 <script>
