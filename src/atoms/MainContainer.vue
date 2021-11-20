@@ -1,6 +1,8 @@
 <template>
   <div id="main-container">
-    <slot></slot>
+    <div id="inner-container">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -17,5 +19,10 @@ export default {
   align-items: stretch;
   flex: 1 1 auto;
   overflow-y: hide;
+}
+
+#inner-container {
+  border: solid 1px black;
+  min-height: 90%;
 }
 </style>

@@ -1,7 +1,5 @@
 <template>
-  <div id="reader-container">
-
-  </div>
+  <ReaderCard :chapter="chapter" />
   <div  v-if="false">
     <ChapterCard v-for="(card, index) in chapter.cards" :key="index" :card="card" />
   </div>
@@ -9,11 +7,13 @@
 
 <script>
 import ChapterCard from '@/organisms/read/ChapterCard.vue';
+import ReaderCard from '@/molecules/ReaderCard.vue';
 
 export default {
   name: 'Reader',
   components: {
     ChapterCard,
+    ReaderCard,
   },
   props: {
     chapter: {
@@ -24,8 +24,4 @@ export default {
 </script>
 
 <style scoped>
-#reader-container {
-  border: solid 1px black;
-  min-height: 90%;
-}
 </style>

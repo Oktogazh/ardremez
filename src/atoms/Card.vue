@@ -38,7 +38,6 @@ export default {
 
 <style scoped>
 .body {
-  padding: 1em;
 }
 
 .card-section {
