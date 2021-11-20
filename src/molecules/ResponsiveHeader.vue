@@ -1,6 +1,7 @@
 <template>
   <div id="flex-responsive">
-    <div  v-for="(card, index) in chapter.cards" :key="index">
+    <div  v-for="(card, index) in chapter.cards" :key="index"
+      :class="[(index == selected)? 'active': '', 'card-header']">
       {{ card.data.header }}
     </div>
   </div>
@@ -13,6 +14,9 @@ export default {
     chapter: {
       required: true,
     },
+    selected: {
+      required: true, // default: 0,
+    },
   },
 };
 </script>
@@ -21,5 +25,15 @@ export default {
 #flex-responsive {
   display: flex;
   justify-content: space-around;
+}
+
+.card-header {
+  flex: 1 0 auto;
+  background: var(--todo-background);
+  text-align: center;
+}
+
+.active {
+  color: white;
 }
 </style>

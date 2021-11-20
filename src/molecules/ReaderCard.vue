@@ -1,9 +1,10 @@
 <template>
   <Card>
     <template v-slot:header>
-      <ResponsiveHeader :chapter="chapter" />
+      <ResponsiveHeader :chapter="chapter" :selected="selected" />
     </template>
     <template v-slot:body>
+      {{ chapter.cards[selected].data.body }}
     </template>
   </Card>
 </template>
@@ -17,6 +18,11 @@ export default {
   components: {
     Card,
     ResponsiveHeader,
+  },
+  data() {
+    return {
+      selected: 0,
+    };
   },
   props: {
     chapter: {
