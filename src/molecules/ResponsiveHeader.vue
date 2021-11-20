@@ -1,7 +1,8 @@
 <template>
   <div id="flex-responsive">
-    <div  v-for="(card, index) in chapter.cards" :key="index" @click="$emit('selecting', index)"
-      :class="[(index == selected)? 'active': '', 'card-header']">
+    <div  v-for="(card, index) in chapter.cards" :key="index"
+      :class="[(index == selected)? 'active': '', 'card-header']"
+      @click="$emit('selecting', index)">
       {{ card.data.header }}
     </div>
   </div>

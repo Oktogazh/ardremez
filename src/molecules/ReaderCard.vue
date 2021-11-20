@@ -4,7 +4,12 @@
       <ResponsiveHeader :chapter="chapter" :selected="selected" @selecting="select" />
     </template>
     <template v-slot:body>
-      {{ chapter.cards[selected].data.body }}
+      <ul v-if="chapter.cards[selected].type === 'captions'">
+        <li v-for="(caption, index) in chapter.cards[selected].data.body"
+          :key="index" v-html="caption[0]" @click="play(caption[1])">
+        </li>
+      </ul>
+      <p v-else v-html="body"></p>
     </template>
   </Card>
 </template>
@@ -34,8 +39,18 @@ export default {
       required: true,
     },
   },
+  computed: {
+    body() {
+      return (this.chapter.cards[this.selected].type === 'html')
+        ? (this.chapter.cards[this.selected].data.body.join('\n')) : this.chapter.cards[this.selected].data.body;
+    },
+  },
 };
 </script>
 
 <style scoped>
+li {
+  list-style: none;
+  cursor: pointer;
+}
 </style>
