@@ -27,7 +27,7 @@ export default {
   props: {
     pad: {
       required: false,
-      default: '0',
+      default: '0em',
     },
     open: {
       type: Boolean,
@@ -42,15 +42,17 @@ export default {
 .card-container {
   position: relative;
   width: 900px;
-  max-width: 100%;
+  max-width: calc(100% - 2 *  v-bind(pad));
   height: auto;
-  padding: v-bind(pad);
+  padding-left: v-bind(pad);
+  padding-right: v-bind(pad);
   max-height: calc(90vh - var(--player-height) - var(--header-height));
   display: flex;
   flex-direction: column;
   background: var(--card-background);
   box-shadow: var(--slim-box-shadow) var(--middle-black);
   border-radius: 5px 5px 0 0;
+  overflow: hidden;
 }
 
 .header-container {

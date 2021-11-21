@@ -36,6 +36,7 @@ export default {
   flex: 1 1 auto;
   text-align: center;
   cursor: pointer;
+  border-bottom: solid 3px transparent;
 }
 .card-header:hover {
   border-bottom: solid 3px var(--middle-black);
