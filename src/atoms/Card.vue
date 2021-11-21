@@ -36,32 +36,25 @@ export default {
 
 <style scoped>
 .card-container {
+  position: relative;
   width: 900px;
   max-width: 100%;
-  height: min-content;
-  max-height: 100%;
+  height: auto;
+  max-height: calc(90vh - var(--player-height) - var(--header-height));
   display: flex;
   flex-direction: column;
   background: var(--card-background);
   box-shadow: var(--slim-box-shadow) var(--middle-black);
   border-radius: 5px 5px 0 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-.card-container:-webkit-scrollbar {
-    display: none; /* Other browsers */
 }
 
 .header-container {
-  position: relative;
+  flex: 1 0 auto;
   border-bottom: solid 1px var(--lighter-black);
 }
 
 .body {
   flex: 0 1 auto;
-  overflow-x: hidden;
   overflow-y: scroll;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none; /* Firefox */

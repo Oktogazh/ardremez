@@ -24,6 +24,7 @@ export default {
   display: flex;
   justify-content: space-between;
   background-color: var(--lighter-black);
+  max-height: var(--header-height);
 }
 
 :deep(h1) {

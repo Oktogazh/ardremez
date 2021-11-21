@@ -12,11 +12,10 @@ export default {
 
 <style lang="css" scoped>
 #player-outer-container {
-  position: sticky;
-  width: 100%;
-  height: 5em;
-  background: var(--cut-background);
+  position: absolute;
   bottom: 0;
-  stretch: 1;
+  width: 100%;
+  height: var(--player-height);
+  background: var(--cut-background);
 }
 </style>
