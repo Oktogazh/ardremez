@@ -25,6 +25,10 @@ export default {
     },
   },
   props: {
+    pad: {
+      required: false,
+      default: '0',
+    },
     open: {
       type: Boolean,
       required: false,
@@ -40,6 +44,7 @@ export default {
   width: 900px;
   max-width: 100%;
   height: auto;
+  padding: v-bind(pad);
   max-height: calc(90vh - var(--player-height) - var(--header-height));
   display: flex;
   flex-direction: column;

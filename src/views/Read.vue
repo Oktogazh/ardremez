@@ -1,5 +1,5 @@
 <template>
-  <ReaderCard v-if="!loading" :chapter="chapterData" />
+  <ReaderCard v-if="!loading" :chapter="chapterData" :pad="'0 1em'" />
   <Card v-if="loading" :open="false">
     <template #header>
       <h1>Loading...</h1>
