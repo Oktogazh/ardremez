@@ -1,12 +1,10 @@
 <template>
-  <div class="card-section">
-    <div class="card-container">
-      <div class="header-container">
-        <slot name="header" :toggle="toggleBody" :bodyOpen="bodyOpen"></slot>
-      </div>
-      <div class="body" v-show="bodyOpen">
-        <slot name="body"></slot>
-      </div>
+  <div class="card-container">
+    <div class="header-container">
+      <slot name="header" :toggle="toggleBody" :bodyOpen="bodyOpen"></slot>
+    </div>
+    <div class="body" v-show="bodyOpen">
+      <slot name="body"></slot>
     </div>
   </div>
 </template>
@@ -40,14 +38,11 @@ export default {
 .body {
 }
 
-.card-section {
-  display: flex;
-  justify-content: center;
-}
-
 .card-container {
   width: 900px;
   max-width: 100%;
+  max-height: 100%;
+  padding: 1em;
   background: var(--card-background);
   box-shadow: var(--slim-box-shadow) var(--middle-black);
   border-radius: 5px 5px 0 0;

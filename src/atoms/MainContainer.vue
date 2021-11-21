@@ -22,7 +22,10 @@ export default {
 }
 
 #inner-container {
+  display: flex;
+  justify-content: center;
+  flex: 0 1 auto;
   border: solid 1px black;
-  min-height: 90%;
+  height: 90%;
 }
 </style>
