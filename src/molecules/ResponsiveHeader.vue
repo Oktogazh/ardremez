@@ -30,6 +30,7 @@ export default {
 }
 
 .card-header {
+  padding: 1em 0;
   flex: 1 0 auto;
   text-align: center;
   cursor: pointer;

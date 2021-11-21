@@ -35,14 +35,13 @@ export default {
 </script>
 
 <style scoped>
-.body {
-}
-
 .card-container {
   width: 900px;
   max-width: 100%;
+  height: min-content;
   max-height: 100%;
-  padding: 1em;
+  display: flex;
+  flex-direction: column;
   background: var(--card-background);
   box-shadow: var(--slim-box-shadow) var(--middle-black);
   border-radius: 5px 5px 0 0;
@@ -58,5 +57,16 @@ export default {
 .header-container {
   position: relative;
   border-bottom: solid 1px var(--lighter-black);
+}
+
+.body {
+  flex: 0 1 auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.body:-webkit-scrollbar {
+    display: none; /* Other browsers */
 }
 </style>
