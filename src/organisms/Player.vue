@@ -1,12 +1,17 @@
 <template>
   <div id="player-outer-container">
-
+    <Controler />
   </div>
 </template>
 
 <script>
+import Controler from '@/molecules/Controler.vue';
+
 export default {
   name: 'Player',
+  components: {
+    Controler,
+  },
 };
 </script>
 
