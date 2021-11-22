@@ -1,5 +1,5 @@
 <template>
-  <Card>
+  <Card :extend="true">
     <template v-slot:header="{ pad, }">
       <ResponsiveHeader :chapter="chapter" :selected="selected" @selecting="select" :pad="pad"/>
     </template>

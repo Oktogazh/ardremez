@@ -1,5 +1,5 @@
 <template>
-  <div class="card-container">
+  <div :class="[extend? 'extend': '', 'card-container']">
     <div class="header-container">
       <slot name="header" :toggle="toggleBody" :bodyOpen="bodyOpen" :pad="pad">
       </slot>
@@ -26,6 +26,10 @@ export default {
     },
   },
   props: {
+    extend: {
+      required: false,
+      default: false,
+    },
     pad: {
       required: false,
       default: '0em',
@@ -52,12 +56,12 @@ export default {
   flex-direction: column;
   background: var(--card-background);
   box-shadow: var(--slim-box-shadow) var(--middle-black);
-  border-radius: 5px 5px 0 0;
+  border-radius: 9px 9px 0 0;
   overflow: hidden;
 }
 
 .header-container {
-  flex: 1 0 auto;
+  flex: 0 0 auto;
   border-bottom: solid 1px var(--lighter-black);
 }
 
@@ -69,5 +73,11 @@ export default {
 }
 .body:-webkit-scrollbar {
     display: none; /* Other browsers */
+}
+
+@media only screen and (max-width: 650px) {
+  .extend {
+    height: 100%;
+  }
 }
 </style>

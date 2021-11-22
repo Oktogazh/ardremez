@@ -23,4 +23,10 @@ export default {
   flex-flow: row nowrap;
   align-items: center;
 }
+
+@media only screen and (max-width: 650px) {
+  #controler {
+    margin: auto;
+  }
+}
 </style>
