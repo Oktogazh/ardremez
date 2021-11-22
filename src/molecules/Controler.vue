@@ -1,6 +1,7 @@
 <template >
-  <div class="">
-    <Download :size="'1em'" />
+  <div id="controler">
+    <Download :size="'2.5em'" :id="prev" :angle="90"/>
+    <Download :size="'2.5em'" :id="next" :angle="-90"/>
   </div>
 </template>
 
@@ -16,4 +17,10 @@ export default {
 </script>
 
 <style scoped>
+#controler {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
 </style>

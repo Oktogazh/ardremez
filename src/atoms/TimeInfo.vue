@@ -1,6 +1,5 @@
 <template>
-  <span>
-  </span>
+  <span>0:00</span>
 </template>
 
 <script>

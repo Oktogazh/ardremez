@@ -18,12 +18,19 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style scoped>
 #player-outer-container {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: var(--player-height);
-  background: var(--cut-background);
+  background: var(--dark-black);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+}
+
+:deep(*) {
+  color: var(--light-white);
 }
 </style>

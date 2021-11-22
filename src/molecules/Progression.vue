@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="time-info">
     <TimeInfo />
     <TimeInfo />
   </div>
@@ -16,5 +16,10 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style scoped>
+#time-info {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
 </style>
