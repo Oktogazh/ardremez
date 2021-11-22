@@ -1,16 +1,19 @@
 <template>
   <div id="player-outer-container">
+    <Progression />
     <Controler />
   </div>
 </template>
 
 <script>
 import Controler from '@/molecules/Controler.vue';
+import Progression from '@/molecules/Progression.vue';
 
 export default {
   name: 'Player',
   components: {
     Controler,
+    Progression,
   },
 };
 </script>
