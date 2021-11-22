@@ -18,6 +18,10 @@ export default {
     selected: {
       required: true, // default: 0,
     },
+    pad: {
+      required: false,
+      default: '0em',
+    },
   },
 };
 </script>
@@ -25,18 +29,24 @@ export default {
 <style scoped>
 #flex-responsive {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0 3em;
+  gap: 0 v-bind(pad);
 }
 
 .card-header {
   padding: 1em 0;
-  width: calc(1/3 - 2em);
-  flex: 1 1 auto;
+  width: 0;
+  flex: 1 0 auto;
   text-align: center;
   cursor: pointer;
   border-bottom: solid 3px transparent;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.card-header:-webkit-scrollbar {
+    display: none; /* Other browsers */
 }
 .card-header:hover {
   border-bottom: solid 3px var(--middle-black);

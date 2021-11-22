@@ -1,7 +1,7 @@
 <template>
   <Card>
-    <template v-slot:header>
-      <ResponsiveHeader :chapter="chapter" :selected="selected" @selecting="select" />
+    <template v-slot:header="{ pad, }">
+      <ResponsiveHeader :chapter="chapter" :selected="selected" @selecting="select" :pad="pad"/>
     </template>
     <template v-slot:body>
       <ul v-if="chapter.cards[selected].type === 'captions'">

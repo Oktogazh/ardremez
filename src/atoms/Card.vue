@@ -1,7 +1,8 @@
 <template>
   <div class="card-container">
     <div class="header-container">
-      <slot name="header" :toggle="toggleBody" :bodyOpen="bodyOpen"></slot>
+      <slot name="header" :toggle="toggleBody" :bodyOpen="bodyOpen" :pad="pad">
+      </slot>
     </div>
     <div class="body" v-show="bodyOpen">
       <slot name="body"></slot>
