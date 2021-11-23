@@ -37,14 +37,6 @@ export default {
         },
       });
     },
-    update() {
-
-    },
-  },
-  watch: {
-    $route() {
-      this.update();
-    },
   },
 };
 </script>
