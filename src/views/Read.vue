@@ -62,6 +62,7 @@ export default {
       this.id = this.$route.query.p;
       const dataURI = `${this.$store.state.api}/api/read/${this.id}`;
 
+      if (!this.id) return null;
       const chapterData = await Promise.resolve()
         .then(() => axios.get(dataURI))
         .then((res) => res.data.chapter);
@@ -70,6 +71,7 @@ export default {
       this.$store.commit('app/SET_TITLES', { subtitle: chapterData.title });
 
       this.$store.commit('app/SET_LOADING', { loading: false });
+      return null;
     },
   },
   watch: {
