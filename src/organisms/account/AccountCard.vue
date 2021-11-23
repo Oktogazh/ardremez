@@ -1,5 +1,5 @@
 <template>
-  <Card>
+  <HeadedCard>
     <template v-slot:header>
       <h2 v-html="translate.Manage_My_Account"></h2>
     </template>
@@ -17,18 +17,18 @@
         </div>
       </div>
     </template>
-  </Card>
+  </HeadedCard>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import swal from 'sweetalert2';
-import Card from '@/atoms/Card.vue';
+import HeadedCard from '@/molecules/HeadedCard.vue';
 
 export default {
   name: 'Account',
   components: {
-    Card,
+    HeadedCard,
   },
   computed: {
     ...mapState({

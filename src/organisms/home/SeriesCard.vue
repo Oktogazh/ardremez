@@ -1,5 +1,5 @@
 <template>
-  <Card>
+  <HeadedCard>
     <!-- @click="toggle" -->
     <template #header="{ toggle, bodyOpen }">
       <DownButton v-if="!bodyOpen" @click="toggle"/>
@@ -51,12 +51,12 @@
         </div>
       </div>
     </template>
-  </Card>
+  </HeadedCard>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import Card from '@/atoms/Card.vue';
+import HeadedCard from '@/molecules/HeadedCard.vue';
 import Modal from '@/organisms/utils/Modal.vue';
 import SmallButton from '@/atoms/buttons/SmallButton.vue';
 import DownButton from '@/atoms/buttons/DownButton.vue';
@@ -65,7 +65,7 @@ import UpButton from '@/atoms/buttons/UpButton.vue';
 export default {
   name: 'SeriesCard',
   components: {
-    Card,
+    HeadedCard,
     Modal,
     SmallButton,
     DownButton,

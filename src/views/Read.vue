@@ -1,10 +1,10 @@
 <template>
   <ReaderCard v-if="!loading" :chapter="chapterData" :pad="'1em'" />
-  <Card v-if="loading" :open="false">
+  <HeadedCard v-if="loading" :open="false">
     <template #header>
       <h1>Loading...</h1>
     </template>
-  </Card>
+  </HeadedCard>
   <teleport to="#app">
     <Player />
   </teleport>
@@ -13,7 +13,7 @@
 <script>
 import axios from 'axios';
 import ReaderCard from '@/organisms/ReaderCard.vue';
-import Card from '@/atoms/Card.vue';
+import HeadedCard from '@/molecules/HeadedCard.vue';
 import Player from '@/organisms/Player.vue';
 
 export default {
@@ -22,7 +22,7 @@ export default {
     this.downloadChapter();
   },
   components: {
-    Card,
+    HeadedCard,
     ReaderCard,
     Player,
   },

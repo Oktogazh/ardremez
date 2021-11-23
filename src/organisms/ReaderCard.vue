@@ -1,5 +1,5 @@
 <template>
-  <Card :extend="true">
+  <HeadedCard :extend="true">
     <template v-slot:header="{ pad, }">
       <ResponsiveHeader :chapter="chapter" :selected="selected" @selecting="select" :pad="pad"/>
     </template>
@@ -13,17 +13,17 @@
         <p v-else v-html="body"></p>
       </div>
     </template>
-  </Card>
+  </HeadedCard>
 </template>
 
 <script>
-import Card from '@/atoms/Card.vue';
+import HeadedCard from '@/molecules/HeadedCard.vue';
 import ResponsiveHeader from '@/molecules/ResponsiveHeader.vue';
 
 export default {
   name: 'ReaderCard',
   components: {
-    Card,
+    HeadedCard,
     ResponsiveHeader,
   },
   data() {
@@ -52,7 +52,6 @@ export default {
 
 <style scoped>
 #body-inner-container {
-  padding: 1em 2em;
 }
 
 li {

@@ -1,29 +1,15 @@
 <template>
   <div :class="[extend? 'extend': '', 'card-container']">
-    <div class="header-container">
-      <slot name="header" :toggle="toggleBody" :bodyOpen="bodyOpen" :pad="pad">
-      </slot>
-    </div>
-    <div class="body" v-show="bodyOpen">
-      <slot name="body"></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Card',
-  components: {
-  },
   data() {
     return {
-      bodyOpen: this.open,
     };
-  },
-  methods: {
-    toggleBody() {
-      this.bodyOpen = !this.bodyOpen;
-    },
   },
   props: {
     extend: {
@@ -33,11 +19,6 @@ export default {
     pad: {
       required: false,
       default: '0em',
-    },
-    open: {
-      type: Boolean,
-      required: false,
-      default: true,
     },
   },
 };
@@ -58,21 +39,6 @@ export default {
   box-shadow: var(--slim-box-shadow) var(--middle-black);
   border-radius: 9px 9px 0 0;
   overflow: hidden;
-}
-
-.header-container {
-  flex: 0 0 auto;
-  border-bottom: solid 1px var(--lighter-black);
-}
-
-.body {
-  flex: 0 1 auto;
-  overflow-y: scroll;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-.body:-webkit-scrollbar {
-    display: none; /* Other browsers */
 }
 
 @media only screen and (max-width: 650px) {

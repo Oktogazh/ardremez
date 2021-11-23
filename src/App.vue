@@ -74,7 +74,7 @@ body {
     rgba(255,40,40,1) 50%, rgba(255,124,46,1) 100%);
   --slim-box-shadow: 0 1px 2px;
   --wide-box-shadow: 0 2px 4px 2px;
-  --player-height: 4em;
+  --player-height: 4.5em;
   --header-height: 4em;
 }
 
