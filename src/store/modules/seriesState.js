@@ -21,6 +21,7 @@ const seriesState = ({
         metadata: {
           averageDuration: '10`',
           creator: '5f9f2714ab73e601aa5d192a', // ObjectId of the creator's account
+          freeTrial: 7,
           languages: {
             source: 'fra',
             target: 'bre',

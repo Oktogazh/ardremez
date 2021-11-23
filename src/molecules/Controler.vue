@@ -1,17 +1,50 @@
 <template >
   <div id="controler">
-    <Download :size="'2.5em'" :id="prev" :angle="90"/>
-    <Download :size="'2.5em'" :id="next" :angle="-90"/>
+    <Load  id="prev" :active="hasPrev" :size="'2.5em'" :angle="-90" @click="loading"/>
+    <Load  id="next" :active="hasNext" :size="'2.5em'" :angle="90" @click="loading"/>
   </div>
 </template>
 
 <script>
-import Download from '@/atoms/actions/Download.vue';
+import Load from '@/atoms/actions/Load.vue';
 
 export default {
   name: 'Controler',
   components: {
-    Download,
+    Load,
+  },
+  data() {
+    return {
+      hasPrev: true,
+      hasNext: true,
+    };
+  },
+  methods: {
+    loading(evt) {
+      const { code } = this.$store.state.series.series[0];
+      const sign = (evt.target.id === 'prev') ? -1 : 1;
+      const max = this.$store.state.series.series[0].metadata.podcasts;
+      // const freeTrial = this.$store.state.series.series[0].metadata.freeTrial;
+      const id = parseInt(this.$store.state.lesson.id, 10);
+      const askingFor = sign * 1 + id;
+
+      if (askingFor < 1 || askingFor > max) return null;
+
+      return this.$router.push({
+        path: '/read',
+        query: {
+          p: `${askingFor}${code}`,
+        },
+      });
+    },
+    update() {
+
+    },
+  },
+  watch: {
+    $route() {
+      this.update();
+    },
   },
 };
 </script>

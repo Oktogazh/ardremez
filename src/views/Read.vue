@@ -1,19 +1,18 @@
 <template>
   <ReaderCard v-if="!loading" :chapter="chapterData" :pad="'1em'" />
-  <HeadedCard v-if="loading" :open="false">
-    <template #header>
+  <Card v-if="loading" :open="false">
       <h1>Loading...</h1>
-    </template>
-  </HeadedCard>
+  </Card>
   <teleport to="#app">
     <Player />
   </teleport>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import axios from 'axios';
 import ReaderCard from '@/organisms/ReaderCard.vue';
-import HeadedCard from '@/molecules/HeadedCard.vue';
+import Card from '@/atoms/Card.vue';
 import Player from '@/organisms/Player.vue';
 
 export default {
@@ -22,13 +21,17 @@ export default {
     this.downloadChapter();
   },
   components: {
-    HeadedCard,
+    Card,
     ReaderCard,
     Player,
   },
+  computed: {
+    ...mapState({
+      loading: (state) => state.app.loading,
+    }),
+  },
   data() {
     return {
-      loading: false,
       id: null,
       chapterData: { // :chapter
         cards: [ // :card
@@ -54,7 +57,7 @@ export default {
   },
   methods: {
     async downloadChapter() {
-      this.loading = true;
+      this.$store.commit('app/SET_LOADING', { loading: true });
       this.$store.commit('app/SET_TITLES', { subtitle: 'Loading...' });
       this.id = this.$route.query.p;
       const dataURI = `${this.$store.state.api}/api/read/${this.id}`;
@@ -62,9 +65,11 @@ export default {
       const chapterData = await Promise.resolve()
         .then(() => axios.get(dataURI))
         .then((res) => res.data.chapter);
+      this.$store.commit('lesson/SET_LESSON', chapterData);
       this.chapterData = chapterData;
       this.$store.commit('app/SET_TITLES', { subtitle: chapterData.title });
-      this.loading = false;
+
+      this.$store.commit('app/SET_LOADING', { loading: false });
     },
   },
   watch: {

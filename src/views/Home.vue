@@ -6,7 +6,6 @@
 
 <script>
 import { mapState } from 'vuex';
-// @ is an alias to /src
 import SeriesCard from '@/molecules/SeriesCard.vue';
 
 export default {
