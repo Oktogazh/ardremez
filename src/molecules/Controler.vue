@@ -1,7 +1,7 @@
 <template >
   <div id="controler">
-    <Load  id="prev" :active="hasPrev" :size="'2.5em'" :angle="-90" @click="loading"/>
-    <Load  id="next" :active="hasNext" :size="'2.5em'" :angle="90" @click="loading"/>
+    <Load  id="prev" :active="hasPrev" :size="'2.5em'" :angle="'90deg'" @click="loading"/>
+    <Load  id="next" :active="hasNext" :size="'2.5em'" :angle="'-90deg'" @click="loading"/>
   </div>
 </template>
 
