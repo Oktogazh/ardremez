@@ -1,6 +1,6 @@
 <template>
-  <div :id="id" class="download-action">
-    <svg width="100%" height="100%" viewBox="0 0 6.085377 6.0854167"
+  <div :class="[active? 'active': '', 'download-action']">
+    <svg width="80%" height="80%" viewBox="0 0 6.085377 6.0854167"
       xmlns="http://www.w3.org/2000/svg">
       <g class="rotate">
         <g transform="translate(-0.925946,-0.97128516)">
@@ -24,10 +24,11 @@
 export default {
   name: 'Download',
   props: {
-    angle: {
+    active: {
       required: true,
+      default: false,
     },
-    id: {
+    angle: {
       required: true,
     },
     size: {
@@ -42,7 +43,15 @@ export default {
   position: relative;
   height: v-bind(size);
   width: v-bind(size);
-  background: var(--todo-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.active {
+}
+.active:hover {
+  cursor: pointer;
 }
 
 .rotate {

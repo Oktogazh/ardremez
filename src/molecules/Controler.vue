@@ -1,7 +1,7 @@
 <template >
   <div id="controler">
-    <Load  id="prev" :active="hasPrev" :size="'2.5em'" :angle="'90deg'" @click="loading"/>
-    <Load  id="next" :active="hasNext" :size="'2.5em'" :angle="'-90deg'" @click="loading"/>
+    <Load :active="hasPrev" :size="'2.5em'" :angle="'90deg'" @click="loading('prev')"/>
+    <Load :active="hasNext" :size="'2.5em'" :angle="'-90deg'" @click="loading('next')"/>
   </div>
 </template>
 
@@ -13,16 +13,22 @@ export default {
   components: {
     Load,
   },
-  data() {
-    return {
-      hasPrev: true,
-      hasNext: true,
-    };
+  computed: {
+    hasNext() {
+      const id = parseInt(this.$store.state.lesson.id, 10);
+      const max = parseInt(this.$store.state.series.series[0].metadata.podcasts, 10);
+      return (max !== id);
+    },
+    hasPrev() {
+      const id = parseInt(this.$store.state.lesson.id, 10);
+      return (id !== 1);
+    },
   },
   methods: {
-    loading(evt) {
+    loading(name) {
       const { code } = this.$store.state.series.series[0];
-      const sign = (evt.target.id === 'prev') ? -1 : 1;
+      console.log(name);
+      const sign = (name === 'prev') ? -1 : 1;
       const max = this.$store.state.series.series[0].metadata.podcasts;
       // const freeTrial = this.$store.state.series.series[0].metadata.freeTrial;
       const id = parseInt(this.$store.state.lesson.id, 10);
