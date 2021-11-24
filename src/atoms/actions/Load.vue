@@ -4,14 +4,10 @@
       xmlns="http://www.w3.org/2000/svg">
       <g class="rotate">
         <g transform="translate(-0.925946,-0.97128516)">
-          <path
-            style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;
-              stroke-linejoin:miter;stroke-opacity:1"
+          <path :class="[active? '': 'disabled', 'path']"
             d="M 1.3228012,1.1906248 H 6.6144678 L 3.9686345,5.9055 Z"
             sodipodi:nodetypes="cccc" />
-          <rect
-            style="fill:#000000;fill-opacity:0.013986;stroke:#000000;stroke-width:0.264583;
-              stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+          <rect :class="[active? '': 'disabled', 'path']"
             height="0.52916664" x="1.3229165" y="6.3081956" ry="0" rx="0"
             width="5.291667" />
         </g>
@@ -46,9 +42,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: .25;
 }
 
 .active {
+  opacity: 1;
 }
 .active:hover {
   cursor: pointer;
@@ -57,5 +55,14 @@ export default {
 .rotate {
   transform: rotate(v-bind(angle));
   transform-origin: 50% 50%;
+}
+
+.path {
+  stroke: #ffffff;
+  stroke-width: 0.264583;
+  stroke-opacity: .75;
+  stroke-linecap: round;
+  stroke-dasharray: none;
+  fill: none;
 }
 </style>
