@@ -1,17 +1,20 @@
 <template >
   <div id="controler">
-    <Load :active="hasPrev" :size="'2.5em'" :angle="'90deg'" @click="loading('prev')"/>
-    <Load :active="hasNext" :size="'2.5em'" :angle="'-90deg'" @click="loading('next')"/>
+    <Load :active="hasPrev" :size="size" :angle="'90deg'" @click="loading('prev')"/>
+    <PlayPause :size="size" />
+    <Load :active="hasNext" :size="size" :angle="'-90deg'" @click="loading('next')"/>
   </div>
 </template>
 
 <script>
 import Load from '@/atoms/actions/Load.vue';
+import PlayPause from '@/atoms/actions/PlayPause.vue';
 
 export default {
   name: 'Controler',
   components: {
     Load,
+    PlayPause,
   },
   computed: {
     hasNext() {
@@ -24,10 +27,14 @@ export default {
       return (id !== 1);
     },
   },
+  data() {
+    return {
+      size: '40px',
+    };
+  },
   methods: {
     loading(name) {
       const { code } = this.$store.state.series.series[0];
-      console.log(name);
       const sign = (name === 'prev') ? -1 : 1;
       const max = this.$store.state.series.series[0].metadata.podcasts;
       // const freeTrial = this.$store.state.series.series[0].metadata.freeTrial;
