@@ -29,7 +29,7 @@ export default {
   },
   data() {
     return {
-      size: '40px',
+      size: '37px',
     };
   },
   methods: {

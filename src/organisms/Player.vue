@@ -32,5 +32,9 @@ export default {
 
 :deep(*) {
   color: var(--light-white);
+  stroke: white;
+  stroke-linecap: round;
+  stroke-dasharray: none;
+  fill: none;
 }
 </style>

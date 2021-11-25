@@ -1,6 +1,6 @@
 <template>
   <div :class="[active? 'active': '', 'download-action']">
-    <svg width="80%" height="80%" viewBox="0 0 6.085377 6.0854167"
+    <svg width="60%" height="60%" viewBox="0 0 6.085377 6.0854167"
       xmlns="http://www.w3.org/2000/svg">
       <g class="rotate">
         <g transform="translate(-0.925946,-0.97128516)">
@@ -58,11 +58,7 @@ export default {
 }
 
 .path {
-  stroke: #ffffff;
-  stroke-width: 0.264583;
   stroke-opacity: .75;
-  stroke-linecap: round;
-  stroke-dasharray: none;
-  fill: none;
+  stroke-width: .25;
 }
 </style>
