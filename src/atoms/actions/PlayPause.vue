@@ -1,5 +1,5 @@
 <template>
-  <button ref="playIcon" @click="switchState">
+  <button ref="playIcon" id="play-icon" @click="switchState">
   </button>
 </template>
 
@@ -53,5 +53,6 @@ export default {
 #play-icon {
   width: v-bind(size);
   height: v-bind(size);
+  cursor: pointer;
 }
 </style>
