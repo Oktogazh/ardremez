@@ -33,24 +33,23 @@ export default {
 
       audio.src = audioSourceURI;
 
-      return null;
-    },
-    getMetaData() {
-      const audio = document.querySelector('audio');
-
-      audio.addEventListener('loadedmetadata', () => {
+      if (audio.readyState > 0) {
         this.duration = audio.duration;
-      });
+      } else {
+        audio.addEventListener('loadedmetadata', () => {
+          this.duration = audio.duration;
+        });
+      }
+
+      return null;
     },
   },
   mounted() {
     this.downloadAudio();
-    this.getMetaData();
   },
   watch: {
     $route() {
       this.downloadAudio();
-      this.getMetaData();
     },
   },
 };
