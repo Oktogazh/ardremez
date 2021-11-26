@@ -1,6 +1,7 @@
 <template>
   <div id="player-outer-container">
-    <Progression />
+    <audio id="audio" preload=”metadata”></audio>
+    <Progression/>
     <Controler />
   </div>
 </template>
@@ -14,6 +15,29 @@ export default {
   components: {
     Controler,
     Progression,
+  },
+  methods: {
+    downloadAudio() {
+      const { api } = this.$store.state;
+      const id = this.$route.query.p;
+
+      if (!id) return null;
+
+      const audio = document.getElementById('audio');
+      const audioSourceURI = `${api}/api/selaou/${id}`;
+
+      audio.src = audioSourceURI;
+
+      return null;
+    },
+  },
+  mounted() {
+    this.downloadAudio();
+  },
+  watch: {
+    $route() {
+      this.downloadAudio();
+    },
   },
 };
 </script>

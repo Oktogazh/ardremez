@@ -29,10 +29,14 @@ export default {
       this.animation.goToAndStop(14, true);
     },
     switchState() {
+      const audio = document.getElementById('audio');
+
       if (this.playing) {
+        audio.pause();
         this.animation.playSegments([0, 14], true);
         this.playing = false;
       } else {
+        audio.play();
         this.animation.playSegments([14, 27], true);
         this.playing = true;
       }

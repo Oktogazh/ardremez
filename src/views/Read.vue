@@ -57,12 +57,15 @@ export default {
   },
   methods: {
     async downloadChapter() {
+      const { api } = this.$store.state;
       this.$store.commit('app/SET_LOADING', { loading: true });
       this.$store.commit('app/SET_TITLES', { subtitle: 'Loading...' });
       this.id = this.$route.query.p;
-      const dataURI = `${this.$store.state.api}/api/read/${this.id}`;
 
       if (!this.id) return null;
+
+      const dataURI = `${api}/api/read/${this.id}`;
+
       const chapterData = await Promise.resolve()
         .then(() => axios.get(dataURI))
         .then((res) => res.data.chapter);
