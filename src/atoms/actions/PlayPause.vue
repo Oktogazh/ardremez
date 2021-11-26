@@ -10,7 +10,6 @@ export default {
   name: 'PlayPause',
   data() {
     return {
-      playing: false,
     };
   },
   methods: {
@@ -34,11 +33,11 @@ export default {
       if (this.playing) {
         audio.pause();
         this.animation.playSegments([0, 14], true);
-        this.playing = false;
+        this.$emit('pause');
       } else {
         audio.play();
         this.animation.playSegments([14, 27], true);
-        this.playing = true;
+        this.$emit('play');
       }
     },
   },
@@ -48,6 +47,10 @@ export default {
   props: {
     size: {
       required: true,
+    },
+    playing: {
+      required: true,
+      default: false,
     },
   },
 };

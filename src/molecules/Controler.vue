@@ -1,7 +1,8 @@
 <template >
   <div id="controler">
     <Load :active="hasPrev" :size="size" :angle="'90deg'" @click="loading('prev')"/>
-    <PlayPause :size="size" />
+    <PlayPause :size="size" :playing="playing"
+      @play="playing = true" @pause="playing = false"/>
     <Load :active="hasNext" :size="size" :angle="'-90deg'" @click="loading('next')"/>
   </div>
 </template>
@@ -30,6 +31,7 @@ export default {
   data() {
     return {
       size: '37px',
+      playing: false,
     };
   },
   methods: {
@@ -42,6 +44,11 @@ export default {
       const askingFor = sign * 1 + id;
 
       if (askingFor < 1 || askingFor > max) return null;
+
+      if (this.playing) {
+        const playIcon = document.getElementById('play-icon');
+        playIcon.click();
+      }
 
       return this.$router.push({
         path: '/read',
