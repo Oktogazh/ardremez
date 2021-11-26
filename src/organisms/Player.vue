@@ -1,7 +1,7 @@
 <template>
   <div id="player-outer-container">
     <audio id="audio" preload=”metadata”></audio>
-    <Progression/>
+    <Progression :duration="duration"/>
     <Controler />
   </div>
 </template>
@@ -15,6 +15,11 @@ export default {
   components: {
     Controler,
     Progression,
+  },
+  data() {
+    return {
+      duration: null,
+    };
   },
   methods: {
     downloadAudio() {
@@ -30,13 +35,22 @@ export default {
 
       return null;
     },
+    getMetaData() {
+      const audio = document.querySelector('audio');
+
+      audio.addEventListener('loadedmetadata', () => {
+        this.duration = audio.duration;
+      });
+    },
   },
   mounted() {
     this.downloadAudio();
+    this.getMetaData();
   },
   watch: {
     $route() {
       this.downloadAudio();
+      this.getMetaData();
     },
   },
 };

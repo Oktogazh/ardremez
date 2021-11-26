@@ -1,7 +1,7 @@
 <template>
   <div id="time-info">
     <TimeInfo />
-    <TimeInfo />
+    <TimeInfo :seconds="duration" />
   </div>
 </template>
 
@@ -12,6 +12,12 @@ export default {
   name: 'Progression',
   components: {
     TimeInfo,
+  },
+  props: {
+    duration: {
+      required: true,
+      type: Number,
+    },
   },
 };
 </script>
