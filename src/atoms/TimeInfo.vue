@@ -20,7 +20,7 @@ export default {
       const m = Math.floor(mins % 60);
       const hrs = Math.floor(mins / 60);
       const h = calcHours(hrs, m);
-      const s = (secs > 10) ? secs : `0${secs}`;
+      const s = (secs > 9) ? secs : `0${secs}`;
 
       return `${h}${m}:${s}`;
     },

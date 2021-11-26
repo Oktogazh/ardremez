@@ -1,7 +1,7 @@
 <template>
   <div id="player-outer-container">
     <audio id="audio" preload=”metadata”></audio>
-    <Progression :duration="duration"/>
+    <Progression :duration="duration" :currentTime="currentTime"/>
     <Controler />
   </div>
 </template>
@@ -19,6 +19,7 @@ export default {
   data() {
     return {
       duration: null,
+      currentTime: 0,
     };
   },
   methods: {
@@ -40,6 +41,10 @@ export default {
           this.duration = audio.duration;
         });
       }
+
+      audio.addEventListener('timeupdate', () => {
+        this.currentTime = audio.currentTime;
+      });
 
       return null;
     },

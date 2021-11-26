@@ -1,6 +1,6 @@
 <template>
   <div id="time-info">
-    <TimeInfo />
+    <TimeInfo :seconds="currentTime"/>
     <TimeInfo :seconds="duration" />
   </div>
 </template>
@@ -14,6 +14,10 @@ export default {
     TimeInfo,
   },
   props: {
+    currentTime: {
+      required: true,
+      type: Number,
+    },
     duration: {
       required: true,
       type: Number,
