@@ -1,8 +1,10 @@
 <template >
   <div id="controler">
     <Load :active="hasPrev" :size="size" :angle="'90deg'" @click="loading('prev')"/>
+    <Skip :size="size" :angle="'180deg'" @click="null"/>
     <PlayPause :size="size" :playing="playing"
       @play="setPlaying(true)" @pause="setPlaying(false)"/>
+    <Skip :size="size" @click="null"/>
     <Load :active="hasNext" :size="size" :angle="'-90deg'" @click="loading('next')"/>
   </div>
 </template>
@@ -10,6 +12,7 @@
 <script>
 import { mapState } from 'vuex';
 import Load from '@/atoms/actions/Load.vue';
+import Skip from '@/atoms/actions/Skip.vue';
 import PlayPause from '@/atoms/actions/PlayPause.vue';
 
 export default {
@@ -17,6 +20,7 @@ export default {
   components: {
     Load,
     PlayPause,
+    Skip,
   },
   computed: {
     ...mapState({

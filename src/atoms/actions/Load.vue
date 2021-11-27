@@ -43,12 +43,11 @@ export default {
   justify-content: center;
   align-items: center;
   opacity: .25;
+  margin: 0 5px;
 }
 
 .active {
   opacity: 1;
-}
-.active:hover {
   cursor: pointer;
 }
 
