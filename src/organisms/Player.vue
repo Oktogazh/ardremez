@@ -1,6 +1,6 @@
 <template>
   <div id="player-outer-container">
-    <audio id="audio" preload=”metadata”></audio>
+    <audio id="audio" preload=”metadata” :onended="endOfPodcast"></audio>
     <Progression :duration="duration" :currentTime="currentTime"/>
     <Controler />
   </div>
@@ -47,6 +47,14 @@ export default {
       });
 
       return null;
+    },
+    endOfPodcast() {
+      const id = `header-${this.$store.state.series.series[0].metadata.openCardOnPodcastEnd}`;
+      const cardToOpen = document.getElementById(id);
+      const playIcon = document.getElementById('play-icon');
+
+      cardToOpen.click();
+      playIcon.click();
     },
   },
   mounted() {

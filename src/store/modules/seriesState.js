@@ -26,6 +26,7 @@ const seriesState = ({
             source: 'fra',
             target: 'bre',
           },
+          openCardOnPodcastEnd: 1,
           podcasts: 91,
           startLevel: 'beginner',
           subscribers: null, // TODO: get a number
