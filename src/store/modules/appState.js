@@ -5,6 +5,9 @@ const appState = ({
     loading: false,
     title: 'Home',
     subtitle: null,
+    player: {
+      playing: false,
+    },
   },
   mutations: {
     SET_CHOSEN_LANGUAGE(state, language) {
@@ -12,6 +15,9 @@ const appState = ({
     },
     SET_LOADING(state, { loading }) {
       state.loading = loading;
+    },
+    SET_PLAYING(state, { playing }) {
+      state.player.playing = playing;
     },
     SET_TITLES(state, { title, subtitle }) {
       state.title = title;

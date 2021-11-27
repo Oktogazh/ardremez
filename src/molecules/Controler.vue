@@ -2,12 +2,13 @@
   <div id="controler">
     <Load :active="hasPrev" :size="size" :angle="'90deg'" @click="loading('prev')"/>
     <PlayPause :size="size" :playing="playing"
-      @play="playing = true" @pause="playing = false"/>
+      @play="setPlaying(true)" @pause="setPlaying(false)"/>
     <Load :active="hasNext" :size="size" :angle="'-90deg'" @click="loading('next')"/>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Load from '@/atoms/actions/Load.vue';
 import PlayPause from '@/atoms/actions/PlayPause.vue';
 
@@ -18,6 +19,11 @@ export default {
     PlayPause,
   },
   computed: {
+    ...mapState({
+      playing(state) {
+        return state.app.player.playing;
+      },
+    }),
     hasNext() {
       const id = parseInt(this.$store.state.lesson.id, 10);
       const max = parseInt(this.$store.state.series.series[0].metadata.podcasts, 10);
@@ -31,7 +37,6 @@ export default {
   data() {
     return {
       size: '37px',
-      playing: false,
     };
   },
   methods: {
@@ -56,6 +61,9 @@ export default {
           p: `${askingFor}${code}`,
         },
       });
+    },
+    setPlaying(bool) {
+      this.$store.commit('app/SET_PLAYING', { playing: bool });
     },
   },
 };

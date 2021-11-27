@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import HeadedCard from '@/molecules/HeadedCard.vue';
 import ResponsiveHeader from '@/molecules/ResponsiveHeader.vue';
 
@@ -26,12 +27,33 @@ export default {
     HeadedCard,
     ResponsiveHeader,
   },
+  computed: {
+    body() {
+      return (this.chapter.cards[this.selected].type === 'html')
+        ? (this.chapter.cards[this.selected].data.body.join('\n')) : this.chapter.cards[this.selected].data.body;
+    },
+    ...mapState({
+      playing(state) {
+        return state.app.player.playing;
+      },
+    }),
+  },
   data() {
     return {
       selected: 0,
     };
   },
   methods: {
+    play(startTime) {
+      const audio = document.getElementById('audio');
+
+      audio.currentTime = startTime;
+
+      if (!this.playing) {
+        const playIcon = document.getElementById('play-icon');
+        playIcon.click();
+      }
+    },
     select(index) {
       this.selected = index;
     },
@@ -39,12 +61,6 @@ export default {
   props: {
     chapter: {
       required: true,
-    },
-  },
-  computed: {
-    body() {
-      return (this.chapter.cards[this.selected].type === 'html')
-        ? (this.chapter.cards[this.selected].data.body.join('\n')) : this.chapter.cards[this.selected].data.body;
     },
   },
 };
