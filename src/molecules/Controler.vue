@@ -1,10 +1,10 @@
 <template >
   <div id="controler">
     <Load :active="hasPrev" :size="size" :angle="'90deg'" @click="loading('prev')"/>
-    <Skip :size="size" :angle="'180deg'" @click="null"/>
+    <Skip :size="size" :angle="'180deg'" @click="skipping(-10)"/>
     <PlayPause :size="size" :playing="playing"
       @play="setPlaying(true)" @pause="setPlaying(false)"/>
-    <Skip :size="size" @click="null"/>
+    <Skip :size="size" @click="skipping(10)"/>
     <Load :active="hasNext" :size="size" :angle="'-90deg'" @click="loading('next')"/>
   </div>
 </template>
@@ -68,6 +68,10 @@ export default {
     },
     setPlaying(bool) {
       this.$store.commit('app/SET_PLAYING', { playing: bool });
+    },
+    skipping(secs) {
+      const audio = document.getElementById('audio');
+      audio.currentTime += secs;
     },
   },
 };
