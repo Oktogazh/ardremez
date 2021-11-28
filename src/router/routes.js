@@ -1,4 +1,4 @@
-import Home from '../views/Home.vue';
+import Home from '../pages/Home.vue';
 
 const routes = [
   {
@@ -12,7 +12,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Account.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '../pages/Account.vue'),
     meta: {
       requireAuth: true,
     },
@@ -20,12 +20,12 @@ const routes = [
   {
     path: '/read',
     name: 'Read',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Read.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '../pages/Read.vue'),
   },
   {
     path: '/verify',
     name: 'Verify',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Verify.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '../pages/Verify.vue'),
     meta: {
       unverifiedOnly: true,
     },
