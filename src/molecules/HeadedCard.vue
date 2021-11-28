@@ -1,5 +1,5 @@
 <template>
-  <Card :pad="pad" :extend="extend">
+  <Card :pad="pad" :extend="extend" :radius="radius">
     <div class="header-container">
       <slot name="header" :toggle="toggleBody" :bodyOpen="bodyOpen" :pad="pad">
       </slot>
@@ -34,14 +34,18 @@ export default {
       required: false,
       default: false,
     },
-    pad: {
-      required: false,
-      default: '0em',
-    },
     open: {
       type: Boolean,
       required: false,
       default: true,
+    },
+    pad: {
+      required: false,
+      default: '0',
+    },
+    radius: {
+      required: false,
+      default: '0',
     },
   },
 };

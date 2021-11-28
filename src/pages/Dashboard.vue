@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import AccountCard from '@/organisms/account/AccountCard.vue';
+import AccountCard from '@/organisms/SettingCard.vue';
 
 export default {
   name: 'Account',

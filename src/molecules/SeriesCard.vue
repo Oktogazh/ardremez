@@ -1,5 +1,5 @@
 <template>
-  <HeadedCard>
+  <HeadedCard :radius="'9px'">
     <!-- @click="toggle" -->
     <template #header="{ toggle, bodyOpen }">
       <DownButton v-if="!bodyOpen" @click="toggle"/>

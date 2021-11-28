@@ -18,7 +18,11 @@ export default {
     },
     pad: {
       required: false,
-      default: '0em',
+      default: '0',
+    },
+    radius: {
+      required: false,
+      default: '0',
     },
   },
 };
@@ -27,7 +31,7 @@ export default {
 <style scoped>
 .card-container {
   position: relative;
-  width: 900px;
+  width: 850px;
   max-width: calc(100% - 2 *  v-bind(pad));
   height: auto;
   padding-left: v-bind(pad);
@@ -37,7 +41,7 @@ export default {
   flex-direction: column;
   background: var(--card-background);
   box-shadow: var(--slim-box-shadow) var(--middle-black);
-  border-radius: 9px 9px 0 0;
+  border-radius: v-bind(radius);
   overflow: hidden;
 }
 

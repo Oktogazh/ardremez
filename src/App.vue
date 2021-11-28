@@ -82,4 +82,7 @@ a, button {
   all: unset;
 }
 
+h2 {
+  margin: .75em 2em;
+}
 </style>

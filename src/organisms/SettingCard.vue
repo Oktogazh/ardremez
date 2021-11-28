@@ -1,5 +1,5 @@
 <template>
-  <HeadedCard>
+  <HeadedCard :radius="'9px'">
     <template v-slot:header>
       <h2 v-html="translate.Manage_My_Account"></h2>
     </template>
