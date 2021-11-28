@@ -34,6 +34,7 @@ const obj = {
   Sign_In: 'En Em Skrivañ',
   Show_description: 'Diskouez an diskrivadur',
   Submit: 'Kas',
+  Subscribe: 'Koumanantiñ',
   Wrong_code_New_code_sent: 'Ar c\'hod-mañ zo diwiriek, pe c\'hoazh, diamzeriet.<br>Emeur o paouez kas ur c\'hod nevez, deoc\'h klask en-dro.',
 };
 

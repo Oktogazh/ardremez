@@ -33,11 +33,11 @@
           <div id="series-options-container">
             <!-- TODO: use a getter to compute the query after the user's level -->
             <router-link :to="{ path: '/read', query: { p: `1${code}` }}">
-              <SmallButton :bg="'blueish'" :text="translate.Free_Trial"/>
+              <SmallButton :bg="'grad-blue'" :text="translate.Free_Trial"/>
             </router-link>
-            <div class="option" id="sub-btn">
-              {{ translate.Subscribe}}
-            </div>
+            <router-link :to="{ path: '/dashboard', query: { s: `${code}` }}">
+              <SmallButton :bg="'grad-green'" :text="translate.Subscribe"/>
+            </router-link>
           </div>
         <!-- Title & Metadata End -->
         </div>
@@ -147,7 +147,6 @@ export default {
 
 #series-options-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-grow: 1;
 }

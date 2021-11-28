@@ -34,6 +34,7 @@ const obj = {
   Reinitialize_Password: 'Reinitialize Password',
   Sign_In: 'Sign In',
   Submit: 'Submit',
+  Subscribe: 'Subscribe',
   Wrong_code_New_code_sent: 'This code is invalid or has already expired.<br>A new verification code has just been sent to you to try again.',
 };
 

@@ -34,6 +34,7 @@ const obj = {
   Sign_In: 'Créer mon compte',
   Show_description: 'Afficher la description',
   Submit: 'Valider',
+  Subscribe: 'S\'abonner',
   Wrong_code_New_code_sent: 'Ce code est invalide ou a déja expiré.<br>Un nouveau code de confirmation vient de vous être envoyé.',
 };
 
