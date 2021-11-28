@@ -1,5 +1,5 @@
 <template>
-  <HeadedCard :radius="'9px'">
+  <HeadedCard :radius="'9px'" :open="open">
     <!-- @click="toggle" -->
     <template #header="{ toggle, bodyOpen }">
       <DownButton v-if="!bodyOpen" @click="toggle"/>
@@ -94,6 +94,10 @@ export default {
     },
   },
   props: {
+    open: {
+      required: false,
+      default: true,
+    },
     title: {
       required: true,
     },

@@ -30,6 +30,7 @@ const obj = {
   Other_Languages: 'Yezhoù All',
   Password: 'Ger-Kuzh',
   podcasts: 'a gentelioù',
+  Progressions: 'Araokadennoù',
   Reinitialize_Password: 'Ger-Kuzh Nevez',
   Sign_In: 'En Em Skrivañ',
   Show_description: 'Diskouez an diskrivadur',

@@ -30,6 +30,7 @@ const obj = {
   OK: 'OK',
   Password: 'Mot de Passe',
   podcasts: 'leçons',
+  Progressions: 'Progressions',
   Reinitialize_Password: 'Réinitialiser mon mot de passe',
   Sign_In: 'Créer mon compte',
   Show_description: 'Afficher la description',

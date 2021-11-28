@@ -1,17 +1,21 @@
 <template>
-  <SeriesCard v-for="({ title, comments, code, images, metadata }, key) in storedSeries"
-    :title="title" :code="code" :comments="comments"
-    :images="images" :metadata="metadata" :key="key" />
+  <MainContainer>
+    <SeriesCard v-for="({ title, comments, code, images, metadata }, key) in storedSeries"
+      :title="title" :code="code" :comments="comments"
+      :images="images" :metadata="metadata" :key="key" />
+  </MainContainer>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import SeriesCard from '@/molecules/SeriesCard.vue';
+import MainContainer from '@/atoms/MainContainer.vue';
 
 export default {
   name: 'Home',
   components: {
     SeriesCard,
+    MainContainer,
   },
   computed: {
     ...mapState({

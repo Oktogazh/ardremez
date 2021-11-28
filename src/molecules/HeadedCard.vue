@@ -41,7 +41,7 @@ export default {
     },
     pad: {
       required: false,
-      default: '0',
+      default: '0em',
     },
     radius: {
       required: false,

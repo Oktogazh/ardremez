@@ -1,17 +1,13 @@
 <template>
   <Header />
-  <MainContainer>
-    <router-view />
-  </MainContainer>
+  <router-view />
 </template>
 
 <script>
-import MainContainer from '@/atoms/MainContainer.vue';
 import Header from '@/organisms/Header.vue';
 
 export default {
   components: {
-    MainContainer,
     Header,
   },
   created() {

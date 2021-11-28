@@ -13,11 +13,11 @@ export default {
 <style scoped>
 #main-container {
   padding-top: 10vh;
-  align-items: center;
   height: calc(100vh - var(--header-height));
   max-height: calc(100vh - var(--header-height));
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 3em;
   overflow-y: scroll;
   -ms-overflow-style: none;  /* IE and Edge */

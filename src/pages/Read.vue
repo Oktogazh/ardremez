@@ -1,8 +1,10 @@
 <template>
-  <ReaderCard v-if="!loading" :chapter="chapterData" :pad="'1em'" />
-  <Card v-if="loading" :open="false">
-      <h1>Loading...</h1>
-  </Card>
+  <MainContainer>
+    <ReaderCard v-if="!loading" :chapter="chapterData" :pad="'1em'" />
+    <Card v-if="loading" :open="false">
+        <h1>Loading...</h1>
+    </Card>
+  </MainContainer>
   <teleport to="#app">
     <Player />
   </teleport>
@@ -11,6 +13,7 @@
 <script>
 import { mapState } from 'vuex';
 import axios from 'axios';
+import MainContainer from '@/atoms/MainContainer.vue';
 import ReaderCard from '@/organisms/ReaderCard.vue';
 import Card from '@/atoms/Card.vue';
 import Player from '@/organisms/Player.vue';
@@ -22,6 +25,7 @@ export default {
   },
   components: {
     Card,
+    MainContainer,
     ReaderCard,
     Player,
   },

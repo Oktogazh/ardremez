@@ -1,7 +1,9 @@
 <template>
-  <Access v-if="accessPortal && !$store.getters['user/connected']"
-    @closing="$router.push('/')" @logged="accessPortal = false" />
-  <CheckingCodeCard @sendCode="check" />
+  <MainContainer>
+    <Access v-if="accessPortal && !$store.getters['user/connected']"
+      @closing="$router.push('/')" @logged="accessPortal = false" />
+    <CheckingCodeCard @sendCode="check" />
+  </MainContainer>
 </template>
 
 <script>
