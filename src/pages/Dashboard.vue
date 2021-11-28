@@ -32,11 +32,11 @@ export default {
   height: stretch;
   flex-flow: row wrap;
   justify-content: space-around;
-  gap: 3em;
+  gap: 1em;
   overflow-y: scroll;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  padding: 1.5em;
+  padding: 2em;
 }
 #flex-dashboard:-webkit-scrollbar {
   display: none; /* Other browsers */
@@ -44,10 +44,13 @@ export default {
 
 .flex-item {
   width: calc(50% - 3em);
-  min-width: 500px;
+  min-width: calc(500px - 3em);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 1000px) {
   .flex-item {
     min-width: 100%;
   }
