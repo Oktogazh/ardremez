@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      duration: null,
+      duration: 0,
       currentTime: 0,
     };
   },

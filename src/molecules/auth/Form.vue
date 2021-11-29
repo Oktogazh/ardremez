@@ -61,7 +61,7 @@ export default {
           password: this.password,
         })
           .then(() => this.$router.push('/verify'))
-          .then(() => this.$emit('closing'));
+          .then(() => this.$emit('logged'));
       }
       return null;
     },

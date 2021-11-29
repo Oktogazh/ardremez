@@ -30,15 +30,7 @@
               `${translate[metadata.languages.source]} → ${translate[metadata.languages.target]}`
             }}</p>
           </div>
-          <div id="series-options-container">
-            <!-- TODO: use a getter to compute the query after the user's level -->
-            <router-link :to="{ path: '/read', query: { p: `1${code}` }}">
-              <SmallButton :bg="'grad-blue'" :text="translate.Free_Trial"/>
-            </router-link>
-            <router-link :to="{ path: '/dashboard', query: { s: `${code}` }}">
-              <SmallButton :bg="'grad-green'" :text="translate.Subscribe"/>
-            </router-link>
-          </div>
+          <SeriesCardActions :seriesCode="code" />
         <!-- Title & Metadata End -->
         </div>
       </div>
@@ -57,8 +49,8 @@
 <script>
 import { mapState } from 'vuex';
 import HeadedCard from '@/molecules/HeadedCard.vue';
+import SeriesCardActions from '@/molecules/SeriesCardActions.vue';
 import Modal from '@/atoms/Modal.vue';
-import SmallButton from '@/atoms/buttons/SmallButton.vue';
 import DownButton from '@/atoms/buttons/DownButton.vue';
 import UpButton from '@/atoms/buttons/UpButton.vue';
 
@@ -67,7 +59,7 @@ export default {
   components: {
     HeadedCard,
     Modal,
-    SmallButton,
+    SeriesCardActions,
     DownButton,
     UpButton,
   },
@@ -147,12 +139,6 @@ export default {
   text-transform: uppercase;
   font-weight: 800;
   font-variant-caps: all-petite-caps;
-}
-
-#series-options-container {
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
 }
 
 .option {

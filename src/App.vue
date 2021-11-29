@@ -1,13 +1,16 @@
 <template>
+  <Access v-if="$store.state.app.loggingRequired" />
   <Header />
   <router-view />
 </template>
 
 <script>
+import Access from '@/molecules/auth/Access.vue';
 import Header from '@/organisms/Header.vue';
 
 export default {
   components: {
+    Access,
     Header,
   },
   created() {

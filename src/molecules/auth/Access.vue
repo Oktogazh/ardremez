@@ -1,7 +1,7 @@
 <template>
-  <Modal @closing="$emit('closing', 'accessPortal')" v-bind:background="bgImage">
+  <Modal @closing="$emit('closing', 'accessPortal')">
     <div class="access-container">
-      <Form @closing="$emit('closing', 'accessPortal')" @logged="$emit('logged', 'accessPortal')"/>
+      <Form @logged="logged"/>
     </div>
   </Modal>
 </template>
@@ -21,6 +21,11 @@ export default {
     };
   },
   methods: { // TODO: create a closing method
+    logged() {
+      this.$emit('logged', 'accessPortal');
+      this.$router.push(this.$store.state.app.nextRoute);
+      this.$store.dispatch('app/loggedIn');
+    },
   },
 };
 </script>
