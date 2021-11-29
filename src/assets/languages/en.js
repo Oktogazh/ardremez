@@ -25,6 +25,7 @@ const obj = {
   My_Account: 'My Account',
   My_email_address: 'My email address:',
   new_verificationCode_sent_info: 'A new verification code has just been sent to you,<br>its validity will expire in thirty minutes.',
+  NeedaBeVerifiedToSub: 'For security reasons, you must verify your email address to be allowed to subscribe. Check your emails settings.',
   Not_the_same_psws: 'The two passwords do not match, please try again.',
   OK: 'OK',
   Other_Languages: 'Other Languages',
