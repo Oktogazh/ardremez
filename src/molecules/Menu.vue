@@ -10,11 +10,9 @@
       <OtherLanguages v-if="options.languagesMenu" @closing="closing" />
     </div>
   </div>
-  <Access v-if="options.accessPortal" @closing="closing" @logged="closing" />
 </template>
 
 <script>
-import Access from '@/molecules/auth/Access.vue';
 import MenuOptions from '@/molecules/menu/MenuOptions.vue';
 import OtherLanguages from '@/molecules/menu/OtherLanguages.vue';
 
@@ -31,7 +29,6 @@ export default {
   },
   components: {
     MenuOptions,
-    Access,
     OtherLanguages,
   },
   methods: {

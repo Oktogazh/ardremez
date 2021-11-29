@@ -29,8 +29,11 @@ export default {
         path: '/dashboard',
         query: { s: `${this.seriesCode}` },
       };
-      const alreadyLogged = await this.$store.dispatch('app/logAndRoute', next);
+      const { path } = this.$router.currentRoute.value;
+      const alreadyLogged = await this.$store.dispatch('app/logAndRoute', { next, redirect: path });
+
       if (alreadyLogged) this.$router.push(next);
+      // else the routing is handled by the logger portal
     },
   },
   props: {

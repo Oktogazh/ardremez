@@ -5,7 +5,7 @@
         <h3>{{ $store.state.lang.Other_Languages }}</h3>
       </li>
       <li v-if="!$store.getters['user/connected']"
-        @click="$emit('openOption', 'accessPortal')">
+        @click="$store.dispatch('logAndRoute', { next: '' })">
         <h3>{{ $store.state.lang.Access }}</h3>
       </li>
       <li v-if="$store.getters['user/connected'] &&

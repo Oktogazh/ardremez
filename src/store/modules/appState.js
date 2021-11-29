@@ -10,6 +10,7 @@ const appState = ({
     },
     loggingRequired: false,
     nextRoute: null,
+    redirectRoute: '/',
   },
   mutations: {
     SET_CHOSEN_LANGUAGE(state, language) {
@@ -18,8 +19,12 @@ const appState = ({
     SET_LOADING(state, { loading }) {
       state.loading = loading;
     },
-    SET_LOGGING_AND_NEXT_ROUTE(state, { logging, next }) {
+    SET_LOGGING_STATE_AND_ROUTES(state, { logging, next, redirect }) {
       state.loggingRequired = logging;
+      state.nextRoute = next;
+      state.redirectRoute = redirect;
+    },
+    SET_NEXT_ROUTE(state, { next }) {
       state.nextRoute = next;
     },
     SET_PLAYING(state, { playing }) {
@@ -31,15 +36,15 @@ const appState = ({
     },
   },
   actions: {
-    logAndRoute({ commit, rootState }, next) {
+    logAndRoute({ commit, rootState }, { next, redirect }) {
       if (rootState.user.email && rootState.user.jwt) {
         return true;
       }
-      commit('SET_LOGGING_AND_NEXT_ROUTE', { logging: true, next });
+      commit('SET_LOGGING_STATE_AND_ROUTES', { logging: true, next, redirect });
       return false;
     },
-    loggedIn({ commit }) {
-      commit('SET_LOGGING_AND_NEXT_ROUTE', { logging: false, next: null });
+    notLogging({ commit }) {
+      commit('SET_LOGGING_STATE_AND_ROUTES', { logging: false, next: null, redirect: '/' });
     },
   },
   modules: {

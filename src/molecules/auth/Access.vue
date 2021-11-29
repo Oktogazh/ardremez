@@ -1,5 +1,5 @@
 <template>
-  <Modal @closing="$emit('closing', 'accessPortal')">
+  <Modal @closing="closeThis">
     <div class="access-container">
       <Form @logged="logged"/>
     </div>
@@ -21,10 +21,13 @@ export default {
     };
   },
   methods: { // TODO: create a closing method
+    closeThis() {
+      this.$router.push({ path: this.$store.state.app.redirectRoute });
+      this.$store.dispatch('app/notLogging');
+    },
     logged() {
-      this.$emit('logged', 'accessPortal');
       this.$router.push(this.$store.state.app.nextRoute);
-      this.$store.dispatch('app/loggedIn');
+      this.$store.dispatch('app/notLogging');
     },
   },
 };

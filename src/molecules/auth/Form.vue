@@ -60,7 +60,7 @@ export default {
           email: this.email,
           password: this.password,
         })
-          .then(() => this.$router.push('/verify'))
+          .then(this.$store.commit('app/SET_NEXT_ROUTE', { next: '/verify' }))
           .then(() => this.$emit('logged'));
       }
       return null;
