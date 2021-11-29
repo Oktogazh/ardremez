@@ -59,8 +59,8 @@ const userState = ({
       const userData = JSON.parse(localStorage.getItem('userData') || '{}');
       commit('SET_USER_DATA', userData);
     },
-    signin({ commit, rootState }, { email, password }) {
-      axios.post(`${rootState.api}/api/enrollañ`, { email, password })
+    async signin({ commit, rootState }, { email, password }) {
+      const signed = await axios.post(`${rootState.api}/api/enrollañ`, { email, password })
         .then((res) => commit('SET_USER_DATA', {
           email: res.data.email,
           customerId: res.data.customerId,
@@ -69,7 +69,9 @@ const userState = ({
           jwt: res.data.token,
           verified: res.data.verified,
         }))
-        .then(() => axios.post(`${rootState.api}/api/kas_kod_postel`));
+        .then(() => axios.post(`${rootState.api}/api/kas_kod_postel`))
+        .then(() => true);
+      return signed;
     },
     newVerificationEmail({ rootState }) {
       axios.post(`${rootState.api}/api/kas_kod_postel`);

@@ -26,8 +26,10 @@ export default {
       this.$store.dispatch('app/notLogging');
     },
     logged() {
-      this.$router.push(this.$store.state.app.nextRoute);
-      this.$store.dispatch('app/notLogging');
+      const { nextRoute } = this.$store.state.app;
+
+      this.$store.dispatch('app/notLogging')
+        .then(() => { if (nextRoute) this.$router.push(nextRoute); });
     },
   },
 };

@@ -1,7 +1,5 @@
 <template>
   <MainContainer>
-    <Access v-if="accessPortal && !$store.getters['user/connected']"
-      @closing="$router.push('/')" @logged="accessPortal = false" />
     <CheckingCodeCard @sendCode="check" />
   </MainContainer>
 </template>
@@ -9,13 +7,13 @@
 <script>
 import swal from 'sweetalert2';
 import CheckingCodeCard from '@/atoms/CheckingCodeCard.vue';
-import Access from '@/molecules/auth/Access.vue';
+import MainContainer from '@/atoms/MainContainer.vue';
 
 export default {
   name: 'Verify',
   components: {
-    Access,
     CheckingCodeCard,
+    MainContainer,
   },
   created() {
     this.$store.commit('app/SET_TITLES', { title: 'Email_Verification' });
@@ -46,9 +44,18 @@ export default {
           }
         });
     },
+    checkIfLoggedIn() {
+      if (!this.$store.state.user.email) {
+        const redirect = '/';
+        this.$store.dispatch('app/logAndRoute', { redirect });
+      }
+    },
+  },
+  mounted() {
+    this.checkIfLoggedIn();
   },
 };
 </script>
 
-<style lang="css" scoped>
+<style scoped>
 </style>
