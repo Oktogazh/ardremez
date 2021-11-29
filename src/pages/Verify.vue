@@ -8,7 +8,7 @@
 
 <script>
 import swal from 'sweetalert2';
-import CheckingCodeCard from '@/organisms/utils/CheckingCodeCard.vue';
+import CheckingCodeCard from '@/atoms/CheckingCodeCard.vue';
 import Access from '@/molecules/auth/Access.vue';
 
 export default {

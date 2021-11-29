@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Modal from '@/organisms/utils/Modal.vue';
+import Modal from '@/atoms/Modal.vue';
 import Form from './Form.vue';
 
 export default {

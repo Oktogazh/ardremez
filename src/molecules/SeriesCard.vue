@@ -57,7 +57,7 @@
 <script>
 import { mapState } from 'vuex';
 import HeadedCard from '@/molecules/HeadedCard.vue';
-import Modal from '@/organisms/utils/Modal.vue';
+import Modal from '@/atoms/Modal.vue';
 import SmallButton from '@/atoms/buttons/SmallButton.vue';
 import DownButton from '@/atoms/buttons/DownButton.vue';
 import UpButton from '@/atoms/buttons/UpButton.vue';
