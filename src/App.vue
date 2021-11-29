@@ -79,6 +79,7 @@ body {
 
 a, button {
   all: unset;
+  cursor: pointer;
 }
 
 h2 {

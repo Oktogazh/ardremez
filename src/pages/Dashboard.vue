@@ -22,6 +22,17 @@ export default {
   created() {
     this.$store.commit('app/SET_TITLES', { title: 'My_Account' });
   },
+  methods: {
+    checkIfLoggedIn() {
+      if (!this.$store.getters.connected) {
+        const redirect = '/';
+        this.$store.dispatch('app/logAndRoute', { redirect });
+      }
+    },
+  },
+  mounted() {
+    this.checkIfLoggedIn();
+  },
 };
 </script>
 

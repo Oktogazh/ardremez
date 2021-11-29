@@ -45,7 +45,7 @@ export default {
         });
     },
     checkIfLoggedIn() {
-      if (!this.$store.state.user.email) {
+      if (!this.$store.getters.connected) {
         const redirect = '/';
         this.$store.dispatch('app/logAndRoute', { redirect });
       }
