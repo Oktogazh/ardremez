@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import swal from 'sweetalert2';
 import { mapState } from 'vuex';
 import SmallButton from '@/atoms/buttons/SmallButton.vue';
 
@@ -35,9 +34,6 @@ export default {
 
       if (alreadyLogged) {
         this.$router.push(next);
-        if (!this.$store.state.user.verified) { // dashboard watch $route
-          swal.fire({ html: this.translate.NeedaBeVerifiedToSub });
-        }
       }
       // else the routing is handled by the logger portal
     },

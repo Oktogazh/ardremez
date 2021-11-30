@@ -1,4 +1,5 @@
 <template>
+  <CheckoutPortal v-if="id" :product="id" />
   <div class="flex-dashboard">
     <div id="setting" class="flex-item">
       <SettingCard />
@@ -10,17 +11,31 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import swal from 'sweetalert2';
+import CheckoutPortal from '@/organisms/CheckoutPortal.vue';
 import SettingCard from '@/organisms/SettingCard.vue';
 import Progressions from '@/organisms/Progressions.vue';
 
 export default {
   name: 'Account',
   components: {
+    CheckoutPortal,
     SettingCard,
     Progressions,
   },
   created() {
     this.$store.commit('app/SET_TITLES', { title: 'My_Account' });
+  },
+  computed: {
+    ...mapState({
+      translate: (state) => state.lang,
+    }),
+  },
+  data() {
+    return {
+      id: null,
+    };
   },
   methods: {
     checkIfLoggedIn() {
@@ -29,9 +44,26 @@ export default {
         this.$store.dispatch('app/logAndRoute', { redirect });
       }
     },
+    subscribeTo(id) {
+      if (!this.$store.state.user.verified) { // dashboard watch $route
+        swal.fire({ html: this.translate.NeedaBeVerifiedToSub });
+      } else {
+        this.id = id;
+      }
+    },
   },
   mounted() {
+    const id = this.$route.query.s || null;
     this.checkIfLoggedIn();
+
+    if (id) this.subscribeTo(id);
+  },
+  watch: {
+    $route() {
+      const id = this.$route.query.s || null;
+
+      this.subscribeTo(id);
+    },
   },
 };
 </script>
