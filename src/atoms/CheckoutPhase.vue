@@ -1,13 +1,12 @@
 <template>
-  <div id="info-container" :class="['default', 'slide-left', 'slide-right'][slidingState]">
-    <button @click="$emit('back')">change state</button>
-    <button @click="$emit('next')">change state</button>
+  <div id="info-container" :class="['default', 'slide-left'][slidingState]">
+    <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CheckoutInfo',
+  name: 'CheckoutPhase',
   computed: {
   },
   props: {
@@ -28,14 +27,15 @@ export default {
   flex: 1 0 auto;
   transition: 1s transform;
   background: var(--grad-blue);
+  border-radius: 7px;
+}
+
+.default {
+  transform: translateX(0);
 }
 
 .slide-left {
   transform: translateX(-100%);
-}
-
-.slide-right {
-  transform: translateX(0);
 }
 
 </style>

@@ -2,10 +2,12 @@
   <teleport to="body">
     <Modal @closing="$router.push('/dashboard')">
       <div id="checkout-container">
-        <CheckoutInfo :slidingState="slidingPhase"
-          @next="slidingPhase = 1" @back="slidingPhase = 2"/>
-        <CheckoutInfo :slidingState="slidingPhase"
-          @next="slidingPhase = 1" @back="slidingPhase = 2"/>
+        <CheckoutPhase :slidingState="slidingPhase"
+          @next="slidingPhase = 1" @back="slidingPhase = 0">
+        </CheckoutPhase>
+        <CheckoutPhase :slidingState="slidingPhase"
+          @next="slidingPhase = 1" @back="slidingPhase = 0">
+        </CheckoutPhase>
       </div>
     </Modal>
   </teleport>
@@ -13,12 +15,12 @@
 
 <script>
 import Modal from '@/atoms/Modal.vue';
-import CheckoutInfo from '@/molecules/CheckoutInfo.vue';
+import CheckoutPhase from '@/atoms/CheckoutPhase.vue';
 
 export default {
-  name: 'CheckoutPortal',
+  name: 'CheckoutCarousel',
   components: {
-    CheckoutInfo,
+    CheckoutPhase,
     Modal,
   },
   data() {
