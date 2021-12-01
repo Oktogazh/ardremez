@@ -20,7 +20,7 @@ const seriesState = ({
         ],
         metadata: {
           averageDuration: '10`',
-          creator: '5f9f2714ab73e601aa5d192a', // ObjectId of the creator's account
+          creator: '5f9f2714ab73e601aa5d192a', // TODO: ObjectId of the creator's account
           freeTrial: 7,
           languages: {
             source: 'fra',
@@ -28,6 +28,7 @@ const seriesState = ({
           },
           openCardOnPodcastEnd: 1,
           podcasts: 91,
+          prices: ['price_1K1rmLLl0gLr1Vo62Qz5lxgp'],
           startLevel: 'beginner',
           subscribers: null, // TODO: get a number
         },

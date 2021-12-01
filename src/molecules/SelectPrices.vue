@@ -1,4 +1,5 @@
 <template>
+  <PriceOption />
   <SubmitButton @click="$emit('next')">
     {{ translate.Continue }}
   </SubmitButton>
@@ -17,6 +18,9 @@ export default {
     ...mapState({
       translate: (state) => state.lang,
     }),
+  },
+  mounted() {
+    // TODO: fetch all informations about the product
   },
 };
 </script>
