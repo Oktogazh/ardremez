@@ -36,12 +36,9 @@ const appState = ({
     },
   },
   actions: {
-    logAndRoute({ commit, rootState }, { next, redirect }) {
-      if (rootState.user.email && rootState.user.jwt) {
-        return true;
-      }
-      commit('SET_LOGGING_STATE_AND_ROUTES', { logging: true, next, redirect });
-      return false;
+    logAndRoute({ commit, rootGetters }, { next, redirect }) {
+      const logging = !rootGetters['user/connected'];
+      commit('SET_LOGGING_STATE_AND_ROUTES', { logging, next, redirect });
     },
     notLogging({ commit }) {
       commit('SET_LOGGING_STATE_AND_ROUTES', { logging: false, next: null, redirect: '/' });

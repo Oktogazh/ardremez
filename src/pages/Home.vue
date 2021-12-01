@@ -1,8 +1,7 @@
 <template>
   <MainContainer>
-    <SeriesCard v-for="({ title, comments, code, images, metadata }, key) in storedSeries"
-      :title="title" :code="code" :comments="comments"
-      :images="images" :metadata="metadata" :key="key" />
+    <SeriesCard v-for="(seriesObject, key) in storedSeries"
+      :seriesObject="seriesObject" :key="key" />
   </MainContainer>
 </template>
 

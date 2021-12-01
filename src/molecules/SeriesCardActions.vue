@@ -1,7 +1,7 @@
 <template>
   <div id="series-actions-container">
     <!-- TODO: use a getter to compute the query after the user's level -->
-    <router-link :to="{ path: '/read', query: { p: `1${seriesCode}` }}">
+    <router-link :to="{ path: '/read', query: { p: `1${seriesObject.code}` }}">
       <SmallButton :bg="'grad-blue'" :text="translate.Free_Trial"/>
     </router-link>
     <SmallButton :bg="'grad-green'" @click="beforeSubscribe" :text="translate.Subscribe"/>
@@ -27,19 +27,14 @@ export default {
     async beforeSubscribe() {
       const next = {
         path: '/dashboard',
-        query: { s: `${this.seriesCode}` },
       };
-      const { path } = this.$router.currentRoute.value;
-      const alreadyLogged = await this.$store.dispatch('app/logAndRoute', { next, redirect: path });
-
-      if (alreadyLogged) {
-        this.$router.push(next);
-      }
-      // else the routing is handled by the logger portal
+      const here = this.$router.currentRoute.value.path;
+      this.$store.dispatch('app/logAndRoute', { next, redirect: here });
+      // TODO: set state.payment.product = seriesObject;
     },
   },
   props: {
-    seriesCode: {
+    seriesObject: {
       required: true,
     },
   },

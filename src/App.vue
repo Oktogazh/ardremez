@@ -1,10 +1,11 @@
 <template>
-  <Access v-if="$store.state.app.loggingRequired" />
+  <Access v-if="app.loggingRequired || redirect()" />
   <Header />
   <router-view />
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Access from '@/molecules/auth/Access.vue';
 import Header from '@/organisms/Header.vue';
 
@@ -13,10 +14,25 @@ export default {
     Access,
     Header,
   },
+  computed: {
+    ...mapState({
+      app: (state) => state.app,
+    }),
+  },
   created() {
     this.$store.dispatch('user/retrieveData');
     // TODO: localStorage('languagePreference') read (here) && write
     this.$store.dispatch('lang/loadLanguage', 'en');
+  },
+  methods: {
+    redirect() {
+      if (this.$store.getters['user/connected']) {
+        const { nextRoute } = this.app;
+        this.$store.dispatch('app/notLogging');
+        if (nextRoute) this.$router.push(nextRoute);
+        return false;
+      } return true;
+    },
   },
 };
 </script>

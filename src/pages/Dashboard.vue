@@ -1,5 +1,5 @@
 <template>
-  <CheckoutCarousel v-if="id" :product="id" />
+  <CheckoutCarousel v-if="product" :product="product" />
   <div class="flex-dashboard">
     <div id="setting" class="flex-item">
       <SettingCard />
@@ -34,7 +34,7 @@ export default {
   },
   data() {
     return {
-      id: null,
+      product: null,
     };
   },
   methods: {
@@ -44,19 +44,19 @@ export default {
         this.$store.dispatch('app/logAndRoute', { redirect });
       }
     },
-    subscribeTo(id) {
+    subscribeTo(product) {
       if (!this.$store.state.user.verified) { // dashboard watch $route
         swal.fire({ html: this.translate.NeedaBeVerifiedToSub });
       } else {
-        this.id = id;
+        this.product = product;
       }
     },
   },
   mounted() {
-    const id = this.$route.query.s || null;
+    const { product } = this.$store.state.payment;
     this.checkIfLoggedIn();
 
-    if (id) this.subscribeTo(id);
+    if (product) this.subscribeTo(product);
   },
   watch: {
     $route() {

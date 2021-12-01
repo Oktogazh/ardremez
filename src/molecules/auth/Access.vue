@@ -22,7 +22,7 @@ export default {
   },
   methods: { // TODO: create a closing method
     closeThis() {
-      this.$router.push({ path: this.$store.state.app.redirectRoute });
+      this.$router.push(this.$store.state.app.redirectRoute);
       this.$store.dispatch('app/notLogging');
     },
     logged() {

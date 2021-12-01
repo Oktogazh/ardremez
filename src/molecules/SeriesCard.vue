@@ -6,9 +6,9 @@
       <UpButton v-if="bodyOpen" @click="toggle"/>
       <div id="title-flex">
         <!-- Image Viewer -->
-        <div v-if="images" id="img-outer-container" @click.stop>
+        <div v-if="seriesObject.images" id="img-outer-container" @click.stop>
           <div id="img-inner-container"
-            v-for="(img, index) in images" :key="index">
+            v-for="(img, index) in seriesObject.images" :key="index">
             <img :src="img.path" class="series-images" @click="clickedImg(img)">
           </div>
           <Modal v-if="path" @closing="clickedImg({ path: null, legend: null })">
@@ -21,16 +21,16 @@
         </div>
         <!-- Title & Metadata -->
         <div id="title-and-metadata">
-          <h2 id="series-title" v-html="title"></h2>
+          <h2 id="series-title" v-html="seriesObject.title"></h2>
           <div id="metadata-container">
-            <p class="metadata">{{ `${metadata.podcasts} ` + translate.podcasts }}</p>
+            <p class="metadata">{{ `${seriesObject.metadata.podcasts} ` + translate.podcasts }}</p>
             <p class="metadata">{{
-              `${translate.average_duration} ` + metadata.averageDuration }}</p>
+              `${translate.average_duration} ` + seriesObject.metadata.averageDuration }}</p>
             <p class="metadata">{{
-              `${translate[metadata.languages.source]} → ${translate[metadata.languages.target]}`
+              `${translate[languages.source]} → ${translate[languages.target]}`
             }}</p>
           </div>
-          <SeriesCardActions :seriesCode="code" />
+          <SeriesCardActions :seriesObject="seriesObject" />
         <!-- Title & Metadata End -->
         </div>
       </div>
@@ -38,7 +38,7 @@
     <template v-slot:body>
       <div id="body-container">
         <div class="">
-          <p v-for="(paragraph, index) in comments" :key="index" v-html="paragraph">
+          <p v-for="(paragraph, index) in seriesObject.comments" :key="index" v-html="paragraph">
           </p>
         </div>
       </div>
@@ -64,6 +64,9 @@ export default {
     UpButton,
   },
   computed: {
+    languages() {
+      return this.seriesObject.metadata.languages;
+    },
     ...mapState({
       translate: (state) => state.lang,
     }),
@@ -90,19 +93,7 @@ export default {
       required: false,
       default: true,
     },
-    title: {
-      required: true,
-    },
-    comments: {
-      required: true,
-    },
-    code: {
-      required: true,
-    },
-    images: {
-      required: true,
-    },
-    metadata: {
+    seriesObject: {
       required: true,
     },
   },
