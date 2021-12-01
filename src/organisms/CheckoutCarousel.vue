@@ -1,12 +1,12 @@
 <template>
-  <teleport to="body">
+  <teleport to="#app">
     <Modal @closing="$router.push('/dashboard')">
       <div id="checkout-container">
-        <CheckoutPhase :slidingState="slidingPhase"
-          @next="slidingPhase = 1" @back="slidingPhase = 0">
+        <CheckoutPhase :slidingState="slidingPhase">
+          <SelectPrices @next="slidingPhase = 1" />
         </CheckoutPhase>
-        <CheckoutPhase :slidingState="slidingPhase"
-          @next="slidingPhase = 1" @back="slidingPhase = 0">
+        <CheckoutPhase :slidingState="slidingPhase">
+          <ElementsCheckout @back="slidingPhase = 0" />
         </CheckoutPhase>
       </div>
     </Modal>
@@ -16,12 +16,16 @@
 <script>
 import Modal from '@/atoms/Modal.vue';
 import CheckoutPhase from '@/atoms/CheckoutPhase.vue';
+import SelectPrices from '@/molecules/SelectPrices.vue';
+import ElementsCheckout from '@/molecules/ElementsCheckout.vue';
 
 export default {
   name: 'CheckoutCarousel',
   components: {
     CheckoutPhase,
     Modal,
+    SelectPrices,
+    ElementsCheckout,
   },
   data() {
     return {
@@ -42,6 +46,7 @@ export default {
   display: flex;
   height: 500px;
   width: 400px;
+  border-radius: 7px;
   overflow: hidden;
 }
 </style>

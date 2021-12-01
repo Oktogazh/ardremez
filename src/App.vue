@@ -59,8 +59,8 @@ body {
   --middle-white: rgba(255, 255, 255, 0.5);
   --dark-white: rgba(255, 255, 255, 0.3);
   --darker-white: rgba(255, 255, 255, 0.15);
-  --grad-blue: linear-gradient(135deg, rgba(94,201,255,1) 0%,
-    rgba(43,76,245,1) 50%, rgba(145,111,255,1) 100%);
+  --grad-blue: radial-gradient(circle,
+    rgba(43,76,245,1) 0%, rgba(145,111,255,1) 100%);
   --grad-cyan: linear-gradient(135deg, rgba(93,201,255,1) 0%,
     rgba(109,255,252,1) 50%, rgba(146,111,255,1) 100%);
   --grad-green: radial-gradient(circle, rgba(0,215,16,1) 0%,

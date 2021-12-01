@@ -25,9 +25,12 @@ export default {
   height: 100%;
   width: 100%;
   flex: 1 0 auto;
-  transition: 1s transform;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 1em;
+  transition: .7s transform;
   background: var(--grad-blue);
-  border-radius: 7px;
 }
 
 .default {
