@@ -8,7 +8,7 @@ import userState from './modules/userState';
 
 export default createStore({
   state: {
-    api: 'https://eienn.bzh',
+    api: process.env.VUE_APP_API,
   },
   mutations: {
   },

@@ -1,7 +1,7 @@
 const payementState = ({
   namespaced: true,
   state: {
-    stipePK: process.env.STRIPE_PK,
+    stipePK: process.env.VUE_APP_STRIPE_PK,
     price: null,
   },
   mutations: {

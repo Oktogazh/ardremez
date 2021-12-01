@@ -19,9 +19,6 @@ export default {
       translate: (state) => state.lang,
     }),
   },
-  mounted() {
-    // TODO: fetch all informations about the product
-  },
 };
 </script>
 

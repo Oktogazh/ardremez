@@ -32,6 +32,9 @@ export default {
       slidingPhase: 0,
     };
   },
+  mounted() {
+    // TODO: fetch all informations about the product
+  },
   props: {
     product: {
       required: true,
