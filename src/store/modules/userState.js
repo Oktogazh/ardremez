@@ -53,6 +53,7 @@ const userState = ({
         verified: false,
       };
 
+      localStorage.clear();
       commit('SET_USER_DATA', emptyState);
     },
     retrieveData({ commit }) {

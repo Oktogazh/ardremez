@@ -1,6 +1,6 @@
 <template>
   <teleport to="#app">
-    <Modal @closing="$router.push('/dashboard')">
+    <Modal @closing="closing">
       <div id="checkout-container">
         <CheckoutPhase :slidingState="slidingPhase">
           <SelectPrices @next="slidingPhase = 1" />
@@ -31,6 +31,11 @@ export default {
     return {
       slidingPhase: 0,
     };
+  },
+  methods: {
+    closing() {
+      this.$store.dispatch('payment/endCheckout');
+    },
   },
   mounted() {
     // TODO: fetch all informations about the product

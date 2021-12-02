@@ -1,5 +1,5 @@
 <template>
-  <CheckoutCarousel v-if="product" :product="product" />
+  <CheckoutCarousel v-if="product !== null" :product="product" />
   <div class="flex-dashboard">
     <div id="setting" class="flex-item">
       <SettingCard />
@@ -30,11 +30,11 @@ export default {
   computed: {
     ...mapState({
       translate: (state) => state.lang,
+      product: (state) => state.payment.product,
     }),
   },
   data() {
     return {
-      product: null,
     };
   },
   methods: {
@@ -59,11 +59,6 @@ export default {
     if (product) this.subscribeTo(product);
   },
   watch: {
-    $route() {
-      const id = this.$route.query.s || null;
-
-      this.subscribeTo(id);
-    },
   },
 };
 </script>

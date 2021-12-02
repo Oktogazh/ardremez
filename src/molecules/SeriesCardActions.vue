@@ -29,8 +29,8 @@ export default {
         path: '/dashboard',
       };
       const here = this.$router.currentRoute.value.path;
+      this.$store.dispatch('payment/startCheckout', { product: this.seriesObject });
       this.$store.dispatch('app/logAndRoute', { next, redirect: here });
-      // TODO: set state.payment.product = seriesObject;
     },
   },
   props: {
