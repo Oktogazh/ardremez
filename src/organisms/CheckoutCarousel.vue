@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Modal from '@/atoms/Modal.vue';
 import CheckoutPhase from '@/atoms/CheckoutPhase.vue';
 import SelectPrices from '@/molecules/SelectPrices.vue';
@@ -27,8 +28,15 @@ export default {
     SelectPrices,
     ElementsCheckout,
   },
+  computed: {
+    ...mapState({
+      translate: (state) => state.lang,
+      product: (state) => state.payment.product,
+    }),
+  },
   data() {
     return {
+      loading: false,
       slidingPhase: 0,
     };
   },
@@ -38,12 +46,11 @@ export default {
     },
   },
   mounted() {
-    // TODO: fetch all informations about the product
+    this.loading = true;
+    this.$store.dispatch('payment/loadPrices');
+    this.load = false;
   },
   props: {
-    product: {
-      required: true,
-    },
   },
 };
 </script>
