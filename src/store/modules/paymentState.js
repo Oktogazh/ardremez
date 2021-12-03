@@ -4,16 +4,20 @@ const payementState = ({
   namespaced: true,
   state: {
     stipePK: process.env.VUE_APP_STRIPE_PK,
-    product: {},
+    product: null,
   },
   mutations: {
+    RESET_PRODUCT_DATA(state) {
+      state.product = null;
+    },
     SET_PRICES(state, prices) {
       state.prices = prices;
     },
-    SET_PRODUCT_DATA(state, product) {
+    SET_PRODUCT_DATA(state, { product }) {
+      state.product = {};
       const keysToUpdate = Object.keys(product);
       keysToUpdate.forEach((key) => {
-        state[key] = product[key];
+        state.product[key] = product[key];
       });
       localStorage.setItem('paymentData', JSON.stringify(product));
     },
@@ -24,7 +28,7 @@ const payementState = ({
     },
     endCheckout({ commit }) {
       localStorage.removeItem('paymentData');
-      commit('SET_PRODUCT_DATA', { product: null });
+      commit('RESET_PRODUCT_DATA');
     },
     async loadPrices({ commit, rootState, state }) {
       const { productId } = state.product.metadata;
