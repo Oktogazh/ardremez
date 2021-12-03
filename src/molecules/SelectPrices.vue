@@ -1,6 +1,6 @@
 <template>
-  <OptionInfoButton v-for="(price, index) in prices" :info="price"
-    :selected="selected" :key="index"/>
+  <OptionInfoButton v-for="(price, i) in prices" :info="price"
+    :selected="selected" :key="i" @click="selected = i"/>
   <SubmitButton @click="$emit('next')">
     {{ translate.Continue }}
   </SubmitButton>

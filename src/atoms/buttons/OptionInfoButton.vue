@@ -8,6 +8,10 @@
 export default {
   name: 'OptionInfoButton',
   computed: {
+    isSelected() {
+      const isSelected = (this.$.vnode.key === this.selected);
+      return isSelected;
+    },
     price() {
       let price = '';
       if (this.info.currency === 'eur') {
