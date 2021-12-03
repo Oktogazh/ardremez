@@ -30,8 +30,7 @@ export default {
         const { nextRoute } = this.app;
         this.$store.dispatch('app/notLogging');
         if (nextRoute) this.$router.push(nextRoute);
-        return false;
-      } return true;
+      } return false;
     },
   },
 };

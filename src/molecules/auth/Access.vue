@@ -22,8 +22,8 @@ export default {
   },
   methods: { // TODO: create a closing method
     closeThis() {
-      this.$router.push(this.$store.state.app.redirectRoute);
       this.$store.dispatch('app/notLogging');
+      this.$router.push(this.$store.state.app.redirectRoute);
     },
     logged() {
       const { nextRoute } = this.$store.state.app;
