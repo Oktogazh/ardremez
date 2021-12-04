@@ -1,9 +1,17 @@
 <template>
-  <OptionInfoButton v-for="(price, i) in prices" :info="price"
-    :selected="selected" :key="i" @click="selected = i"/>
-  <SubmitButton @click="$emit('next')">
-    {{ translate.Continue }}
-  </SubmitButton>
+  <div class="flex">
+    <div class="space">
+      <h3>{{ product.title }}</h3>
+      <h3>{{ translate.for }}</h3>
+    </div>
+    <div class="prices-box">
+      <OptionInfoButton v-for="(price, i) in prices" :info="price"
+        :selected="selected" :key="i" @click="selected = i"/>
+    </div>
+    <SubmitButton @click="$emit('next')">
+      {{ translate.Continue }}
+    </SubmitButton>
+  </div>
 </template>
 
 <script>
@@ -21,6 +29,7 @@ export default {
     ...mapState({
       translate: (state) => state.lang,
       prices: (state) => state.payment.prices,
+      product: (state) => state.payment.product,
     }),
   },
   data() {
@@ -32,4 +41,28 @@ export default {
 </script>
 
 <style scoped>
+* {
+  text-align: center;
+}
+
+.flex {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prices-box {
+  margin: 1em 0;
+  display: flex;
+  flex-flow: row wrap;
+  grid-gap: 1em;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.space {
+  margin: 2em;
+}
 </style>

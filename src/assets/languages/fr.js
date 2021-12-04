@@ -5,7 +5,7 @@ const obj = {
   bre: 'Breton',
   Confirm: 'Confirmation',
   Connected: 'Connecté',
-  Continue: 'Kenderc\'hel',
+  Continue: 'Continuer',
   Delete_My_Account: 'Supprimer mon compte',
   Email: 'Adresse',
   Email_successfully_verified: 'Votre adresse est maintenant vérifiée !<br>Vous pouvez désormais vous abonner.',
@@ -13,6 +13,7 @@ const obj = {
   English_eng: 'English',
   eng: 'Saozneg',
   Enter_Your_Code_Here: 'Entrez votre code ici',
+  for: 'pour',
   French_fra: 'Français',
   fra: 'Français',
   Free_Trial: 'Essai gratuit',
@@ -22,6 +23,7 @@ const obj = {
   Log_Out: 'Déconnexion',
   Manage_My_Account: 'Gérer mon compte',
   minimum_length_required: 'Votre mot de passe doit faire 8 charactères au minimum.',
+  mth4month: 'mois',
   must_unsubscibe_before_delete_account: 'Vous devez résilier votre abonnement avant de supprimer votre compte !',
   My_Account: 'Mon compte',
   My_email_address: 'Mon adresse e-mail :',
@@ -38,7 +40,9 @@ const obj = {
   Show_description: 'Afficher la description',
   Submit: 'Valider',
   Subscribe: 'S\'abonner',
+  SubscribeTo: 'S\'abonner à :',
   Wrong_code_New_code_sent: 'Ce code est invalide ou a déja expiré.<br>Un nouveau code de confirmation vient de vous être envoyé.',
+  yr4year: 'an',
 };
 
 export default obj;

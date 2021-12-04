@@ -60,7 +60,9 @@ export default {
   position: relative;
   display: flex;
   height: 500px;
+  max-height: 100vh;
   width: 400px;
+  max-width: 100vw;
   border-radius: 7px;
   overflow: hidden;
 }

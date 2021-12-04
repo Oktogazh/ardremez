@@ -13,6 +13,7 @@ const obj = {
   English_eng: 'English',
   eng: 'English',
   Enter_Your_Code_Here: 'Enter Your Code Here',
+  for: 'for',
   French_fra: 'Français',
   fra: 'French',
   Free_Trial: 'Free Trial',
@@ -23,6 +24,7 @@ const obj = {
   Manage_My_Account: 'Manage My Account',
   minimum_length_required: 'Your password should be at least 8 characters long.',
   must_unsubscibe_before_delete_account: 'You must unscubscribe before deleting this account!',
+  mth4month: 'mth',
   My_Account: 'My Account',
   My_email_address: 'My email address:',
   new_verificationCode_sent_info: 'A new verification code has just been sent to you,<br>its validity will expire in thirty minutes.',
@@ -38,7 +40,9 @@ const obj = {
   Sign_In: 'Sign In',
   Submit: 'Submit',
   Subscribe: 'Subscribe',
+  SubscribeTo: 'Subscribe to:',
   Wrong_code_New_code_sent: 'This code is invalid or has already expired.<br>A new verification code has just been sent to you to try again.',
+  yr4year: 'yr',
 };
 
 export default obj;

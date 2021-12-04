@@ -5,7 +5,7 @@ const obj = {
   bre: 'Brezhoneg',
   Confirm: 'Kadarnaat',
   Connected: 'Kevreet',
-  Continue: 'Continue',
+  Continue: 'Kenderc\'hel',
   Delete_My_Account: 'Dilemel Ma C\'hont',
   Email: 'Postel',
   Email_successfully_verified: 'Ho chomlec\'h postel postel zo bremañ gwiriekaet!<br>Hiviziken e c\'halloc\'h koumanantiñ  d\'ar pezh a garit.',
@@ -13,6 +13,7 @@ const obj = {
   English_eng: 'English',
   eng: 'Saozneg',
   Enter_Your_Code_Here: 'Eilit Ho Kod Amañ',
+  for: 'pour',
   French_fra: 'Français',
   fra: 'Galleg',
   Free_Trial: 'Amprouiñ Digoust',
@@ -23,6 +24,7 @@ const obj = {
   Manage_My_Account: 'Merañ Ma C\'hont',
   minimum_length_required: '8 arouez da neutañ a zle mont d\'ober ho ker-kuzh.',
   must_unsubscibe_before_delete_account: 'Ret eo deoc\'h digoumenantiñ kent dilemel ar gont-mañ!',
+  mth4month: 'miz',
   My_Account: 'Ma C\'hont',
   My_email_address: 'Ma chomlec\'h postel:',
   NeedaBeVerifiedToSub: 'Ret eo deoc\'h bezañ gwiriekaet ho postel ganeoc\'h a-raok gallout koumanantiñ. Taolit ur sell en hoc\'h arventennoù postel evit en ober.',
@@ -38,7 +40,9 @@ const obj = {
   Show_description: 'Diskouez an diskrivadur',
   Submit: 'Kas',
   Subscribe: 'Koumanantiñ',
+  SubscribeTo: 'Koumanantiñ d\'an heuliad',
   Wrong_code_New_code_sent: 'Ar c\'hod-mañ zo diwiriek, pe c\'hoazh, diamzeriet.<br>Emeur o paouez kas ur c\'hod nevez, deoc\'h klask en-dro.',
+  yr4year: 'bl',
 };
 
 export default obj;

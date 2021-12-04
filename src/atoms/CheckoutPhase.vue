@@ -30,7 +30,13 @@ export default {
   align-items: center;
   gap: 1em;
   transition: .7s transform;
-  background: var(--grad-blue);
+  background: var(--card-background);
+  overflow: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+#info-container:-webkit-scrollbar {
+    display: none; /* Other browsers */
 }
 
 .default {

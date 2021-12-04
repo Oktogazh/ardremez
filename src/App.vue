@@ -22,7 +22,7 @@ export default {
   created() {
     this.$store.dispatch('user/retrieveData');
     // TODO: localStorage('languagePreference') read (here) && write
-    this.$store.dispatch('lang/loadLanguage', 'en');
+    this.$store.dispatch('lang/loadLanguage', 'fr');
   },
   methods: {
     redirect() {
@@ -73,12 +73,12 @@ body {
   --middle-white: rgba(255, 255, 255, 0.5);
   --dark-white: rgba(255, 255, 255, 0.3);
   --darker-white: rgba(255, 255, 255, 0.15);
+  --gold: rgb(240, 211, 17);
   --grad-blue: radial-gradient(circle,
     rgba(43,76,245,1) 0%, rgba(145,111,255,1) 100%);
   --grad-cyan: linear-gradient(135deg, rgba(93,201,255,1) 0%,
     rgba(109,255,252,1) 50%, rgba(146,111,255,1) 100%);
-  --grad-green: radial-gradient(circle, rgba(0,215,16,1) 0%,
-    rgba(0,215,187,1) 100%);
+  --grad-green: linear-gradient(320deg, rgba(61,217,0) 0%, rgba(12,242,187) 100%);
   --grad-grey: linear-gradient(135deg, rgba(179,179,179,1) 0%,
     rgba(153,153,153,1) 50%, rgba(212,212,212,1) 100%);
   --grad-purple: linear-gradient(135deg, rgba(109,187,255,1) 0%,
@@ -98,5 +98,12 @@ a, button {
 
 h2 {
   margin: .75em 2em;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin: 10px;
+    font-weight: bold;
 }
 </style>

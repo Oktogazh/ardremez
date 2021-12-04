@@ -30,6 +30,7 @@ export default {
   color: var(--lighter-white);
   opacity: .85;
   box-shadow: var(--wide-box-shadow)  var(--lighter-black);
+  margin: 2em;
 }
 .submit-button:hover {
   opacity: 1;
