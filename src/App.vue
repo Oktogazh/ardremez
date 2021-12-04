@@ -96,14 +96,44 @@ a, button {
   cursor: pointer;
 }
 
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
 h2 {
-  margin: .75em 2em;
+    display: block;
+    font-size: 1.5em;
+    margin: .75em 2em;
+    font-weight: bold;
 }
 
 h3 {
     display: block;
     font-size: 1.3em;
     margin: .7em;
+    font-weight: bold;
+}
+h5 {
+    display: block;
+    font-size: .83em;
+    margin-top: 1.67em;
+    margin-bottom: 1.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+h6 {
+    display: block;
+    font-size: .67em;
+    margin-top: 2.33em;
+    margin-bottom: 2.33em;
+    margin-left: 0;
+    margin-right: 0;
     font-weight: bold;
 }
 </style>

@@ -13,7 +13,7 @@ const obj = {
   English_eng: 'English',
   eng: 'Saozneg',
   Enter_Your_Code_Here: 'Eilit Ho Kod Amañ',
-  for: 'pour',
+  for: 'evit:',
   French_fra: 'Français',
   fra: 'Galleg',
   Free_Trial: 'Amprouiñ Digoust',
