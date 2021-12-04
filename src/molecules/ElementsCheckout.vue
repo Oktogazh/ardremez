@@ -7,6 +7,10 @@
 <script>
 export default {
   name: 'ElementsCheckout',
+  mounted() { /*
+    var stripe = Stripe(process.env.VUE_APP_STRIPE_PK);
+    var elements = stripe.elements(); */
+  },
 };
 </script>
 

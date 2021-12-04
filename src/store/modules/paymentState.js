@@ -3,7 +3,6 @@ import axios from 'axios';
 const payementState = ({
   namespaced: true,
   state: {
-    stipePK: process.env.VUE_APP_STRIPE_PK,
     prices: null,
     product: null,
   },

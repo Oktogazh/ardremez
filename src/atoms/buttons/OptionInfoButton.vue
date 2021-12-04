@@ -57,7 +57,7 @@ export default {
 .outer-option-info {
   background: var(--grad-grey);
   padding: 1px;
-  border-radius: 4px;
+  border-radius: 9px;
   box-shadow: var(--slim-box-shadow) var(--middle-black);
   cursor: pointer;
 }
@@ -71,7 +71,7 @@ export default {
   padding: 20px;
   color: var(--middle-black);
   font-size: 1.5em;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 .inner-selected {
   background: rgba(255, 255, 255, .7);
