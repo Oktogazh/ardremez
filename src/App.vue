@@ -102,8 +102,8 @@ h2 {
 
 h3 {
     display: block;
-    font-size: 1.17em;
-    margin: 10px;
+    font-size: 1.3em;
+    margin: .7em;
     font-weight: bold;
 }
 </style>

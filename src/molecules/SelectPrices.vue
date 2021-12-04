@@ -51,6 +51,7 @@ export default {
   flex-flow: column;
   align-items: center;
   justify-content: space-between;
+  gap: 1em;
 }
 
 .prices-box {
@@ -60,9 +61,5 @@ export default {
   grid-gap: 1em;
   align-items: center;
   justify-content: space-around;
-}
-
-.space {
-  margin: 2em;
 }
 </style>

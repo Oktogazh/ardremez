@@ -59,9 +59,9 @@ export default {
 #checkout-container {
   position: relative;
   display: flex;
-  height: 500px;
+  height: fit-content;
   max-height: 100vh;
-  width: 400px;
+  width: 350px;
   max-width: 100vw;
   border-radius: 7px;
   overflow: hidden;

@@ -22,7 +22,8 @@ export default {
 <style scoped>
 #info-container {
   position: relative;
-  height: 100%;
+  height: auto;
+  max-height: 100%;
   width: 100%;
   flex: 1 0 auto;
   display: flex;
