@@ -40,8 +40,8 @@ const appState = ({
       const logging = !rootGetters['user/connected'];
       commit('SET_LOGGING_STATE_AND_ROUTES', { logging, next, redirect });
     },
-    notLogging({ commit }) {
-      commit('SET_LOGGING_STATE_AND_ROUTES', { logging: false, next: null, redirect: '/' });
+    notLogging({ commit }, { next }) {
+      commit('SET_LOGGING_STATE_AND_ROUTES', { logging: false, next, redirect: '/' });
     },
   },
   modules: {

@@ -26,11 +26,10 @@ export default {
   },
   methods: {
     redirect() {
-      if (this.$store.getters['user/connected']) {
-        const { nextRoute } = this.app;
-        this.$store.dispatch('app/notLogging');
-        if (nextRoute) this.$router.push(nextRoute);
-      } return false;
+      const { nextRoute } = this.app;
+      this.$store.dispatch('app/notLogging', { next: null });
+      if (nextRoute) this.$router.push(nextRoute);
+      return false;
     },
   },
 };

@@ -22,14 +22,16 @@ export default {
   },
   methods: { // TODO: create a closing method
     closeThis() {
-      this.$store.dispatch('app/notLogging');
-      this.$router.push(this.$store.state.app.redirectRoute);
+      const { redirectRoute } = this.$store.state.app;
+
+      this.$store.dispatch('app/notLogging', { next: redirectRoute });
     },
     logged() {
+      const { path } = this.$router.currentRoute.value;
       const { nextRoute } = this.$store.state.app;
+      const next = nextRoute || path;
 
-      this.$store.dispatch('app/notLogging')
-        .then(() => { if (nextRoute) this.$router.push(nextRoute); });
+      this.$store.dispatch('app/notLogging', { next });
     },
   },
 };
