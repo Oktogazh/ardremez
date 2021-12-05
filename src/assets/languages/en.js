@@ -19,6 +19,7 @@ const obj = {
   Free_Trial: 'Free Trial',
   Hide_description: 'Hide description',
   Home: 'Home',
+  invalid_number: 'Your card number is invalid.',
   Log_In: 'Log In',
   Log_Out: 'Log Out',
   Manage_My_Account: 'Manage My Account',

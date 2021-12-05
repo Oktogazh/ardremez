@@ -19,6 +19,7 @@ const obj = {
   Free_Trial: 'Essai gratuit',
   Home: 'Accueil',
   Hide_description: 'Masquer la description',
+  invalid_number: 'Votre numéro de carte est invalide.',
   Log_In: 'Connexion',
   Log_Out: 'Déconnexion',
   Manage_My_Account: 'Gérer mon compte',

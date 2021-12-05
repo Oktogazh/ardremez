@@ -19,6 +19,7 @@ const obj = {
   Free_Trial: 'Amprouiñ Digoust',
   Hide_description: 'Kuzhat an diskrivadur',
   Home: 'Degemerva',
+  invalid_number: 'Direizh eo ho niverenn kartenn.',
   Log_In: 'Kevreañ',
   Log_Out: 'Digevreañ',
   Manage_My_Account: 'Merañ Ma C\'hont',
