@@ -8,7 +8,6 @@ const userState = ({
     level: null,
     subscriptionActive: false,
     jwt: null,
-    verified: false,
   },
   mutations: {
     SET_USER_DATA(state, data) {
@@ -36,7 +35,6 @@ const userState = ({
           level: res.data.live,
           subscriptionActive: res.data.sub,
           jwt: res.data.token,
-          verified: res.data.verified,
         }))
         .then(() => true)
         .catch(() => false);
@@ -78,20 +76,27 @@ const userState = ({
       axios.post(`${rootState.api}/api/kas_kod_postel`);
     },
     async verifyEmail({ commit, rootState }, { email, code }) {
+      let customerId = null;
       const verified = await axios.post(`${rootState.api}/api/gwiriekaat_ar_ger-kuzh`, { email, kod: code })
         .then((res) => res.data)
         .catch(() => {
           axios.post(`${rootState.api}/api/kas_kod_postel`);
           return false;
         });
-      commit('SET_USER_DATA', { verified });
-      return verified;
+      if (verified) {
+        customerId = await axios.post(`${rootState.api}/api/customer`)
+          .then((res) => res.data.id)
+          .catch(() => null);
+      }
+      commit('SET_USER_DATA', { customerId });
+      return (customerId !== null);
     },
   },
   modules: {
   },
   getters: {
     connected: (state) => !!state.jwt,
+    verified: (state) => !!state.customerId,
   },
 });
 

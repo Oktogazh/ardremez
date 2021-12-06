@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     onSubmit(ev) {
-      ev.preventDefault(); 
+      ev.preventDefault();
     },
   },
   mounted() {

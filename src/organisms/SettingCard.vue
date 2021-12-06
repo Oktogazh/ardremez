@@ -8,7 +8,7 @@
         <div id="verify-email" class="option-container">
           <h3>{{ translate.My_email_address }}</h3>
           <h5>{{ $store.state.user.email }}</h5>
-          <h4 v-if="!$store.state.user.verified" @click="sendVerificationEmail"
+          <h4 v-if="!$store.state.user.customerId" @click="sendVerificationEmail"
             class="option">
             {{ translate.Email_Verification }}</h4>
         </div>

@@ -45,7 +45,7 @@ export default {
       }
     },
     subscribeTo(product) {
-      if (!this.$store.state.user.verified) { // dashboard watch $route
+      if (!this.$store.state.user.customerId) { // dashboard watch $route
         swal.fire({ html: this.translate.NeedaBeVerifiedToSub });
       } else {
         this.product = product;
