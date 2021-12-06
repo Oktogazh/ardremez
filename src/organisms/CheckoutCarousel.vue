@@ -3,10 +3,10 @@
     <Modal @closing="closing">
       <div id="checkout-container">
         <CheckoutPhase :slidingState="slidingPhase">
-          <SelectPrices @next="slidingPhase = 1" />
+          <SelectPrices @selectPrice="selectPrice" />
         </CheckoutPhase>
         <CheckoutPhase :slidingState="slidingPhase">
-          <ElementsCheckout @back="slidingPhase = 0" />
+          <StripeElements @back="slidingPhase = 0" :price="price"/>
         </CheckoutPhase>
       </div>
     </Modal>
@@ -18,7 +18,7 @@ import { mapState } from 'vuex';
 import Modal from '@/atoms/Modal.vue';
 import CheckoutPhase from '@/atoms/CheckoutPhase.vue';
 import SelectPrices from '@/molecules/SelectPrices.vue';
-import ElementsCheckout from '@/molecules/ElementsCheckout.vue';
+import StripeElements from '@/molecules/StripeElements.vue';
 
 export default {
   name: 'CheckoutCarousel',
@@ -26,7 +26,7 @@ export default {
     CheckoutPhase,
     Modal,
     SelectPrices,
-    ElementsCheckout,
+    StripeElements,
   },
   computed: {
     ...mapState({
@@ -38,9 +38,14 @@ export default {
     return {
       loading: false,
       slidingPhase: 0,
+      price: null,
     };
   },
   methods: {
+    selectPrice(priceId) {
+      this.slidingPhase = 1;
+      this.price = priceId;
+    },
     closing() {
       this.$store.dispatch('payment/endCheckout');
     },

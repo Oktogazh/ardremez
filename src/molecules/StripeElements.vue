@@ -34,6 +34,10 @@ export default {
       translate: (state) => state.lang,
     }),
   },
+  data() {
+    return {
+    };
+  },
   methods: {
     onSubmit(ev) {
       ev.preventDefault();
@@ -69,6 +73,11 @@ export default {
     this.form = document.getElementById('payment-form');
 
     this.form.addEventListener('submit', this.onSubmit);
+  },
+  props: {
+    price: {
+      type: String,
+    },
   },
 };
 </script>

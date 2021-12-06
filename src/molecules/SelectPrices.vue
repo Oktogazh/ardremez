@@ -8,7 +8,7 @@
       <OptionInfoButton v-for="(price, i) in prices" :info="price"
         :selected="selected" :key="i" @click="selected = i"/>
     </div>
-    <SubmitButton @click="$emit('next')">
+    <SubmitButton @click="next">
       {{ translate.Continue }}
     </SubmitButton>
   </div>
@@ -36,6 +36,11 @@ export default {
     return {
       selected: 0,
     };
+  },
+  methods: {
+    next() {
+      this.$emit('selectPrice', this.prices[this.selected].id);
+    },
   },
 };
 </script>
