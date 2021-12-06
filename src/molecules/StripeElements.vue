@@ -20,18 +20,22 @@
     <div id="card-errors" role="alert"></div>
 
     <button id="submit">Submit Payment</button>
+    <p>{{ priceId }}</p>
   </form>
 
 </template>
 
 <script>
+import axios from 'axios';
 import { mapState } from 'vuex';
 
 export default {
   name: 'ElementsCheckout',
   computed: {
     ...mapState({
+      api: (state) => state.api,
       translate: (state) => state.lang,
+      user: (state) => state.user,
     }),
   },
   data() {
@@ -39,11 +43,15 @@ export default {
     };
   },
   methods: {
-    onSubmit(ev) {
-      ev.preventDefault();
+    createSubscription() {
+      const { customerId } = this.user;
+      const { priceId } = this;
+
+      axios.post(`${this.api}/api/create-subscription`, { customerId, priceId });
     },
   },
   mounted() {
+    this.createSubscription();
     this.stripe = window.Stripe(process.env.VUE_APP_STRIPE_PK);
     this.elements = this.stripe.elements();
     this.style = {
@@ -69,15 +77,9 @@ export default {
         displayError.textContent = '';
       }
     });
-
-    this.form = document.getElementById('payment-form');
-
-    this.form.addEventListener('submit', this.onSubmit);
   },
   props: {
-    price: {
-      type: String,
-    },
+    priceId: String,
   },
 };
 </script>

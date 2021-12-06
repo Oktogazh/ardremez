@@ -6,7 +6,8 @@
           <SelectPrices @selectPrice="selectPrice" />
         </CheckoutPhase>
         <CheckoutPhase :slidingState="slidingPhase">
-          <StripeElements @back="slidingPhase = 0" :price="price"/>
+          <StripeElements v-if="slidingPhase === 1" @back="slidingPhase = 0"
+            :priceId="price"/>
         </CheckoutPhase>
       </div>
     </Modal>
@@ -43,8 +44,8 @@ export default {
   },
   methods: {
     selectPrice(priceId) {
-      this.slidingPhase = 1;
       this.price = priceId;
+      this.slidingPhase = 1;
     },
     closing() {
       this.$store.dispatch('payment/endCheckout');
