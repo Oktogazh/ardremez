@@ -3,23 +3,13 @@
     <button id="back-btn" @click="$emit('back')" v-html="'&#11207;'"></button>
   </div>
   <form id="payment-form">
-    <div id="card-number-element">
-      <!-- Elements will create input elements here -->
+    <div id="payment-element">
+      <!-- Elements will create form elements here -->
     </div>
-    <div id="card-expiry-element">
-      <!-- Elements will create input elements here -->
+    <button id="submit">Subscribe</button>
+    <div id="error-message">
+      <!-- Display error message to your customers here -->
     </div>
-    <div id="card-cvc-element">
-      <!-- Elements will create input elements here -->
-    </div>
-    <div id="zip-code">
-      <input type="" name="" value="">
-    </div>
-
-    <!-- We'll put the error messages in this element -->
-    <div id="card-errors" role="alert"></div>
-
-    <button id="submit">Submit Payment</button>
   </form>
 
 </template>
@@ -38,43 +28,38 @@ export default {
   },
   data() {
     return {
+      subscriptionId: null,
+      clientSecret: null,
     };
   },
   methods: {
-    createSubscription() {
+    async createSubscription() {
       const { customerId } = this.user;
       const { priceId } = this;
+      const uri = `${this.api}/api/create-subscription`;
 
-      window.axios.post(`${this.api}/api/create-subscription`, { customerId, priceId });
+      const data = await window.axios.post(uri,
+        { customerId, priceId })
+        .then((res) => res.data);
+
+      return data;
     },
   },
   mounted() {
-    this.createSubscription();
     this.stripe = window.Stripe(process.env.VUE_APP_STRIPE_PK);
-    this.elements = this.stripe.elements();
-    this.style = {
-      base: {
-        color: '#32325d',
-      },
-    };
 
-    this.cardNumber = this.elements.create('cardNumber', { style: this.style });
-    this.cardNumber.mount('#card-number-element');
+    this.createSubscription()
+      .then(({ subscriptionId, clientSecret }) => {
+        const options = {
+          clientSecret,
+        };
 
-    this.cardExpiry = this.elements.create('cardExpiry', { style: this.style });
-    this.cardExpiry.mount('#card-expiry-element');
+        const elements = this.stripe.elements(options);
+        const paymentElement = elements.create('payment');
+        paymentElement.mount('#payment-element');
 
-    this.cardCvc = this.elements.create('cardCvc', { style: this.style });
-    this.cardCvc.mount('#card-cvc-element');
-
-    this.cardNumber.on('change', ({ error }) => {
-      const displayError = document.getElementById('card-errors');
-      if (error) {
-        displayError.textContent = this.translate[error.code];
-      } else {
-        displayError.textContent = '';
-      }
-    });
+        return subscriptionId;
+      });
   },
   props: {
     priceId: String,
