@@ -3,7 +3,7 @@ const appState = ({
   state: {
     language: '',
     loading: false,
-    title: 'Home',
+    title: '',
     subtitle: null,
     player: {
       playing: false,

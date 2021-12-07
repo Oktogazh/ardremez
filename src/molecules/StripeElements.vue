@@ -6,7 +6,7 @@
     <div id="payment-element">
       <!-- Elements will create form elements here -->
     </div>
-    <button id="submit">Subscribe</button>
+    <button id="submit" @click.prevent="confirmPayment">Subscribe</button>
     <div id="error-message">
       <!-- Display error message to your customers here -->
     </div>
@@ -33,6 +33,27 @@ export default {
     };
   },
   methods: {
+    async confirmPayment() {
+      const { error } = await this.stripe.confirmPayment({
+        // `Elements` instance that was used to create the Payment Element
+        elements: this.elements,
+        confirmParams: {
+          return_url: `${window.location.origin}/#/dashboard?state=successful_payment`,
+        },
+      });
+
+      if (error) {
+        // This point will only be reached if there is an immediate error when
+        // confirming the payment. Show error to your customer (e.g., payment
+        // details incomplete)
+        const messageContainer = document.querySelector('#error-message');
+        messageContainer.textContent = error.message;
+      } else {
+        // Your customer will be redirected to your `return_url`. For some payment
+        // methods like iDEAL, your customer will be redirected to an intermediate
+        // site first to authorize the payment, then redirected to the `return_url`.
+      }
+    },
     async createSubscription() {
       const { customerId } = this.user;
       const { priceId } = this;
@@ -54,8 +75,8 @@ export default {
           clientSecret,
         };
 
-        const elements = this.stripe.elements(options);
-        const paymentElement = elements.create('payment');
+        this.elements = this.stripe.elements(options);
+        const paymentElement = this.elements.create('payment');
         paymentElement.mount('#payment-element');
 
         return subscriptionId;
