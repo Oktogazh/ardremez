@@ -20,13 +20,11 @@
     <div id="card-errors" role="alert"></div>
 
     <button id="submit">Submit Payment</button>
-    <p>{{ priceId }}</p>
   </form>
 
 </template>
 
 <script>
-import axios from 'axios';
 import { mapState } from 'vuex';
 
 export default {
@@ -47,7 +45,7 @@ export default {
       const { customerId } = this.user;
       const { priceId } = this;
 
-      axios.post(`${this.api}/api/create-subscription`, { customerId, priceId });
+      window.axios.post(`${this.api}/api/create-subscription`, { customerId, priceId });
     },
   },
   mounted() {

@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+window.axios = axios;
+
 const userState = ({
   namespaced: true,
   state: {
@@ -16,19 +18,19 @@ const userState = ({
         state[key] = data[key];
       });
       localStorage.setItem('userData', JSON.stringify(state));
-      if (state.jwt) axios.defaults.headers.common.Authorization = `Bearer ${data.jwt}`;
+      if (state.jwt) window.axios.defaults.headers.common.Authorization = `Bearer ${data.jwt}`;
     },
   },
   actions: {
     deleteAccount({ dispatch, rootState }) {
-      axios.delete(`${rootState.api}/api/kont`)
+      window.axios.delete(`${rootState.api}/api/kont`)
         .then(dispatch('logOut'))
         .catch((e) => console.error(e));
     },
     async logIn({ commit, rootState }, { email, password }) {
       // TODO: 'api/login' instead, sending the jwt via the cookie protocol
       // because the audio api doesn't send the Auth header otherwise
-      const loggedIn = await axios.post(`${rootState.api}/api/kevreañ`, { email, password })
+      const loggedIn = await window.axios.post(`${rootState.api}/api/kevreañ`, { email, password })
         .then((res) => commit('SET_USER_DATA', {
           email: res.data.email,
           customerId: res.data.customerId,
@@ -59,7 +61,7 @@ const userState = ({
       commit('SET_USER_DATA', userData);
     },
     async signin({ commit, rootState }, { email, password }) {
-      const signed = await axios.post(`${rootState.api}/api/enrollañ`, { email, password })
+      const signed = await window.axios.post(`${rootState.api}/api/enrollañ`, { email, password })
         .then((res) => commit('SET_USER_DATA', {
           email: res.data.email,
           customerId: res.data.customerId,
@@ -68,23 +70,23 @@ const userState = ({
           jwt: res.data.token,
           verified: res.data.verified,
         }))
-        .then(() => axios.post(`${rootState.api}/api/kas_kod_postel`))
+        .then(() => window.axios.post(`${rootState.api}/api/kas_kod_postel`))
         .then(() => true);
       return signed;
     },
     newVerificationEmail({ rootState }) {
-      axios.post(`${rootState.api}/api/kas_kod_postel`);
+      window.axios.post(`${rootState.api}/api/kas_kod_postel`);
     },
     async verifyEmail({ commit, rootState }, { email, code }) {
       let customerId = null;
-      const verified = await axios.post(`${rootState.api}/api/gwiriekaat_ar_ger-kuzh`, { email, kod: code })
+      const verified = await window.axios.post(`${rootState.api}/api/gwiriekaat_ar_ger-kuzh`, { email, kod: code })
         .then((res) => res.data)
         .catch(() => {
-          axios.post(`${rootState.api}/api/kas_kod_postel`);
+          window.axios.post(`${rootState.api}/api/kas_kod_postel`);
           return false;
         });
       if (verified) {
-        customerId = await axios.post(`${rootState.api}/api/customer`)
+        customerId = await window.axios.post(`${rootState.api}/api/customer`)
           .then((res) => res.data.id)
           .catch(() => null);
       }
