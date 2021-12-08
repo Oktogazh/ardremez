@@ -28,7 +28,6 @@ export default {
   },
   data() {
     return {
-      subscriptionId: null,
       clientSecret: null,
     };
   },
@@ -38,16 +37,13 @@ export default {
         // `Elements` instance that was used to create the Payment Element
         elements: this.elements,
         confirmParams: {
-          return_url: `${window.location.origin}/#/dashboard?state=successful_payment`,
+          return_url: `${window.location.origin}#/dashboard`,
         },
       });
 
       if (error) {
-        // This point will only be reached if there is an immediate error when
-        // confirming the payment. Show error to your customer (e.g., payment
-        // details incomplete)
         const messageContainer = document.querySelector('#error-message');
-        messageContainer.textContent = error.message;
+        messageContainer.textContent = this.translate[error.code];
       } else {
         // Your customer will be redirected to your `return_url`. For some payment
         // methods like iDEAL, your customer will be redirected to an intermediate
@@ -60,27 +56,26 @@ export default {
       const uri = `${this.api}/api/create-subscription`;
 
       const data = await window.axios.post(uri,
-        { customerId, priceId })
+        { customerId, priceId }) // TODO: add the product the user is subscribing to
         .then((res) => res.data);
 
       return data;
+    },
+    async mountElements({ clientSecret }) {
+      const options = {
+        clientSecret,
+      };
+
+      this.elements = this.stripe.elements(options);
+      const paymentElement = this.elements.create('payment');
+      paymentElement.mount('#payment-element');
     },
   },
   mounted() {
     this.stripe = window.Stripe(process.env.VUE_APP_STRIPE_PK);
 
     this.createSubscription()
-      .then(({ subscriptionId, clientSecret }) => {
-        const options = {
-          clientSecret,
-        };
-
-        this.elements = this.stripe.elements(options);
-        const paymentElement = this.elements.create('payment');
-        paymentElement.mount('#payment-element');
-
-        return subscriptionId;
-      });
+      .then(this.mountElements);
   },
   props: {
     priceId: String,
