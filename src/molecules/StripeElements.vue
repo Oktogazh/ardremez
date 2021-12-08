@@ -56,7 +56,7 @@ export default {
       const uri = `${this.api}/api/create-subscription`;
 
       const data = await window.axios.post(uri,
-        { customerId, priceId }) // TODO: add the product the user is subscribing to
+        { customerId, priceId })
         .then((res) => res.data);
 
       return data;

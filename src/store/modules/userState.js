@@ -9,6 +9,7 @@ const userState = ({
     customerId: null,
     level: null,
     subscriptionActive: false,
+    subscriptions: [],
     jwt: null,
   },
   mutations: {
@@ -36,6 +37,7 @@ const userState = ({
           customerId: res.data.customerId,
           level: res.data.live,
           subscriptionActive: res.data.sub,
+          subscriptions: res.data.subscriptions,
           jwt: res.data.token,
         }))
         .then(() => true)
@@ -62,11 +64,12 @@ const userState = ({
     },
     async signin({ commit, rootState }, { email, password }) {
       const signed = await window.axios.post(`${rootState.api}/api/enrollañ`, { email, password })
-        .then((res) => commit('SET_USER_DATA', {
+        .then((res) => commit('SET_USER_DATA', { // todo: when deployed, res.data instead
           email: res.data.email,
           customerId: res.data.customerId,
           level: res.data.live,
           subscriptionActive: res.data.sub,
+          subscriptions: res.data.subscriptions,
           jwt: res.data.token,
           verified: res.data.verified,
         }))
