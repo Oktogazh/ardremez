@@ -32,8 +32,8 @@ const payementState = ({
       commit('RESET_PRODUCT_DATA', { prices: null, product: null });
     },
     async loadPrices({ commit, rootState, state }) {
-      const { productId } = state.product.metadata;
-      const prices = await axios.get(`${rootState.api}/api/prices/${productId}`)
+      const { _id } = state.product;
+      const prices = await axios.get(`${rootState.api}/api/prices/${_id}`)
         .then((res) => res.data.prices.data);
       commit('SET_PRICES', prices);
     },

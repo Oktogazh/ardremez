@@ -4,9 +4,9 @@
     <router-link :to="{ path: '/read', query: { p: `1${seriesObject.code}` }}">
       <SmallButton :bg="'grad-blue'" :text="translate.Free_Trial"/>
     </router-link>
-    <SmallButton v-if="!subscribed" :bg="'grad-green'" @click="beforeSubscribe"
+    <SmallButton v-if="!subscriptionId" :bg="'grad-green'" @click="beforeSubscribe"
     :text="translate.Subscribe"/>
-    <SmallButton v-if="subscribed" :bg="'grad-red'" @click="unSubscibe"
+    <SmallButton v-if="subscriptionId" :bg="'grad-red'" @click="beforeUnSubscibe"
       :text="translate.Unsubscribe"/>
   </div>
 </template>
@@ -21,27 +21,36 @@ export default {
     SmallButton,
   },
   computed: {
-    subscribed() {
+    subscriptionId() {
       const { _id } = this.seriesObject;
       function filter(sub) {
         const { status, productId } = sub;
-        return ((status === 'active' || status === 'past_due') && (productId === _id));
+        return ((productId === _id) && (status === 'active' || status === 'past_due'));
       }
-      return !(this.user.subscriptions.filter(filter).length === 0);
+      const filtered = this.user.subscriptions.filter(filter)[0] || {};
+      const { id } = filtered;
+
+      return id;
     },
     ...mapState({
       translate: (state) => state.lang,
       user: (state) => state.user,
+      api: (state) => state.api,
     }),
   },
   methods: {
-    async beforeSubscribe() {
+    beforeSubscribe() {
       const next = {
         path: '/dashboard',
       };
       const here = this.$router.currentRoute.value.path;
       this.$store.dispatch('payment/startCheckout', { product: this.seriesObject });
       this.$store.dispatch('app/logAndRoute', { next, redirect: here });
+    },
+    beforeUnSubscibe() {
+      const store = this.$store;
+      window.axios.delete(`${this.api}/api/digoumanantiñ/${this.subscriptionId}`)
+        .then((res) => store.commit('user/SET_USER_DATA', res.data));
     },
   },
   props: {
