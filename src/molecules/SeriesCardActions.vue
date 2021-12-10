@@ -4,7 +4,10 @@
     <router-link :to="{ path: '/read', query: { p: `1${seriesObject.code}` }}">
       <SmallButton :bg="'grad-blue'" :text="translate.Free_Trial"/>
     </router-link>
-    <SmallButton :bg="'grad-green'" @click="beforeSubscribe" :text="translate.Subscribe"/>
+    <SmallButton v-if="!subscribed" :bg="'grad-green'" @click="beforeSubscribe"
+    :text="translate.Subscribe"/>
+    <SmallButton v-if="subscribed" :bg="'grad-red'" @click="unSubscibe"
+      :text="translate.Unsubscribe"/>
   </div>
 </template>
 
@@ -18,6 +21,14 @@ export default {
     SmallButton,
   },
   computed: {
+    subscribed() {
+      const { _id } = this.seriesObject;
+      function filter(sub) {
+        const { status, productId } = sub;
+        return ((status === 'active' || status === 'past_due') && (productId === _id));
+      }
+      return !(this.user.subscriptions.filter(filter).length === 0);
+    },
     ...mapState({
       translate: (state) => state.lang,
       user: (state) => state.user,

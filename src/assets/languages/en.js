@@ -42,6 +42,7 @@ const obj = {
   Submit: 'Submit',
   Subscribe: 'Subscribe',
   SubscribeTo: 'Subscribe to:',
+  Unsubscribe: 'Unsubscibe',
   Wrong_code_New_code_sent: 'This code is invalid or has already expired.<br>A new verification code has just been sent to you to try again.',
   yr4year: 'yr',
 };

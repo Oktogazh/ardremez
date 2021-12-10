@@ -24,7 +24,7 @@ const obj = {
   Log_Out: 'Digevreañ',
   Manage_My_Account: 'Merañ Ma C\'hont',
   minimum_length_required: '8 arouez da neutañ a zle mont d\'ober ho ker-kuzh.',
-  must_unsubscibe_before_delete_account: 'Ret eo deoc\'h digoumenantiñ kent dilemel ar gont-mañ!',
+  must_unsubscibe_before_delete_account: 'Ret eo deoc\'h digoumanantiñ kent dilemel ar gont-mañ!',
   mth4month: 'miz',
   My_Account: 'Ma C\'hont',
   My_email_address: 'Ma chomlec\'h postel:',
@@ -42,6 +42,7 @@ const obj = {
   Submit: 'Kas',
   Subscribe: 'Koumanantiñ',
   SubscribeTo: 'Koumanantiñ d\'an heuliad',
+  Unsubscribe: 'Digoumanantiñ',
   Wrong_code_New_code_sent: 'Ar c\'hod-mañ zo diwiriek, pe c\'hoazh, diamzeriet.<br>Emeur o paouez kas ur c\'hod nevez, deoc\'h klask en-dro.',
   yr4year: 'bl',
 };

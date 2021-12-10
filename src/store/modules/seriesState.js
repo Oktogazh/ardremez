@@ -3,6 +3,7 @@ const seriesState = ({
   state: {
     series: [
       {
+        _id: 'prod_KhGIVJF2dZ6WTm',
         code: '@br42_fr.1',
         title: 'Le breton en trois mois',
         comments: [ // An array of strings, one str is a <p>
@@ -28,7 +29,6 @@ const seriesState = ({
           },
           openCardOnPodcastEnd: 1,
           podcasts: 91,
-          productId: 'prod_KhGIVJF2dZ6WTm',
           startLevel: 'beginner',
           subscribers: null, // TODO: get a number
         },
