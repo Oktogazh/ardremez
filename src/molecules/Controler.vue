@@ -2,7 +2,7 @@
   <div id="controler">
     <Load :active="hasPrev" :size="size" :angle="'90deg'" @click="loading('prev')"/>
     <Skip :size="size" :angle="'180deg'" @click="skipping(-10)"/>
-    <PlayPause :size="size" :playing="playing"
+    <PlayPause :size="size"
       @play="setPlaying(true)" @pause="setPlaying(false)"/>
     <Skip :size="size" @click="skipping(10)"/>
     <Load :active="hasNext" :size="size" :angle="'-90deg'" @click="loading('next')"/>
@@ -67,7 +67,7 @@ export default {
       });
     },
     setPlaying(bool) {
-      this.$store.commit('app/SET_PLAYING', { playing: bool });
+      this.$store.dispatch('app/updateAppState', { player: { playing: bool } });
     },
     skipping(secs) {
       const audio = document.getElementById('audio');

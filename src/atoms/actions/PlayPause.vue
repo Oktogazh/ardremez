@@ -4,10 +4,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import lottie from 'lottie-web';
 
 export default {
   name: 'PlayPause',
+  computed: {
+    ...mapState({
+      playing(state) {
+        return state.app.player.playing;
+      },
+    }),
+  },
   data() {
     return {
     };
@@ -47,10 +55,6 @@ export default {
   props: {
     size: {
       required: true,
-    },
-    playing: {
-      required: true,
-      default: false,
     },
   },
 };
