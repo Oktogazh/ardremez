@@ -19,7 +19,7 @@ const userState = ({
         state[key] = data[key];
       });
       localStorage.setItem('userData', JSON.stringify(state));
-      if (state.jwt) window.axios.defaults.headers.common.Authorization = `Bearer ${data.jwt}`;
+      if (data.jwt) window.axios.defaults.headers.common.Authorization = `Bearer ${data.jwt}`;
     },
   },
   actions: {
@@ -81,7 +81,7 @@ const userState = ({
       window.axios.post(`${rootState.api}/api/kas_kod_postel`);
     },
     async updateState({ commit, rootState }) {
-      const updatedUserData = await window.axios.get(`${rootState}/api/update_user_state`);
+      const updatedUserData = await window.axios.get(`${rootState.api}/api/update_user_state`);
 
       commit('SET_USER_DATA', updatedUserData);
     },
