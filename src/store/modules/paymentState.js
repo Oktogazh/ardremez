@@ -33,7 +33,7 @@ const payementState = ({
     },
     async loadPrices({ commit, rootState, state }) {
       const { _id } = state.product;
-      const prices = await axios.get(`${rootState.api}/api/prices/${_id}`)
+      const prices = await axios.get(`${rootState.api}/api/prices/prod_${_id}`)
         .then((res) => res.data.prices.data);
       commit('SET_PRICES', prices);
     },

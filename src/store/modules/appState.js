@@ -13,6 +13,12 @@ const appState = ({
     redirectRoute: '/',
   },
   mutations: {
+    SET_APP_STATE(state, data) {
+      const keysToUpdate = Object.keys(data);
+      keysToUpdate.forEach((key) => {
+        state[key] = data[key];
+      });
+    },
     SET_CHOSEN_LANGUAGE(state, language) {
       state.language = language;
     },
@@ -42,6 +48,10 @@ const appState = ({
     },
     notLogging({ commit }, { next }) {
       commit('SET_LOGGING_STATE_AND_ROUTES', { logging: false, next, redirect: '/' });
+    },
+    updateAppState({ commit, dispatch }, data) {
+      dispatch('user/updateState', null, { root: true });
+      commit('SET_APP_STATE', data);
     },
   },
   modules: {

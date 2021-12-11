@@ -80,6 +80,11 @@ const userState = ({
     newVerificationEmail({ rootState }) {
       window.axios.post(`${rootState.api}/api/kas_kod_postel`);
     },
+    async updateState({ commit, rootState }) {
+      const updatedUserData = await window.axios.get(`${rootState}/api/update_user_state`);
+
+      commit('SET_USER_DATA', updatedUserData);
+    },
     async verifyEmail({ commit, rootState }, { email, code }) {
       let customerId = null;
       const verified = await window.axios.post(`${rootState.api}/api/gwiriekaat_ar_ger-kuzh`, { email, kod: code })

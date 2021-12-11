@@ -22,7 +22,7 @@ export default {
     }),
   },
   created() {
-    this.$store.commit('app/SET_TITLES', { title: 'Home' });
+    this.$store.dispatch('app/updateAppState', { title: 'Home', subtitle: null });
   },
   data() {
     return {

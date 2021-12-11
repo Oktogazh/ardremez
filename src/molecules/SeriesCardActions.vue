@@ -6,7 +6,7 @@
     </router-link>
     <SmallButton v-if="!subscriptionId" :bg="'grad-green'" @click="beforeSubscribe"
     :text="translate.Subscribe"/>
-    <SmallButton v-if="subscriptionId" :bg="'grad-red'" @click="beforeUnSubscibe"
+    <SmallButton v-if="subscriptionId" :bg="'grad-red'" @click="beforeUnsubscibe"
       :text="translate.Unsubscribe"/>
   </div>
 </template>
@@ -47,7 +47,7 @@ export default {
       this.$store.dispatch('payment/startCheckout', { product: this.seriesObject });
       this.$store.dispatch('app/logAndRoute', { next, redirect: here });
     },
-    beforeUnSubscibe() {
+    beforeUnsubscibe() {
       const store = this.$store;
       window.axios.delete(`${this.api}/api/digoumanantiñ/${this.subscriptionId}`)
         .then((res) => store.commit('user/SET_USER_DATA', res.data));

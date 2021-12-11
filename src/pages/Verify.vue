@@ -16,7 +16,7 @@ export default {
     MainContainer,
   },
   created() {
-    this.$store.commit('app/SET_TITLES', { title: 'Email_Verification' });
+    this.$store.dispatch('app/updateAppState', { title: 'Email_Verification', subtitle: null });
   },
   data() {
     return {

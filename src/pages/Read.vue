@@ -62,11 +62,10 @@ export default {
   methods: {
     async downloadChapter() {
       const { api } = this.$store.state;
-      this.$store.commit('app/SET_LOADING', { loading: true });
-      this.$store.commit('app/SET_TITLES', { subtitle: 'Loading...' });
       this.id = this.$route.query.p;
 
       if (!this.id) return null;
+      this.$store.dispatch('app/updateAppState', { subtitle: '...', title: null, loading: true });
 
       const dataURI = `${api}/api/read/${this.id}`;
 
@@ -75,9 +74,12 @@ export default {
         .then((res) => res.data.chapter);
       this.$store.commit('lesson/SET_LESSON', chapterData);
       this.chapterData = chapterData;
-      this.$store.commit('app/SET_TITLES', { subtitle: chapterData.title });
+      this.$store.dispatch('app/updateAppState', {
+        subtitle: chapterData.title,
+        title: null,
+        loading: false,
+      });
 
-      this.$store.commit('app/SET_LOADING', { loading: false });
       return null;
     },
   },

@@ -25,7 +25,7 @@ export default {
     Progressions,
   },
   created() {
-    this.$store.commit('app/SET_TITLES', { title: 'My_Account' });
+    this.$store.dispatch('app/updateAppState', { title: 'My_Account', subtitle: null });
   },
   computed: {
     ...mapState({
