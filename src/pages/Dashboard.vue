@@ -45,13 +45,12 @@ export default {
       }
     },
     completePayment({ status, productId }) {
-    // TODO: swal.fire a message,
-    // add this product to the subsciptions,
-    // shift in a new progress object if not in the user.progress array
-      return null;
+      // TODO: swal.fire a message,
+      // add this product to the subsciptions,
+      // shift in a new progress object if not in the user.progress array
+      return { status, productId };
     },
     getStatus({ clientSecret, status, productId }) {
-
       if (status) {
         this.completePayment({ status, productId });
       } else {
