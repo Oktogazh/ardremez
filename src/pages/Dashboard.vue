@@ -44,6 +44,27 @@ export default {
         this.$store.dispatch('app/logAndRoute', { redirect });
       }
     },
+    completePayment({ status, productId }) {
+    // TODO: swal.fire a message,
+    // add this product to the subsciptions,
+    // shift in a new progress object if not in the user.progress array
+      return null;
+    },
+    getStatus({ clientSecret, status, productId }) {
+
+      if (status) {
+        this.completePayment({ status, productId });
+      } else {
+        const stripe = window.Stripe(process.env.VUE_APP_STRIPE_PK);
+        const self = this;
+
+        stripe.retrievePaymentIntent(clientSecret)
+          .then(({ paymentIntent }) => {
+            const newStatus = paymentIntent.status;
+            self.completePayment({ status: newStatus, productId });
+          });
+      }
+    },
     subscribeTo(product) {
       if (!this.$store.state.user.customerId) { // dashboard watch $route
         swal.fire({ html: this.translate.NeedaBeVerifiedToSub });
@@ -54,9 +75,18 @@ export default {
   },
   mounted() {
     const { product } = this.$store.state.payment;
+    const clientSecret = new URLSearchParams(window.location.search).get(
+      'payment_intent_client_secret',
+    );
+    const status = new URLSearchParams(window.location.search).get(
+      'redirect_status',
+    );
+    const productId = new URLSearchParams(window.location.search).get(
+      'prod_id',
+    );
     this.checkIfLoggedIn();
-
-    if (product) this.subscribeTo(product);
+    if (clientSecret) this.getStatus({ clientSecret, status, productId });
+    else if (product) this.subscribeTo(product);
   },
   watch: {
   },

@@ -29,6 +29,7 @@ const seriesState = ({
           },
           openCardOnPodcastEnd: 1,
           podcasts: 91,
+          productId: 'prod_KhGIVJF2dZ6WTm',
           startLevel: 'beginner',
           subscribers: null, // TODO: get a number
         },
