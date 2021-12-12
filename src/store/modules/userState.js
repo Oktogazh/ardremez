@@ -8,6 +8,10 @@ const userState = ({
     email: null,
     customerId: null,
     level: null,
+    progress: [{
+      series: null,
+      chapter: null,
+    }],
     subscriptionActive: false,
     subscriptions: [],
     jwt: null,
