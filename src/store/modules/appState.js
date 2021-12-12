@@ -36,10 +36,6 @@ const appState = ({
     SET_PLAYING(state, { playing }) {
       state.player.playing = playing;
     },
-    SET_TITLES(state, { title, subtitle }) {
-      state.title = title;
-      state.subtitle = subtitle;
-    },
   },
   actions: {
     logAndRoute({ commit, rootGetters }, { next, redirect }) {

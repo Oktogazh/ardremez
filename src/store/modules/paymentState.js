@@ -3,8 +3,8 @@ import axios from 'axios';
 const payementState = ({
   namespaced: true,
   state: {
-    prices: null,
-    product: null,
+    prices: [null], // list of prices for the selected product
+    product: null, // series selected for the payment
   },
   mutations: {
     RESET_PRODUCT_DATA(state, { prices, product }) {
