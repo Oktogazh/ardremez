@@ -32,7 +32,6 @@ export default {
   computed: {
     ...mapState({
       translate: (state) => state.lang,
-      product: (state) => state.payment.product,
     }),
   },
   data() {

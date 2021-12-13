@@ -58,9 +58,9 @@ export default {
             icon: 'success',
             html: this.translate.SubscriptionSuccessfulyProcessedMsg,
           });
-          this.$router.push(this.$route.path);
-          break;
 
+          window.history.replaceState({}, document.title, '/#/dashboard');
+          break;
         case 'processing':
           break;
 

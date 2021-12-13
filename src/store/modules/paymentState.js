@@ -3,7 +3,7 @@ import axios from 'axios';
 const payementState = ({
   namespaced: true,
   state: {
-    prices: [null], // list of prices for the selected product
+    prices: [], // list of prices for the selected product
     product: null, // series selected for the payment
   },
   mutations: {
@@ -32,7 +32,7 @@ const payementState = ({
       commit('RESET_PRODUCT_DATA', { prices: null, product: null });
     },
     async loadPrices({ commit, rootState, state }) {
-      const prodId = state.product.metadata.productId;
+      const prodId = state.product.productId;
       const prices = await axios.get(`${rootState.api}/api/prices/${prodId}`)
         .then((res) => res.data.prices.data);
       commit('SET_PRICES', prices);

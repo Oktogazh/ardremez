@@ -5,6 +5,7 @@ const seriesState = ({
       {
         _id: '@KhGIVJF2dZ6WTm',
         code: '@br42_fr.1',
+        productId: 'prod_KhGIVJF2dZ6WTm',
         title: 'Le breton en trois mois',
         comments: [ // An array of strings, one str is a <p>
           'Cette série est la première et pour l\'instant la seule accessible sur le site. Elle se concentre sur le dialecte de Basse-Cornouaille (en vert sur la carte) mais vous pourrez également profiter d\'une prononciation plus standarde si vous souhaitez maîtriser un autre dialecte par la suite.',
@@ -29,7 +30,6 @@ const seriesState = ({
           },
           openCardOnPodcastEnd: 1,
           podcasts: 91,
-          productId: 'prod_KhGIVJF2dZ6WTm',
           startLevel: 'beginner',
           subscribers: null, // TODO: get a number
         },

@@ -23,8 +23,8 @@ export default {
     ...mapState({
       api: (state) => state.api,
       translate: (state) => state.lang,
-      productId: (state) => state.payment.metadata.productId,
       user: (state) => state.user,
+      productId: (state) => state.payment.product.productId,
     }),
   },
   data() {
@@ -38,7 +38,7 @@ export default {
         // `Elements` instance that was used to create the Payment Element
         elements: this.elements,
         confirmParams: {
-          return_url: `${window.location.origin}#/dashboard?prod_id=${this.productId}`,
+          return_url: `${window.location.origin}?prod_id=${this.productId}#/dashboard`,
         },
       });
 
