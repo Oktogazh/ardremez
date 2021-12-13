@@ -8,10 +8,10 @@ const userState = ({
     email: null,
     customerId: null,
     level: null,
-    progress: [{
-      series: null,
-      chapter: null,
-    }],
+    progress: [ /* {
+        series: null,
+        chapter: null,
+      } */],
     subscriptionActive: false,
     subscriptions: [],
     jwt: null,
@@ -54,7 +54,9 @@ const userState = ({
         email: null,
         customerId: null,
         level: null,
+        progress: [],
         subscriptionActive: false,
+        subscriptions: [],
         jwt: null,
         verified: false,
       };
@@ -85,8 +87,37 @@ const userState = ({
       window.axios.post(`${rootState.api}/api/kas_kod_postel`);
     },
     async updateState({ commit, rootState }) {
-      const updatedUserData = await window.axios.get(`${rootState.api}/api/update_user_state`);
+      const updatedUserData = await window.axios.get(`${rootState.api}/api/update_user_state`)
+        .then((res) => res.data);
 
+      commit('SET_USER_DATA', updatedUserData);
+    },
+    updateSubscription({ commit, state }, { productId, status }) {
+      // Firstly, update the progress array
+      // Extract the series id from the product id
+      const seriesId = `@${productId.substring('prod_'.length)}`;
+      // Verifies if has done any progress on the series yet
+      function hasStartedSeries(progressObj) {
+        return progressObj.series === seriesId;
+      }
+      const seriesNotStarted = (state.progress.findIndex(hasStartedSeries) === -1);
+
+      const initialProg = { series: seriesId, chapter: 0 };
+      const progress = (seriesNotStarted) ? [initialProg, ...state.progress] : state.progress;
+
+      // Secondly, update the subscriptions array
+      const previousSubs = state.subscriptions;
+      // filter that will return false if any sub has the same product id
+      // since we don't know which subscription is being updated,
+      // and we just want to show the users which series they may access
+      // this is just while waiting a BE resynchronization
+      // during the next /api/update-user-state call
+      const filter = (sub) => !(sub.productId === productId);
+      const preservedSubs = previousSubs.filter(filter);
+      const newSub = { productId, status };
+      const subscriptions = [newSub, ...preservedSubs];
+
+      const updatedUserData = { progress, subscriptions };
       commit('SET_USER_DATA', updatedUserData);
     },
     async verifyEmail({ commit, rootState }, { email, code }) {

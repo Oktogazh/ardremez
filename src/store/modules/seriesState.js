@@ -3,7 +3,7 @@ const seriesState = ({
   state: {
     series: [
       {
-        _id: 'KhGIVJF2dZ6WTm',
+        _id: '@KhGIVJF2dZ6WTm',
         code: '@br42_fr.1',
         title: 'Le breton en trois mois',
         comments: [ // An array of strings, one str is a <p>

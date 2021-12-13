@@ -47,7 +47,32 @@ export default {
     completePayment({ status, productId }) {
       // TODO: swal.fire a message,
       // add this product to the subsciptions,
-      // shift in a new progress object if not in the user.progress array
+      // shift in a new progress object if not in the user.progress
+      switch (status) {
+        case 'succeeded':
+          // update the user's state,
+          // inform the user and
+          // delete the query params
+          this.$store.dispatch('user/updateSubscription', { productId, status });
+          swal.fire({
+            icon: 'success',
+            html: this.translate.SubscriptionSuccessfulyProcessedMsg,
+          });
+          this.$router.push(this.$route.path);
+          break;
+
+        case 'processing':
+          break;
+
+        case 'requires_payment_method':
+          // Redirect your user back to your payment page to attempt collecting
+          // payment again
+          break;
+
+        default:
+          // message.innerText = 'Something went wrong.';
+          break;
+      }
       return { status, productId };
     },
     getStatus({ clientSecret, status, productId }) {

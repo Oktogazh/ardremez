@@ -45,8 +45,9 @@ const appState = ({
     notLogging({ commit }, { next }) {
       commit('SET_LOGGING_STATE_AND_ROUTES', { logging: false, next, redirect: '/' });
     },
-    updateAppState({ commit, dispatch }, data) {
-      dispatch('user/updateState', null, { root: true });
+    updateAppState({ commit, dispatch, rootGetters }, data) {
+      const isLogged = rootGetters['user/connected'];
+      if (isLogged) dispatch('user/updateState', null, { root: true });
       commit('SET_APP_STATE', data);
     },
   },
