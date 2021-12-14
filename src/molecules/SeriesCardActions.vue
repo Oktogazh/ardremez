@@ -4,9 +4,9 @@
     <router-link :to="{ path: '/read', query: { p: `1${seriesObject.code}` }}">
       <SmallButton :bg="'grad-blue'" :text="translate.Free_Trial"/>
     </router-link>
-    <SmallButton v-if="!subscriptionId" :bg="'grad-green'" @click="beforeSubscribe"
+    <SmallButton v-if="sub.status === 'notSub'" :bg="'grad-green'" @click="beforeSubscribe"
     :text="translate.Subscribe"/>
-    <SmallButton v-if="subscriptionId" :bg="'grad-red'" @click="beforeUnsubscibe"
+    <SmallButton v-if="sub.id !== false" :bg="'grad-red'" @click="beforeUnsubscibe"
       :text="translate.Unsubscribe"/>
   </div>
 </template>
@@ -21,22 +21,30 @@ export default {
     SmallButton,
   },
   computed: {
-    subscriptionId() {
-      const { _id } = this.seriesObject;
-      function filter(sub) {
-        const { status, productId } = sub;
-        return ((productId === _id) && (status === 'active' || status === 'past_due'));
-      }
-      const filtered = this.user.subscriptions.filter(filter)[0] || {};
-      const { id } = filtered;
-
-      return id;
-    },
     ...mapState({
       translate: (state) => state.lang,
       user: (state) => state.user,
       api: (state) => state.api,
     }),
+    sub() {
+      const seriesProdId = this.seriesObject.productId;
+      function filter(sub) {
+        const { status, productId } = sub;
+        return ((productId === seriesProdId) && (status === 'active' || status === 'past_due'));
+      }
+      const filtered = this.user.subscriptions.filter(filter);
+      const sub = {
+        // if there is no subscription id yet,
+        // e.i. just after a payment validation before sync with the DB
+        // or if `filtered[0]` is  undefined
+        // `id` is set to false, so the unsubscribe btn won't appear
+        id: false,
+        status: 'notSub', // if it becomes not `notSub`, status is active or past due
+        ...filtered[0],
+      };
+
+      return sub;
+    },
   },
   methods: {
     beforeSubscribe() {
@@ -49,7 +57,7 @@ export default {
     },
     beforeUnsubscibe() {
       const store = this.$store;
-      window.axios.delete(`${this.api}/api/digoumanantiñ/${this.subscriptionId}`)
+      window.axios.delete(`${this.api}/api/digoumanantiñ/${this.sub.id}`)
         .then((res) => store.commit('user/SET_USER_DATA', res.data));
     },
   },

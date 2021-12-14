@@ -38,7 +38,7 @@
     <template v-slot:body>
       <div id="body-container">
         <div class="">
-          <p v-for="(paragraph, index) in seriesObject.comments" :key="index" v-html="paragraph">
+          <p v-for="(paragraph, index) in seriesObject.description" :key="index" v-html="paragraph">
           </p>
         </div>
       </div>

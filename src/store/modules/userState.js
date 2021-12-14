@@ -91,6 +91,7 @@ const userState = ({
         .then((res) => res.data);
 
       commit('SET_USER_DATA', updatedUserData);
+      return true;
     },
     updateSubscription({ commit, state }, { productId, status }) {
       // Firstly, update the progress array
