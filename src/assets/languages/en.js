@@ -34,6 +34,7 @@ const obj = {
   OK: 'OK',
   Other_Languages: 'Other Languages',
   Password: 'Password',
+  PaymentSuccessfulyProcessedMsg: 'Your payment was successfully processed! You can now enjoy all the lessons of the series!',
   podcasts: 'lessons',
   Progressions: 'Progressions',
   Show_description: 'Show description',

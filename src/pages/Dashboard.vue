@@ -56,7 +56,7 @@ export default {
           this.$store.dispatch('user/updateSubscription', { productId, status });
           swal.fire({
             icon: 'success',
-            html: this.translate.SubscriptionSuccessfulyProcessedMsg,
+            html: this.translate.PaymentSuccessfulyProcessedMsg,
           });
 
           window.history.replaceState({}, document.title, '/#/dashboard');

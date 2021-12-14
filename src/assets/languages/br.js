@@ -34,6 +34,7 @@ const obj = {
   OK: 'MAT',
   Other_Languages: 'Yezhoù All',
   Password: 'Ger-Kuzh',
+  PaymentSuccessfulyProcessedMsg: 'Emaoc\'h o paouez bezañ karget gant berzh! Gallout a rit tizhout holl gentelioù an hentenn!',
   podcasts: 'a gentelioù',
   Progressions: 'Araokadennoù',
   Reinitialize_Password: 'Ger-Kuzh Nevez',
