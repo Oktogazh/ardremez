@@ -23,9 +23,9 @@
         <div id="title-and-metadata">
           <h2 id="series-title" v-html="seriesObject.title"></h2>
           <div id="metadata-container">
-            <p class="metadata">{{ `${seriesObject.metadata.podcasts} ` + translate.podcasts }}</p>
+            <p class="metadata">{{ `${seriesObject.length} ` + translate.lessons }}</p>
             <p class="metadata">{{
-              `${translate.average_duration} ` + seriesObject.metadata.averageDuration }}</p>
+              `${translate.average_duration} ` + seriesObject.averageDuration }}</p>
             <p class="metadata">{{
               `${translate[languages.source]} → ${translate[languages.target]}`
             }}</p>
@@ -65,7 +65,7 @@ export default {
   },
   computed: {
     languages() {
-      return this.seriesObject.metadata.languages;
+      return this.seriesObject.languages;
     },
     ...mapState({
       translate: (state) => state.lang,

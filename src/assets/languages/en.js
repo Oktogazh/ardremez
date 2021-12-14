@@ -35,7 +35,7 @@ const obj = {
   Other_Languages: 'Other Languages',
   Password: 'Password',
   PaymentSuccessfulyProcessedMsg: 'Your payment was successfully processed! You can now enjoy all the lessons of the series!',
-  podcasts: 'lessons',
+  lessons: 'lessons',
   Progressions: 'Progressions',
   Show_description: 'Show description',
   Reinitialize_Password: 'Reinitialize Password',

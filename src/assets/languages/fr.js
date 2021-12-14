@@ -35,7 +35,7 @@ const obj = {
   OK: 'OK',
   Password: 'Mot de Passe',
   PaymentSuccessfulyProcessedMsg: 'Votre payment s\'est bien passé, vous pouvez désormais profiter accéder à l\'intégralité des podcasts de la séries.',
-  podcasts: 'leçons',
+  lessons: 'leçons',
   Progressions: 'Progressions',
   Reinitialize_Password: 'Réinitialiser mon mot de passe',
   Sign_In: 'Créer mon compte',
