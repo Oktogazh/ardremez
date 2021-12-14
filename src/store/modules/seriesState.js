@@ -7,6 +7,7 @@ const seriesState = ({
         object: 'series',
         code: '@br42_fr.1',
         title: 'Le breton en trois mois',
+        creator: '5f9f2714ab73e601aa5d192a', // TODO: ObjectId of the creator's account
         description: [ // An array of strings, one str is a <p>
           'Cette série est la première et pour l\'instant la seule accessible sur le site. Elle se concentre sur le dialecte de Basse-Cornouaille (en vert sur la carte) mais vous pourrez également profiter d\'une prononciation plus standarde si vous souhaitez maîtriser un autre dialecte par la suite.',
           'Si vous parvennez à suivre un rythme d\'une leçon par jour, vous devriez pouvoir terminer cette serie d\'ici trois mois, et aurrez un niveau suffissant pour vous lancer dans vos premières conversations en breton. En fait, vous devriez en être cappable bien avant d\'arriver à la dernière leçon.',
@@ -22,18 +23,17 @@ const seriesState = ({
         ],
         metadata: {
           averageDuration: '10`',
-          creator: '5f9f2714ab73e601aa5d192a', // TODO: ObjectId of the creator's account
           freeTrial: 7,
           languages: {
             source: 'fra',
             target: 'bre',
           },
-          openCardOnPodcastEnd: 1,
           podcasts: 91,
           startLevel: 'beginner',
           subscribers: null, // TODO: get a number
           videos: 0,
         },
+        openCardOnPodcastEnd: 1,
         productId: 'prod_KhGIVJF2dZ6WTm',
       },
     ],

@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Controler from '@/molecules/Controler.vue';
 import Progression from '@/molecules/Progression.vue';
 
@@ -15,6 +16,11 @@ export default {
   components: {
     Controler,
     Progression,
+  },
+  computed: {
+    ...mapState({
+      openCardOnPodcastEnd: (state) => state.series.series[0].openCardOnPodcastEnd,
+    }),
   },
   data() {
     return {
@@ -49,7 +55,7 @@ export default {
       return null;
     },
     endOfPodcast() {
-      const id = `header-${this.$store.state.series.series[0].metadata.openCardOnPodcastEnd}`;
+      const id = `header-${this.openCardOnPodcastEnd}`;
       const cardToOpen = document.getElementById(id);
       const playIcon = document.getElementById('play-icon');
 
