@@ -53,7 +53,7 @@ export default {
           },
         ],
         images: [],
-        links: [],
+        links: null,
         openCardOnEnded: null,
         title: null,
       },
