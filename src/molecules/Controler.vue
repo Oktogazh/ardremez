@@ -29,12 +29,12 @@ export default {
       },
     }),
     hasNext() {
-      const id = parseInt(this.$store.state.lesson.id, 10);
-      const max = parseInt(this.$store.state.series.series[0].metadata.podcasts, 10);
+      const id = parseInt(this.$store.state.chapter.id, 10);
+      const max = parseInt(this.$store.state.series.series[0].length, 10);
       return (max !== id);
     },
     hasPrev() {
-      const id = parseInt(this.$store.state.lesson.id, 10);
+      const id = parseInt(this.$store.state.chapter.id, 10);
       return (id !== 1);
     },
   },
@@ -45,11 +45,11 @@ export default {
   },
   methods: {
     loading(name) {
-      const { code } = this.$store.state.series.series[0];
+      const { _id } = this.$store.state.series.series[0];
       const sign = (name === 'prev') ? -1 : 1;
-      const max = this.$store.state.series.series[0].metadata.podcasts;
+      const max = this.$store.state.series.series[0].length;
       // const freeTrial = this.$store.state.series.series[0].metadata.freeTrial;
-      const id = parseInt(this.$store.state.lesson.id, 10);
+      const id = parseInt(this.$store.state.chapter.id, 10);
       const askingFor = sign * 1 + id;
 
       if (askingFor < 1 || askingFor > max) return null;
@@ -62,7 +62,7 @@ export default {
       return this.$router.push({
         path: '/read',
         query: {
-          p: `${askingFor}${code}`,
+          p: `${askingFor}${_id}`,
         },
       });
     },

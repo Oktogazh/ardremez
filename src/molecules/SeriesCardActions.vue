@@ -1,7 +1,7 @@
 <template>
   <div id="series-actions-container">
     <!-- TODO: use a getter to compute the query after the user's level -->
-    <router-link :to="{ path: '/read', query: { p: `1${seriesObject.code}` }}">
+    <router-link :to="{ path: '/read', query: { p: `1${seriesObject._id}` }}">
       <SmallButton :bg="'grad-blue'" :text="translate.Free_Trial"/>
     </router-link>
     <SmallButton v-if="sub.status === 'notSub'" :bg="'grad-green'" @click="beforeSubscribe"

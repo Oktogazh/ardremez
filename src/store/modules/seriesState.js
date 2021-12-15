@@ -5,8 +5,6 @@ const seriesState = ({
       {
         _id: '@KhGIVJF2dZ6WTm',
         object: 'series',
-        code: '@br42_fr.1',
-        title: 'Le breton en trois mois',
         averageDuration: '10`',
         creator: '5f9f2714ab73e601aa5d192a', // TODO: ObjectId of the creator's account
         description: [ // An array of strings, one str is a <p>
@@ -32,6 +30,7 @@ const seriesState = ({
         podcasts: 91,
         productId: 'prod_KhGIVJF2dZ6WTm',
         subscribers: null, // TODO: get a number here
+        title: 'Le breton en trois mois',
       },
     ],
   },

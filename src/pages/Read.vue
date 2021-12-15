@@ -73,7 +73,7 @@ export default {
       const chapterData = await Promise.resolve()
         .then(() => axios.get(dataURI))
         .then((res) => res.data.chapter);
-      this.$store.commit('lesson/SET_LESSON', chapterData);
+      this.$store.commit('chapter/SET_LESSON', chapterData);
       this.chapterData = chapterData;
       this.$store.dispatch('app/updateAppState', {
         subtitle: chapterData.title,

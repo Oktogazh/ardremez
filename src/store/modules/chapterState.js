@@ -12,7 +12,10 @@ const lessonState = ({
       },
     ],
     images: [],
-    links: [],
+    links: {
+      linksTitle: null,
+      links: [],
+    },
     openCardOnEnded: null,
     title: null,
   },
