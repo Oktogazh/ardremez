@@ -38,6 +38,7 @@ export default {
     return {
       id: null,
       chapterData: { // :chapter
+        backToChapter: null,
         cards: [ // :card
           {
             type: null,
@@ -51,10 +52,10 @@ export default {
             },
           },
         ],
-        comeBack: null,
         images: [],
         links: [],
-        // announcement: [],
+        openCardOnEnded: null,
+        title: null,
       },
       error: null,
     };

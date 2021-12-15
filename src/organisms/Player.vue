@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     ...mapState({
-      openCardOnPodcastEnd: (state) => state.series.series[0].openCardOnPodcastEnd,
+      openCardOnEnded: (state) => state.chapter.openCardOnEnded,
     }),
   },
   data() {
@@ -55,7 +55,7 @@ export default {
       return null;
     },
     endOfPodcast() {
-      const id = `header-${this.openCardOnPodcastEnd}`;
+      const id = `header-${this.openCardOnEnded}`;
       const cardToOpen = document.getElementById(id);
       const playIcon = document.getElementById('play-icon');
 

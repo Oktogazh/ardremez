@@ -1,7 +1,20 @@
 const lessonState = ({
   namespaced: true,
   state: {
-    id: null,
+    backToChapter: null,
+    cards: [
+      {
+        type: null,
+        data: {
+          header: null,
+          body: [],
+        },
+      },
+    ],
+    images: [],
+    links: [],
+    openCardOnEnded: null,
+    title: null,
   },
   mutations: {
     SET_LESSON(state, chapterData) {

@@ -1,7 +1,7 @@
 import { createStore, createLogger } from 'vuex';
 import appState from './modules/appState';
 import langState from './modules/langState';
-import lessonState from './modules/lessonState';
+import chapterState from './modules/chapterState';
 import paymentState from './modules/paymentState';
 import seriesState from './modules/seriesState';
 import userState from './modules/userState';
@@ -17,7 +17,7 @@ export default createStore({
   modules: {
     app: appState,
     lang: langState,
-    lesson: lessonState,
+    chapter: chapterState,
     payment: paymentState,
     series: seriesState,
     user: userState,
