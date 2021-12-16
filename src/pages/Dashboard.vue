@@ -53,7 +53,7 @@ export default {
           // update the user's state,
           // inform the user and
           // delete the query params
-          this.$store.dispatch('user/updateSubscription', { productId, status });
+          this.$store.dispatch('user/updateSubscription', { productId, status: 'active' });
           swal.fire({
             icon: 'success',
             html: this.translate.PaymentSuccessfulyProcessedMsg,

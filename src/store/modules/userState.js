@@ -88,7 +88,7 @@ const userState = ({
     },
     async updateState({ commit, rootState, state }) {
       const updatedUserData = await window.axios.post(`${rootState.api}/api/update_user_state`,
-        { progress: state.progress })
+        { lastProgress: state.progress[0] })
         .then((res) => res.data);
 
       commit('SET_USER_DATA', updatedUserData);
