@@ -43,6 +43,7 @@ const obj = {
   Submit: 'Valider',
   Subscribe: 'S\'abonner',
   SubscribeTo: 'S\'abonner à :',
+  Start: 'Commencer',
   Unsubscribe: 'Se désabonner',
   Wrong_code_New_code_sent: 'Ce code est invalide ou a déja expiré.<br>Un nouveau code de confirmation vient de vous être envoyé.',
   yr4year: 'an',

@@ -40,6 +40,7 @@ const obj = {
   Reinitialize_Password: 'Ger-Kuzh Nevez',
   Sign_In: 'En Em Skrivañ',
   Show_description: 'Diskouez an diskrivadur',
+  Start: 'Kregiñ Ganti',
   Submit: 'Kas',
   Subscribe: 'Koumanantiñ',
   SubscribeTo: 'Koumanantiñ d\'an heuliad',

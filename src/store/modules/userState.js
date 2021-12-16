@@ -103,7 +103,7 @@ const userState = ({
       }
       const seriesNotStarted = (state.progress.findIndex(hasStartedSeries) === -1);
 
-      const initialProg = { series: seriesId, chapter: 1 };
+      const initialProg = { seriesId, chapter: 0 };
       const progress = (seriesNotStarted) ? [initialProg, ...state.progress] : state.progress;
 
       // Secondly, update the subscriptions array

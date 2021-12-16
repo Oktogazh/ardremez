@@ -38,6 +38,7 @@ const obj = {
   lessons: 'lessons',
   Progressions: 'Progressions',
   Show_description: 'Show description',
+  Start: 'Start',
   Reinitialize_Password: 'Reinitialize Password',
   Sign_In: 'Sign In',
   Submit: 'Submit',
