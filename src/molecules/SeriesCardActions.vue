@@ -27,11 +27,12 @@ export default {
       api: (state) => state.api,
     }),
     progress() {
-      const seriesProdId = this.seriesObject.productId;
+      const underscoreId = '_id';
+      const id = this.seriesObject[underscoreId];
       const { freeTrial } = this.seriesObject;
       function filter(prog) {
         const { seriesId } = prog;
-        return (seriesId === seriesProdId);
+        return (seriesId === id);
       }
       const { sub } = this;
       const filtered = this.user.progress.filter(filter);

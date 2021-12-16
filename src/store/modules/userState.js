@@ -39,7 +39,7 @@ const userState = ({
         .then((res) => commit('SET_USER_DATA', {
           email: res.data.email,
           customerId: res.data.customerId,
-          level: res.data.live,
+          progress: res.data.progress,
           subscriptionActive: res.data.sub,
           subscriptions: res.data.subscriptions,
           jwt: res.data.token,
