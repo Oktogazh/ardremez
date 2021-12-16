@@ -73,7 +73,7 @@ const userState = ({
         .then((res) => commit('SET_USER_DATA', { // todo: when deployed, res.data instead
           email: res.data.email,
           customerId: res.data.customerId,
-          level: res.data.live,
+          progress: res.data.progress,
           subscriptionActive: res.data.sub,
           subscriptions: res.data.subscriptions,
           jwt: res.data.token,
@@ -86,8 +86,9 @@ const userState = ({
     newVerificationEmail({ rootState }) {
       window.axios.post(`${rootState.api}/api/kas_kod_postel`);
     },
-    async updateState({ commit, rootState }) {
-      const updatedUserData = await window.axios.get(`${rootState.api}/api/update_user_state`)
+    async updateState({ commit, rootState, state }) {
+      const updatedUserData = await window.axios.post(`${rootState.api}/api/update_user_state`,
+        { progress: state.progress })
         .then((res) => res.data);
 
       commit('SET_USER_DATA', updatedUserData);
