@@ -1,8 +1,8 @@
 <template>
   <div id="series-actions-container">
     <!-- TODO: use a getter to compute the query after the user's level -->
-    <router-link :to="{ path: '/read', query: { p: `1${seriesObject._id}` }}">
-      <SmallButton :bg="'grad-blue'" :text="translate.Free_Trial"/>
+    <router-link :to="{ path: '/read', query: { p: `${progress.chapter}${seriesObject._id}` }}">
+      <SmallButton :bg="'grad-blue'" :text="translate[progress.txt]"/>
     </router-link>
     <SmallButton v-if="sub.status === 'notSub'" :bg="'grad-green'" @click="beforeSubscribe"
     :text="translate.Subscribe"/>
@@ -26,6 +26,33 @@ export default {
       user: (state) => state.user,
       api: (state) => state.api,
     }),
+    progress() {
+      const seriesProdId = this.seriesObject.productId;
+      const { freeTrial } = this.seriesObject;
+      function filter(prog) {
+        const { seriesId } = prog;
+        return (seriesId === seriesProdId);
+      }
+      const { sub } = this;
+      const filtered = this.user.progress.filter(filter);
+      const progress = (filtered.length === 0) ? false : filtered[0].chapter;
+      if (!sub.id && !progress) {
+        return {
+          txt: 'Free_Trial',
+          chapter: 1,
+        };
+      } if (!sub.id && progress) {
+        return {
+          txt: 'Continue',
+          chapter: (progress > freeTrial) ? freeTrial : progress,
+        };
+      }
+
+      return {
+        txt: (progress === 0) ? 'Start' : 'Continue',
+        chapter: (progress === 0) ? 1 : progress,
+      };
+    },
     sub() {
       const seriesProdId = this.seriesObject.productId;
       function filter(sub) {

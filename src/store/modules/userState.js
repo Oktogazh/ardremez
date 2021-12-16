@@ -9,7 +9,7 @@ const userState = ({
     customerId: null,
     level: null,
     progress: [ /* {
-        series: null,
+        seriesId: null,
         chapter: null,
       } */],
     subscriptionActive: false,
@@ -99,11 +99,11 @@ const userState = ({
       const seriesId = `@${productId.substring('prod_'.length)}`;
       // Verifies if has done any progress on the series yet
       function hasStartedSeries(progressObj) {
-        return progressObj.series === seriesId;
+        return progressObj.seriesId === seriesId;
       }
       const seriesNotStarted = (state.progress.findIndex(hasStartedSeries) === -1);
 
-      const initialProg = { series: seriesId, chapter: 0 };
+      const initialProg = { series: seriesId, chapter: 1 };
       const progress = (seriesNotStarted) ? [initialProg, ...state.progress] : state.progress;
 
       // Secondly, update the subscriptions array
