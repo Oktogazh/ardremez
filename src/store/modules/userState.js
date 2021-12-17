@@ -86,9 +86,18 @@ const userState = ({
     newVerificationEmail({ rootState }) {
       window.axios.post(`${rootState.api}/api/kas_kod_postel`);
     },
-    async updateState({ commit, rootState, state }) {
-      const updatedUserData = await window.axios.post(`${rootState.api}/api/update_user_state`,
-        { lastProgress: state.progress[0] })
+    updateProgress({ commit, state }, newProgress) {
+      const { progress } = state;
+      const update = (obj) => {
+        if (obj.series === progress.series) return newProgress;
+        return obj;
+      };
+      const updatedProgress = progress.map(update);
+
+      commit('SET_USER_DATA', { progress: updatedProgress });
+    },
+    async updateState({ commit, rootState }) {
+      const updatedUserData = await window.axios.post(`${rootState.api}/api/update_user_state`)
         .then((res) => res.data);
 
       commit('SET_USER_DATA', updatedUserData);

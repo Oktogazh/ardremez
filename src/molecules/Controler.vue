@@ -53,6 +53,7 @@ export default {
       const askingFor = sign * 1 + id;
 
       if (askingFor < 1 || askingFor > max) return null;
+      this.$store.dispatch('user/updateProgress', { chapter: askingFor, seriesId: _id });
 
       if (this.playing) {
         const playIcon = document.getElementById('play-icon');
