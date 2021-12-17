@@ -68,6 +68,8 @@ export default {
       if (!this.id) return null;
       this.$store.dispatch('app/updateAppState', { subtitle: '...', title: null, loading: true });
 
+      // TODO: update dispatch('user/updateProgress')
+      // in order to call it from here only once (both for new prog and old ones)
       const dataURI = `${api}/api/read/${this.id}`;
 
       const chapterData = await Promise.resolve()
