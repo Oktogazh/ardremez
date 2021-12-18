@@ -24,9 +24,8 @@ export default {
   },
   computed: {
     ...mapState({
-      playing(state) {
-        return state.app.player.playing;
-      },
+      playing: (state) => state.app.player.playing,
+      subscriptions: (state) => state.user.subscriptions,
     }),
     hasNext() {
       const id = parseInt(this.$store.state.chapter.id, 10);
@@ -44,15 +43,27 @@ export default {
     };
   },
   methods: {
+    authorize(chapter, seriesId) {
+      const { length } = this.$store.state.series.series[0];
+      const { freeTrial } = this.$store.state.series.series[0];
+      if (chapter < 1 || chapter > length) return false;
+      const prodId = `prod_${seriesId.substring('@'.length)}`;
+      const finder = (progObj) => {
+        const active = (progObj.status === 'active' || progObj.status === 'past_due');
+        return (progObj.productId === prodId && active);
+      };
+      const subscribed = (this.subscriptions.findIndex(finder) !== -1);
+      const authorized = (chapter <= freeTrial || subscribed);
+      return authorized;
+    },
     loading(name) {
       const { _id } = this.$store.state.series.series[0];
       const sign = (name === 'prev') ? -1 : 1;
-      const max = this.$store.state.series.series[0].length;
-      // const freeTrial = this.$store.state.series.series[0].metadata.freeTrial;
       const id = parseInt(this.$store.state.chapter.id, 10);
       const askingFor = sign * 1 + id;
 
-      if (askingFor < 1 || askingFor > max) return null;
+      const authorized = this.authorize(askingFor, _id);
+      if (!authorized) return null;
 
       if (this.playing) {
         const playIcon = document.getElementById('play-icon');
