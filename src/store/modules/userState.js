@@ -88,11 +88,13 @@ const userState = ({
     },
     updateProgress({ commit, state }, newProgress) {
       const { progress } = state;
+      const finder = (obj) => (obj.seriesId === newProgress.seriesId);
       const update = (obj) => {
         if (obj.series === progress.series) return newProgress;
         return obj;
       };
-      const updatedProgress = progress.map(update);
+      const started = (progress.findIndex(finder) !== -1);
+      const updatedProgress = started ? progress.map(update) : [newProgress, ...progress];
 
       commit('SET_USER_DATA', { progress: updatedProgress });
     },

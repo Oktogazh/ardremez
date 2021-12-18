@@ -67,8 +67,14 @@ export default {
 
       if (!this.id) return null;
       this.$store.dispatch('app/updateAppState', { subtitle: '...', title: null, loading: true });
-
-      // TODO: update dispatch('user/updateProgress')
+      const chapterAndSeriesId = this.id.split('@');
+      const chapter = chapterAndSeriesId[0];
+      const seriesId = `@${chapterAndSeriesId[1]}`;
+      const progressObject = {
+        chapter,
+        seriesId,
+      };
+      this.$store.dispatch('user/updateProgress', progressObject);
       // in order to call it from here only once (both for new prog and old ones)
       const dataURI = `${api}/api/read/${this.id}`;
 
