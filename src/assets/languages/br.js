@@ -46,6 +46,7 @@ const obj = {
   SubscribeTo: 'Koumanantiñ d\'an heuliad',
   Unsubscribe: 'Digoumanantiñ',
   Wrong_code_New_code_sent: 'Ar c\'hod-mañ zo diwiriek, pe c\'hoazh, diamzeriet.<br>Emeur o paouez kas ur c\'hod nevez, deoc\'h klask en-dro.',
+  YouNeedToSubToContinue: 'Ezhomm ho peus koumanantiñ evit mont pelloc\'h ganti!',
   yr4year: 'bl',
 };
 

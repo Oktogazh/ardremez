@@ -11,6 +11,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import swal from 'sweetalert2';
 import Load from '@/atoms/actions/Load.vue';
 import Skip from '@/atoms/actions/Skip.vue';
 import PlayPause from '@/atoms/actions/PlayPause.vue';
@@ -26,6 +27,7 @@ export default {
     ...mapState({
       playing: (state) => state.app.player.playing,
       subscriptions: (state) => state.user.subscriptions,
+      translate: (state) => state.lang,
     }),
     hasNext() {
       const id = parseInt(this.$store.state.chapter.id, 10);
@@ -43,9 +45,8 @@ export default {
     };
   },
   methods: {
-    authorize(chapter, seriesId) {
+    authorize(chapter, seriesId, freeTrial) {
       const { length } = this.$store.state.series.series[0];
-      const { freeTrial } = this.$store.state.series.series[0];
       if (chapter < 1 || chapter > length) return false;
       const prodId = `prod_${seriesId.substring('@'.length)}`;
       const finder = (progObj) => {
@@ -54,16 +55,23 @@ export default {
       };
       const subscribed = (this.subscriptions.findIndex(finder) !== -1);
       const authorized = (chapter <= freeTrial || subscribed);
-      return authorized;
+      if (!authorized) {
+        swal.fire({
+          icon: 'error',
+          text: this.translate.YouNeedToSubToContinue,
+        });
+      }
+      // Send back to the end of the freeTrial if sub gets canceled
+      return authorized ? chapter : freeTrial;
     },
     loading(name) {
       const { _id } = this.$store.state.series.series[0];
+      const { freeTrial } = this.$store.state.series.series[0];
       const sign = (name === 'prev') ? -1 : 1;
       const id = parseInt(this.$store.state.chapter.id, 10);
       const askingFor = sign * 1 + id;
 
-      const authorized = this.authorize(askingFor, _id);
-      if (!authorized) return null;
+      const next = this.authorize(askingFor, _id, freeTrial);
 
       if (this.playing) {
         const playIcon = document.getElementById('play-icon');
@@ -73,7 +81,7 @@ export default {
       return this.$router.push({
         path: '/read',
         query: {
-          p: `${askingFor}${_id}`,
+          p: `${next}${_id}`,
         },
       });
     },
