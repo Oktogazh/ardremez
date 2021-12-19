@@ -12,8 +12,10 @@
         </ul>
         <div v-else>
           <p v-html="body"></p>
-          <p v-if="back.chapter === null" v-html="back.html" @click="loading"></p>
         </div>
+        <button v-if="back.chapter !== null" @click="loading(back.chapter)">
+          <i v-html="back.html"></i>
+        </button>
       </div>
     </template>
   </HeadedCard>
@@ -32,7 +34,7 @@ export default {
   },
   computed: {
     back() {
-      return this.backToChapter;
+      return this.chapter.backToChapter;
     },
     body() {
       return (this.chapter.cards[this.selected].type === 'html')
@@ -49,9 +51,14 @@ export default {
     };
   },
   methods: {
-    loading() {
+    loading(next) {
       const { _id } = this.$store.state.series.series[0];
-      return _id;
+      return this.$router.push({
+        path: '/read',
+        query: {
+          p: `${next}${_id}`,
+        },
+      });
     },
     play(startTime) {
       const audio = document.getElementById('audio');
