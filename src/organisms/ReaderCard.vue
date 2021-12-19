@@ -16,6 +16,7 @@
         <button v-if="back.chapter !== null" @click="loading(back.chapter)">
           <i v-html="back.html"></i>
         </button>
+        <LinksBox v-if="links.title !== null" :links="links" />
       </div>
     </template>
   </HeadedCard>
@@ -25,16 +26,21 @@
 import { mapState } from 'vuex';
 import HeadedCard from '@/molecules/HeadedCard.vue';
 import ResponsiveHeader from '@/molecules/ResponsiveHeader.vue';
+import LinksBox from '@/molecules/LinksBox.vue';
 
 export default {
   name: 'ReaderCard',
   components: {
     HeadedCard,
+    LinksBox,
     ResponsiveHeader,
   },
   computed: {
     back() {
       return this.chapter.backToChapter;
+    },
+    links() {
+      return this.chapter.links;
     },
     body() {
       return (this.chapter.cards[this.selected].type === 'html')

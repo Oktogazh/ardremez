@@ -12,7 +12,6 @@
 
 <script>
 import { mapState } from 'vuex';
-import axios from 'axios';
 import MainContainer from '@/atoms/MainContainer.vue';
 import ReaderCard from '@/organisms/ReaderCard.vue';
 import Card from '@/atoms/Card.vue';
@@ -79,7 +78,7 @@ export default {
       const dataURI = `${api}/api/read/${this.id}`;
 
       const chapterData = await Promise.resolve()
-        .then(() => axios.get(dataURI))
+        .then(() => window.axios.get(dataURI))
         .then((res) => res.data.chapter);
       this.$store.commit('chapter/SET_LESSON', chapterData);
       this.chapterData = chapterData;

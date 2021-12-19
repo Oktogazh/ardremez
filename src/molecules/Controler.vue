@@ -27,6 +27,7 @@ export default {
     ...mapState({
       playing: (state) => state.app.player.playing,
       subscriptions: (state) => state.user.subscriptions,
+      progress: (state) => state.user.progress,
       translate: (state) => state.lang,
     }),
     hasNext() {
@@ -68,8 +69,9 @@ export default {
       const { _id } = this.$store.state.series.series[0];
       const { freeTrial } = this.$store.state.series.series[0];
       const sign = (name === 'prev') ? -1 : 1;
-      const id = parseInt(this.$store.state.chapter.id, 10); // TODO: from user.progress
-      const askingFor = sign * 1 + id;
+      const filter = (obj) => (obj.seriesId === _id);
+      const currentProgress = this.progress.filter(filter)[0].chapter;
+      const askingFor = sign * 1 + currentProgress;
 
       const next = this.authorize(askingFor, _id, freeTrial);
 
