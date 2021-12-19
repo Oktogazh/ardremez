@@ -10,7 +10,10 @@
             :key="index" v-html="caption[0]" @click="play(caption[1])">
           </li>
         </ul>
-        <p v-else v-html="body"></p>
+        <div v-else>
+          <p v-html="body"></p>
+          <p v-if="back.chapter === null" v-html="back.html" @click="loading"></p>
+        </div>
       </div>
     </template>
   </HeadedCard>
@@ -28,14 +31,16 @@ export default {
     ResponsiveHeader,
   },
   computed: {
+    back() {
+      return this.backToChapter;
+    },
     body() {
       return (this.chapter.cards[this.selected].type === 'html')
-        ? (this.chapter.cards[this.selected].data.body.join('\n')) : this.chapter.cards[this.selected].data.body;
+        ? (this.chapter.cards[this.selected].data.body.join('\n'))
+        : this.chapter.cards[this.selected].data.body;
     },
     ...mapState({
-      playing(state) {
-        return state.app.player.playing;
-      },
+      playing: (state) => state.app.player.playing,
     }),
   },
   data() {
@@ -44,6 +49,10 @@ export default {
     };
   },
   methods: {
+    loading() {
+      const { _id } = this.$store.state.series.series[0];
+      return _id;
+    },
     play(startTime) {
       const audio = document.getElementById('audio');
 

@@ -57,18 +57,18 @@ export default {
       const authorized = (chapter <= freeTrial || subscribed);
       if (!authorized) {
         swal.fire({
-          icon: 'error',
+          icon: 'warning',
           text: this.translate.YouNeedToSubToContinue,
         });
       }
-      // Send back to the end of the freeTrial if sub gets canceled
+      // Sends back to the end of the freeTrial if sub gets canceled
       return authorized ? chapter : freeTrial;
     },
     loading(name) {
       const { _id } = this.$store.state.series.series[0];
       const { freeTrial } = this.$store.state.series.series[0];
       const sign = (name === 'prev') ? -1 : 1;
-      const id = parseInt(this.$store.state.chapter.id, 10);
+      const id = parseInt(this.$store.state.chapter.id, 10); // TODO: from user.progress
       const askingFor = sign * 1 + id;
 
       const next = this.authorize(askingFor, _id, freeTrial);
