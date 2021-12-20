@@ -6,7 +6,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import Access from '@/molecules/auth/Access.vue';
+import Access from '@/organisms/Access.vue';
 import Header from '@/organisms/Header.vue';
 
 export default {

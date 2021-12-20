@@ -8,7 +8,7 @@
 
 <script>
 import Modal from '@/atoms/Modal.vue';
-import Form from './Form.vue';
+import Form from '@/molecules/Form.vue';
 
 export default {
   name: 'Access',

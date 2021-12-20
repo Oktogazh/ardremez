@@ -7,7 +7,7 @@
 
 <script>
 import Titles from '@/molecules/Titles.vue';
-import Menu from '@/molecules/Menu.vue';
+import Menu from '@/molecules/menu/Menu.vue';
 
 export default {
   name: 'Header',

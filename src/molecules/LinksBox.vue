@@ -51,6 +51,4 @@ img {
   max-width: 90px;
   border-radius: 10px;
 }
-figcaption {
-}
 </style>
