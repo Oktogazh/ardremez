@@ -91,7 +91,7 @@ body {
   --header-height: 4em;
 }
 
-a, button {
+a, button, figcaption {
   all: unset;
   cursor: pointer;
 }
@@ -115,7 +115,7 @@ h2 {
 h3 {
     display: block;
     font-size: 1.3em;
-    margin: .7em;
+    margin: 1em .7em 0 0;
     font-weight: bold;
 }
 h5 {

@@ -12,11 +12,11 @@
         </ul>
         <div v-else>
           <p v-html="body"></p>
+          <button v-if="back.chapter !== null" @click="loading(back.chapter)">
+            <i v-html="back.html"></i>
+          </button>
+          <LinksBox v-if="links.title !== null" :links="links" />
         </div>
-        <button v-if="back.chapter !== null" @click="loading(back.chapter)">
-          <i v-html="back.html"></i>
-        </button>
-        <LinksBox v-if="links.title !== null" :links="links" />
       </div>
     </template>
   </HeadedCard>
