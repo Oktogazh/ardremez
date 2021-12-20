@@ -1,9 +1,9 @@
 <template>
   <div>
-    <ul>
+    <ul><!--
       <li @click="$emit('openOption', 'languagesMenu')">
         <h3>{{ $store.state.lang.Other_Languages }}</h3>
-      </li>
+      </li>-->
       <li v-if="!$store.getters['user/connected']"
         @click="$store.dispatch('app/logAndRoute', { next: '' })">
         <h3>{{ $store.state.lang.Access }}</h3>
@@ -27,10 +27,8 @@ export default {
   components: {
   },
   methods: {
-    close(e) {
-      if (!this.$parent.$el.contains(e.target)) {
-        this.$emit('close');
-      }
+    close() {
+      this.$emit('close');
     },
     logOut() {
       const self = this;

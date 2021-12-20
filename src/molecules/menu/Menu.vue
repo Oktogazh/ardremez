@@ -53,8 +53,10 @@ export default {
 
 #dropDownMenu {
   position: absolute;
-  width: 10%;
+  width: content;
   right: 3rem;
+  top: var(--header-height);
   background-color: rgba(97, 97, 97, 0.5);
+  z-index: 1;
 }
 </style>
