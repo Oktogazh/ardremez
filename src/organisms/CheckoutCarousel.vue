@@ -1,29 +1,25 @@
 <template>
-  <Modal @closing="closing">
-    <div id="checkout-container">
-      <CheckoutPhase :slidingState="slidingPhase">
-        <SelectPrices @selectPrice="selectPrice" />
-      </CheckoutPhase>
-      <CheckoutPhase :slidingState="slidingPhase">
-        <StripeElements v-if="slidingPhase === 1" @back="slidingPhase = 0"
-          :priceId="price"/>
-      </CheckoutPhase>
-    </div>
-  </Modal>
+  <DualCarousel :slidingState="slidingPhase" @closing="closeThis">
+    <template #firstSlot>
+      <SelectPrices @selectPrice="selectPrice" />
+    </template>
+    <template #secondSlot>
+      <StripeElements v-if="slidingPhase === 1" @back="slidingPhase = 0"
+      :priceId="price"/>
+    </template>
+  </DualCarousel>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import Modal from '@/atoms/Modal.vue';
-import CheckoutPhase from '@/atoms/CheckoutPhase.vue';
+import DualCarousel from '@/molecules/DualCarousel.vue';
 import SelectPrices from '@/molecules/SelectPrices.vue';
 import StripeElements from '@/molecules/StripeElements.vue';
 
 export default {
   name: 'CheckoutCarousel',
   components: {
-    CheckoutPhase,
-    Modal,
+    DualCarousel,
     SelectPrices,
     StripeElements,
   },

@@ -16,7 +16,7 @@
 
 <script>
 import Modal from '@/atoms/Modal.vue';
-import DualCarousel from '@/atoms/DualCarousel.vue';
+import DualCarousel from '@/molecules/DualCarousel.vue';
 import Form from '@/molecules/accessPortal/Form.vue';
 
 export default {
