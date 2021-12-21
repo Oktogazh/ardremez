@@ -1,6 +1,14 @@
 <template>
+  <DualCarousel v-if="false" :slidingState="state" @closing="closeThis">
+    <template #firstSlot>
+      <button @click="state = 1">blablabla</button>
+    </template>
+    <template #secondSlot>
+      <button @click="state = 0">blablabla</button>
+    </template>
+  </DualCarousel>
   <Modal @closing="closeThis">
-    <div v-if="false" class="access-container">
+    <div class="access-container">
       <Form @logged="logged"/>
     </div>
   </Modal>
@@ -8,16 +16,19 @@
 
 <script>
 import Modal from '@/atoms/Modal.vue';
+import DualCarousel from '@/atoms/DualCarousel.vue';
 import Form from '@/molecules/accessPortal/Form.vue';
 
 export default {
   name: 'AccessPortal',
   components: {
+    DualCarousel,
     Form,
     Modal,
   },
   data() {
     return {
+      state: 0,
     };
   },
   methods: { // TODO: create a closing method
