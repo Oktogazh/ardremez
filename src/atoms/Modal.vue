@@ -1,9 +1,11 @@
 <template>
+  <teleport to="#app">
     <div class="darker flexbox-center" @click="close()">
       <div @click.stop class="flexbox-center">
         <slot></slot>
       </div>
     </div>
+  </teleport>
 </template>
 
 <script>

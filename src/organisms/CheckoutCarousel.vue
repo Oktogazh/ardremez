@@ -1,17 +1,15 @@
 <template>
-  <teleport to="#app">
-    <Modal @closing="closing">
-      <div id="checkout-container">
-        <CheckoutPhase :slidingState="slidingPhase">
-          <SelectPrices @selectPrice="selectPrice" />
-        </CheckoutPhase>
-        <CheckoutPhase :slidingState="slidingPhase">
-          <StripeElements v-if="slidingPhase === 1" @back="slidingPhase = 0"
-            :priceId="price"/>
-        </CheckoutPhase>
-      </div>
-    </Modal>
-  </teleport>
+  <Modal @closing="closing">
+    <div id="checkout-container">
+      <CheckoutPhase :slidingState="slidingPhase">
+        <SelectPrices @selectPrice="selectPrice" />
+      </CheckoutPhase>
+      <CheckoutPhase :slidingState="slidingPhase">
+        <StripeElements v-if="slidingPhase === 1" @back="slidingPhase = 0"
+          :priceId="price"/>
+      </CheckoutPhase>
+    </div>
+  </Modal>
 </template>
 
 <script>
