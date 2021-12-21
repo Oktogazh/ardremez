@@ -1,21 +1,21 @@
 <template>
   <div id="player-outer-container">
     <audio id="audio" preload=”metadata” :onended="endOfPodcast"></audio>
-    <Progression :duration="duration" :currentTime="currentTime"/>
+    <ProgressBar :duration="duration" :currentTime="currentTime"/>
     <Controler />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import Controler from '@/molecules/Controler.vue';
-import Progression from '@/molecules/Progression.vue';
+import Controler from '@/molecules/player/Controler.vue';
+import ProgressBar from '@/molecules/player/ProgressBar.vue';
 
 export default {
   name: 'Player',
   components: {
     Controler,
-    Progression,
+    ProgressBar,
   },
   computed: {
     ...mapState({

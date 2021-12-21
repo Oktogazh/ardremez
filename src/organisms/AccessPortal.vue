@@ -1,6 +1,6 @@
 <template>
   <Modal @closing="closeThis">
-    <div class="access-container">
+    <div v-if="false" class="access-container">
       <Form @logged="logged"/>
     </div>
   </Modal>
@@ -8,10 +8,10 @@
 
 <script>
 import Modal from '@/atoms/Modal.vue';
-import Form from '@/molecules/Form.vue';
+import Form from '@/molecules/accessPortal/Form.vue';
 
 export default {
-  name: 'Access',
+  name: 'AccessPortal',
   components: {
     Form,
     Modal,

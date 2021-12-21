@@ -7,7 +7,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import SeriesCard from '@/molecules/SeriesCard.vue';
+import SeriesCard from '@/organisms/SeriesCard.vue';
 import MainContainer from '@/atoms/MainContainer.vue';
 
 export default {

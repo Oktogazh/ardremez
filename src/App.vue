@@ -1,17 +1,17 @@
 <template>
-  <Access v-if="app.loggingRequired || redirect()" />
+  <AccessPortal v-if="app.loggingRequired || redirect()" />
   <Header />
   <router-view />
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import Access from '@/organisms/Access.vue';
+import AccessPortal from '@/organisms/AccessPortal.vue';
 import Header from '@/organisms/Header.vue';
 
 export default {
   components: {
-    Access,
+    AccessPortal,
     Header,
   },
   computed: {

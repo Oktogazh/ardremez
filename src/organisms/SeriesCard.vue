@@ -49,7 +49,7 @@
 <script>
 import { mapState } from 'vuex';
 import HeadedCard from '@/molecules/HeadedCard.vue';
-import SeriesCardActions from '@/molecules/SeriesCardActions.vue';
+import SeriesCardActions from '@/molecules/seriesCard/SeriesCardActions.vue';
 import Modal from '@/atoms/Modal.vue';
 import DownButton from '@/atoms/buttons/DownButton.vue';
 import UpButton from '@/atoms/buttons/UpButton.vue';

@@ -9,7 +9,7 @@
 import TimeInfo from '@/atoms/TimeInfo.vue';
 
 export default {
-  name: 'Progression',
+  name: 'ProgressBar',
   components: {
     TimeInfo,
   },

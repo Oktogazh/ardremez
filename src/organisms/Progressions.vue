@@ -6,7 +6,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import SeriesCard from '@/molecules/SeriesCard.vue';
+import SeriesCard from '@/organisms/SeriesCard.vue';
 
 export default {
   name: 'Progressions',
