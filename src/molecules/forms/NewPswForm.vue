@@ -1,20 +1,25 @@
 <template>
-  <form @submit.prevent="verify">
+  <FormContainer @submit.prevent="verify">
     <BasicInput type="password" @input="setValue"
       :placeholder="translate.placeholderPsw"/>
     <BasicInput type="password" @input="setValue"
-      :placeholder="translate.placeholderPsw"/>
-  </form>
+      :placeholder="translate.Confirm_Psw"/>
+    <SubmitButton />
+  </FormContainer>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import FormContainer from '@/atoms/forms/FormContainer.vue';
 import BasicInput from '@/atoms/forms/BasicInput.vue';
+import SubmitButton from '@/atoms/buttons/SubmitButton.vue';
 
 export default {
-  name: 'SignInForm',
+  name: 'NewPswForm',
   components: {
     BasicInput,
+    FormContainer,
+    SubmitButton,
   },
   computed: {
     ...mapState({

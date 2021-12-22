@@ -4,7 +4,7 @@ const obj = {
   Back: 'Distreiñ',
   Breton_bre: 'Brezhoneg',
   bre: 'Brezhoneg',
-  Confirm: 'Kadarnaat',
+  Confirm_Psw: 'Kadarnaat ar Ger-Kuzh',
   Connected: 'Kevreet',
   Continue: 'Kenderc\'hel',
   Delete_My_Account: 'Dilemel Ma C\'hont',

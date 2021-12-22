@@ -6,35 +6,26 @@
     <template #secondSlot>
       <GoBack @click="state = 0" />
       <PasswordForm v-if="member" :email="email" @authorized="closeThis"/>
-      <SignInForm v-else :email="email" />
+      <NewPswForm v-else :email="email" />
     </template>
   </DualCarousel>
-  <Modal v-if="false" @closing="closeThis">
-    <div class="access-container">
-      <Form @logged="logged"/>
-    </div>
-  </Modal>
 </template>
 
 <script>
-import Modal from '@/atoms/Modal.vue';
 import DualCarousel from '@/molecules/DualCarousel.vue';
 import EmailForm from '@/molecules/forms/EmailForm.vue';
 import GoBack from '@/atoms/buttons/GoBack.vue';
 import PasswordForm from '@/molecules/forms/PasswordForm.vue';
-import SignInForm from '@/molecules/forms/SignInForm.vue';
-import Form from '@/molecules/forms/Form.vue';
+import NewPswForm from '@/molecules/forms/NewPswForm.vue';
 
 export default {
   name: 'LoggingCarousel',
   components: {
     DualCarousel,
     EmailForm,
-    Form,
     GoBack,
-    Modal,
     PasswordForm,
-    SignInForm,
+    NewPswForm,
   },
   data() {
     return {

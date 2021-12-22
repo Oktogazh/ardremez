@@ -4,7 +4,7 @@ const obj = {
   Back: 'Retour',
   Breton_bre: 'Brezhoneg',
   bre: 'Breton',
-  Confirm: 'Confirmation',
+  Confirm_Psw: 'Confirmez le mot de passe',
   Connected: 'Connecté',
   Continue: 'Continuer',
   Delete_My_Account: 'Supprimer mon compte',
