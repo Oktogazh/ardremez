@@ -1,6 +1,7 @@
 const obj = {
   Access: 'Access',
   average_duration: 'average duration: ',
+  Back: 'Back',
   Breton_bre: 'Brezhoneg',
   bre: 'Breton',
   Confirm: 'Confirm',
@@ -13,6 +14,7 @@ const obj = {
   English_eng: 'English',
   eng: 'English',
   Enter_Your_Code_Here: 'Enter Your Code Here',
+  Enter_Your_Password: 'Skrivit Ho Ker-Kuzh',
   for: 'for:',
   French_fra: 'Français',
   fra: 'French',
@@ -35,6 +37,7 @@ const obj = {
   Other_Languages: 'Other Languages',
   Password: 'Password',
   PaymentSuccessfulyProcessedMsg: 'Your payment was successfully processed! You can now enjoy all the lessons of the series!',
+  placeholderPsw: 'Password',
   lessons: 'lessons',
   Progressions: 'Progressions',
   Show_description: 'Show description',
@@ -46,6 +49,7 @@ const obj = {
   SubscribeTo: 'Subscribe to:',
   Unsubscribe: 'Unsubscibe',
   Wrong_code_New_code_sent: 'This code is invalid or has already expired.<br>A new verification code has just been sent to you to try again.',
+  Wrong_Password: 'Wrong Password <br> Please Try Again',
   YouNeedToSubToContinue: 'You need to subscribe to continue.',
   yr4year: 'yr',
 };

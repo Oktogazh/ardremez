@@ -1,15 +1,10 @@
 <template>
-  <input v-bind="value" />
+  <input />
 </template>
 
 <script>
 export default {
   name: 'BasicInput',
-  data() {
-    return {
-      value: '',
-    };
-  },
 };
 </script>
 

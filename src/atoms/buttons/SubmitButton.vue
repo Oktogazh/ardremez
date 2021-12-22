@@ -1,5 +1,5 @@
 <template>
-  <button class="submit-button" v-html="innerText" />
+  <button type="submit" class="submit-button" v-html="innerText" />
 </template>
 
 <script>

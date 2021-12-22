@@ -118,6 +118,11 @@ h3 {
     margin: 1em .7em 0 0;
     font-weight: bold;
 }
+h4 {
+    display: block;
+    margin: 1em .7em 0 0;
+    font-weight: bold;
+}
 h5 {
     display: block;
     font-size: .83em;

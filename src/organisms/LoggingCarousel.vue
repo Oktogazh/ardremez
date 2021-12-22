@@ -1,10 +1,12 @@
 <template>
   <DualCarousel :slidingState="state" @closing="closeThis">
     <template #firstSlot>
-      <EmailForm />
+      <EmailForm @next="next" />
     </template>
     <template #secondSlot>
-      <button @click="state = 0">blablabla</button>
+      <GoBack @click="state = 0" />
+      <PasswordForm v-if="member" :email="email" @authorized="closeThis"/>
+      <SignInForm v-else :email="email" />
     </template>
   </DualCarousel>
   <Modal v-if="false" @closing="closeThis">
@@ -18,6 +20,9 @@
 import Modal from '@/atoms/Modal.vue';
 import DualCarousel from '@/molecules/DualCarousel.vue';
 import EmailForm from '@/molecules/forms/EmailForm.vue';
+import GoBack from '@/atoms/buttons/GoBack.vue';
+import PasswordForm from '@/molecules/forms/PasswordForm.vue';
+import SignInForm from '@/molecules/forms/SignInForm.vue';
 import Form from '@/molecules/forms/Form.vue';
 
 export default {
@@ -26,7 +31,10 @@ export default {
     DualCarousel,
     EmailForm,
     Form,
+    GoBack,
     Modal,
+    PasswordForm,
+    SignInForm,
   },
   data() {
     return {
@@ -47,6 +55,11 @@ export default {
       const next = nextRoute || path;
 
       this.$store.dispatch('app/notLogging', { next });
+    },
+    next({ email, member }) {
+      this.email = email;
+      this.member = member;
+      this.state = 1;
     },
   },
 };

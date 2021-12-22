@@ -1,6 +1,7 @@
 const obj = {
   Access: 'Kevreañ',
   average_duration: 'padelezh krenn: ',
+  Back: 'Distreiñ',
   Breton_bre: 'Brezhoneg',
   bre: 'Brezhoneg',
   Confirm: 'Kadarnaat',
@@ -13,6 +14,7 @@ const obj = {
   English_eng: 'English',
   eng: 'Saozneg',
   Enter_Your_Code_Here: 'Eilit Ho Kod Amañ',
+  Enter_Your_Password: 'Enter Your Password',
   for: 'evit:',
   French_fra: 'Français',
   fra: 'Galleg',
@@ -35,6 +37,7 @@ const obj = {
   Other_Languages: 'Yezhoù All',
   Password: 'Ger-Kuzh',
   PaymentSuccessfulyProcessedMsg: 'Emaoc\'h o paouez bezañ karget gant berzh! Gallout a rit tizhout holl gentelioù an hentenn!',
+  placeholderPsw: 'Ger-Kµzh',
   lessons: 'a gentelioù',
   Progressions: 'Araokadennoù',
   Reinitialize_Password: 'Ger-Kuzh Nevez',
@@ -46,6 +49,7 @@ const obj = {
   SubscribeTo: 'Koumanantiñ d\'an heuliad',
   Unsubscribe: 'Digoumanantiñ',
   Wrong_code_New_code_sent: 'Ar c\'hod-mañ zo diwiriek, pe c\'hoazh, diamzeriet.<br>Emeur o paouez kas ur c\'hod nevez, deoc\'h klask en-dro.',
+  Wrong_Password: 'Ger-Kuzh fall, <br> Klaskit En-Dro',
   YouNeedToSubToContinue: 'Ezhomm ho peus koumanantiñ evit mont pelloc\'h ganti!',
   yr4year: 'bl',
 };

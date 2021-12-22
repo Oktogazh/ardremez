@@ -40,7 +40,7 @@ export default {
       this.price = priceId;
       this.slidingPhase = 1;
     },
-    closing() {
+    closeThis() {
       this.$store.dispatch('payment/endCheckout');
     },
   },
