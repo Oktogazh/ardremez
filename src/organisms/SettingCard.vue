@@ -32,6 +32,10 @@ export default {
   },
   computed: {
     ...mapState({
+      isSubscribed() {
+        // TODO: filter the user's subscriptions
+        return false;
+      },
       translate(state) {
         return state.lang;
       },
@@ -45,7 +49,7 @@ export default {
     deleteAccount() {
       const self = this;
 
-      if (this.$store.state.user.subscriptionActive) {
+      if (this.isSubscribed) {
         swal.fire({
           text: this.translate.must_unsubscibe_before_delete_account,
           confirmButtonText: this.translate.OK,

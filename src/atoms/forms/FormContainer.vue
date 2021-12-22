@@ -11,9 +11,11 @@ export default {
 
 <style scoped>
 .form-container {
+  height: 100%;
   margin: 1em;
   display: flex;
   flex-flow: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
 }

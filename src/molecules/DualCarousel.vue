@@ -19,6 +19,8 @@ export default {
   components: {
     Modal,
   },
+  computed: {
+  },
   props: {
     slidingState: {
       required: true,
@@ -39,6 +41,11 @@ export default {
   max-width: 100vw;
   border-radius: 7px;
   overflow: hidden;
+  background: var(--card-background);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 10px 15px rgba(54, 54, 54, 0.65);
 }
 
 #info-container {
@@ -52,7 +59,6 @@ export default {
   align-items: center;
   gap: 1em;
   transition: .7s transform;
-  background: var(--card-background);
   overflow: scroll;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none; /* Firefox */

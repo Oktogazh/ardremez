@@ -4,9 +4,9 @@
       <EmailForm @next="next" />
     </template>
     <template #secondSlot>
-      <GoBack @click="state = 0" />
+      <GoBack @click="prev" />
       <PasswordForm v-if="member" :email="email" @authorized="closeThis"/>
-      <NewPswForm v-else :email="email" />
+      <NewPswForm v-else :email="email" @pwdApproved="signIn" />
     </template>
   </DualCarousel>
 </template>
@@ -51,6 +51,17 @@ export default {
       this.email = email;
       this.member = member;
       this.state = 1;
+    },
+    prev() {
+      this.email = '';
+      this.member = null;
+      this.state = 0;
+    },
+    signIn(password) {
+      const { email } = this;
+      this.$store.dispatch('user/signin', { email, password })
+        .then(this.$store.commit('app/SET_NEXT_ROUTE', { next: '/verify' }))
+        .then(this.closeThis);
     },
   },
 };

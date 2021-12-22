@@ -2,7 +2,7 @@
   <FormContainer @submit.prevent="next">
     <BasicInput type="email" @input="setValue" required
       placeholder="ann@vreizh.bzh" title=""/>
-    <SubmitButton />
+    <SubmitButton :innerText="translate.Continue" />
   </FormContainer>
 </template>
 
@@ -22,6 +22,7 @@ export default {
   computed: {
     ...mapState({
       api: (state) => state.api,
+      translate: (state) => state.lang,
     }),
   },
   data() {
