@@ -13,8 +13,8 @@
 <script>
 import { mapState } from 'vuex';
 import DualCarousel from '@/molecules/DualCarousel.vue';
-import SelectPrices from '@/molecules/SelectPrices.vue';
-import StripeElements from '@/molecules/StripeElements.vue';
+import SelectPrices from '@/molecules/checkout/SelectPrices.vue';
+import StripeElements from '@/molecules/checkout/StripeElements.vue';
 
 export default {
   name: 'CheckoutCarousel',

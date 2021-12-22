@@ -1,17 +1,17 @@
 <template>
-  <AccessPortal v-if="app.loggingRequired || redirect()" />
+  <LoggingCarousel v-if="app.loggingRequired || redirect()" />
   <Header />
   <router-view />
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import AccessPortal from '@/organisms/AccessPortal.vue';
+import LoggingCarousel from '@/organisms/LoggingCarousel.vue';
 import Header from '@/organisms/Header.vue';
 
 export default {
   components: {
-    AccessPortal,
+    LoggingCarousel,
     Header,
   },
   computed: {

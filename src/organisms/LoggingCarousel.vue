@@ -1,7 +1,7 @@
 <template>
   <DualCarousel v-if="false" :slidingState="state" @closing="closeThis">
     <template #firstSlot>
-      <button @click="state = 1">blablabla</button>
+      <EmailForm />
     </template>
     <template #secondSlot>
       <button @click="state = 0">blablabla</button>
@@ -17,17 +17,21 @@
 <script>
 import Modal from '@/atoms/Modal.vue';
 import DualCarousel from '@/molecules/DualCarousel.vue';
-import Form from '@/molecules/accessPortal/Form.vue';
+import EmailForm from '@/molecules/forms/EmailForm.vue';
+import Form from '@/molecules/forms/Form.vue';
 
 export default {
-  name: 'AccessPortal',
+  name: 'LoggingCarousel',
   components: {
     DualCarousel,
+    EmailForm,
     Form,
     Modal,
   },
   data() {
     return {
+      email: '',
+      member: null,
       state: 0,
     };
   },
