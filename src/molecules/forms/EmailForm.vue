@@ -1,6 +1,8 @@
 <template>
-  <BasicInput />
-  <SubmitButton />
+  <div class="form-container">
+    <BasicInput type="email" @input="setEmail" />
+    <SubmitButton />
+  </div>
 </template>
 
 <script>
@@ -13,8 +15,24 @@ export default {
     BasicInput,
     SubmitButton,
   },
+  data() {
+    return {
+      email: '',
+    };
+  },
+  methods: {
+    setEmail({ target }) {
+      this.email = target.value;
+    },
+  },
 };
 </script>
 
 <style scoped>
+.form-container {
+  margin: 1em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
 </style>

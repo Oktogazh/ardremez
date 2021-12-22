@@ -1,5 +1,5 @@
 <template>
-  <DualCarousel v-if="false" :slidingState="state" @closing="closeThis">
+  <DualCarousel :slidingState="state" @closing="closeThis">
     <template #firstSlot>
       <EmailForm />
     </template>
@@ -7,7 +7,7 @@
       <button @click="state = 0">blablabla</button>
     </template>
   </DualCarousel>
-  <Modal @closing="closeThis">
+  <Modal v-if="false" @closing="closeThis">
     <div class="access-container">
       <Form @logged="logged"/>
     </div>
