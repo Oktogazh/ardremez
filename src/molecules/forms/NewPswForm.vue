@@ -1,8 +1,8 @@
 <template>
   <FormContainer @submit.prevent="verify">
-    <BasicInput type="password" @input="setValue"
+    <BasicInput type="password" @input="setPswValue"
       :placeholder="translate.placeholderPsw"/>
-    <BasicInput type="password" @input="setValue"
+    <BasicInput type="password" @input="setCnfrmValue"
       :placeholder="translate.Confirm_Psw"/>
     <SubmitButton />
   </FormContainer>
@@ -26,7 +26,19 @@ export default {
       translate: (state) => state.lang,
     }),
   },
+  data() {
+    return {
+      psw: '',
+      confirm: '',
+    };
+  },
   methods: {
+    setPswValue({ target }) {
+      this.psw = target.value;
+    },
+    setCnfrmValue({ target }) {
+      this.confirm = target.value;
+    },
     verify() {
       return null;
     },
