@@ -8,9 +8,7 @@
       <OptionInfoButton v-for="(price, i) in prices" :info="price"
         :selected="selected" :key="i" @click="selected = i"/>
     </div>
-    <SubmitButton @click="next">
-      {{ translate.Continue }}
-    </SubmitButton>
+    <SubmitButton @click="next" :text="'Continue'" />
   </div>
 </template>
 

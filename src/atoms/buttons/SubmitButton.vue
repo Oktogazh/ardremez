@@ -1,12 +1,20 @@
 <template>
-  <button class="submit-button">
-    <slot>{{ defaultText }}</slot>
-  </button>
+  <button class="submit-button" v-html="innerText" />
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'SubmitButton',
+  computed: {
+    ...mapState({
+      translate: (state) => state.lang,
+    }),
+    innerText() {
+      return this.translate[this.text ? this.text : 'Submit'];
+    },
+  },
   data() {
     return {
       defaultText: this.$store.state.lang.Submit,
@@ -16,6 +24,7 @@ export default {
     text: {
       type: String,
       required: false,
+      default: null,
     },
   },
 };
