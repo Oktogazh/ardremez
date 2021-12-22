@@ -61,7 +61,7 @@ export default {
       const { email } = this;
       this.$store.dispatch('user/signin', { email, password })
         .then(this.$store.commit('app/SET_NEXT_ROUTE', { next: '/verify' }))
-        .then(this.closeThis);
+        .then(this.logged);
     },
   },
 };
