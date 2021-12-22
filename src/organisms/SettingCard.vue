@@ -32,14 +32,14 @@ export default {
   },
   computed: {
     ...mapState({
-      isSubscribed() {
-        // TODO: filter the user's subscriptions
-        return false;
-      },
-      translate(state) {
-        return state.lang;
-      },
+      user: (state) => state.user,
+      translate: (state) => state.lang,
     }),
+    isSubscribed() {
+      const filter = (subObj) => subObj.status === 'active' || subObj.status === 'past_due';
+      const stillSubscribed = (this.user.subscriptions.findIndex(filter) !== -1);
+      return stillSubscribed;
+    },
   },
   data() {
     return {

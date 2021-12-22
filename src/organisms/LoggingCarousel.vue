@@ -34,7 +34,7 @@ export default {
       state: 0,
     };
   },
-  methods: { // TODO: create a closing method
+  methods: {
     closeThis() {
       const { redirectRoute } = this.$store.state.app;
 
