@@ -36,6 +36,7 @@ const obj = {
   OK: 'MAT',
   Other_Languages: 'Yezhoù All',
   Password: 'Ger-Kuzh',
+  Psw_Forgotten: 'Ger-Kuzh Kollet?',
   PaymentSuccessfulyProcessedMsg: 'Emaoc\'h o paouez bezañ karget gant berzh! Gallout a rit tizhout holl gentelioù an hentenn!',
   placeholderPsw: 'Ger-Kµzh',
   lessons: 'a gentelioù',

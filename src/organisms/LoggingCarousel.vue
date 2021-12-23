@@ -1,18 +1,23 @@
 <template>
   <DualCarousel :slidingState="state" @closing="closeThis">
     <template #firstSlot>
-      <EmailForm @next="next" />
+      <EmailForm @next="next" ref="emailForm"/>
     </template>
     <template #secondSlot>
       <GoBack @click="prev" />
-      <PasswordForm v-if="member" :email="email" @authorized="closeThis"/>
+      <PasswordForm v-if="member" :email="email" @authorized="closeThis">
+        <template #option>
+          <button v-html="translate.Psw_Forgotten" @click.prevent>
+          </button>
+        </template>
+      </PasswordForm>
       <NewPswForm v-else :email="email" @pwdApproved="signIn" />
-      <!-- TODO: add a reinitialize password component in a slot -->
     </template>
   </DualCarousel>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import DualCarousel from '@/molecules/DualCarousel.vue';
 import EmailForm from '@/molecules/forms/EmailForm.vue';
 import GoBack from '@/atoms/buttons/GoBack.vue';
@@ -27,6 +32,11 @@ export default {
     GoBack,
     PasswordForm,
     NewPswForm,
+  },
+  computed: {
+    ...mapState({
+      translate: (state) => state.lang,
+    }),
   },
   data() {
     return {
@@ -54,8 +64,7 @@ export default {
       this.state = 1;
     },
     prev() {
-      this.email = '';
-      this.member = null;
+      this.$refs.emailForm.init();
       this.state = 0;
     },
     signIn(password) {

@@ -1,6 +1,6 @@
 <template>
   <FormContainer @submit.prevent="next">
-    <BasicInput type="email" @input="setValue" required
+    <BasicInput id="email" type="email" @input="setValue" required
       placeholder="ann@vreizh.bzh" title=""/>
     <SubmitButton :innerText="translate.Continue" />
   </FormContainer>
@@ -32,6 +32,10 @@ export default {
     };
   },
   methods: {
+    init() {
+      const email = document.getElementById('email');
+      email.value = '';
+    },
     setValue({ target }) {
       this.email = target.value;
     },

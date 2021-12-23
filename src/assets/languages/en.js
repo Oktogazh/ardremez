@@ -38,6 +38,7 @@ const obj = {
   Password: 'Password',
   PaymentSuccessfulyProcessedMsg: 'Your payment was successfully processed! You can now enjoy all the lessons of the series!',
   placeholderPsw: 'Password',
+  Psw_Forgotten: 'Password Forgotten?',
   lessons: 'lessons',
   Progressions: 'Progressions',
   Show_description: 'Show description',

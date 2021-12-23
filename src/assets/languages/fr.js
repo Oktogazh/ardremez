@@ -36,6 +36,7 @@ const obj = {
   Other_Languages: 'Autres langues',
   OK: 'OK',
   Password: 'Mot de passe',
+  Psw_Forgotten: 'Mot de passe oublié ?',
   PaymentSuccessfulyProcessedMsg: 'Votre payment s\'est bien passé, vous pouvez désormais accéder à l\'intégralité des podcasts de la séries.',
   placeholderPsw: 'Mon mot de passe',
   lessons: 'leçons',

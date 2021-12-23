@@ -4,6 +4,7 @@
     <p :class="[null, 'error'][this.code]" v-html="msgArray[this.code]"></p>
     <BasicInput type="password" @input="setValue"
       :placeholder="translate.placeholderPsw"/>
+      <slot name="option"></slot>
     <SubmitButton />
   </FormContainer>
 </template>
