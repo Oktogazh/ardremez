@@ -17,6 +17,7 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  gap: 1em;
   text-align: center;
 }
 </style>

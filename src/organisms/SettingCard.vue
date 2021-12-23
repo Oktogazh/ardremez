@@ -1,9 +1,9 @@
 <template>
   <HeadedCard :radius="'9px'">
-    <template v-slot:header>
+    <template #header>
       <h2 v-html="translate.Manage_My_Account"></h2>
     </template>
-    <template v-slot:body>
+    <template #body>
       <div id="account-options">
         <div id="verify-email" class="option-container">
           <h3>{{ translate.My_email_address }}</h3>

@@ -20,6 +20,6 @@ export default {
 <style scoped>
 div {
   width: stretch;
-  padding: 0 13px;
+  padding: 13px;
 }
 </style>

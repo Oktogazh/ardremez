@@ -6,21 +6,21 @@
     <template  v-slot:body>
       <form  class="code-form" @submit.prevent="$emit('sendCode', code)">
         <input type="text" v-model="code" maxlength="6">
-        <button type="submit">
-          <h4>{{ $store.state.lang.Submit }}</h4>
-        </button>
+        <SubmitButton />
       </form>
     </template>
   </HeadedCard>
 </template>
 
 <script>
+import SubmitButton from '@/atoms/buttons/SubmitButton.vue';
 import HeadedCard from '@/molecules/HeadedCard.vue';
 
 export default {
   name: 'CheckingCodeCard',
   components: {
     HeadedCard,
+    SubmitButton,
   },
   data() {
     return {

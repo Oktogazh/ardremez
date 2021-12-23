@@ -1,10 +1,10 @@
 <template>
   <Modal @closing="$emit('closing')">
-    <div id="carousel-container">
-      <div id="info-container" :class="['default', 'slide-left'][slidingState]">
+    <div id="carousel-container" :style="styling">
+      <div class="slot-container" :class="['default', 'slide-left'][slidingState]">
         <slot name="firstSlot"></slot>
       </div>
-      <div id="info-container" :class="['default', 'slide-left'][slidingState]">
+      <div class="slot-container" :class="['default', 'slide-left'][slidingState]">
         <slot name="secondSlot"></slot>
       </div>
     </div>
@@ -20,12 +20,29 @@ export default {
     Modal,
   },
   computed: {
+    styling() {
+      const { bg, minHeight } = this;
+      const styling = {};
+      if (bg) styling['--background'] = bg;
+      if (minHeight) styling['--min-height'] = minHeight;
+      return styling;
+    },
   },
   props: {
     slidingState: {
       required: true,
       type: Number,
       default: 0,
+    },
+    bg: {
+      required: false,
+      type: String,
+      default: null,
+    },
+    minHeight: {
+      required: false,
+      type: String,
+      default: null,
     },
   },
 };
@@ -36,19 +53,21 @@ export default {
   position: relative;
   display: flex;
   height: fit-content;
+  min-height: var(--min-height);
   max-height: 100vh;
   width: 350px;
   max-width: 100vw;
   border-radius: 7px;
   overflow: hidden;
-  background: var(--card-background);
+  background-color: var(--card-background); /* fallback color */
+  background-image: var(--background); /* images || grad || ↑↑ */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: 0 10px 15px rgba(54, 54, 54, 0.65);
 }
 
-#info-container {
+.slot-container {
   position: relative;
   height: auto;
   max-height: 100%;
@@ -63,7 +82,7 @@ export default {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
-#info-container:-webkit-scrollbar {
+.slot-container:-webkit-scrollbar {
     display: none; /* Other browsers */
 }
 

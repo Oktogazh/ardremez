@@ -1,5 +1,6 @@
 <template>
   <FormContainer @submit.prevent="next">
+    <slot name="intructions"></slot>
     <BasicInput id="email" type="email" @input="setValue" required
       placeholder="ann@vreizh.bzh" title=""/>
     <SubmitButton :innerText="translate.Continue" />

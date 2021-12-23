@@ -1,7 +1,12 @@
 <template>
-  <DualCarousel :slidingState="state" @closing="closeThis">
+  <DualCarousel :slidingState="state" @closing="closeThis" :bg="url" :minHeight="'400px'">
     <template #firstSlot>
-      <EmailForm @next="next" ref="emailForm"/>
+      <EmailForm @next="next" ref="emailForm">
+        <template #intructions>
+          <h2 v-html="translate.Welcome"></h2>
+          <span v-html="translate.Enter_Your_Email_Address"></span>
+        </template>
+      </EmailForm>
     </template>
     <template #secondSlot>
       <GoBack @click="prev" />
@@ -43,6 +48,7 @@ export default {
       email: '',
       member: null,
       state: 0,
+      url: 'url(/img/Beg_ar_Vann.jpg)',
     };
   },
   methods: {
