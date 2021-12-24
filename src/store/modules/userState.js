@@ -49,6 +49,22 @@ const userState = ({
 
       return loggedIn;
     },
+    async getProvisoryToken({ commit, rootState }, { code }) {
+      const userData = await window.axios.post(`${rootState.api}/api/provisory_token`, code)
+        .then(({ data }) => {
+          commit('SET_USER_DATA', {
+            email: data.email,
+            customerId: data.customerId,
+            progress: data.progress,
+            subscriptionActive: data.sub,
+            subscriptions: data.subscriptions,
+            jwt: data.token,
+          });
+          return data;
+        })
+        .catch((e) => console.error(e));
+      return (!!userData.jwt);
+    },
     logOut({ commit }) {
       const emptyState = {
         email: null,
@@ -66,6 +82,7 @@ const userState = ({
     },
     retrieveData({ commit }) {
       const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+      // TODO: delete jwt if expired
       commit('SET_USER_DATA', userData);
     },
     async signin({ commit, rootState }, { email, password }) {

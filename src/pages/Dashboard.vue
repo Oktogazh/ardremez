@@ -89,6 +89,26 @@ export default {
           });
       }
     },
+    querryParams() {
+      const clientSecret = new URLSearchParams(window.location.search).get(
+        'payment_intent_client_secret',
+      );
+      const newpsw = new URLSearchParams(window.location.search).get(
+        'newpsw',
+      );
+      const productId = new URLSearchParams(window.location.search).get(
+        'prod_id',
+      );
+      const status = new URLSearchParams(window.location.search).get(
+        'redirect_status',
+      );
+      return {
+        clientSecret,
+        productId,
+        newpsw,
+        status,
+      };
+    },
     subscribeTo(product) {
       if (!this.$store.state.user.customerId) { // dashboard watch $route
         swal.fire({ html: this.translate.NeedaBeVerifiedToSub });
@@ -99,16 +119,15 @@ export default {
   },
   mounted() {
     const { product } = this.$store.state.payment;
-    const clientSecret = new URLSearchParams(window.location.search).get(
-      'payment_intent_client_secret',
-    );
-    const status = new URLSearchParams(window.location.search).get(
-      'redirect_status',
-    );
-    const productId = new URLSearchParams(window.location.search).get(
-      'prod_id',
-    );
-    this.checkIfLoggedIn();
+    const {
+      clientSecret,
+      productId,
+      newpsw,
+      status,
+    } = this.querryParams();
+    if (newpsw) this.$store.dispatch('user/getProvisoryToken', { code: newpsw });
+    else this.checkIfLoggedIn();
+
     if (clientSecret) this.getStatus({ clientSecret, status, productId });
     else if (product) this.subscribeTo(product);
   },
