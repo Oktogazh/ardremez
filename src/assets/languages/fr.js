@@ -23,6 +23,7 @@ const obj = {
   Home: 'Accueil',
   Hide_description: 'Masquer la description',
   invalid_number: 'Votre numéro de carte est invalide.',
+  loggingLinkSent: 'Un lien de connexion vous permettant de changer de mot de passe vient de vous être envoyé par mail.<br> Il ne sera valide que durant une heure, faites vite!',
   Log_In: 'Connexion',
   Log_Out: 'Déconnexion',
   Manage_My_Account: 'Gérer mon compte',

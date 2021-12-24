@@ -12,7 +12,7 @@
       <GoBack @click="prev" />
       <PasswordForm v-if="member" :email="email" @authorized="closeThis">
         <template #option>
-          <button v-html="translate.Psw_Forgotten" @click.prevent>
+          <button v-html="translate.Psw_Forgotten" @click.prevent="pswForgotten">
           </button>
         </template>
       </PasswordForm>
@@ -72,6 +72,18 @@ export default {
     prev() {
       this.$refs.emailForm.init();
       this.state = 0;
+    },
+    pswForgotten() {
+      const { email, $store } = this;
+
+      window.axios.post(`${$store.state.api}/api/send_psw_code`, { email })
+        .then(() => {
+          window.swal.fire({
+            icon: 'info',
+            html: this.translate.loggingLinkSent,
+          });
+        })
+        .catch();
     },
     signIn(password) {
       const { email } = this;

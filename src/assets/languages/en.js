@@ -23,6 +23,7 @@ const obj = {
   Hide_description: 'Hide description',
   Home: 'Home',
   invalid_number: 'Your card number is invalid.',
+  loggingLinkSent: 'A link has just been sent to you by email, use it to change password.<br> It will be valid only one hour, be quick!',
   Log_In: 'Log In',
   Log_Out: 'Log Out',
   Manage_My_Account: 'Manage My Account',

@@ -6,8 +6,11 @@
 
 <script>
 import { mapState } from 'vuex';
+import Swal from 'sweetalert2';
 import LoggingCarousel from '@/organisms/LoggingCarousel.vue';
 import Header from '@/organisms/Header.vue';
+
+window.swal = Swal;
 
 export default {
   components: {
