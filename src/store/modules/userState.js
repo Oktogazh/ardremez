@@ -90,7 +90,7 @@ const userState = ({
     },
     async reinitializePsw({ commit, state, rootState }, password) {
       const { emailCode } = state;
-      const success = await window.axios.post(`${rootState.api}/api/reinitialize_psw`,
+      const success = await window.axios.post(`${rootState.api}/api/psw_reinitialization`,
         { emailCode, password })
         .then(({ data }) => commit('SET_USER_DATA', {
           email: data.email,

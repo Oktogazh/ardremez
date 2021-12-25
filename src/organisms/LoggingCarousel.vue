@@ -9,7 +9,7 @@
       </EmailForm>
     </template>
     <template #secondSlot>
-      <GoBack @click="prev" />
+      <GoBack v-if="!emailCode" @click="prev" />
       <PasswordForm v-if="member" :email="email" @authorized="closeThis">
         <template #option>
           <button v-html="translate.Psw_Forgotten" @click.prevent="pswForgotten">
