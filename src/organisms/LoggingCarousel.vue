@@ -41,6 +41,7 @@ export default {
   computed: {
     ...mapState({
       translate: (state) => state.lang,
+      emailCode: (state) => state.user.emailCode,
     }),
   },
   data() {
@@ -91,6 +92,9 @@ export default {
         .then(this.$store.commit('app/SET_NEXT_ROUTE', { next: '/verify' }))
         .then(this.logged);
     },
+  },
+  mounted() {
+    if (this.emailCode !== null) this.state = 1;
   },
 };
 </script>

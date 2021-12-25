@@ -38,10 +38,13 @@ export default {
     };
   },
   methods: {
-    checkIfLoggedIn() {
-      if (!this.$store.getters.connected) {
+    checkIfLoggedIn(newpsw) {
+      const { $store } = this;
+      if (!$store.getters.connected) {
         const redirect = '/';
-        this.$store.dispatch('app/logAndRoute', { redirect });
+
+        $store.dispatch('user/setUserData', { emailCode: newpsw })
+          .then($store.dispatch('app/logAndRoute', { redirect }));
       }
     },
     completePayment({ status, productId }) {
@@ -125,8 +128,8 @@ export default {
       newpsw,
       status,
     } = this.querryParams();
-    if (newpsw) this.$store.dispatch('user/getProvisoryToken', { code: newpsw });
-    else this.checkIfLoggedIn();
+
+    this.checkIfLoggedIn(newpsw);
 
     if (clientSecret) this.getStatus({ clientSecret, status, productId });
     else if (product) this.subscribeTo(product);

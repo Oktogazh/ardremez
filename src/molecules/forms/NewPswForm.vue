@@ -1,5 +1,6 @@
 <template>
-  <FormContainer @submit.prevent="verify">
+  <FormContainer @submit.prevent="findAction">
+    <h2 v-if="emailCode" v-html="translate.ReinitializeYourPsw"></h2>
     <BasicInput type="password" @input="setPswValue"
       :placeholder="translate.placeholderPsw" required />
     <BasicInput type="password" @input="setCnfrmValue"
@@ -25,6 +26,7 @@ export default {
   computed: {
     ...mapState({
       translate: (state) => state.lang,
+      emailCode: (state) => state.user.emailCode,
     }),
   },
   data() {
@@ -34,6 +36,13 @@ export default {
     };
   },
   methods: {
+    findAction() {
+      if (!this.emailCode) this.verify();
+      else this.reinitializePsw();
+    },
+    reinitializePsw() {
+      return null;
+    },
     setPswValue({ target }) {
       this.psw = target.value;
     },

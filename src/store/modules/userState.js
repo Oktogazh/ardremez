@@ -6,6 +6,7 @@ const userState = ({
   namespaced: true,
   state: {
     email: null,
+    emailCode: null,
     customerId: null,
     level: null,
     progress: [ /* {
@@ -49,22 +50,6 @@ const userState = ({
 
       return loggedIn;
     },
-    async getProvisoryToken({ commit, rootState }, { code }) {
-      const userData = await window.axios.post(`${rootState.api}/api/provisory_token`, code)
-        .then(({ data }) => {
-          commit('SET_USER_DATA', {
-            email: data.email,
-            customerId: data.customerId,
-            progress: data.progress,
-            subscriptionActive: data.sub,
-            subscriptions: data.subscriptions,
-            jwt: data.token,
-          });
-          return data;
-        })
-        .catch((e) => console.error(e));
-      return (!!userData.jwt);
-    },
     logOut({ commit }) {
       const emptyState = {
         email: null,
@@ -102,6 +87,10 @@ const userState = ({
     },
     newVerificationEmail({ rootState }) {
       window.axios.post(`${rootState.api}/api/kas_kod_postel`);
+    },
+    setUserData({ commit }, userData) {
+      commit('SET_USER_DATA', userData);
+      return true;
     },
     updateProgress({ commit, state }, newProgress) {
       const { progress } = state;
