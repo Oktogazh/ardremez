@@ -44,7 +44,8 @@ export default {
         const redirect = '/';
 
         $store.dispatch('user/setUserData', { emailCode: newpsw })
-          .then($store.dispatch('app/logAndRoute', { redirect }));
+          .then($store.dispatch('app/logAndRoute', { redirect }))
+          .then(window.history.replaceState({}, document.title, '/#/dashboard'));
       }
     },
     completePayment({ status, productId }) {
