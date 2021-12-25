@@ -2,7 +2,7 @@
   <DualCarousel :slidingState="state" @closing="closeThis" :bg="url" :minHeight="'400px'">
     <template #firstSlot>
       <EmailForm @next="next" ref="emailForm">
-        <template #intructions>
+        <template #instructions>
           <h2 v-html="translate.Welcome"></h2>
           <span v-html="translate.Enter_Your_Email_Address"></span>
         </template>
@@ -16,7 +16,11 @@
           </button>
         </template>
       </PasswordForm>
-      <NewPswForm v-else :email="email" @pwdApproved="signIn" />
+      <NewPswForm v-else :email="email" @pwdApproved="findAction">
+        <template #instructions>
+            <h2 v-html="instructions"></h2>
+        </template>
+      </NewPswForm>
     </template>
   </DualCarousel>
 </template>
@@ -43,6 +47,12 @@ export default {
       translate: (state) => state.lang,
       emailCode: (state) => state.user.emailCode,
     }),
+    instructions() {
+      const { chooseANewPsw, chooseAPsw } = this.translate;
+      const instructions = this.emailCode ? chooseANewPsw : chooseAPsw;
+
+      return instructions;
+    },
   },
   data() {
     return {
@@ -57,6 +67,11 @@ export default {
       const { redirectRoute } = this.$store.state.app;
 
       this.$store.dispatch('app/notLogging', { next: redirectRoute });
+    },
+    findAction(password) {
+      const { emailCode, reinitializePsw, signIn } = this;
+
+      return (emailCode !== null) ? reinitializePsw(password) : signIn(password);
     },
     logged() {
       const { path } = this.$router.currentRoute.value;
@@ -85,6 +100,12 @@ export default {
           });
         })
         .catch();
+    },
+    reinitializePsw(password) {
+      this.$store.dispatch('user/reinitializePsw', password)
+        .then(window.swal.fire({
+          html: 'blablabla',
+        }));
     },
     signIn(password) {
       const { email } = this;

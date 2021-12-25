@@ -4,6 +4,8 @@ const obj = {
   Back: 'Distreiñ',
   Breton_bre: 'Brezhoneg',
   bre: 'Brezhoneg',
+  chooseANewPsw: 'Divizit ur Ger-Kuzh',
+  chooseAPsw: 'Divizit ur Ger-Kuzh',
   Confirm_Psw: 'Kadarnaat ar Ger-Kuzh',
   Connected: 'Kevreet',
   Continue: 'Kenderc\'hel',

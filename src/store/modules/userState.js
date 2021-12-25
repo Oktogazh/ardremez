@@ -37,13 +37,13 @@ const userState = ({
       // TODO: 'api/login' instead, sending the jwt via the cookie protocol
       // because the audio api doesn't send the Auth header otherwise
       const loggedIn = await window.axios.post(`${rootState.api}/api/kevreañ`, { email, password })
-        .then((res) => commit('SET_USER_DATA', {
-          email: res.data.email,
-          customerId: res.data.customerId,
-          progress: res.data.progress,
-          subscriptionActive: res.data.sub,
-          subscriptions: res.data.subscriptions,
-          jwt: res.data.token,
+        .then(({ data }) => commit('SET_USER_DATA', {
+          email: data.email,
+          customerId: data.customerId,
+          progress: data.progress,
+          subscriptionActive: data.sub,
+          subscriptions: data.subscriptions,
+          jwt: data.token,
         }))
         .then(() => true)
         .catch(() => false);
@@ -87,6 +87,22 @@ const userState = ({
     },
     newVerificationEmail({ rootState }) {
       window.axios.post(`${rootState.api}/api/kas_kod_postel`);
+    },
+    async reinitializePsw({ commit, state, rootState }, password) {
+      const { emailCode } = state;
+      const success = await window.axios.post(`${rootState.api}/api/reinitialize_psw`,
+        { emailCode, password })
+        .then(({ data }) => commit('SET_USER_DATA', {
+          email: data.email,
+          customerId: data.customerId,
+          progress: data.progress,
+          subscriptionActive: data.sub,
+          subscriptions: data.subscriptions,
+          jwt: data.token,
+        }))
+        .then(() => true)
+        .catch(() => false);
+      return success;
     },
     setUserData({ commit }, userData) {
       commit('SET_USER_DATA', userData);

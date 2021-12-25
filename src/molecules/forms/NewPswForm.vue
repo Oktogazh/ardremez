@@ -1,6 +1,6 @@
 <template>
-  <FormContainer @submit.prevent="findAction">
-    <h2 v-if="emailCode" v-html="translate.ReinitializeYourPsw"></h2>
+  <FormContainer @submit.prevent="verify">
+    <slot name="instructions"></slot>
     <BasicInput type="password" @input="setPswValue"
       :placeholder="translate.placeholderPsw" required />
     <BasicInput type="password" @input="setCnfrmValue"
@@ -36,13 +36,6 @@ export default {
     };
   },
   methods: {
-    findAction() {
-      if (!this.emailCode) this.verify();
-      else this.reinitializePsw();
-    },
-    reinitializePsw() {
-      return null;
-    },
     setPswValue({ target }) {
       this.psw = target.value;
     },

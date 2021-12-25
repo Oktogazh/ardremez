@@ -4,6 +4,8 @@ const obj = {
   Back: 'Retour',
   Breton_bre: 'Brezhoneg',
   bre: 'Breton',
+  chooseANewPsw: 'Entrez votre nouveau mot de passe',
+  chooseAPsw: 'Choisissez un mot de passe',
   Confirm_Psw: 'Confirmer mon mot de passe',
   Connected: 'Connecté',
   Continue: 'Continuer',
