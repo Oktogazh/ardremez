@@ -103,9 +103,21 @@ export default {
     },
     reinitializePsw(password) {
       this.$store.dispatch('user/reinitializePsw', password)
-        .then(window.swal.fire({
-          html: 'blablabla',
-        }));
+        .then((success) => {
+          if (success) {
+            window.swal.fire({
+              html: 'blablabla',
+            });
+          } else {
+            window.swal.fire({
+              icon: 'error',
+              html: 'blablabla',
+            });
+          }
+        })
+        .catch((e) => {
+          console.error(e);
+        });
     },
     signIn(password) {
       const { email } = this;
