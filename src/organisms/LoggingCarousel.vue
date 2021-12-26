@@ -104,7 +104,12 @@ export default {
         .catch();
     },
     reinitializePsw(password) {
-      const { logged, translate, pswForgotten } = this;
+      const {
+        closeThis,
+        logged,
+        translate,
+        pswForgotten,
+      } = this;
       this.$store.dispatch('user/reinitializePsw', password)
         .then((success) => {
           if (success) {
@@ -115,6 +120,7 @@ export default {
             });
           } else {
             pswForgotten(null, { newAttempt: true });
+            closeThis();
             window.swal.fire({
               icon: 'error',
               html: translate.linkHasExpired_NewLinkSent,

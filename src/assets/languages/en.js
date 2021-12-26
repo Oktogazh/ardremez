@@ -25,6 +25,7 @@ const obj = {
   Hide_description: 'Hide description',
   Home: 'Home',
   invalid_number: 'Your card number is invalid.',
+  linkHasExpired_NewLinkSent: 'The link you just used has expired.<br> Please try again with the new one that has just been sent to you by email.',
   loggingLinkSent: 'A link has just been sent to you by email, use it to change password.<br> It will be valid only one hour, be quick!',
   Log_In: 'Log In',
   Log_Out: 'Log Out',
@@ -57,6 +58,7 @@ const obj = {
   Wrong_code_New_code_sent: 'This code is invalid or has already expired.<br>A new verification code has just been sent to you to try again.',
   Wrong_Password: 'Wrong Password <br> Please Try Again',
   YouNeedToSubToContinue: 'You need to subscribe to continue.',
+  yourNewPswHasBeenRegistered: 'Your new password has been successfully registered !',
   yr4year: 'yr',
 };
 

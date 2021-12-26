@@ -25,6 +25,7 @@ const obj = {
   Home: 'Accueil',
   Hide_description: 'Masquer la description',
   invalid_number: 'Votre numéro de carte est invalide.',
+  linkHasExpired_NewLinkSent: 'Le lien que vous venez d\'utilisé à expiré.<br> Essayez de nouveau avec celui qui vient de vous être envoyé par mail.',
   loggingLinkSent: 'Un lien de connexion vous permettant de changer de mot de passe vient de vous être envoyé par mail.<br> Il ne sera valide que durant une heure, faites vite!',
   Log_In: 'Connexion',
   Log_Out: 'Déconnexion',
@@ -57,6 +58,7 @@ const obj = {
   Wrong_code_New_code_sent: 'Ce code est invalide ou a déja expiré.<br>Un nouveau code de confirmation vient de vous être envoyé.',
   Wrong_Password: 'Mauvais mot-de-passe <br> Veuillez réessayer',
   YouNeedToSubToContinue: 'Vous devez vous abonner pour pouvoir continuer !',
+  yourNewPswHasBeenRegistered: 'Votre nouveau mot de passe a bien été enregistré !',
   yr4year: 'an',
 };
 

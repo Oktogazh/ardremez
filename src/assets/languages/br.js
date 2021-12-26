@@ -25,6 +25,7 @@ const obj = {
   Hide_description: 'Kuzhat an diskrivadur',
   Home: 'Degemerva',
   invalid_number: 'Direizh eo ho niverenn kartenn.',
+  linkHasExpired_NewLinkSent: 'Al liamm ho peus implijet a zo diamzeriet. Klaskit en-dro gant an hini emeur o paouez kas deoc\'h dre bostel.',
   loggingLinkSent: 'Emeur o paouez kas deoc\'h ul liamm kevreañ dre bostel, drezañ e c\'halloc\'h cheñch ger-kuzh.<br>Ne dalvezo met un eurvezh-pad avat, grit buan!'
   Log_In: 'Kevreañ',
   Log_Out: 'Digevreañ',
@@ -57,6 +58,7 @@ const obj = {
   Wrong_code_New_code_sent: 'Ar c\'hod-mañ zo diwiriek, pe c\'hoazh, diamzeriet.<br>Emeur o paouez kas ur c\'hod nevez, deoc\'h klask en-dro.',
   Wrong_Password: 'Ger-Kuzh fall, <br> Klaskit En-Dro',
   YouNeedToSubToContinue: 'Ezhomm ho peus koumanantiñ evit mont pelloc\'h ganti!',
+  yourNewPswHasBeenRegistered: 'Emañ ho ker-kuzh nevez o paouez bezañ enrollet!',
   yr4year: 'bl',
 };
 
