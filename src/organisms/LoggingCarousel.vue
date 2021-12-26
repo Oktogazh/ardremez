@@ -44,6 +44,7 @@ export default {
   },
   computed: {
     ...mapState({
+      email: (state) => state.user.email,
       translate: (state) => state.lang,
       emailCode: (state) => state.user.emailCode,
     }),
@@ -56,7 +57,6 @@ export default {
   },
   data() {
     return {
-      email: '',
       member: null,
       state: 0,
       url: 'url(/img/Beg_ar_Vann.jpg)',
@@ -81,7 +81,7 @@ export default {
       this.$store.dispatch('app/notLogging', { next });
     },
     next({ email, member }) {
-      this.email = email;
+      this.$store.commit('user/SET_USER_DATA', { email });
       this.member = member;
       this.state = 1;
     },
@@ -89,29 +89,35 @@ export default {
       this.$refs.emailForm.init();
       this.state = 0;
     },
-    pswForgotten() {
-      const { email, $store } = this;
+    pswForgotten(evt, newAttempt = false) {
+      const { email, $store, translate } = this;
 
       window.axios.post(`${$store.state.api}/api/send_psw_code`, { email })
         .then(() => {
-          window.swal.fire({
-            icon: 'info',
-            html: this.translate.loggingLinkSent,
-          });
+          if (!newAttempt) {
+            window.swal.fire({
+              icon: 'info',
+              html: translate.loggingLinkSent,
+            });
+          }
         })
         .catch();
     },
     reinitializePsw(password) {
+      const { logged, translate, pswForgotten } = this;
       this.$store.dispatch('user/reinitializePsw', password)
         .then((success) => {
           if (success) {
+            logged();
             window.swal.fire({
-              html: 'blablabla',
+              icon: 'success',
+              html: translate.yourNewPswHasBeenRegistered,
             });
           } else {
+            pswForgotten(null, { newAttempt: true });
             window.swal.fire({
               icon: 'error',
-              html: 'blablabla',
+              html: translate.linkHasExpired_NewLinkSent,
             });
           }
         })

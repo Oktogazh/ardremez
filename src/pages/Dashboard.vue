@@ -38,12 +38,12 @@ export default {
     };
   },
   methods: {
-    checkIfLoggedIn(newpsw) {
+    checkIfLoggedIn({ address, newpsw }) {
       const { $store } = this;
       if (!$store.getters.connected) {
         const redirect = '/';
 
-        $store.dispatch('user/setUserData', { emailCode: newpsw })
+        $store.dispatch('user/setUserData', { email: address, emailCode: newpsw })
           .then($store.dispatch('app/logAndRoute', { redirect }))
           .then(window.history.replaceState({}, document.title, '/#/dashboard'));
       }
@@ -94,6 +94,9 @@ export default {
       }
     },
     querryParams() {
+      const address = new URLSearchParams(window.location.search).get(
+        'address',
+      );
       const clientSecret = new URLSearchParams(window.location.search).get(
         'payment_intent_client_secret',
       );
@@ -107,6 +110,7 @@ export default {
         'redirect_status',
       );
       return {
+        address,
         clientSecret,
         productId,
         newpsw,
@@ -124,13 +128,14 @@ export default {
   mounted() {
     const { product } = this.$store.state.payment;
     const {
+      address,
       clientSecret,
       productId,
       newpsw,
       status,
     } = this.querryParams();
 
-    this.checkIfLoggedIn(newpsw);
+    this.checkIfLoggedIn({ address, newpsw });
 
     if (clientSecret) this.getStatus({ clientSecret, status, productId });
     else if (product) this.subscribeTo(product);
