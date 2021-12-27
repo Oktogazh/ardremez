@@ -34,6 +34,11 @@
             {{ translate.changeEmail }}
           </template>
         </KeyValuePair>
+        <KeyValuePair id="delete-account">
+          <template #value>
+            {{ translate.Delete_My_Account }}
+          </template>
+        </KeyValuePair>
       </div>
     </template>
   </HeadedCard>
