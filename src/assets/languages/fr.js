@@ -29,6 +29,7 @@ const obj = {
   loggingLinkSent: 'Un lien de connexion vous permettant de changer de mot de passe vient de vous être envoyé par mail.<br> Il ne sera valide que durant une heure, faites vite!',
   Log_In: 'Connexion',
   Log_Out: 'Déconnexion',
+  Manage: 'Gérer',
   Manage_My_Account: 'Gérer mon compte',
   minimum_length_required: 'Votre mot de passe doit faire 8 charactères au minimum.',
   mth4month: 'mois',

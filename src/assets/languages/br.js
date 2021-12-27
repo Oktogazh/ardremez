@@ -26,9 +26,10 @@ const obj = {
   Home: 'Degemerva',
   invalid_number: 'Direizh eo ho niverenn kartenn.',
   linkHasExpired_NewLinkSent: 'Al liamm ho peus implijet a zo diamzeriet. Klaskit en-dro gant an hini emeur o paouez kas deoc\'h dre bostel.',
-  loggingLinkSent: 'Emeur o paouez kas deoc\'h ul liamm kevreañ dre bostel, drezañ e c\'halloc\'h cheñch ger-kuzh.<br>Ne dalvezo met un eurvezh-pad avat, grit buan!'
+  loggingLinkSent: 'Emeur o paouez kas deoc\'h ul liamm kevreañ dre bostel, drezañ e c\'halloc\'h cheñch ger-kuzh.<br>Ne dalvezo met un eurvezh-pad avat, grit buan!',
   Log_In: 'Kevreañ',
   Log_Out: 'Digevreañ',
+  Manage: 'Merañ',
   Manage_My_Account: 'Merañ Ma C\'hont',
   minimum_length_required: '8 arouez da neutañ a zle mont d\'ober ho ker-kuzh.',
   must_unsubscibe_before_delete_account: 'Ret eo deoc\'h digoumanantiñ kent dilemel ar gont-mañ!',

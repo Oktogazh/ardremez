@@ -5,16 +5,35 @@
     </template>
     <template #body>
       <div id="account-options">
-        <div id="verify-email" class="option-container">
-          <h3>{{ translate.My_email_address }}</h3>
-          <h5>{{ $store.state.user.email }}</h5>
+        <KeyValuePair id="change-password">
+          <template #key>
+            {{ translate.changePsw }}
+          </template>
+        </KeyValuePair>
+        <KeyValuePair id="email">
+          <template #key>
+            {{ translate.My_email_address }}
+          </template>
+          <template #value>
+            {{ $store.state.user.email }}
+          </template>
           <h4 v-if="!$store.state.user.customerId" @click="sendVerificationEmail"
             class="option">
             {{ translate.Email_Verification }}</h4>
-        </div>
-        <div id="delete-account" @click="deleteAccount">
-          <h4 class="option">{{ translate.Delete_My_Account }}</h4>
-        </div>
+        </KeyValuePair>
+        <KeyValuePair id="email-verification">
+          <template #value>
+            <button v-if="!$store.state.user.customerId" @click="sendVerificationEmail"
+              class="option">
+              {{ translate.Email_Verification }}
+            </button>
+          </template>
+        </KeyValuePair>
+        <KeyValuePair id="change-email">
+          <template #value>
+            {{ translate.changeEmail }}
+          </template>
+        </KeyValuePair>
       </div>
     </template>
   </HeadedCard>
@@ -23,12 +42,14 @@
 <script>
 import { mapState } from 'vuex';
 import swal from 'sweetalert2';
+import KeyValuePair from '@/atoms/display/KeyValuePair.vue';
 import HeadedCard from '@/molecules/HeadedCard.vue';
 
 export default {
   name: 'Account',
   components: {
     HeadedCard,
+    KeyValuePair,
   },
   computed: {
     ...mapState({
@@ -74,15 +95,6 @@ export default {
 </script>
 
 <style scoped>
-.option-container {
-  border-bottom: 1px solid rgb(0, 0, 0);
-  margin-bottom: 1em;
-}
-
-.option {
-  cursor: pointer;
-}
-
 #account-options {
   display: flex;
   flex-direction: column;

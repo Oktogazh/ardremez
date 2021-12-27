@@ -29,6 +29,7 @@ const obj = {
   loggingLinkSent: 'A link has just been sent to you by email, use it to change password.<br> It will be valid only one hour, be quick!',
   Log_In: 'Log In',
   Log_Out: 'Log Out',
+  Manage: 'Manage',
   Manage_My_Account: 'Manage My Account',
   minimum_length_required: 'Your password should be at least 8 characters long.',
   must_unsubscibe_before_delete_account: 'You must unscubscribe before deleting this account!',
