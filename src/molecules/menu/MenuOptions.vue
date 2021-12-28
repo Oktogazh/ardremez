@@ -5,7 +5,7 @@
         <h3>{{ $store.state.lang.Other_Languages }}</h3>
       </li>-->
       <li v-if="!$store.getters['user/connected']"
-        @click="$store.dispatch('app/logAndRoute', { next: '' })">
+        @click="logIn">
         <h3>{{ $store.state.lang.Access }}</h3>
       </li>
       <li v-if="$store.getters['user/connected'] &&
@@ -30,11 +30,18 @@ export default {
     close() {
       this.$emit('close');
     },
+    logIn() {
+      const { path } = this.$router.currentRoute.value;
+      const params = { next: path, redirect: path, logging: true };
+
+      this.$store.dispatch('app/logStatusAndRoute', params);
+    },
     logOut() {
       const self = this;
+      const path = '/';
 
       this.$store.dispatch('user/logOut')
-        .then(self.$router.go());
+        .then(self.$router.push(path));
     },
   },
   mounted() {

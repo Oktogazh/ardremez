@@ -1,5 +1,5 @@
 <template>
-  <LoggingCarousel v-if="app.loggingRequired || redirect()" />
+  <LoggingCarousel v-if="app.loggingRequired" />
   <Header />
   <router-view />
 </template>
@@ -28,11 +28,22 @@ export default {
     this.$store.dispatch('lang/loadLanguage', 'fr');
   },
   methods: {
-    redirect() { // TODO? Use a ocmputed props instead?
-      const { nextRoute } = this.app;
-      this.$store.dispatch('app/notLogging', { next: null, from: 'App.vue' });
-      if (nextRoute) this.$router.push(nextRoute);
-      return false;
+    querryParams() {
+      const product = new URLSearchParams(window.location.search).get(
+        'product',
+      );
+      if (product) {
+        this.startCheckout(product);
+      }
+    },
+    startCheckout() {
+      // replace this.$store.dispatch('payment/startCheckout', { product });
+      return null;
+    },
+  },
+  watch: {
+    $route() {
+      this.querryParams();
     },
   },
 };

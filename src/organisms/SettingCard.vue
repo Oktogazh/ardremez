@@ -97,8 +97,13 @@ export default {
       } else {
         const { path } = $router.currentRoute.value;
         const next = `?delete=true${path}`;
+        const params = {
+          next,
+          redirect: path,
+          logging: true,
+        };
 
-        $store.dispatch('app/logAndRoute', { askAnyway: true, next, redirect: path });
+        $store.dispatch('app/logStatusAndRoute', params);
       }
     },
     deleteConfirmed() {

@@ -40,11 +40,15 @@ export default {
   methods: {
     checkIfLoggedIn({ address, newpsw }) {
       const { $store } = this;
-      if (!$store.getters.connected) {
-        const redirect = '/';
+      if (!$store.getters['user/connected']) {
+        const params = {
+          logging: true,
+          redirect: '/',
+          from: 'checkIfLoggedIn',
+        };
 
         $store.dispatch('user/setUserData', { email: address, emailCode: newpsw })
-          .then($store.dispatch('app/logAndRoute', { redirect }))
+          .then($store.dispatch('app/logStatusAndRoute', params))
           .then(window.history.replaceState({}, document.title, '/#/dashboard'));
       }
     },
@@ -93,7 +97,7 @@ export default {
           });
       }
     },
-    querryParams() {
+    queryParams() {
       const address = new URLSearchParams(window.location.search).get(
         'address',
       );
@@ -133,7 +137,7 @@ export default {
       productId,
       newpsw,
       status,
-    } = this.querryParams();
+    } = this.queryParams();
 
     this.checkIfLoggedIn({ address, newpsw });
 
@@ -141,6 +145,9 @@ export default {
     else if (product) this.subscribeTo(product);
   },
   watch: {
+    $route() {
+      this.queryParams();
+    },
   },
 };
 </script>

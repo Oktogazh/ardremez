@@ -38,13 +38,15 @@ const appState = ({
     },
   },
   actions: {
-    logAndRoute({ commit, rootGetters }, { next, redirect, askAnyway }) {
-      const logging = !rootGetters['user/connected'] || askAnyway;
+    logStatusAndRoute({ commit }, params) {
+      const {
+        next,
+        redirect,
+        logging,
+        from,
+      } = params;
+      console.log('logStatusAndRoute called from:', from);
       commit('SET_LOGGING_STATE_AND_ROUTES', { logging, next, redirect });
-    },
-    notLogging({ commit, dispatch }, { next }) {
-      dispatch('user/setUserData', { emailCode: null }, { root: true })
-        .then(commit('SET_LOGGING_STATE_AND_ROUTES', { logging: false, next, redirect: '/' }));
     },
     updateAppState({ commit, dispatch, rootGetters }, data) {
       const isLogged = rootGetters['user/connected'];

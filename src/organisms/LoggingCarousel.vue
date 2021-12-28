@@ -64,9 +64,14 @@ export default {
   },
   methods: {
     closeThis() {
-      const { redirectRoute } = this.$store.state.app;
+      const { $router, $store } = this;
+      const { redirectRoute } = $store.state.app;
+      const params = {
+        logging: false,
+      };
 
-      this.$store.dispatch('app/notLogging', { next: redirectRoute });
+      $store.dispatch('app/logStatusAndRoute', params)
+        .then($router.push(redirectRoute));
     },
     findAction(password) {
       const { emailCode, reinitializePsw, signIn } = this;
@@ -74,11 +79,19 @@ export default {
       return (emailCode !== null) ? reinitializePsw(password) : signIn(password);
     },
     logged() {
-      const { path } = this.$router.currentRoute.value;
-      const { nextRoute } = this.$store.state.app;
+      const { $router, $store } = this;
+      const { path } = $router.currentRoute.value;
+      const { nextRoute } = $store.state.app;
       const next = nextRoute || path;
+      const params = {
+        logging: false,
+        next: null,
+        redirect: '/',
+        from: 'logged()',
+      };
 
-      this.$store.dispatch('app/notLogging', { next });
+      this.$store.dispatch('app/logStatusAndRoute', params)
+        .then($router.push(next));
     },
     next({ email, member }) {
       this.$store.commit('user/SET_USER_DATA', { email });

@@ -46,8 +46,8 @@ export default {
     },
     checkIfLoggedIn() {
       if (!this.$store.getters.connected) {
-        const redirect = '/';
-        this.$store.dispatch('app/logAndRoute', { redirect });
+        const params = { logging: true };
+        this.$store.dispatch('app/logStatusAndRoute', params);
       }
     },
   },

@@ -76,12 +76,23 @@ export default {
   },
   methods: {
     beforeSubscribe() {
-      const next = {
-        path: '/dashboard',
-      };
-      const here = this.$router.currentRoute.value.path;
-      this.$store.dispatch('payment/startCheckout', { product: this.seriesObject });
-      this.$store.dispatch('app/logAndRoute', { next, redirect: here });
+      const { $store, $router } = this;
+      const logged = this.$store.getters['user/connected'];
+      const { path } = this.$router.currentRoute.value;
+      const { productId } = this.seriesObject;
+      const goingTo = `?product=${productId}${path}`;
+
+      if (logged) {
+        $router.push(goingTo);
+      } else {
+        const params = {
+          next: goingTo,
+          redirect: path,
+          logging: true,
+        };
+
+        $store.dispatch('app/logStatusAndRoute', params);
+      }
     },
     beforeUnsubscibe() {
       const store = this.$store;
