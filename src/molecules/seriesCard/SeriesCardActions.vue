@@ -77,10 +77,15 @@ export default {
   methods: {
     beforeSubscribe() {
       const { $store, $router } = this;
-      const logged = this.$store.getters['user/connected'];
+      const logged = $store.getters['user/connected'];
       const { path } = this.$router.currentRoute.value;
       const { productId } = this.seriesObject;
-      const goingTo = `?product=${productId}${path}`;
+      const goingTo = {
+        path,
+        query: {
+          product_id: productId,
+        },
+      };
 
       if (logged) {
         $router.push(goingTo);

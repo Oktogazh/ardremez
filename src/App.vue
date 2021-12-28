@@ -18,6 +18,9 @@ export default {
     Header,
   },
   computed: {
+    queries() {
+      return this.$router.currentRoute.value.query;
+    },
     ...mapState({
       app: (state) => state.app,
     }),
@@ -29,14 +32,14 @@ export default {
   },
   methods: {
     querryParams() {
-      const product = new URLSearchParams(window.location.search).get(
-        'product',
-      );
-      if (product) {
-        this.startCheckout(product);
+      const productId = this.queries.product_id;
+
+      if (productId) {
+        this.startCheckout(productId);
       }
     },
-    startCheckout() {
+    startCheckout(productId) {
+      console.log('productId:', productId);
       // replace this.$store.dispatch('payment/startCheckout', { product });
       return null;
     },
