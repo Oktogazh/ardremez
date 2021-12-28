@@ -17,7 +17,6 @@
 
 <script>
 import { mapState } from 'vuex';
-import swal from 'sweetalert2';
 import KeyValuePair from '@/atoms/display/KeyValuePair.vue';
 import HeadedCard from '@/molecules/HeadedCard.vue';
 
@@ -83,27 +82,36 @@ export default {
       return null;
     },
     deleteAccount() {
-      const self = this;
+      const {
+        $router,
+        $store,
+        isSubscribed,
+        translate,
+      } = this;
 
-      if (this.isSubscribed) {
-        swal.fire({
-          text: this.translate.must_unsubscibe_before_delete_account,
-          confirmButtonText: this.translate.OK,
+      if (isSubscribed) {
+        window.swal.fire({
+          text: translate.must_unsubscibe_before_delete_account,
+          confirmButtonText: translate.OK,
         });
       } else {
-        this.$store.dispatch('user/deleteAccount')
-          .then(self.$router.push({ path: '/' }))
+        $store.dispatch('user/deleteAccount')
+          .then($router.push({ path: '/' }))
           .catch();
       }
     },
     sendVerificationEmail() {
-      this.$store.dispatch('user/newVerificationEmail')
-        .then(swal.fire({
-          html: this.translate.new_verificationCode_sent_info,
-          confirmButtonText: this.translate.OK,
+      const {
+        $router,
+        $store,
+        translate,
+      } = this;
+      $store.dispatch('user/newVerificationEmail')
+        .then(window.swal.fire({
+          html: translate.new_verificationCode_sent_info,
+          confirmButtonText: translate.OK,
         }))
-        .then(this.$router.push({ name: 'Verify' }));
-      return null;
+        .then($router.push({ name: 'Verify' }));
     },
   },
 };
