@@ -38,8 +38,8 @@ const appState = ({
     },
   },
   actions: {
-    logAndRoute({ commit, rootGetters }, { next, redirect }) {
-      const logging = !rootGetters['user/connected'];
+    logAndRoute({ commit, rootGetters }, { next, redirect, askAnyway }) {
+      const logging = !rootGetters['user/connected'] || askAnyway;
       commit('SET_LOGGING_STATE_AND_ROUTES', { logging, next, redirect });
     },
     notLogging({ commit, dispatch }, { next }) {

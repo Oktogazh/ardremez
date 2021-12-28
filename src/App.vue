@@ -28,9 +28,9 @@ export default {
     this.$store.dispatch('lang/loadLanguage', 'fr');
   },
   methods: {
-    redirect() {
+    redirect() { // TODO? Use a ocmputed props instead?
       const { nextRoute } = this.app;
-      this.$store.dispatch('app/notLogging', { next: null });
+      this.$store.dispatch('app/notLogging', { next: null, from: 'App.vue' });
       if (nextRoute) this.$router.push(nextRoute);
       return false;
     },

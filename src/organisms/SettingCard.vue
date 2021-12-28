@@ -95,10 +95,18 @@ export default {
           confirmButtonText: translate.OK,
         });
       } else {
-        $store.dispatch('user/deleteAccount')
-          .then($router.push({ path: '/' }))
-          .catch();
+        const { path } = $router.currentRoute.value;
+        const next = `?delete=true${path}`;
+
+        $store.dispatch('app/logAndRoute', { askAnyway: true, next, redirect: path });
       }
+    },
+    deleteConfirmed() {
+      const { $store, $router } = this;
+
+      $store.dispatch('user/deleteAccount')
+        .then($router.push({ path: '/' }))
+        .catch();
     },
     sendVerificationEmail() {
       const {
