@@ -5,39 +5,10 @@
     </template>
     <template #body>
       <div id="account-options">
-        <KeyValuePair id="change-password">
-          <template #key>
-            {{ translate.changePsw }}
-          </template>
-        </KeyValuePair>
-        <KeyValuePair id="email">
-          <template #key>
-            {{ translate.My_email_address }}
-          </template>
-          <template #value>
-            {{ $store.state.user.email }}
-          </template>
-          <h4 v-if="!$store.state.user.customerId" @click="sendVerificationEmail"
-            class="option">
-            {{ translate.Email_Verification }}</h4>
-        </KeyValuePair>
-        <KeyValuePair id="email-verification">
-          <template #value>
-            <button v-if="!$store.state.user.customerId" @click="sendVerificationEmail"
-              class="option">
-              {{ translate.Email_Verification }}
-            </button>
-          </template>
-        </KeyValuePair>
-        <KeyValuePair id="change-email">
-          <template #value>
-            {{ translate.changeEmail }}
-          </template>
-        </KeyValuePair>
-        <KeyValuePair id="delete-account">
-          <template #value>
-            {{ translate.Delete_My_Account }}
-          </template>
+        <!-- if needing specific styling, use the # selector -->
+        <KeyValuePair v-for="({ id, action, condition, key, value }, index) in settings"
+          :id="id" :action="action" :condition="condition"
+          :keyTitle="key" :value="value" :key="index" >
         </KeyValuePair>
       </div>
     </template>
@@ -66,12 +37,51 @@ export default {
       const stillSubscribed = (this.user.subscriptions.findIndex(filter) !== -1);
       return stillSubscribed;
     },
+    settings() {
+      return [
+        {
+          id: 'setting-change-password',
+          action: this.changePsw, // TODO
+          condition: false,
+          key: this.translate.changeMyPsw,
+        },
+        {
+          id: 'setting-display-email',
+          action: null,
+          key: this.translate.My_email_address,
+          value: this.user.email,
+        },
+        {
+          id: 'setting-email-verification',
+          condition: (!this.$store.state.user.customerId),
+          action: this.sendVerificationEmail,
+          key: this.translate.Email_Verification,
+        },
+        {
+          id: 'setting-change-email',
+          action: this.changeEmail, // TODO
+          condition: false,
+          key: this.translate.changeEmail,
+        },
+        {
+          id: 'setting-delete-account',
+          action: this.deleteAccount,
+          key: this.translate.Delete_My_Account,
+        },
+      ];
+    },
   },
   data() {
     return {
     };
   },
   methods: {
+    changeEmail() {
+      return null;
+    },
+    changePsw() {
+      return null;
+    },
     deleteAccount() {
       const self = this;
 
@@ -99,7 +109,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 #account-options {
   display: flex;
   flex-direction: column;
@@ -107,10 +117,10 @@ export default {
   justify-content: space-around;
 }
 
-#delete-account {
+#setting-delete-account {
   color: rgb(227, 58, 58);
 }
 
-#verify-email {
+#setting-verify-email {
 }
 </style>

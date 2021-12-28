@@ -4,6 +4,8 @@ const obj = {
   Back: 'Distreiñ',
   Breton_bre: 'Brezhoneg',
   bre: 'Brezhoneg',
+  changeEmail: 'Cheñch ma chomlec\'h postel',
+  changeMyPsw: 'Cheñch ma ger-kuzh',
   chooseANewPsw: 'Divizit ur Ger-Kuzh',
   chooseAPsw: 'Divizit ur Ger-Kuzh',
   Confirm_Psw: 'Kadarnaat ar Ger-Kuzh',
