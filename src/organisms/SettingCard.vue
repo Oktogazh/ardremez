@@ -96,8 +96,9 @@ export default {
         });
       } else {
         const { path } = $router.currentRoute.value;
-        const next = `?delete=true${path}`;
+        const next = `${path}?delete=true`;
         const params = {
+          from: 'deleteAccount()',
           next,
           redirect: path,
           logging: true,

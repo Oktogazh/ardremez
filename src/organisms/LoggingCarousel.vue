@@ -65,13 +65,16 @@ export default {
   methods: {
     closeThis() {
       const { $router, $store } = this;
-      const { redirectRoute } = $store.state.app;
+      const next = $store.state.app.redirectRoute;
       const params = {
         logging: false,
+        next: null,
+        redirect: '/',
+        from: 'closeThis()',
       };
 
       $store.dispatch('app/logStatusAndRoute', params)
-        .then($router.push(redirectRoute));
+        .then($router.push(next));
     },
     findAction(password) {
       const { emailCode, reinitializePsw, signIn } = this;
@@ -152,6 +155,10 @@ export default {
     },
   },
   mounted() {
+    if (this.$store.state.user.jwt) {
+      this.state = 1;
+      this.member = true;
+    }
     if (this.emailCode !== null) this.state = 1;
   },
 };
