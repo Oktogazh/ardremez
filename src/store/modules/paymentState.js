@@ -14,7 +14,7 @@ const payementState = ({
     SET_PRICES(state, prices) {
       state.prices = prices;
     },
-    SET_PRODUCT_DATA(state, { product }) {
+    SET_PRODUCT_DATA(state, product) {
       state.product = {};
       const keysToUpdate = Object.keys(product);
       keysToUpdate.forEach((key) => {
@@ -24,8 +24,12 @@ const payementState = ({
     },
   },
   actions: {
-    startCheckout({ commit }, product) {
-      commit('SET_PRODUCT_DATA', product);
+    startCheckout({ commit, rootState }, productId) {
+      const filter = (series) => (series.productId === productId);
+      const seriesData = rootState.series.series.filter(filter)[0];
+      console.log(seriesData);
+      if (!seriesData) throw Error();
+      commit('SET_PRODUCT_DATA', seriesData);
     },
     endCheckout({ commit }) {
       localStorage.removeItem('paymentData');

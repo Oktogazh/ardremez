@@ -1,5 +1,6 @@
 <template>
-  <LoggingCarousel v-if="app.loggingRequired" />
+  <LoggingCarousel v-if="loggingRequired" />
+  <CheckoutCarousel v-if="product !== null" :product="product" />
   <Header />
   <router-view />
 </template>
@@ -8,12 +9,14 @@
 import { mapState } from 'vuex';
 import Swal from 'sweetalert2';
 import LoggingCarousel from '@/organisms/LoggingCarousel.vue';
+import CheckoutCarousel from '@/organisms/checkout/CheckoutCarousel.vue';
 import Header from '@/organisms/Header.vue';
 
 window.swal = Swal;
 
 export default {
   components: {
+    CheckoutCarousel,
     LoggingCarousel,
     Header,
   },
@@ -22,7 +25,8 @@ export default {
       return this.$router.currentRoute.value.query;
     },
     ...mapState({
-      app: (state) => state.app,
+      loggingRequired: (state) => state.app.loggingRequired,
+      product: (state) => state.payment.product,
     }),
   },
   created() {
@@ -33,15 +37,12 @@ export default {
   methods: {
     querryParams() {
       const productId = this.queries.product_id;
+      const { checkout } = this.queries;
+      const { path } = this.$router.currentRoute.value;
+      window.history.replaceState({}, document.title, `/#${path}`);
 
-      if (productId) {
-        this.startCheckout(productId);
-      }
-    },
-    startCheckout(productId) {
-      console.log('productId:', productId);
-      // replace this.$store.dispatch('payment/startCheckout', { product });
-      return null;
+      if (checkout === 'ending') this.$store.dispatch('payment/endCheckout');
+      if (productId) this.$store.dispatch('payment/startCheckout', productId);
     },
   },
   watch: {

@@ -1,5 +1,4 @@
 <template>
-  <CheckoutCarousel v-if="product !== null" :product="product" />
   <div class="flex-dashboard">
     <div id="setting" class="flex-item">
       <SettingCard />
@@ -13,14 +12,12 @@
 <script>
 import { mapState } from 'vuex';
 import swal from 'sweetalert2';
-import CheckoutCarousel from '@/organisms/CheckoutCarousel.vue';
 import SettingCard from '@/organisms/SettingCard.vue';
 import Progressions from '@/organisms/Progressions.vue';
 
 export default {
   name: 'Account',
   components: {
-    CheckoutCarousel,
     SettingCard,
     Progressions,
   },
@@ -30,7 +27,6 @@ export default {
   computed: {
     ...mapState({
       translate: (state) => state.lang,
-      product: (state) => state.payment.product,
     }),
   },
   data() {

@@ -41,7 +41,14 @@ export default {
       this.slidingPhase = 1;
     },
     closeThis() {
-      this.$store.dispatch('payment/endCheckout');
+      const { path } = this.$router.currentRoute.value;
+      const newRoute = {
+        path,
+        query: {
+          checkout: 'ending',
+        },
+      };
+      this.$router.push(newRoute);
     },
   },
   mounted() {
