@@ -1,6 +1,6 @@
 <template>
   <teleport to="#app">
-    <div class="darker flexbox-center" @click="close()">
+    <div class="darker flexbox-center" @click="$emit('closing')">
       <div @click.stop class="flexbox-center">
         <slot></slot>
       </div>
@@ -11,11 +11,6 @@
 <script>
 export default {
   name: 'Modal',
-  methods: {
-    close() {
-      return this.$emit('closing');
-    },
-  },
   // If a uri is given, it will be displayed as the modal background,
   // which is white otherwise.
   props: ['background'],

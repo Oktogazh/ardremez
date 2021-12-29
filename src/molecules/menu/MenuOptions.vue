@@ -32,7 +32,11 @@ export default {
     },
     logIn() {
       const { path } = this.$router.currentRoute.value;
-      const params = { next: path, redirect: path, logging: true };
+      const params = {
+        next: path,
+        redirect: path,
+        logging: true,
+      };
 
       this.$store.dispatch('app/logStatusAndRoute', params);
     },

@@ -40,7 +40,6 @@ export default {
         const params = {
           logging: true,
           redirect: '/',
-          from: 'checkIfLoggedIn',
         };
 
         $store.dispatch('user/setUserData', { email: address, emailCode: newpsw })

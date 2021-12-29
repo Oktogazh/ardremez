@@ -46,7 +46,12 @@ export default {
     },
     checkIfLoggedIn() {
       if (!this.$store.getters.connected) {
-        const params = { logging: true };
+        const { path } = this.$router.currentRoute.value;
+        const params = {
+          logging: true,
+          next: path,
+          redirect: path,
+        };
         this.$store.dispatch('app/logStatusAndRoute', params);
       }
     },

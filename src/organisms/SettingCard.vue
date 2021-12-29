@@ -98,10 +98,9 @@ export default {
         const { path } = $router.currentRoute.value;
         const next = `${path}?delete=true`;
         const params = {
-          from: 'deleteAccount()',
+          logging: true,
           next,
           redirect: path,
-          logging: true,
         };
 
         $store.dispatch('app/logStatusAndRoute', params);

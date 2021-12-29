@@ -1,5 +1,5 @@
 <template>
-  <Modal @closing="$emit('closing')">
+  <Modal>
     <div id="carousel-container" :style="styling">
       <div class="slot-container" :class="['default', 'slide-left'][slidingState]">
         <slot name="firstSlot"></slot>

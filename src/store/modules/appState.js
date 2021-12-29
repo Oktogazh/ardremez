@@ -40,12 +40,15 @@ const appState = ({
   actions: {
     logStatusAndRoute({ commit }, params) {
       const {
+        logging,
         next,
         redirect,
-        logging,
-        from,
       } = params;
-      console.log('logStatusAndRoute called from:', from);
+
+      const closure = (logging !== undefined && next !== undefined && redirect !== undefined);
+      const msg = 'logStatusAndRoute: You need a \'logging\', \'next\' and a \'redirect\' parameter to call this action';
+      if (!closure) throw Error(msg);
+
       commit('SET_LOGGING_STATE_AND_ROUTES', { logging, next, redirect });
     },
     updateAppState({ commit, dispatch, rootGetters }, data) {

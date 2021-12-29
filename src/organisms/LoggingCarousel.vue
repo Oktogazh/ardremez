@@ -60,6 +60,7 @@ export default {
       member: null,
       state: 0,
       url: 'url(/img/Beg_ar_Vann.jpg)',
+      counter: 0,
     };
   },
   methods: {
@@ -70,9 +71,7 @@ export default {
         logging: false,
         next: null,
         redirect: '/',
-        from: 'closeThis()',
       };
-
       $store.dispatch('app/logStatusAndRoute', params)
         .then($router.push(next));
     },
@@ -90,7 +89,6 @@ export default {
         logging: false,
         next: null,
         redirect: '/',
-        from: 'logged()',
       };
 
       this.$store.dispatch('app/logStatusAndRoute', params)
