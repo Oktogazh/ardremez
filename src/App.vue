@@ -27,6 +27,7 @@ export default {
     ...mapState({
       loggingRequired: (state) => state.app.loggingRequired,
       product: (state) => state.payment.product,
+      user: (state) => state.user,
     }),
   },
   created() {
@@ -42,7 +43,14 @@ export default {
       window.history.replaceState({}, document.title, `/#${path}`);
 
       if (checkout === 'ending') this.$store.dispatch('payment/endCheckout');
-      if (productId) this.$store.dispatch('payment/startCheckout', productId);
+
+      if (productId) {
+        if (!this.user.customerId) {
+          window.swal.fire({ html: this.translate.NeedaBeVerifiedToSub });
+        } else {
+          this.$store.dispatch('payment/startCheckout', productId);
+        }
+      }
     },
   },
   watch: {

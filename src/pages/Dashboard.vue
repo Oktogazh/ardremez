@@ -116,16 +116,8 @@ export default {
         status,
       };
     },
-    subscribeTo(product) {
-      if (!this.$store.state.user.customerId) { // dashboard watch $route
-        swal.fire({ html: this.translate.NeedaBeVerifiedToSub });
-      } else {
-        this.product = product;
-      }
-    },
   },
   mounted() {
-    const { product } = this.$store.state.payment;
     const {
       address,
       clientSecret,
@@ -137,12 +129,6 @@ export default {
     this.checkIfLoggedIn({ address, newpsw });
 
     if (clientSecret) this.getStatus({ clientSecret, status, productId });
-    else if (product) this.subscribeTo(product);
-  },
-  watch: {
-    $route() {
-      this.queryParams();
-    },
   },
 };
 </script>
