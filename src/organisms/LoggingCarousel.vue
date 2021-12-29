@@ -10,7 +10,7 @@
     </template>
     <template #secondSlot>
       <GoBack v-if="!emailCode" @click="prev" />
-      <PasswordForm v-if="member" :email="email" @authorized="closeThis">
+      <PasswordForm v-if="member" :email="email" @authorized="logged">
         <template #option>
           <button v-html="translate.Psw_Forgotten" @click.prevent="pswForgotten">
           </button>
@@ -47,6 +47,7 @@ export default {
       email: (state) => state.user.email,
       translate: (state) => state.lang,
       emailCode: (state) => state.user.emailCode,
+      nextRoute: (state) => state.app.nextRoute,
     }),
     instructions() {
       const { chooseANewPsw, chooseAPsw } = this.translate;
@@ -81,10 +82,7 @@ export default {
       return (emailCode !== null) ? reinitializePsw(password) : signIn(password);
     },
     logged() {
-      const { $router, $store } = this;
-      const { path } = $router.currentRoute.value;
-      const { nextRoute } = $store.state.app;
-      const next = nextRoute || path;
+      const { nextRoute, $router } = this;
       const params = {
         logging: false,
         next: null,
@@ -92,7 +90,7 @@ export default {
       };
 
       this.$store.dispatch('app/logStatusAndRoute', params)
-        .then($router.push(next));
+        .then($router.push(nextRoute));
     },
     next({ email, member }) {
       this.$store.commit('user/SET_USER_DATA', { email });

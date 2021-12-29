@@ -48,8 +48,9 @@ export default {
 
       this.$store.dispatch('user/logIn', { email, password })
         .then((isAuth) => {
-          if (isAuth) this.$emit('authorized');
-          else this.code = 1;
+          if (isAuth) {
+            this.$emit('authorized');
+          } else this.code = 1;
         });
     },
   },
