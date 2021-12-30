@@ -90,7 +90,7 @@ export default {
       };
 
       this.$store.dispatch('app/logStatusAndRoute', params)
-        .then($router.push(nextRoute));
+        .then($router.push(nextRoute || {}));
     },
     next({ email, member }) {
       this.$store.commit('user/SET_USER_DATA', { email });
@@ -121,8 +121,9 @@ export default {
         logged,
         translate,
         pswForgotten,
+        $store,
       } = this;
-      this.$store.dispatch('user/reinitializePsw', password)
+      $store.dispatch('user/reinitializePsw', password)
         .then((success) => {
           if (success) {
             logged();

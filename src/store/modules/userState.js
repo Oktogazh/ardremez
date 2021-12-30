@@ -99,6 +99,7 @@ const userState = ({
           subscriptionActive: data.sub,
           subscriptions: data.subscriptions,
           jwt: data.token,
+          emailCode: null,
         }))
         .then(() => true)
         .catch(() => false);

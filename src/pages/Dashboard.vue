@@ -11,7 +11,6 @@
 
 <script>
 import { mapState } from 'vuex';
-import swal from 'sweetalert2';
 import SettingCard from '@/organisms/SettingCard.vue';
 import Progressions from '@/organisms/Progressions.vue';
 
@@ -34,101 +33,20 @@ export default {
     };
   },
   methods: {
-    checkIfLoggedIn({ address, newpsw }) {
-      const { $store } = this;
-      if (!$store.getters['user/connected']) {
+    checkIfLoggedIn() {
+      if (!this.$store.getters['user/connected']) {
         const params = {
           logging: true,
           redirect: '/',
+          next: null,
         };
 
-        $store.dispatch('user/setUserData', { email: address, emailCode: newpsw })
-          .then($store.dispatch('app/logStatusAndRoute', params))
-          .then(window.history.replaceState({}, document.title, '/#/dashboard'));
+        this.$store.dispatch('app/logStatusAndRoute', params);
       }
-    },
-    completePayment({ status, productId }) {
-      // TODO: swal.fire a message,
-      // add this product to the subsciptions,
-      // shift in a new progress object if not in the user.progress
-      switch (status) {
-        case 'succeeded':
-          // update the user's state,
-          // inform the user and
-          // delete the query params
-          this.$store.dispatch('user/updateSubscription', { productId, status: 'active' });
-          swal.fire({
-            icon: 'success',
-            html: this.translate.PaymentSuccessfulyProcessedMsg,
-          });
-
-          window.history.replaceState({}, document.title, '/#/dashboard');
-          break;
-        case 'processing':
-          break;
-
-        case 'requires_payment_method':
-          // Redirect your user back to your payment page to attempt collecting
-          // payment again
-          break;
-
-        default:
-          // message.innerText = 'Something went wrong.';
-          break;
-      }
-      return { status, productId };
-    },
-    getStatus({ clientSecret, status, productId }) {
-      if (status) {
-        this.completePayment({ status, productId });
-      } else {
-        const stripe = window.Stripe(process.env.VUE_APP_STRIPE_PK);
-        const self = this;
-
-        stripe.retrievePaymentIntent(clientSecret)
-          .then(({ paymentIntent }) => {
-            const newStatus = paymentIntent.status;
-            self.completePayment({ status: newStatus, productId });
-          });
-      }
-    },
-    queryParams() {
-      const address = new URLSearchParams(window.location.search).get(
-        'address',
-      );
-      const clientSecret = new URLSearchParams(window.location.search).get(
-        'payment_intent_client_secret',
-      );
-      const newpsw = new URLSearchParams(window.location.search).get(
-        'newpsw',
-      );
-      const productId = new URLSearchParams(window.location.search).get(
-        'prod_id',
-      );
-      const status = new URLSearchParams(window.location.search).get(
-        'redirect_status',
-      );
-      return {
-        address,
-        clientSecret,
-        productId,
-        newpsw,
-        status,
-      };
     },
   },
   mounted() {
-    const {
-      address,
-      clientSecret,
-      productId,
-      newpsw,
-      status,
-    } = this.queryParams();
-
-    this.checkIfLoggedIn({ address, newpsw });
-
-    if (clientSecret) this.getStatus({ clientSecret, status, productId });
+    this.checkIfLoggedIn();
   },
 };
 </script>

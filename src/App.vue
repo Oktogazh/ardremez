@@ -27,6 +27,7 @@ export default {
     ...mapState({
       loggingRequired: (state) => state.app.loggingRequired,
       product: (state) => state.payment.product,
+      translate: (state) => state.lang,
       user: (state) => state.user,
     }),
   },
@@ -36,26 +37,111 @@ export default {
     this.$store.dispatch('lang/loadLanguage', 'fr');
   },
   methods: {
-    querryCheckoutParams() {
-      const productId = this.queries.product_id;
-      const { checkout } = this.queries;
+    clearQueryParams() {
       const { path } = this.$router.currentRoute.value;
       window.history.replaceState({}, document.title, `/#${path}`);
+    },
+    completePayment({ status, prodId }) {
+      // TODO: swal.fire a message,
+      // add this product to the subsciptions,
+      // shift in a new progress object if not in the user.progress
+      switch (status) {
+        case 'succeeded':
+          // update the user's state,
+          // inform the user and
+          // delete the query params
+          this.$store.dispatch('user/updateSubscription', {
+            productId: prodId,
+            status: 'active',
+          });
+          window.swal.fire({
+            icon: 'success',
+            html: this.translate.PaymentSuccessfulyProcessedMsg,
+          });
 
+          window.history.replaceState({}, document.title, '/#/dashboard');
+          break;
+        case 'processing':
+          break;
+
+        case 'requires_payment_method':
+          // Redirect your user back to your payment page to attempt collecting
+          // payment again
+          break;
+
+        default:
+          // message.innerText = 'Something went wrong.';
+          break;
+      }
+      return { status, prodId };
+    },
+    getStatus({ clientSecret, status, prodId }) {
+      if (status) {
+        this.completePayment({ status, prodId });
+      } else {
+        const stripe = window.Stripe(process.env.VUE_APP_STRIPE_PK);
+        const self = this;
+
+        stripe.retrievePaymentIntent(clientSecret)
+          .then(({ paymentIntent }) => {
+            const newStatus = paymentIntent.status;
+            self.completePayment({ status: newStatus, prodId });
+          });
+      }
+    },
+    handleCheckoutParams() {
+      const { search } = window.location;
+      // 1. Starting checkout process
+      const productId = this.queries.product_id;
+      // 2. After payment intent
+      const clientSecret = new URLSearchParams(search).get('payment_intent_client_secret');
+      const prodId = new URLSearchParams(search).get('prod_id');
+      const status = new URLSearchParams(search).get('redirect_status');
+      // 3. Ending checkout process
+      const { checkout } = this.queries;
+
+      // 1. Starting checkout process
+      const notVerified = { html: this.translate.NeedaBeVerifiedToSub };
+      if (productId && !this.user.customerId) window.swal.fire(notVerified);
+      if (productId && this.user.customerId) this.$store.dispatch('payment/startCheckout', productId);
+
+      // 2. After payment intent
+      if (clientSecret) this.getStatus({ clientSecret, status, prodId });
+
+      // 3. Ending checkout process
       if (checkout === 'ending') this.$store.dispatch('payment/endCheckout');
+    },
+    handleEmailVerificationParams() {
+      return null;
+    },
+    handlePswReinitializationParams() {
+      const { $store, $router } = this;
+      const { path } = $router.currentRoute.value;
+      const { address, newpsw } = this.queries;
+      const params = {
+        logging: true,
+        redirect: {
+          path,
+          query: {
+            newpsw: 'null',
+          },
+        },
+        next: null,
+      };
 
-      if (productId) {
-        if (!this.user.customerId) {
-          window.swal.fire({ html: this.translate.NeedaBeVerifiedToSub });
-        } else {
-          this.$store.dispatch('payment/startCheckout', productId);
-        }
+      if (newpsw === 'null') $store.dispatch('user/setUserData', { emailCode: null });
+      if (address && newpsw) {
+        $store.dispatch('user/setUserData', { email: address, emailCode: newpsw })
+          .then($store.dispatch('app/logStatusAndRoute', params));
       }
     },
   },
   watch: {
     $route() {
-      this.querryCheckoutParams();
+      this.handleEmailVerificationParams();
+      this.handleCheckoutParams();
+      this.handlePswReinitializationParams();
+      this.clearQueryParams();
     },
   },
 };
