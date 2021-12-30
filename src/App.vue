@@ -36,7 +36,7 @@ export default {
     this.$store.dispatch('lang/loadLanguage', 'fr');
   },
   methods: {
-    querryParams() {
+    querryCheckoutParams() {
       const productId = this.queries.product_id;
       const { checkout } = this.queries;
       const { path } = this.$router.currentRoute.value;
@@ -55,7 +55,7 @@ export default {
   },
   watch: {
     $route() {
-      this.querryParams();
+      this.querryCheckoutParams();
     },
   },
 };
