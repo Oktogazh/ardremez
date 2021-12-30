@@ -12,7 +12,7 @@
       <GoBack v-if="!emailCode" @click="prev" />
       <PasswordForm v-if="member" :email="email" @authorized="logged">
         <template #option>
-          <button v-html="translate.Psw_Forgotten" @click.prevent="pswForgotten">
+          <button type="button" v-html="translate.Psw_Forgotten" @click="pswForgotten">
           </button>
         </template>
       </PasswordForm>
