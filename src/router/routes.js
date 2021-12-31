@@ -17,7 +17,7 @@ const routes = [
     },
   },
   {
-    path: '/read',
+    path: '/read/:chapterId',
     name: 'Read',
     component: () => import(/* webpackChunkName: "about" */ '../pages/Read.vue'),
   },

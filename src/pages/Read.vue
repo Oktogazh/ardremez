@@ -62,7 +62,7 @@ export default {
   methods: {
     async downloadChapter() {
       const { api } = this.$store.state;
-      this.id = this.$route.query.p;
+      this.id = this.$route.params.chapterId;
 
       if (!this.id) return null;
       this.$store.dispatch('app/updateAppState', { subtitle: '...', title: null, loading: true });
