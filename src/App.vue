@@ -126,7 +126,7 @@ export default {
             newpsw: 'null',
           },
         },
-        next: null,
+        next: path,
       };
 
       if (newpsw === 'null') $store.dispatch('user/setUserData', { emailCode: null });
@@ -150,7 +150,7 @@ export default {
 <style>
 body {
   direction: var(--direction);
-  margin: 0px;
+  margin: 0;
   background: var(--grad-cyan);
 }
 
