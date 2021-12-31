@@ -47,8 +47,10 @@ export default {
   },
   methods: {
     authorize(chapter, seriesId, freeTrial) {
+      // first checks if the chapter exists
       const { length } = this.$store.state.series.series[0];
       if (chapter < 1 || chapter > length) return false;
+      // then checks if the user has an active subscription
       const prodId = `prod_${seriesId.substring('@'.length)}`;
       const finder = (progObj) => {
         const active = (progObj.status === 'active' || progObj.status === 'past_due');
@@ -70,22 +72,18 @@ export default {
       const { freeTrial } = this.$store.state.series.series[0];
       const sign = (name === 'prev') ? -1 : 1;
       const filter = (obj) => (obj.seriesId === _id);
-      const currentProgress = this.progress.filter(filter)[0].chapter;
+      const currentProgress = Number(this.progress.filter(filter)[0].chapter);
       const askingFor = sign * 1 + currentProgress;
 
       const next = this.authorize(askingFor, _id, freeTrial);
+      if (next === false) return null;
 
       if (this.playing) {
         const playIcon = document.getElementById('play-icon');
         playIcon.click();
       }
 
-      return this.$router.push({
-        path: '/read',
-        query: {
-          p: `${next}${_id}`,
-        },
-      });
+      return this.$router.push({ path: `/read/${next}${_id}` });
     },
     setPlaying(bool) {
       this.$store.dispatch('app/updateAppState', { player: { playing: bool } });

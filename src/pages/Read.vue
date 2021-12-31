@@ -67,7 +67,7 @@ export default {
       if (!this.id) return null;
       this.$store.dispatch('app/updateAppState', { subtitle: '...', title: null, loading: true });
       const chapterAndSeriesId = this.id.split('@');
-      const chapter = chapterAndSeriesId[0];
+      const chapter = Number(chapterAndSeriesId[0]);
       const seriesId = `@${chapterAndSeriesId[1]}`;
       const progressObject = {
         chapter,
