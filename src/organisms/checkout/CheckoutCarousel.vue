@@ -1,7 +1,7 @@
 <template>
   <DualCarousel :slidingState="slidingPhase" @closing="closeThis">
     <template #firstSlot>
-      <SelectPrices @selectPrice="selectPrice" />
+      <SelectPrices @selectPrice="selectPrice" @closing="closeThis"/>
     </template>
     <template #secondSlot>
       <StripeElements v-if="slidingPhase === 1" @back="slidingPhase = 0"

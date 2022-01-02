@@ -27,7 +27,6 @@ const payementState = ({
     startCheckout({ commit, rootState }, productId) {
       const filter = (series) => (series.productId === productId);
       const seriesData = rootState.series.series.filter(filter)[0];
-      console.log(seriesData);
       if (!seriesData) throw Error();
       commit('SET_PRODUCT_DATA', seriesData);
     },

@@ -23,11 +23,15 @@ export default {
     OptionInfoButton,
     SubmitButton,
   },
+  created() {
+    this.closeIfSubd();
+  },
   computed: {
     ...mapState({
       translate: (state) => state.lang,
       prices: (state) => state.payment.prices,
       product: (state) => state.payment.product,
+      subsciptions: (state) => state.user.subscriptions,
     }),
   },
   data() {
@@ -36,6 +40,16 @@ export default {
     };
   },
   methods: {
+    closeIfSubd() {
+      const seriesProdId = this.product.productId;
+      const isAlreadySubd = (subObj) => {
+        const { status, productId } = subObj;
+        return ((productId === seriesProdId) && (status === 'active' || status === 'past_due'));
+      };
+      const canSubscribe = (this.subsciptions.filter(isAlreadySubd).length === 0);
+      if (!canSubscribe) this.$emit('closing');
+      return null;
+    },
     next() {
       this.$emit('selectPrice', this.prices[this.selected].id);
     },

@@ -6,6 +6,7 @@
     </router-link>
     <SmallButton v-if="sub.status === 'notSub'" :bg="'grad-green'" @click="beforeSubscribe"
     :text="translate.Subscribe"/>
+    <!-- Can't unsubscribe without a subscriptionId -->
     <SmallButton v-if="sub.id !== false" :bg="'grad-red'" @click="beforeUnsubscibe"
       :text="translate.Unsubscribe"/>
   </div>
@@ -56,17 +57,17 @@ export default {
     },
     sub() {
       const seriesProdId = this.seriesObject.productId;
-      function filter(sub) {
-        const { status, productId } = sub;
+      function filter(subObj) {
+        const { status, productId } = subObj;
         return ((productId === seriesProdId) && (status === 'active' || status === 'past_due'));
       }
       const filtered = this.user.subscriptions.filter(filter);
       const sub = {
         // if there is no subscription id yet,
         // e.i. just after a payment validation before sync with the DB
-        // or if `filtered[0]` is  undefined
+        // or if `filtered[0]` === []
         // `id` is set to false, so the unsubscribe btn won't appear
-        id: false,
+        id: false, // if filtered === [] then this is the default
         status: 'notSub', // if it becomes not `notSub`, status is active or past due
         ...filtered[0],
       };
