@@ -1,11 +1,11 @@
 <template>
   <DualCarousel :slidingState="slidingPhase" @closing="closeThis">
     <template #firstSlot>
-      <SelectPrices @selectPrice="selectPrice" @closing="closeThis"/>
+      <SelectPrices @selectPrice="selectPrice" @closing="closeThis" />
     </template>
     <template #secondSlot>
       <StripeElements v-if="slidingPhase === 1" @back="slidingPhase = 0"
-      :priceId="price"/>
+      :priceId="price" />
     </template>
   </DualCarousel>
 </template>

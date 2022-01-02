@@ -123,8 +123,7 @@ export default {
         .then(window.swal.fire({
           html: translate.new_verificationCode_sent_info,
           confirmButtonText: translate.OK,
-        }))
-        .then($router.push({ name: 'Verify' }));
+        }));
     },
   },
 };

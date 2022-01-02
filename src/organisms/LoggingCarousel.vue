@@ -146,9 +146,7 @@ export default {
     },
     signIn(password) {
       const { email } = this;
-      this.$store.dispatch('user/signin', { email, password })
-        .then(this.$store.commit('app/SET_NEXT_ROUTE', { next: '/verify' }))
-        .then(this.logged);
+      this.$store.dispatch('user/signin', { email, password });
     },
   },
   mounted() {

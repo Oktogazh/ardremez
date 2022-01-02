@@ -9,7 +9,7 @@ const userState = ({
     emailCode: null,
     customerId: null,
     level: null,
-    progress: [ /* {
+    progress: [/* {
         seriesId: null,
         chapter: null,
       } */],
@@ -70,23 +70,23 @@ const userState = ({
       // TODO: delete jwt if expired
       commit('SET_USER_DATA', userData);
     },
-    async signin({ commit, rootState }, { email, password }) {
+    async signin({ commit, dispatch, rootState }, { email, password }) {
       const signed = await window.axios.post(`${rootState.api}/api/enrollañ`, { email, password })
-        .then((res) => commit('SET_USER_DATA', { // todo: when deployed, res.data instead
-          email: res.data.email,
-          customerId: res.data.customerId,
-          progress: res.data.progress,
-          subscriptionActive: res.data.sub,
-          subscriptions: res.data.subscriptions,
-          jwt: res.data.token,
-          verified: res.data.verified,
+        .then(({ data }) => commit('SET_USER_DATA', { // TODO: when deployed, data instead
+          email: data.email,
+          customerId: data.customerId,
+          progress: data.progress,
+          subscriptionActive: data.sub,
+          subscriptions: data.subscriptions,
+          jwt: data.token,
+          verified: data.verified,
         }))
-        .then(() => window.axios.post(`${rootState.api}/api/kas_kod_postel`))
+        .then(dispatch('newVerificationEmail'))
         .then(() => true);
       return signed;
     },
-    newVerificationEmail({ rootState }) {
-      window.axios.post(`${rootState.api}/api/kas_kod_postel`);
+    newVerificationEmail({ rootState, state }) {
+      window.axios.post(`${rootState.api}/api/send_email_verification_link`, { address: state.email });
     },
     async reinitializePsw({ commit, state, rootState }, password) {
       const { emailCode } = state;
@@ -156,12 +156,23 @@ const userState = ({
       const updatedUserData = { progress, subscriptions };
       commit('SET_USER_DATA', updatedUserData);
     },
-    async verifyEmail({ commit, rootState }, { email, code }) {
+    async verifyEmail({ commit, rootState, dispatch }, { address, code }) {
       let customerId = null;
-      const verified = await window.axios.post(`${rootState.api}/api/gwiriekaat_ar_ger-kuzh`, { email, kod: code })
-        .then((res) => res.data)
+      const { verified } = await window.axios.post(`${rootState.api}/api/verify_email`, { address, code })
+        .then(({ data }) => {
+          commit('SET_USER_DATA', {
+            email: data.email,
+            customerId: data.customerId,
+            progress: data.progress,
+            subscriptionActive: data.sub,
+            subscriptions: data.subscriptions,
+            jwt: data.token,
+            emailCode: null,
+          });
+          return data;
+        })
         .catch(() => {
-          window.axios.post(`${rootState.api}/api/kas_kod_postel`);
+          dispatch('newVerificationEmail');
           return false;
         });
       if (verified) {

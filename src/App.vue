@@ -112,6 +112,26 @@ export default {
       if (checkout === 'ending') this.$store.dispatch('payment/endCheckout');
     },
     handleEmailVerificationParams() {
+      const { queries, translate, $store } = this;
+      const { address, code } = queries;
+      if (!address && !code) return null;
+
+      $store.dispatch('user/verifyEmail', { address, code })
+        .then((verified) => {
+          if (verified) {
+            window.swal.fire({
+              icon: 'success',
+              html: translate.Email_successfully_verified,
+              confirmButtonText: translate.OK,
+            });
+          } else {
+            window.swal.fire({
+              icon: 'error',
+              html: translate.Wrong_code_New_code_sent,
+              confirmButtonText: translate.OK,
+            });
+          }
+        });
       return null;
     },
     handlePswReinitializationParams() {
