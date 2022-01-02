@@ -115,7 +115,6 @@ export default {
     },
     sendVerificationEmail() {
       const {
-        $router,
         $store,
         translate,
       } = this;
