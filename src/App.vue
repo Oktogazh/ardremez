@@ -113,10 +113,10 @@ export default {
     },
     handleEmailVerificationParams() {
       const { queries, translate, $store } = this;
-      const { address, code } = queries;
-      if (!address && !code) return null;
+      const { address, verifCode } = queries;
+      if (!address && !verifCode) return null;
 
-      $store.dispatch('user/verifyEmail', { address, code })
+      $store.dispatch('user/verifyEmail', { address, code: verifCode })
         .then((verified) => {
           if (verified) {
             window.swal.fire({
