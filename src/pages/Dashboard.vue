@@ -1,7 +1,7 @@
 <template>
   <div class="flex-dashboard">
     <div id="setting" class="flex-item">
-      <SettingCard />
+      <SettingCard @clearParams="log"/>
     </div>
     <div id="progressions" class="flex-item">
       <Progressions />

@@ -61,10 +61,7 @@ export default {
     },
   },
   props: {
-    email: {
-      type: String,
-      required: true,
-    },
+    email: String,
   },
 };
 </script>

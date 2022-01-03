@@ -83,9 +83,10 @@ export default {
     },
     logged() {
       const { nextRoute, $router } = this;
+      const next = (nextRoute === '/dashboard?delete=true') ? nextRoute : null;
       const params = {
         logging: false,
-        next: null,
+        next,
         redirect: '/',
       };
 

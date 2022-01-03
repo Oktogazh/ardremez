@@ -27,6 +27,9 @@ export default {
     KeyValuePair,
   },
   computed: {
+    queries() {
+      return this.$router.currentRoute.value.query;
+    },
     ...mapState({
       user: (state) => state.user,
       translate: (state) => state.lang,
@@ -106,12 +109,25 @@ export default {
         $store.dispatch('app/logStatusAndRoute', params);
       }
     },
-    deleteConfirmed() {
-      const { $store, $router } = this;
+    handleDelete() {
+      const {
+        queries,
+        $emit,
+        $store,
+        $router,
+      } = this;
+      const deleting = queries.delete;
+      const { nextRoute } = $store.state.app;
 
-      $store.dispatch('user/deleteAccount')
-        .then($router.push({ path: '/' }))
-        .catch();
+      if (deleting === 'true' && nextRoute === '/dashboard?delete=true') {
+        $store.dispatch('user/deleteAccount')
+          .then((res) => {
+            if (res) $emit('clearParams', { from: 'handleDelete' });
+            else throw Error();
+          })
+          .then($router.push({ path: '/' }))
+          .catch();
+      }
     },
     sendVerificationEmail() {
       const {
@@ -123,6 +139,11 @@ export default {
           html: translate.new_verificationCode_sent_info,
           confirmButtonText: translate.OK,
         }));
+    },
+  },
+  watch: {
+    '$route.query': function () {
+      this.handleDelete();
     },
   },
 };

@@ -5,7 +5,7 @@ window.axios = axios;
 const userState = ({
   namespaced: true,
   state: {
-    email: null,
+    email: '',
     emailCode: null,
     customerId: null,
     level: null,
@@ -28,10 +28,12 @@ const userState = ({
     },
   },
   actions: {
-    deleteAccount({ dispatch, rootState }) {
-      window.axios.delete(`${rootState.api}/api/kont`)
+    async deleteAccount({ dispatch, rootState }) {
+      const deleted = await window.axios.delete(`${rootState.api}/api/kont`)
         .then(dispatch('logOut'))
-        .catch((e) => console.error(e));
+        .then(() => true)
+        .catch(() => false);
+      return deleted;
     },
     async logIn({ commit, rootState }, { email, password }) {
       // TODO: 'api/login' instead, sending the jwt via the cookie protocol
@@ -52,7 +54,7 @@ const userState = ({
     },
     logOut({ commit }) {
       const emptyState = {
-        email: null,
+        email: '',
         customerId: null,
         level: null,
         progress: [],

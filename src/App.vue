@@ -157,11 +157,12 @@ export default {
     },
   },
   watch: {
-    $route() {
+    '$route.query': function () {
       this.handleEmailVerificationParams();
       this.handleCheckoutParams();
       this.handlePswReinitializationParams();
-      this.clearQueryParams();
+      // this delete params is handled down the DOM tree
+      if (this.queries.delete !== 'true') this.clearQueryParams();
     },
   },
 };
