@@ -157,14 +157,12 @@ const userState = ({
       commit('SET_USER_DATA', updatedUserData);
     },
     async verifyEmail({ commit, rootState, dispatch }, { address, code }) {
-      let customerId = null;
-      const { verified } = await window.axios.post(`${rootState.api}/api/verify_email`, { address, code })
+      const { customerId } = await window.axios.post(`${rootState.api}/api/verify_email`, { address, code })
         .then(({ data }) => {
           commit('SET_USER_DATA', {
             email: data.email,
             customerId: data.customerId,
             progress: data.progress,
-            subscriptionActive: data.sub,
             subscriptions: data.subscriptions,
             jwt: data.token,
             emailCode: null,
@@ -175,13 +173,7 @@ const userState = ({
           dispatch('newVerificationEmail');
           return false;
         });
-      if (verified) {
-        customerId = await window.axios.post(`${rootState.api}/api/customer`)
-          .then((res) => res.data.id)
-          .catch(() => null);
-      }
-      commit('SET_USER_DATA', { customerId });
-      return (customerId !== null);
+      return (!!customerId);
     },
   },
   modules: {
