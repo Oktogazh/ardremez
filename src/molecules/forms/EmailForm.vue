@@ -3,7 +3,7 @@
     <slot name="instructions"></slot>
     <BasicInput id="email" type="email" @input="setValue" required
       placeholder="ann@vreizh.bzh" title=""/>
-    <SubmitButton :innerText="translate.Continue" />
+    <SubmitButton text="Continue" />
   </FormContainer>
 </template>
 

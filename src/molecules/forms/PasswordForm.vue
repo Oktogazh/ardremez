@@ -4,7 +4,7 @@
     <p :class="[null, 'error'][this.code]" v-html="msgArray[this.code]"></p>
     <BasicInput type="password" @input="setValue"
       :placeholder="translate.placeholderPsw"/>
-    <SubmitButton />
+    <SubmitButton :text="text"/>
     <slot name="option"></slot>
   </FormContainer>
 </template>
@@ -20,7 +20,12 @@ export default {
   computed: {
     ...mapState({
       translate: (state) => state.lang,
+      next: (state) => state.app.nextRoute,
     }),
+    text() {
+      if (this.next === '/dashboard?delete=true') return 'Delete_My_Account';
+      return null;
+    },
     msgArray() {
       return [
         this.translate.Enter_Your_Password,

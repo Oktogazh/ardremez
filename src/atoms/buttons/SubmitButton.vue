@@ -12,7 +12,7 @@ export default {
       translate: (state) => state.lang,
     }),
     innerText() {
-      return this.translate[this.text ? this.text : 'Submit'];
+      return this.translate[this.text];
     },
   },
   data() {
@@ -23,8 +23,8 @@ export default {
   props: {
     text: {
       type: String,
-      required: false,
-      default: null,
+      required: true,
+      default: 'Submit',
     },
   },
 };
