@@ -29,13 +29,25 @@ export default {
     Player,
   },
   computed: {
+    id() {
+      const { chapterId } = this.$route.params;
+
+      return chapterId || '';
+    },
     ...mapState({
+      api: (state) => state.api,
+      hasJWT: (state) => {
+        const { jwt } = state.user;
+
+        return (jwt !== null);
+      },
       loading: (state) => state.app.loading,
+      series: (state) => state.series.series[0],
+      subscriptions: (state) => state.user.subscriptions,
     }),
   },
   data() {
     return {
-      id: null,
       chapterData: { // :chapter
         backToChapter: null,
         cards: [ // :card
@@ -60,15 +72,63 @@ export default {
     };
   },
   methods: {
-    async downloadChapter() {
-      const { api } = this.$store.state;
-      this.id = this.$route.params.chapterId;
+    authorize() {
+      const {
+        chapter,
+        freeTrial,
+      } = this;
+      // checks if the user has an active subscription
+      const subscribed = this.subscribed();
+      const authorized = (chapter <= freeTrial || subscribed);
 
-      if (!this.id) return null;
+      return authorized;
+    },
+    needLogging() {
+      const {
+        chapter,
+        freeTrial,
+        getters,
+        hasJWT,
+      } = this;
+      const authorized = this.authorized(chapter, freeTrial);
+      const hasJwtButExpired = (hasJWT && !getters['user/connected']);
+      // Maybe the users are authorize, but they need to log in
+      // if they want their progress to be tracked
+      if (!authorized || hasJwtButExpired) return true;
+      return false;
+    },
+    async downloadChapter() {
       this.$store.dispatch('app/updateAppState', { subtitle: '...', title: null, loading: true });
-      const chapterAndSeriesId = this.id.split('@');
-      const chapter = Number(chapterAndSeriesId[0]);
-      const seriesId = `@${chapterAndSeriesId[1]}`;
+      const { id } = this;
+      const chapterAndSeriesId = id.split('@');
+      this.chapter = Number(chapterAndSeriesId[0]);
+      this.seriesId = `@${chapterAndSeriesId[1]}`;
+      const {
+        api,
+        chapter,
+        freeTrial,
+        $router,
+        seriesId,
+      } = this;
+
+      const needLogging = this.needLogging();
+
+      if (needLogging) {
+        const params = {
+          logging: true,
+          redirect: '/',
+          // if user logs in, they get redirected here an canLoad returns true
+          next: null,
+        };
+
+        this.$store.dispatch('app/logStatusAndRoute', params);
+      }
+
+      const redirectToEndOfTrial = (chapter !== this.redirect());
+      if (redirectToEndOfTrial) {
+        $router.push({ path: `/read/${freeTrial}${seriesId}` });
+      }
+
       const progressObject = {
         chapter,
         seriesId,
@@ -89,6 +149,31 @@ export default {
       });
 
       return null;
+    },
+    redirect() {
+      const {
+        chapter,
+        freeTrial,
+        subscribed,
+      } = this;
+      const authorized = (chapter <= freeTrial || subscribed());
+      if (!authorized) {
+        window.swal.fire({
+          icon: 'warning',
+          text: this.translate.YouNeedToSubToContinue,
+        });
+        return freeTrial;
+      }
+      return chapter;
+    },
+    subscribed() {
+      const prodId = `prod_${this.seriesId.substring('@'.length)}`;
+      const filter = (progObj) => {
+        const active = (progObj.status === 'active' || progObj.status === 'past_due');
+        return (progObj.productId === prodId && active);
+      };
+
+      return (this.subscriptions.findIndex(filter) !== -1);
     },
   },
   watch: {

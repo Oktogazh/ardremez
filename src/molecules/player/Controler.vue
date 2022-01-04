@@ -11,7 +11,6 @@
 
 <script>
 import { mapState } from 'vuex';
-import swal from 'sweetalert2';
 import Load from '@/atoms/actions/Load.vue';
 import Skip from '@/atoms/actions/Skip.vue';
 import PlayPause from '@/atoms/actions/PlayPause.vue';
@@ -26,7 +25,6 @@ export default {
   computed: {
     ...mapState({
       playing: (state) => state.app.player.playing,
-      subscriptions: (state) => state.user.subscriptions,
       progress: (state) => state.user.progress,
       translate: (state) => state.lang,
     }),
@@ -46,44 +44,28 @@ export default {
     };
   },
   methods: {
-    authorize(chapter, seriesId, freeTrial) {
+    exists(chapter, length) {
       // first checks if the chapter exists
-      const { length } = this.$store.state.series.series[0];
       if (chapter < 1 || chapter > length) return false;
-      // then checks if the user has an active subscription
-      const prodId = `prod_${seriesId.substring('@'.length)}`;
-      const finder = (progObj) => {
-        const active = (progObj.status === 'active' || progObj.status === 'past_due');
-        return (progObj.productId === prodId && active);
-      };
-      const subscribed = (this.subscriptions.findIndex(finder) !== -1);
-      const authorized = (chapter <= freeTrial || subscribed);
-      if (!authorized) {
-        swal.fire({
-          icon: 'warning',
-          text: this.translate.YouNeedToSubToContinue,
-        });
-      }
-      // Sends back to the end of the freeTrial if sub gets canceled
-      return authorized ? chapter : freeTrial;
+      return true;
     },
     loading(name) {
-      const { _id } = this.$store.state.series.series[0];
-      const { freeTrial } = this.$store.state.series.series[0];
+      const { _id, length } = this.$store.state.series.series[0];
       const sign = (name === 'prev') ? -1 : 1;
       const filter = (obj) => (obj.seriesId === _id);
+      // if same user progressed on an other client, syncronizing here
       const currentProgress = Number(this.progress.filter(filter)[0].chapter);
       const askingFor = sign * 1 + currentProgress;
 
-      const next = this.authorize(askingFor, _id, freeTrial);
-      if (next === false) return null;
+      const exists = this.exists(askingFor, length);
+      if (exists !== true) return null;
 
       if (this.playing) {
         const playIcon = document.getElementById('play-icon');
         playIcon.click();
       }
 
-      return this.$router.push({ path: `/read/${next}${_id}` });
+      return this.$router.push({ path: `/read/${askingFor}${_id}` });
     },
     setPlaying(bool) {
       this.$store.dispatch('app/updateAppState', { player: { playing: bool } });
