@@ -181,7 +181,18 @@ const userState = ({
   modules: {
   },
   getters: {
-    connected: (state) => !!state.jwt,
+    connected: ({ jwt }) => {
+      if (jwt === null) return false;
+      // Extract the expirency date from the jwt
+      const payload = Buffer.from(jwt.split('.')[1], 'base64').toString();
+      const { exp } = JSON.parse(payload);
+      // now in 10 digits instead of 13
+      const now = parseInt(Date.now() / 1000, 10);
+      // Check if the jwt is still valid
+      const jstStilValid = (exp > now);
+
+      return jstStilValid;
+    },
     verified: (state) => !!state.customerId,
   },
 });
