@@ -21,14 +21,6 @@ const routes = [
     name: 'Read',
     component: () => import(/* webpackChunkName: "about" */ '../pages/Read.vue'),
   },
-  {
-    path: '/verify',
-    name: 'Verify',
-    component: () => import(/* webpackChunkName: "about" */ '../pages/Verify.vue'),
-    meta: {
-      unverifiedOnly: true,
-    },
-  },
 ];
 
 export default routes;
