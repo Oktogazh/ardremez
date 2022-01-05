@@ -101,6 +101,7 @@ export default {
       const { checkout } = this.queries;
 
       // 1. Starting checkout process
+      // TODO: send a verification link to the user while showing this message
       const notVerified = { html: this.translate.NeedaBeVerifiedToSub };
       if (productId && !this.user.customerId) window.swal.fire(notVerified);
       if (productId && this.user.customerId) this.$store.dispatch('payment/startCheckout', productId);

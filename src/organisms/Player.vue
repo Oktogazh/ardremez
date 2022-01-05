@@ -18,7 +18,12 @@ export default {
     ProgressBar,
   },
   computed: {
+    id() {
+      const { chapterId } = this.$route.params;
+      return chapterId || '';
+    },
     ...mapState({
+      api: (state) => state.api,
       openCardOnEnded: (state) => state.chapter.openCardOnEnded,
     }),
   },
@@ -30,8 +35,7 @@ export default {
   },
   methods: {
     downloadAudio() {
-      const { api } = this.$store.state;
-      const id = this.$route.query.p;
+      const { api, id } = this;
 
       if (!id) return null;
 
@@ -67,8 +71,10 @@ export default {
     this.downloadAudio();
   },
   watch: {
-    $route() {
-      this.downloadAudio();
+    '$route.params': function () {
+      // Don't call downloadChapter when quitting the page
+      if (this.id === '') return null;
+      return this.downloadAudio();
     },
   },
 };
