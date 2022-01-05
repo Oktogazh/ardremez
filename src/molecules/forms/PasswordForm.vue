@@ -24,7 +24,7 @@ export default {
     }),
     text() {
       if (this.next === '/dashboard?delete=true') return 'Delete_My_Account';
-      return null;
+      return undefined; // ie. the default 'Submit' down in SubmitButton
     },
     msgArray() {
       return [
