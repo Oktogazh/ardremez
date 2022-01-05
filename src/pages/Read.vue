@@ -33,6 +33,11 @@ export default {
       const { chapterId } = this.$route.params;
       return chapterId || '';
     },
+    productId() {
+      const { id } = this;
+      const productId = `prod_${id.split('@')[1]}`;
+      return productId;
+    },
     ...mapState({
       api: (state) => state.api,
       hasJWT: (state) => {
@@ -93,26 +98,39 @@ export default {
         api,
         chapter,
         freeTrial,
+        productId,
+        seriesId,
         $router,
         $store,
-        seriesId,
       } = this;
 
       const redirectToEndOfTrial = (chapter !== this.redirect());
       if (redirectToEndOfTrial) {
-        // TODO: load the CheckoutCarousel from here
-        const next = { path: '/' };
+        const { path } = this.$router.currentRoute.value;
+        const next = {
+          path,
+          query: {
+            product_id: productId,
+          },
+        };
+        const endOfFreeTrial = `/read/${freeTrial}${seriesId}`;
         if (!$store.getters['user/connected']) {
           const params = {
             logging: true,
             next,
             redirect: {
-              path: `/read/${freeTrial}${seriesId}`,
+              path: endOfFreeTrial,
             },
           };
           return $store.dispatch('app/logStatusAndRoute', params);
         }
-        return $router.push(next);
+        const params = {
+          logging: false,
+          next: null,
+          redirect: endOfFreeTrial,
+        };
+        return $store.dispatch('app/logStatusAndRoute', params)
+          .then($router.push(next));
       }
 
       const progressObject = {

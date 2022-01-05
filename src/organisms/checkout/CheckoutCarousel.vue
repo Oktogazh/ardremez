@@ -25,6 +25,7 @@ export default {
   },
   computed: {
     ...mapState({
+      redirectRoute: (state) => state.app.redirectRoute,
       translate: (state) => state.lang,
     }),
   },
@@ -42,11 +43,11 @@ export default {
     },
     closeThis() {
       const { path } = this.$router.currentRoute.value;
+      const { redirectRoute } = this;
+      const nextPath = redirectRoute || path;
       const newRoute = {
-        path,
-        query: {
-          checkout: 'ending',
-        },
+        path: nextPath,
+        query: { checkout: 'ending' },
       };
       this.$router.push(newRoute);
     },
