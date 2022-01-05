@@ -31,19 +31,19 @@ export default {
   computed: {
     id() {
       const { chapterId } = this.$route.params;
-
       return chapterId || '';
     },
     ...mapState({
       api: (state) => state.api,
       hasJWT: (state) => {
         const { jwt } = state.user;
-
         return (jwt !== null);
       },
       loading: (state) => state.app.loading,
       series: (state) => state.series.series[0],
+      freeTrial: (state) => state.series.series[0].freeTrial,
       subscriptions: (state) => state.user.subscriptions,
+      translate: (state) => state.lang,
     }),
   },
   data() {
@@ -83,20 +83,6 @@ export default {
 
       return authorized;
     },
-    needLogging() {
-      const {
-        chapter,
-        freeTrial,
-        getters,
-        hasJWT,
-      } = this;
-      const authorized = this.authorized(chapter, freeTrial);
-      const hasJwtButExpired = (hasJWT && !getters['user/connected']);
-      // Maybe the users are authorize, but they need to log in
-      // if they want their progress to be tracked
-      if (!authorized || hasJwtButExpired) return true;
-      return false;
-    },
     async downloadChapter() {
       this.$store.dispatch('app/updateAppState', { subtitle: '...', title: null, loading: true });
       const { id } = this;
@@ -108,25 +94,25 @@ export default {
         chapter,
         freeTrial,
         $router,
+        $store,
         seriesId,
       } = this;
 
-      const needLogging = this.needLogging();
-
-      if (needLogging) {
-        const params = {
-          logging: true,
-          redirect: '/',
-          // if user logs in, they get redirected here an canLoad returns true
-          next: null,
-        };
-
-        this.$store.dispatch('app/logStatusAndRoute', params);
-      }
-
       const redirectToEndOfTrial = (chapter !== this.redirect());
       if (redirectToEndOfTrial) {
-        $router.push({ path: `/read/${freeTrial}${seriesId}` });
+        // TODO: load the CheckoutCarousel from here
+        const next = { path: '/' };
+        if (!$store.getters['user/connected']) {
+          const params = {
+            logging: true,
+            next,
+            redirect: {
+              path: `/read/${freeTrial}${seriesId}`,
+            },
+          };
+          return $store.dispatch('app/logStatusAndRoute', params);
+        }
+        return $router.push(next);
       }
 
       const progressObject = {
@@ -177,8 +163,10 @@ export default {
     },
   },
   watch: {
-    $route() {
-      this.downloadChapter();
+    '$route.params': function () {
+      // Don't call downloadChapter when quitting the page
+      if (this.id === '') return null;
+      return this.downloadChapter();
     },
   },
 };
