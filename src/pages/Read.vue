@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 import MainContainer from '@/atoms/MainContainer.vue';
 import ReaderCard from '@/organisms/ReaderCard.vue';
 import Card from '@/atoms/Card.vue';
@@ -38,6 +38,9 @@ export default {
       const productId = `prod_${id.split('@')[1]}`;
       return productId;
     },
+    ...mapGetters({
+      connected: 'user/connected',
+    }),
     ...mapState({
       api: (state) => state.api,
       hasJWT: (state) => {
@@ -114,7 +117,7 @@ export default {
           },
         };
         const endOfFreeTrial = `/read/${freeTrial}${seriesId}`;
-        if (!$store.getters['user/connected']) {
+        if (!this.connected) {
           const params = {
             logging: true,
             next,
@@ -157,15 +160,18 @@ export default {
     redirect() {
       const {
         chapter,
+        connected,
         freeTrial,
         subscribed,
       } = this;
       const authorized = (chapter <= freeTrial || subscribed());
       if (!authorized) {
-        window.swal.fire({
-          icon: 'warning',
-          text: this.translate.YouNeedToSubToContinue,
-        });
+        if (connected) {
+          window.swal.fire({
+            icon: 'warning',
+            text: this.translate.YouNeedToSubToContinue,
+          });
+        }
         return freeTrial;
       }
       return chapter;
