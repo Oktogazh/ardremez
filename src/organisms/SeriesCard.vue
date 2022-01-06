@@ -12,16 +12,13 @@
           <h2 id="series-title" v-html="seriesObject.title"></h2>
           <SeriesMetadata :seriesObject="seriesObject" />
           <SeriesCardActions :seriesObject="seriesObject" />
-        <!-- Title & Metadata End -->
         </div>
       </div>
     </template>
     <template v-slot:body>
       <div id="body-container">
-        <div class="">
-          <p v-for="(paragraph, index) in seriesObject.description" :key="index" v-html="paragraph">
-          </p>
-        </div>
+        <p v-for="(paragraph, index) in seriesObject.description" :key="index" v-html="paragraph">
+        </p>
       </div>
     </template>
   </HeadedCard>
@@ -93,50 +90,11 @@ export default {
   display: flex;
   flex-direction: column;
   align-content: stretch;
-  max-height: 10em;
+  max-height: 100%;
 }
 
 #series-title {
   width: stretch;
-}
-
-#metadata-container {
-  display: flex;
-}
-
-.metadata {
-  width: max-content;
-  padding: 0 2em;
-  font-size: 11px;
-  color: var(--dark-black);
-  text-transform: uppercase;
-  font-weight: 800;
-  font-variant-caps: all-petite-caps;
-}
-
-.option {
-  width: max-content;
-  padding: 0 2em;
-  font-size: 11px;
-  color: var(--lighter-white);
-  text-transform: uppercase;
-  font-weight: 800;
-  font-variant-caps: all-petite-caps;
-  border-radius: 1em;
-  padding: 3px 6px;
-  cursor: pointer;
-  opacity: .7;
-  margin: 0 3em;
-}
-.option:hover {
-  opacity: .9;
-}
-
-#toggle-btn {
-  background: var(--dark-black);
-}
-#toggle-btn:hover {
-  box-shadow: var(--slim-box-shadow)  var(--dark-black);
 }
 
 #body-container {

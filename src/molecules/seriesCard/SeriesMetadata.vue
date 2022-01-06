@@ -44,5 +44,8 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style scoped>
+#metadata-container {
+  display: flex;
+}
 </style>
