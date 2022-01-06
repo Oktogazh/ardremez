@@ -10,9 +10,7 @@
         <!-- Title & Metadata -->
         <div id="title-and-metadata">
           <h2 id="series-title" v-html="seriesObject.title"></h2>
-          <div id="metadata-container">
-            <PetiteCaps v-for="(info, index) in metadataBox" :key="index" :text="info" />
-          </div>
+          <SeriesMetadata :seriesObject="seriesObject" />
           <SeriesCardActions :seriesObject="seriesObject" />
         <!-- Title & Metadata End -->
         </div>
@@ -33,9 +31,9 @@
 import { mapState } from 'vuex';
 import HeadedCard from '@/molecules/HeadedCard.vue';
 import SeriesCardActions from '@/molecules/seriesCard/SeriesCardActions.vue';
+import SeriesMetadata from '@/molecules/seriesCard/SeriesMetadata.vue';
 import ImageViewer from '@/molecules/seriesCard/ImageViewer.vue';
 import DownButton from '@/atoms/buttons/DownButton.vue';
-import PetiteCaps from '@/atoms/display/PetiteCaps.vue';
 import UpButton from '@/atoms/buttons/UpButton.vue';
 
 export default {
@@ -44,8 +42,8 @@ export default {
     DownButton,
     HeadedCard,
     ImageViewer,
-    PetiteCaps,
     SeriesCardActions,
+    SeriesMetadata,
     UpButton,
   },
   computed: {
