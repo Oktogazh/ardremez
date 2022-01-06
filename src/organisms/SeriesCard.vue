@@ -11,12 +11,7 @@
         <div id="title-and-metadata">
           <h2 id="series-title" v-html="seriesObject.title"></h2>
           <div id="metadata-container">
-            <p class="metadata">{{ `${seriesObject.length} ` + translate.lessons }}</p>
-            <p class="metadata">{{
-              `${translate.average_duration} ` + seriesObject.averageDuration }}</p>
-            <p class="metadata">{{
-              `${translate[languages.source]} → ${translate[languages.target]}`
-            }}</p>
+            <PetiteCaps v-for="(info, index) in metadataBox" :key="index" :text="info" />
           </div>
           <SeriesCardActions :seriesObject="seriesObject" />
         <!-- Title & Metadata End -->
@@ -40,6 +35,7 @@ import HeadedCard from '@/molecules/HeadedCard.vue';
 import SeriesCardActions from '@/molecules/seriesCard/SeriesCardActions.vue';
 import ImageViewer from '@/molecules/seriesCard/ImageViewer.vue';
 import DownButton from '@/atoms/buttons/DownButton.vue';
+import PetiteCaps from '@/atoms/display/PetiteCaps.vue';
 import UpButton from '@/atoms/buttons/UpButton.vue';
 
 export default {
@@ -48,16 +44,31 @@ export default {
     DownButton,
     HeadedCard,
     ImageViewer,
+    PetiteCaps,
     SeriesCardActions,
     UpButton,
   },
   computed: {
-    languages() {
-      return this.seriesObject.languages;
-    },
     ...mapState({
       translate: (state) => state.lang,
     }),
+    metadataBox() {
+      const {
+        seriesObject,
+        translate,
+      } = this;
+
+      const averageDuration = `${translate.average_duration} ${seriesObject.averageDuration}`;
+      // const direction = `${translate[languages.source]} → ${translate[languages.target]}`;
+      const numberOfLessons = `${seriesObject.length} ${translate.lessons}`;
+      const contact = `${translate.questions}: ${seriesObject.contact}`;
+
+      return [
+        numberOfLessons,
+        averageDuration,
+        contact,
+      ];
+    },
   },
   created() {
   },

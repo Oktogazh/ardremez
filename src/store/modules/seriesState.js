@@ -6,6 +6,7 @@ const seriesState = ({
         _id: '@KhGIVJF2dZ6WTm',
         object: 'series',
         averageDuration: '10`',
+        contact: 'emgav@eienn.bzh',
         creator: '5f9f2714ab73e601aa5d192a', // TODO: ObjectId of the creator's account
         description: [ // An array of strings, one str is a <p>
           'Cette série est la première et pour l\'instant la seule accessible sur le site. Elle se concentre sur le dialecte de Basse-Cornouaille (en vert sur la carte) mais vous pourrez également profiter d\'une prononciation plus standarde si vous souhaitez maîtriser un autre dialecte par la suite.',
