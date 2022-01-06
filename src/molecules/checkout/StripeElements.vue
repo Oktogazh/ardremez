@@ -6,19 +6,22 @@
     <div id="payment-element">
       <!-- Elements will create form elements here -->
     </div>
-    <button id="submit" @click.prevent="confirmPayment">Subscribe</button>
+    <SubmitButton text="Subscribe" @click.prevent="confirmPayment" />
     <div id="error-message">
       <!-- Display error message to your customers here -->
     </div>
   </form>
-
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import SubmitButton from '@/atoms/buttons/SubmitButton.vue';
 
 export default {
   name: 'ElementsCheckout',
+  components: {
+    SubmitButton,
+  },
   computed: {
     ...mapState({
       api: (state) => state.api,
