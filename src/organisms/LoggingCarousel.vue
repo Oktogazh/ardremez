@@ -96,7 +96,7 @@ export default {
       this.$store.dispatch('app/logStatusAndRoute', params)
         .then(() => {
           if (next === 'reload') $router.go();
-          $router.push(nextRoute || {});
+          else $router.push(nextRoute || {});
         });
     },
     next({ email, member }) {
@@ -152,8 +152,33 @@ export default {
         });
     },
     signIn(password) {
-      const { email } = this;
-      this.$store.dispatch('user/signin', { email, password });
+      const {
+        closeThis,
+        email,
+        translate,
+        $store,
+      } = this;
+
+      $store.dispatch('user/signin', { email, password })
+        .then((signed) => {
+          if (!signed) {
+            return {
+              icon: 'error',
+              html: translate.problemOccurredTryLatter,
+            };
+          }
+          return {
+            icon: 'info',
+            html: translate.verificationLinkSent,
+          };
+        })
+        .then(({ icon, html }) => {
+          window.swal.fire({
+            icon,
+            html,
+          });
+          closeThis();
+        });
     },
   },
   mounted() {

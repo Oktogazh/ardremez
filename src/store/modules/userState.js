@@ -84,7 +84,8 @@ const userState = ({
           verified: data.verified,
         }))
         .then(dispatch('newVerificationEmail'))
-        .then(() => true);
+        .then(() => true)
+        .catch(() => false);
       return signed;
     },
     newVerificationEmail({ rootState, state }) {

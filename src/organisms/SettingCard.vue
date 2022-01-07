@@ -136,7 +136,7 @@ export default {
       } = this;
       $store.dispatch('user/newVerificationEmail')
         .then(window.swal.fire({
-          html: translate.new_verificationCode_sent_info,
+          html: translate.new_verificationLink_sent_info,
           confirmButtonText: translate.OK,
         }));
     },
