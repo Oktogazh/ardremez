@@ -10,7 +10,7 @@
       </li>
       <li v-if="$store.getters['user/connected'] &&
         $router.currentRoute.value.name !== 'Account'"
-        @click="$router.push('dashboard')">
+        @click="$router.push({ path: '/dashboard' })">
         <h3>{{ $store.state.lang.My_Account }}</h3>
       </li>
       <li v-if="$store.getters['user/connected']"

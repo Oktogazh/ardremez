@@ -5,10 +5,10 @@
       <SmallButton :bg="'grad-blue'" :text="translate[progress.txt]"/>
     </router-link>
     <SmallButton v-if="sub.status === 'notSub'" :bg="'grad-green'" @click="beforeSubscribe"
-    :text="translate.Subscribe"/>
+    :text="translate.Subscribe" />
     <!-- Can't unsubscribe without a subscriptionId -->
     <SmallButton v-if="sub.id !== false" :bg="'grad-red'" @click="beforeUnsubscibe"
-      :text="translate.Unsubscribe"/>
+      :text="translate.Unsubscribe" />
   </div>
 </template>
 
