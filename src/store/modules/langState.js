@@ -20,7 +20,7 @@ const lang = ({
     must_unsubscibe_before_delete_account: '',
     My_Account: '',
     My_email_address: '',
-    new_verificationCode_sent_info: '',
+    newVerificationLinkSentInfo: '',
     Not_the_same_psws: '',
     OK: '',
     Other_Languages: '',

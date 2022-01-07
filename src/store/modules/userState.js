@@ -89,7 +89,8 @@ const userState = ({
       return signed;
     },
     newVerificationEmail({ rootState, state }) {
-      window.axios.post(`${rootState.api}/api/send_email_verification_link`, { address: state.email });
+      return window.axios
+        .post(`${rootState.api}/api/send_email_verification_link`, { address: state.email });
     },
     async reinitializePsw({ commit, state, rootState }, password) {
       const { emailCode } = state;

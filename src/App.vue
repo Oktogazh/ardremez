@@ -90,27 +90,42 @@ export default {
       }
     },
     handleCheckoutParams() {
+      const {
+        getStatus,
+        queries,
+        translate,
+        user,
+        $store,
+      } = this;
       const { search } = window.location;
       // 1. Starting checkout process
-      const productId = this.queries.product_id;
+      const productId = queries.product_id;
       // 2. After payment intent
       const clientSecret = new URLSearchParams(search).get('payment_intent_client_secret');
       const prodId = new URLSearchParams(search).get('prod_id');
       const status = new URLSearchParams(search).get('redirect_status');
       // 3. Ending checkout process
-      const { checkout } = this.queries;
+      const { checkout } = queries;
 
       // 1. Starting checkout process
-      // TODO: send a verification link to the user while showing this message
-      const notVerified = { html: this.translate.NeedaBeVerifiedToSub };
-      if (productId && !this.user.customerId) window.swal.fire(notVerified);
-      if (productId && this.user.customerId) this.$store.dispatch('payment/startCheckout', productId);
+      if (productId && !user.customerId) {
+        const { NeedaBeVerifiedToSub, newVerificationLinkSentInfo } = translate;
+        const html = `${NeedaBeVerifiedToSub}<br>${newVerificationLinkSentInfo}`;
+
+        const alert = {
+          icon: 'info',
+          html,
+        };
+        $store.dispatch('user/newVerificationEmail');
+        window.swal.fire(alert);
+      } else if (productId && this.user.customerId) $store.dispatch('payment/startCheckout', productId);
 
       // 2. After payment intent
-      if (clientSecret) this.getStatus({ clientSecret, status, prodId });
+      else if (clientSecret) getStatus({ clientSecret, status, prodId });
 
       // 3. Ending checkout process
-      if (checkout === 'ending') this.$store.dispatch('payment/endCheckout');
+      else if (checkout === 'ending') $store.dispatch('payment/endCheckout');
+      return null;
     },
     handleEmailVerificationParams() {
       const { queries, translate, $store } = this;
