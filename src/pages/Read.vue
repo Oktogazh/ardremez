@@ -100,6 +100,7 @@ export default {
       const {
         api,
         chapter,
+        connected,
         freeTrial,
         productId,
         seriesId,
@@ -107,17 +108,17 @@ export default {
         $store,
       } = this;
 
-      const redirectToEndOfTrial = (chapter !== this.redirect());
-      if (redirectToEndOfTrial) {
-        const { path } = this.$router.currentRoute.value;
+      const needsToSubscribe = (chapter !== this.redirect());
+      if (needsToSubscribe) {
+        const { path } = $router.currentRoute.value;
+        const endOfFreeTrial = `/read/${freeTrial}${seriesId}`;
         const next = {
-          path,
+          path: endOfFreeTrial,
           query: {
             product_id: productId,
           },
         };
-        const endOfFreeTrial = `/read/${freeTrial}${seriesId}`;
-        if (!this.connected) {
+        if (!connected) {
           const params = {
             logging: true,
             next,
@@ -129,11 +130,12 @@ export default {
         }
         const params = {
           logging: false,
-          next: null,
+          next: path,
           redirect: endOfFreeTrial,
         };
-        return $store.dispatch('app/logStatusAndRoute', params)
-          .then($router.push(next));
+        $store.dispatch('app/logStatusAndRoute', params);
+        $router.push(next);
+        return null;
       }
 
       const progressObject = {

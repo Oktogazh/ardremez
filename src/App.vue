@@ -118,13 +118,20 @@ export default {
         };
         $store.dispatch('user/newVerificationEmail');
         window.swal.fire(alert);
-      } else if (productId && this.user.customerId) $store.dispatch('payment/startCheckout', productId);
+      } else if (productId && user.customerId) {
+        $store.dispatch('payment/startCheckout', productId);
+        return null;
+      }
 
       // 2. After payment intent
-      else if (clientSecret) getStatus({ clientSecret, status, prodId });
+      if (clientSecret) {
+        getStatus({ clientSecret, status, prodId });
+        return null;
+      }
 
       // 3. Ending checkout process
-      else if (checkout === 'ending') $store.dispatch('payment/endCheckout');
+      if (checkout === 'ending') $store.dispatch('payment/endCheckout');
+
       return null;
     },
     handleEmailVerificationParams() {
