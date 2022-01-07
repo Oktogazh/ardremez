@@ -164,7 +164,7 @@ export default {
           if (!signed) {
             return {
               icon: 'error',
-              html: translate.problemOccurredTryLatter,
+              html: translate.problemOccurredTryLater,
             };
           }
           return {

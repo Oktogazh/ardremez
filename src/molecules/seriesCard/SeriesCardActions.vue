@@ -101,9 +101,23 @@ export default {
       }
     },
     beforeUnsubscibe() {
-      const store = this.$store;
-      window.axios.delete(`${this.api}/api/digoumanantiñ/${this.sub.id}`)
-        .then((res) => store.commit('user/SET_USER_DATA', res.data));
+      const { $store } = this;
+      const html = this.translate.subscriptionWillEndRightNowDespiteBillingPeriodEnd;
+      const confirmButtonText = this.translate.doItLater;
+      const denyButtonText = this.translate.unsubscribeMeNow;
+      window.swal.fire({
+        icon: 'info',
+        html,
+        showDenyButton: true,
+        confirmButtonText,
+        denyButtonText,
+      })
+        .then(({ isDenied }) => {
+          if (isDenied) {
+            window.axios.delete(`${this.api}/api/digoumanantiñ/${this.sub.id}`)
+              .then((res) => $store.commit('user/SET_USER_DATA', res.data));
+          }
+        });
     },
   },
   props: {
