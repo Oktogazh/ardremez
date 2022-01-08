@@ -60,10 +60,7 @@ export default {
     loading(next) {
       const { _id } = this.$store.state.series.series[0];
       return this.$router.push({
-        path: '/read',
-        query: {
-          p: `${next}${_id}`,
-        },
+        path: `/read/${next}${_id}`,
       });
     },
     play(startTime) {

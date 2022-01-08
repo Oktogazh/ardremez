@@ -3,7 +3,7 @@ const seriesState = ({
   state: {
     series: [
       {
-        _id: '@KhGIVJF2dZ6WTm',
+        _id: '@IHsM2F6xNmZOD5',
         object: 'series',
         averageDuration: '10`',
         contact: 'emgav@eienn.bzh',

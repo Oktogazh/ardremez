@@ -110,10 +110,12 @@ export default {
       const { search } = window.location;
       // 1. Starting checkout process
       const productId = queries.product_id;
+
       // 2. After payment intent
       const clientSecret = new URLSearchParams(search).get('payment_intent_client_secret');
       const prodId = new URLSearchParams(search).get('prod_id');
       const status = new URLSearchParams(search).get('redirect_status');
+
       // 3. Ending checkout process
       const { checkout } = queries;
 
@@ -151,7 +153,6 @@ export default {
 
       $store.dispatch('user/verifyEmail', { address, code: verifCode })
         .then((res) => {
-          console.log(res);
           if (res === 'verified') {
             window.swal.fire({
               icon: 'success',
