@@ -31,17 +31,15 @@ export default {
       user: (state) => state.user,
     }),
   },
-  created() {
+  async created() {
     this.$store.dispatch('user/retrieveData');
-    // TODO: localStorage('languagePreference') read (here) && write
-    this.$store.dispatch('lang/loadLanguage', 'fr');
   },
   methods: {
     clearQueryParams() {
       const { path } = this.$router.currentRoute.value;
       window.history.replaceState({}, document.title, `/#${path}`);
     },
-    completePayment({ status, prodId }) {
+    async completePayment({ status, prodId }) {
       // TODO: swal.fire a message,
       // add this product to the subsciptions,
       // shift in a new progress object if not in the user.progress
@@ -50,6 +48,10 @@ export default {
         translate,
       } = this;
       const { path } = $router.currentRoute.value;
+      const {
+        PaymentSuccessfullyProcessed,
+        PaymentUnsuccessfullyProcessed,
+      } = translate;
       switch (status) {
         case 'succeeded':
           // update the user's state,
@@ -61,9 +63,8 @@ export default {
           });
           window.swal.fire({
             icon: 'success',
-            html: translate.PaymentSuccessfullyProcessedMsg,
+            html: PaymentSuccessfullyProcessed,
           });
-          console.log(translate.PaymentSuccessfullyProcessedMsg);
           break;
         case 'processing':
           break;
@@ -73,7 +74,7 @@ export default {
           // payment again
           window.swal.fire({
             icon: 'error',
-            html: translate.PaymentUnsuccessfullyProcessedMsg,
+            html: PaymentUnsuccessfullyProcessed,
           });
           $router.push({ path, query: { product_id: prodId } });
           break;
@@ -189,7 +190,9 @@ export default {
     },
   },
   watch: {
-    '$route.query': function () {
+    '$route.query': async function () {
+      // TODO: localStorage('languagePreference') read (here) && write
+      await this.$store.dispatch('lang/loadLanguage', 'fr');
       this.handleEmailVerificationParams();
       this.handleCheckoutParams();
       this.handlePswReinitializationParams();

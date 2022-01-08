@@ -36,16 +36,19 @@ const lang = ({
       phrases.forEach((entry) => {
         state[entry] = obj[entry];
       });
+      const done = true;
+      return done;
     },
   },
   actions: {
-    loadLanguage({ commit }, language) {
-      import(`@/assets/languages/${language}.js`)
+    async loadLanguage({ commit }, language) {
+      const loaded = await import(`@/assets/languages/${language}.js`)
         .then(({ default: obj }) => {
           commit('SET_LANGUAGE', { obj });
         })
         // TODO: localStorage('languagePreference') read && write (here)
         .then(commit('app/SET_CHOSEN_LANGUAGE', language, { root: true }));
+      return loaded;
     },
   },
   modules: {
