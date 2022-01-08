@@ -48,6 +48,7 @@ const obj = {
   Other_Languages: 'Other Languages',
   Password: 'Password',
   PaymentSuccessfulyProcessedMsg: 'Your payment was successfully processed! You can now enjoy all the lessons of the series!',
+  PaymentUnsuccessfulyProcessedMsg: 'Your payment could not be processed. Please try again later, or, if the problem persists, try another payment method.',
   placeholderPsw: 'Password',
   Psw_Forgotten: 'Password Forgotten?',
   problemOccurredTryLater: 'A problem occurred during the process.<br>Please try again later.',

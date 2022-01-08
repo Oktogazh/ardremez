@@ -23,6 +23,10 @@ export default {
     SubmitButton,
   },
   computed: {
+    path() {
+      const { path } = this.$router.currentRoute.value;
+      return path;
+    },
     ...mapState({
       api: (state) => state.api,
       translate: (state) => state.lang,
@@ -41,7 +45,7 @@ export default {
         // `Elements` instance that was used to create the Payment Element
         elements: this.elements,
         confirmParams: {
-          return_url: `${window.location.origin}?prod_id=${this.productId}#/dashboard`,
+          return_url: `${window.location.origin}?prod_id=${this.productId}#${this.path}`,
         },
       });
 

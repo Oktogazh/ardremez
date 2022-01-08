@@ -27,7 +27,7 @@ export default {
     ...mapState({
       loggingRequired: (state) => state.app.loggingRequired,
       product: (state) => state.payment.product,
-      translate: (state) => state.lang,
+      translate: (state) => JSON.parse(JSON.stringify(state.lang)),
       user: (state) => state.user,
     }),
   },
@@ -45,6 +45,11 @@ export default {
       // TODO: swal.fire a message,
       // add this product to the subsciptions,
       // shift in a new progress object if not in the user.progress
+      const {
+        $router,
+        translate,
+      } = this;
+      const { path } = $router.currentRoute.value;
       switch (status) {
         case 'succeeded':
           // update the user's state,
@@ -56,10 +61,9 @@ export default {
           });
           window.swal.fire({
             icon: 'success',
-            html: this.translate.PaymentSuccessfulyProcessedMsg,
+            html: translate.PaymentSuccessfullyProcessedMsg,
           });
-
-          window.history.replaceState({}, document.title, '/#/dashboard');
+          console.log(translate.PaymentSuccessfullyProcessedMsg);
           break;
         case 'processing':
           break;
@@ -67,6 +71,11 @@ export default {
         case 'requires_payment_method':
           // Redirect your user back to your payment page to attempt collecting
           // payment again
+          window.swal.fire({
+            icon: 'error',
+            html: translate.PaymentUnsuccessfullyProcessedMsg,
+          });
+          $router.push({ path, query: { product_id: prodId } });
           break;
 
         default:
