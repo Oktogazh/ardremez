@@ -150,10 +150,17 @@ export default {
       if (!address && !verifCode) return null;
 
       $store.dispatch('user/verifyEmail', { address, code: verifCode })
-        .then((verified) => {
-          if (verified) {
+        .then((res) => {
+          console.log(res);
+          if (res === 'verified') {
             window.swal.fire({
               icon: 'success',
+              html: translate.Email_successfully_verified,
+              confirmButtonText: translate.OK,
+            });
+          } else if (res === 'ALREADYVERIFIED') {
+            window.swal.fire({
+              icon: 'info',
               html: translate.Email_successfully_verified,
               confirmButtonText: translate.OK,
             });

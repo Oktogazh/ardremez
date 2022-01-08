@@ -29,7 +29,7 @@ const seriesState = ({
         length: 91,
         openCardOnPodcastEnd: 1,
         podcasts: 91,
-        productId: 'prod_KhGIVJF2dZ6WTm',
+        productId: 'prod_IHsM2F6xNmZOD5',
         subscribers: null, // TODO: get a number here
         title: 'Le breton en trois mois',
       },
