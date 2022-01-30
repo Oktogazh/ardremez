@@ -153,7 +153,7 @@ export default {
 
       $store.dispatch('user/verifyEmail', { address, code: verifCode })
         .then((res) => {
-          if (res === 'verified') {
+          if (res === true) {
             window.swal.fire({
               icon: 'success',
               html: translate.Email_successfully_verified,

@@ -177,7 +177,8 @@ const userState = ({
           dispatch('newVerificationEmail');
           return false;
         });
-      return msg || customerId || false;
+      console.log(msg);
+      return msg || !!customerId;
     },
   },
   modules: {
