@@ -12,7 +12,12 @@
       <GoBack v-if="!emailCode" @click="prev" />
       <PasswordForm v-if="member" :email="email" @authorized="logged">
         <template #option>
-          <button type="button" v-html="translate.Psw_Forgotten" @click="pswForgotten">
+          <button
+            @click="pswForgotten"
+            class="psw-forgotten"
+            type="button"
+            v-html="translate.Psw_Forgotten"
+          >
           </button>
         </template>
       </PasswordForm>
@@ -190,3 +195,13 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.psw-forgotten {
+  background-color: rgb(177, 217, 216, .4);
+  padding: 3px;
+  border-radius: 5px;
+  margin-top: -1em;
+  margin-bottom: 2em;
+}
+</style>
